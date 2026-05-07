@@ -22,6 +22,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.data.model.OpeningEntity
 import com.ulrezaj.renovum_1.data.model.OpeningType
+import com.ulrezaj.renovum_1.utility.L
 
 @Composable
 fun AddOpeningDialog(
@@ -33,7 +34,10 @@ fun AddOpeningDialog(
 	var height by remember { mutableStateOf("") }
 
 	AlertDialog(
-		onDismissRequest = onDismiss,
+		onDismissRequest = {
+			L.d("OpeningDialog: Dismissed by request")
+			onDismiss()
+		},
 		title = { Text("Додати проріз") },
 		text = {
 			Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -41,7 +45,10 @@ fun AddOpeningDialog(
 					OpeningType.entries.forEachIndexed { index, openingType ->
 						SegmentedButton(
 							selected = type == openingType,
-							onClick = { type = openingType },
+							onClick = {
+								L.click("OpeningDialog: Change type to ${openingType.displayName}")
+								type = openingType
+							},
 							shape = SegmentedButtonDefaults.itemShape(index = index, count = OpeningType.entries.size)
 						) {
 							Text(openingType.displayName)
@@ -70,12 +77,16 @@ fun AddOpeningDialog(
 			Button(
 				enabled = width.isNotBlank() && height.isNotBlank(),
 				onClick = {
+					L.click("OpeningDialog: Confirming $type ${width}x${height}")
 					onConfirm(OpeningEntity(type.displayName, width, height, type))
 				}
 			) { Text("Додати") }
 		},
 		dismissButton = {
-			TextButton(onClick = onDismiss) { Text("Скасувати") }
+			TextButton(onClick = {
+				L.click("OpeningDialog: Cancel clicked")
+				onDismiss()
+			}) { Text("Скасувати") }
 		}
 	)
 }

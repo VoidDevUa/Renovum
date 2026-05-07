@@ -10,8 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.data.UserSettings
-import com.ulrezaj.renovum_1.ui.theme.AppTheme
 import com.ulrezaj.renovum_1.ui.components.ThemeSelector
+import com.ulrezaj.renovum_1.utility.L
 
 @Composable
 fun SettingsScreen(
@@ -32,6 +32,7 @@ fun SettingsScreen(
 		ThemeSelector(
 			selectedTheme = settings.appTheme,
 			onThemeSelected = { newTheme ->
+				L.click("Theme changed to: $newTheme")
 				onSettingsChange(settings.copy(appTheme = newTheme))
 			}
 		)
@@ -46,6 +47,7 @@ fun SettingsScreen(
 			Switch(
 				checked = settings.showDimensionsInCard,
 				onCheckedChange = { isChecked ->
+					L.click("Settings: Show dimensions = $isChecked")
 					onSettingsChange(settings.copy(showDimensionsInCard = isChecked))
 				}
 			)
@@ -61,7 +63,6 @@ fun SettingsScreen(
 			color = MaterialTheme.colorScheme.primary
 		)
 
-		// Режим лівші
 		Row(
 			verticalAlignment = Alignment.CenterVertically,
 			modifier = Modifier
@@ -72,6 +73,7 @@ fun SettingsScreen(
 			Switch(
 				checked = settings.isLeftHanded,
 				onCheckedChange = { isChecked ->
+					L.click("Settings: LeftHanded mode = $isChecked")
 					onSettingsChange(settings.copy(isLeftHanded = isChecked))
 				}
 			)
@@ -85,7 +87,9 @@ fun SettingsScreen(
 			Switch(
 				checked = settings.dialogColumns == 3,
 				onCheckedChange = { isThree ->
-					onSettingsChange(settings.copy(dialogColumns = if (isThree) 3 else 2))
+					val columns = if (isThree) 3 else 2
+					L.click("Settings: Dialog columns = $columns")
+					onSettingsChange(settings.copy(dialogColumns = columns))
 				}
 			)
 		}

@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.navigation.Screen
+import com.ulrezaj.renovum_1.utility.L
 
 @Composable
 fun BottomNav(
@@ -30,7 +31,10 @@ fun BottomNav(
 				icon = { Icon(Icons.Default.Menu, contentDescription = "Меню") },
 				label = { Text("Меню") },
 				selected = false,
-				onClick = onMenuClick
+				onClick = {
+					L.click("BottomNav: Menu (Left-handed)")
+					onMenuClick()
+				}
 			)
 		}
 
@@ -39,7 +43,10 @@ fun BottomNav(
 				icon = { Icon(screen.icon, contentDescription = screen.title) },
 				label = { Text(screen.title) },
 				selected = currentRoute == screen.route,
-				onClick = { onNavigate(screen.route) },
+				onClick = {
+					L.click("BottomNav: ${screen.title}")
+					onNavigate(screen.route)
+				},
 				colors = NavigationBarItemDefaults.colors(
 					indicatorColor = MaterialTheme.colorScheme.secondaryContainer,
 					selectedIconColor = MaterialTheme.colorScheme.onSecondaryContainer,
@@ -55,7 +62,10 @@ fun BottomNav(
 				icon = { Icon(Icons.Default.Menu, contentDescription = "Меню") },
 				label = { Text("Меню") },
 				selected = false,
-				onClick = onMenuClick
+				onClick = {
+					L.click("BottomNav: Menu (Right-handed)")
+					onMenuClick()
+				}
 			)
 		}
 	}

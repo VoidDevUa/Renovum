@@ -18,6 +18,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,6 +28,7 @@ import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.model.OpeningType
 import com.ulrezaj.renovum_1.data.model.RoomEntity
 import com.ulrezaj.renovum_1.ui.components.list_Items.RoomCard
+import com.ulrezaj.renovum_1.utility.L
 
 @Composable
 fun RoomsScreen(
@@ -37,13 +39,18 @@ fun RoomsScreen(
 	onRoomClick: (RoomEntity) -> Unit,
 	onDeleteRoom: (RoomEntity) -> Unit
 ) {
-
+	LaunchedEffect(rooms.size) {
+		L.d("RoomsScreen: Displaying ${rooms.size} rooms")
+	}
 
 	Scaffold(
 		contentWindowInsets = WindowInsets(0, 0, 0, 0),
 		floatingActionButton = {
 			FloatingActionButton(
-				onClick = onAddRoomClick,
+				onClick = {
+					L.click("FAB: Add Room")
+					onAddRoomClick()
+				},
 				containerColor = Color(0xFF2E7D32),
 				contentColor = Color.White,
 				shape = MaterialTheme.shapes.large,
@@ -91,8 +98,14 @@ fun RoomsScreen(
 							dimensions = "Вікон: $windowsCount, Дверей: $doorsCount",
 							showDimensions = userSettings.showDimensionsInCard,
 							isEditMode = isEditMode,
-							onDeleteClick = { onDeleteRoom(room) },
-							onClick = { onRoomClick(room) }
+							onDeleteClick = {
+								L.click("RoomCard Delete: ${room.name}")
+								onDeleteRoom(room)
+							},
+							onClick = {
+								L.click("RoomCard Open: ${room.name} (id: ${room.id})")
+								onRoomClick(room)
+							}
 						)
 					}
 				}

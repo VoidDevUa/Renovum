@@ -5,6 +5,7 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import com.ulrezaj.renovum_1.utility.L
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -21,7 +22,11 @@ fun RenovumTopAppBar(
 		),
 		actions = {
 			if (onEditClick != null) {
-				IconButton(onClick = onEditClick) {
+				IconButton(onClick = {
+					val targetMode = if (isEditMode) "VIEW" else "EDIT"
+					L.click("TopBar: Switch to $targetMode mode")
+					onEditClick()
+				}) {
 					Icon(
 						imageVector = if (isEditMode) Icons.Default.Check else Icons.Default.Edit,
 						contentDescription = "Режим редагування",

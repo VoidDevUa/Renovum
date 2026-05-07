@@ -6,6 +6,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -13,14 +14,25 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.data.model.RoomShapeType
+import com.ulrezaj.renovum_1.utility.L
 
 @Composable
 fun RoomSchemaPainter(
 	shapeType: RoomShapeType,
 	focusedField: String?,
-	paramValues: Map<String, String>,
+	paramValues: Map<String, Double>,
 	modifier: Modifier = Modifier
 ) {
+	LaunchedEffect(shapeType) {
+		L.d("Painter: Shape changed to $shapeType")
+	}
+
+	LaunchedEffect(focusedField) {
+		if (focusedField != null) {
+			L.d("Painter: Highlighting field '$focusedField'")
+		}
+	}
+
 	val outlineColor = MaterialTheme.colorScheme.outline
 	val highlightColor = MaterialTheme.colorScheme.tertiary
 	val strokeWidth = 4.dp
@@ -41,13 +53,13 @@ fun RoomSchemaPainter(
 			val canvasH = size.height
 			val safePadding = 60f
 
-			fun String?.toDbl(def: Double = 4.0): Double = this?.toDoubleOrNull() ?: def
+			fun getParam(key: String, def: Double = 4.0): Double = paramValues[key] ?: def
 			fun getCol(field: String): Color = if (field == focusedField) highlightColor else outlineColor
 
 			when (shapeType) {
 				RoomShapeType.RECTANGLE -> {
-					val mW = paramValues["Ширина"].toDbl(4.0)
-					val mL = paramValues["Довжина"].toDbl(5.0)
+					val mW = getParam("Ширина", 4.0)
+					val mL = getParam("Довжина", 5.0)
 					val scale = minOf((canvasW - safePadding * 2) / mW, (canvasH - safePadding * 2) / mL)
 					val dW = (mW * scale).toFloat()
 					val dL = (mL * scale).toFloat()
@@ -66,10 +78,10 @@ fun RoomSchemaPainter(
 					drawContext.canvas.nativeCanvas.drawText("${mL}м", p2.x + 55f, (p2.y + p3.y) / 2, textPaint)
 				}
 				RoomShapeType.L_SHAPED -> {
-					val a = paramValues["A"].toDbl(6.0)
-					val b = paramValues["B"].toDbl(3.0)
-					val c = minOf(paramValues["C"].toDbl(3.0), a * 0.8)
-					val d = maxOf(paramValues["D"].toDbl(6.0), b + 0.5)
+					val a = getParam("A", 6.0)
+					val b = getParam("B", 3.0)
+					val c = minOf(getParam("C", 3.0), a * 0.8)
+					val d = maxOf(getParam("D", 6.0), b + 0.5)
 
 					val scale = minOf((canvasW - safePadding * 2) / a, (canvasH - safePadding * 2) / d).toFloat()
 					val x0 = (canvasW - (a.toFloat() * scale)) / 2
@@ -100,11 +112,11 @@ fun RoomSchemaPainter(
 					drawContext.canvas.nativeCanvas.drawText("${innerVertical}м", p5.x + 60f, (p4.y + p5.y) / 2, textPaint)
 				}
 				RoomShapeType.T_SHAPED -> {
-					val pL = paramValues["Ліве плече"].toDbl(2.0)
-					val pR = paramValues["Праве плече"].toDbl(2.0)
-					val pLW = paramValues["Ширина ніжки"].toDbl(2.0)
-					val pLH = paramValues["Висота ніжки"].toDbl(3.0)
-					val pTH = paramValues["Висота верху"].toDbl(2.0)
+					val pL = getParam("Ліве плече", 2.0)
+					val pR = getParam("Праве плече", 2.0)
+					val pLW = getParam("Ширина ніжки", 2.0)
+					val pLH = getParam("Висота ніжки", 3.0)
+					val pTH = getParam("Висота верху", 2.0)
 
 					val tW = pL + pLW + pR
 					val tH = pTH + pLH

@@ -43,6 +43,7 @@ import com.ulrezaj.renovum_1.ui.components.dialogs.RoomShapeDialog
 import com.ulrezaj.renovum_1.ui.components.list_Items.OpeningItem
 import com.ulrezaj.renovum_1.ui.components.RoomSchemaPainter
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
+import com.ulrezaj.renovum_1.utility.L
 
 @Composable
 fun AddRoomScreen(
@@ -70,16 +71,21 @@ fun AddRoomScreen(
 		verticalArrangement = Arrangement.spacedBy(16.dp)
 	) {
 		OutlinedButton(
-			onClick = { showShapeDialog.value = true },
+			onClick = {
+				L.click("AddRoom: Open Shape Dialog")
+				showShapeDialog.value = true
+				},
 			modifier = Modifier.fillMaxWidth()
 		) {
 			Text("Обрана форма: ${selectedShape.value.getDisplayName()}")
 		}
 
+		val painterParams = paramValues.mapValues { it.value.toDoubleOrNull() ?: 0.0 }
+
 		RoomSchemaPainter(
 			shapeType = selectedShape.value,
 			focusedField = focusedField.value,
-			paramValues = paramValues,
+			paramValues = painterParams,
 			modifier = Modifier
 				.fillMaxWidth()
 				.height(220.dp)
@@ -125,6 +131,7 @@ fun AddRoomScreen(
 							.weight(1f)
 							.onFocusChanged { focusState ->
 								if (focusState.isFocused) {
+									L.d("AddRoom: Focus on field $field")
 									focusedField.value = field
 								} else if (focusedField.value == field) {
 									focusedField.value = null
@@ -152,7 +159,10 @@ fun AddRoomScreen(
 				text = "Вікна та двері",
 				style = MaterialTheme.typography.titleMedium
 			)
-			TextButton(onClick = { showOpeningDialog.value = true }) {
+			TextButton(onClick = {
+				L.click("AddRoom: Open Add Opening Dialog")
+				showOpeningDialog.value = true
+			}) {
 				Icon(Icons.Default.Add, contentDescription = null)
 				Spacer(Modifier.width(4.dp))
 				Text("Додати")
@@ -164,6 +174,7 @@ fun AddRoomScreen(
 			OpeningItem(
 				opening = opening,
 				onDeleteClick = {
+					L.click("AddRoom: Remove opening ${opening.type}")
 					openings = openings - opening
 				}
 			)
@@ -172,13 +183,20 @@ fun AddRoomScreen(
 		Spacer(modifier = Modifier.height(16.dp))
 
 		Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-			OutlinedButton(onClick = { navController.popBackStack() }, modifier = Modifier.weight(1f)) {
+			OutlinedButton(onClick = {
+				L.click("AddRoom: Cancel")
+				navController.popBackStack()
+			}, modifier = Modifier.weight(1f)) {
 				Text("Скасувати")
 			}
 			Button(
 				onClick = {
+					L.click("AddRoom: Save clicked")
 					if (roomName.value.isNotBlank()) {
 						val roomParams = RoomParams.fromMap(selectedShape.value, paramValues)
+
+						L.d("AddRoom: Creating room ${roomName.value} with shape ${selectedShape.value}")
+						L.d("AddRoom: Params: $paramValues, Openings count: ${openings.size}")
 
 						val newRoom = RoomEntity(
 							name = roomName.value,
@@ -189,6 +207,9 @@ fun AddRoomScreen(
 
 						roomViewModel.addRoom(newRoom)
 						onSave()
+					}
+					else {
+						L.e("AddRoom: Save failed - Room name is blank")
 					}
 				},
 				modifier = Modifier.weight(1f)
@@ -203,6 +224,7 @@ fun AddRoomScreen(
 			onDismiss = { showShapeDialog.value = false },
 			columns = userSettings.dialogColumns,
 			onNext = { newShape ->
+				L.click("AddRoom: Shape changed to $newShape")
 				selectedShape.value = newShape
 				showShapeDialog.value = false
 				paramValues = emptyMap()
@@ -214,6 +236,7 @@ fun AddRoomScreen(
 		AddOpeningDialog(
 			onDismiss = { showOpeningDialog.value = false },
 			onConfirm = { newOpening ->
+				L.d("AddRoom: Opening added: ${newOpening.type} (${newOpening.width}x${newOpening.height})")
 				openings = openings + newOpening
 				showOpeningDialog.value = false
 			}

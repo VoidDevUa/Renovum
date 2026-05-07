@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.ulrezaj.renovum_1.data.model.RoomShapeType
+import com.ulrezaj.renovum_1.utility.L
 
 @Composable
 fun RoomShapeDialog(
@@ -32,7 +33,10 @@ fun RoomShapeDialog(
 
 	val shapes = RoomShapeType.entries
 
-	Dialog(onDismissRequest = onDismiss) {
+	Dialog(onDismissRequest = {
+		L.d("RoomShapeDialog: Dismissed via outside click")
+		onDismiss()
+	}) {
 		Card(
 			modifier = Modifier
 				.fillMaxWidth()
@@ -66,7 +70,10 @@ fun RoomShapeDialog(
 							label = shape.getDisplayName(),
 							isSelected = isSelected,
 							columns = columns,
-							onClick = { selectedShape = shape }
+							onClick = {
+								L.click("ShapeDialog: Selected ${shape.name}")
+								selectedShape = shape
+							}
 						)
 					}
 				}
@@ -77,12 +84,20 @@ fun RoomShapeDialog(
 					modifier = Modifier.fillMaxWidth(),
 					horizontalArrangement = Arrangement.SpaceBetween
 				) {
-					TextButton(onClick = onDismiss) {
+					TextButton(onClick = {
+						L.click("ShapeDialog: Cancel clicked")
+						onDismiss()
+					}) {
 						Text("Скасувати", color = MaterialTheme.colorScheme.error)
 					}
 
 					Button(
-						onClick = { selectedShape?.let { onNext(it) } },
+						onClick = {
+							selectedShape?.let {
+								L.click("ShapeDialog: Proceed with $it")
+								onNext(it)
+							}
+						},
 						enabled = selectedShape != null,
 						colors = ButtonDefaults.buttonColors(
 							containerColor = Color(0xFF2E7D32)

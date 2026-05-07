@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.navigation.Screen
 import com.ulrezaj.renovum_1.ui.components.list_Items.DrawerItem
+import com.ulrezaj.renovum_1.utility.L
 
 @Composable
 fun AppDrawer(
@@ -32,7 +33,10 @@ fun AppDrawer(
 				.clickable(
 					interactionSource = remember { MutableInteractionSource() },
 					indication = null
-				) { onCloseDrawer() }
+				) {
+					L.d("AppDrawer: Background clicked - closing")
+					onCloseDrawer()
+				}
 		) {
 			Text(
 				"Renovum",
@@ -44,25 +48,37 @@ fun AppDrawer(
 			DrawerItem(
 				screen = Screen.Settings,
 				selected = currentRoute == Screen.Settings.route,
-				onNavigate = onNavigate,
+				onNavigate = { route ->
+					L.click("Drawer: Settings selected")
+					onNavigate(route)
+				},
 				onCloseDrawer = onCloseDrawer
 			)
 			DrawerItem(
 				screen = Screen.Materials,
 				selected = currentRoute == Screen.Materials.route,
-				onNavigate = onNavigate,
+				onNavigate = { route ->
+					L.click("Drawer: Materials selected")
+					onNavigate(route)
+				},
 				onCloseDrawer = onCloseDrawer
 			)
 			DrawerItem(
 				screen = Screen.Ceiling,
 				selected = currentRoute == Screen.Ceiling.route,
-				onNavigate = onNavigate,
+				onNavigate = { route ->
+					L.click("Drawer: Ceiling selected")
+					onNavigate(route)
+				},
 				onCloseDrawer = onCloseDrawer
 			)
 			DrawerItem(
 				screen = Screen.About,
 				selected = currentRoute == Screen.About.route,
-				onNavigate = onNavigate,
+				onNavigate = { route ->
+					L.click("Drawer: About selected")
+					onNavigate(route)
+				},
 				onCloseDrawer = onCloseDrawer
 			)
 		}

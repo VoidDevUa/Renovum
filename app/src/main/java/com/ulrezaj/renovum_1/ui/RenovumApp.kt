@@ -16,6 +16,7 @@ import com.ulrezaj.renovum_1.ui.components.AppDrawer
 import com.ulrezaj.renovum_1.ui.components.RenovumTopAppBar
 import com.ulrezaj.renovum_1.ui.theme.Renovum_1Theme
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
+import com.ulrezaj.renovum_1.utility.L
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -34,6 +35,10 @@ fun RenovumApp() {
 	val navBackStackEntry by navController.currentBackStackEntryAsState()
 	val currentRoute = navBackStackEntry?.destination?.route
 
+	LaunchedEffect(currentRoute) {
+		L.nav("Current route changed to: $currentRoute")
+	}
+
 	val currentScreen = remember(currentRoute) {
 		Screen.allScreens.find { it.route == currentRoute } ?: Screen.Rooms
 	}
@@ -45,6 +50,7 @@ fun RenovumApp() {
 
 			if (drawerState.isOpen) {
 				BackHandler(enabled = true) {
+					L.d("Back pressed: closing drawer")
 					scope.launch { drawerState.close() }
 				}
 			}
@@ -57,12 +63,16 @@ fun RenovumApp() {
 						AppDrawer(
 							currentRoute = currentRoute,
 							onNavigate = { route ->
+								L.click("Drawer Item: $route")
 								navController.navigate(route) {
 									launchSingleTop = true
 									restoreState = true
 								}
 							},
-							onCloseDrawer = { scope.launch { drawerState.close() } }
+							onCloseDrawer = {
+								L.d("Closing drawer")
+								scope.launch { drawerState.close() }
+							}
 						)
 					}
 				}
@@ -74,7 +84,10 @@ fun RenovumApp() {
 								currentScreenTitle = currentScreen.title,
 								isEditMode = isEditMode,
 								onEditClick = if (currentRoute == Screen.Rooms.route) {
-									{ isEditMode = !isEditMode }
+									{
+										isEditMode = !isEditMode
+										L.click("TopBar Edit Mode: $isEditMode")
+									}
 								} else null
 							)
 						},
@@ -83,12 +96,16 @@ fun RenovumApp() {
 								isLeftHanded = userSettings.isLeftHanded,
 								currentRoute = currentRoute,
 								onNavigate = { route ->
+									L.click("BottomNav Item: $route")
 									navController.navigate(route) {
 										launchSingleTop = true
 										restoreState = true
 									}
 								},
-								onMenuClick = { scope.launch { drawerState.open() } }
+								onMenuClick = {
+									L.click("BottomNav: Open Drawer")
+									scope.launch { drawerState.open() }
+								}
 							)
 						}
 					) { innerPadding ->
@@ -97,10 +114,13 @@ fun RenovumApp() {
 							paddingValues = innerPadding,
 							userSettings = userSettings,
 							onSettingsChange = { newSettings ->
+								L.d("Settings updated: LeftHanded=${newSettings.isLeftHanded}")
 								userSettings = newSettings
 							},
 							isEditMode = isEditMode,
+							roomViewModel = roomViewModel,
 							onDeleteRoom = { room ->
+								L.click("Delete Room: ${room.name}")
 								roomViewModel.deleteRoom(room)
 								isEditMode = false
 							}
