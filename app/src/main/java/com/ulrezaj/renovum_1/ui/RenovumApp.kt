@@ -82,6 +82,7 @@ fun RenovumApp() {
 						topBar = {
 							RenovumTopAppBar(
 								currentScreenTitle = currentScreen.title,
+								isLeftHanded = userSettings.isLeftHanded,
 								isEditMode = isEditMode,
 								onEditClick = if (currentRoute == Screen.Rooms.route) {
 									{

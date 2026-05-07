@@ -1,5 +1,6 @@
 package com.ulrezaj.renovum_1.ui.components
 
+import android.annotation.SuppressLint
 import android.graphics.Paint
 import android.graphics.Typeface
 import androidx.compose.foundation.Canvas
@@ -16,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.data.model.RoomShapeType
 import com.ulrezaj.renovum_1.utility.L
 
+@SuppressLint("DefaultLocale")
 @Composable
 fun RoomSchemaPainter(
 	shapeType: RoomShapeType,
@@ -115,44 +117,61 @@ fun RoomSchemaPainter(
 					val pL = getParam("Ліве плече", 2.0)
 					val pR = getParam("Праве плече", 2.0)
 					val pLW = getParam("Ширина ніжки", 2.0)
-					val pLH = getParam("Висота ніжки", 3.0)
-					val pTH = getParam("Висота верху", 2.0)
+					val pLLH = getParam("Ліва ніжка", 3.0)
+					val pRLH = getParam("Права ніжка", 3.0)
+					val pTHL = getParam("Висота верху (ліво)", 2.0)
+
+					val pTHRRaw = pTHL + pLLH - pRLH
+					val pTHR = maxOf(pTHRRaw, 0.1)
+
+					val effectiveRLH = if (pTHRRaw < 0.1) pTHL + pLLH - 0.1 else pRLH
 
 					val tW = pL + pLW + pR
-					val tH = pTH + pLH
-					val scale = minOf((canvasW - safePadding*2)/tW, (canvasH - safePadding*2)/tH).toFloat()
-					val x0 = (canvasW - tW.toFloat()*scale)/2
-					val y0 = (canvasH - tH.toFloat()*scale)/2
+					val tH = maxOf(pTHL + pLLH, pTHR + effectiveRLH)
+
+					val scale = minOf((canvasW - safePadding * 2) / tW, (canvasH - safePadding * 2) / tH).toFloat()
+					val x0 = (canvasW - tW.toFloat() * scale) / 2
+					val y0 = (canvasH - tH.toFloat() * scale) / 2
 
 					val tp1 = Offset(x0, y0)
-					val tp2 = Offset(x0 + tW.toFloat()*scale, y0)
-					val tp3 = Offset(x0 + tW.toFloat()*scale, y0 + pTH.toFloat()*scale)
-					val tp4 = Offset(x0 + (pL + pLW).toFloat()*scale, y0 + pTH.toFloat()*scale)
-					val tp5 = Offset(x0 + (pL + pLW).toFloat()*scale, y0 + tH.toFloat()*scale)
-					val tp6 = Offset(x0 + pL.toFloat()*scale, y0 + tH.toFloat()*scale)
-					val tp7 = Offset(x0 + pL.toFloat()*scale, y0 + pTH.toFloat()*scale)
-					val tp8 = Offset(x0, y0 + pTH.toFloat()*scale)
+					val tp2 = Offset(x0 + tW.toFloat() * scale, y0)
+					val tp3 = Offset(x0 + tW.toFloat() * scale, y0 + pTHR.toFloat() * scale)
+					val tp4 = Offset(x0 + (pL + pLW).toFloat() * scale, y0 + pTHR.toFloat() * scale)
+					val tp5 = Offset(x0 + (pL + pLW).toFloat() * scale, y0 + (pTHR + effectiveRLH).toFloat() * scale)
+					val tp6 = Offset(x0 + pL.toFloat() * scale, y0 + (pTHL + pLLH).toFloat() * scale)
+					val tp7 = Offset(x0 + pL.toFloat() * scale, y0 + pTHL.toFloat() * scale)
+					val tp8 = Offset(x0, y0 + pTHL.toFloat() * scale)
 
 					drawLine(outlineColor, tp1, tp2, strokeWidth.toPx())
-
 					drawLine(getCol("Ліве плече"), tp8, tp7, strokeWidth.toPx())
 					drawLine(getCol("Праве плече"), tp4, tp3, strokeWidth.toPx())
 
-					val topHeightCol = getCol("Висота верху")
-					drawLine(topHeightCol, tp1, tp8, strokeWidth.toPx())
-					drawLine(topHeightCol, tp2, tp3, strokeWidth.toPx())
+					val thLCol = getCol("Висота верху (ліво)")
+					drawLine(thLCol, tp1, tp8, strokeWidth.toPx())
+					val thRCol = if (pTHRRaw < 0.1) Color.Red else outlineColor
+					drawLine(thRCol, tp2, tp3, strokeWidth.toPx())
 
 					drawLine(getCol("Ширина ніжки"), tp5, tp6, strokeWidth.toPx())
-					val legHCol = getCol("Висота ніжки")
-					drawLine(legHCol, tp4, tp5, strokeWidth.toPx())
-					drawLine(legHCol, tp6, tp7, strokeWidth.toPx())
+					drawLine(getCol("Ліва ніжка"), tp6, tp7, strokeWidth.toPx())
+					drawLine(getCol("Права ніжка"), tp4, tp5, strokeWidth.toPx())
 
-					drawContext.canvas.nativeCanvas.drawText("${tW}м", (tp1.x + tp2.x)/2, tp1.y - 25f, textPaint)
-					drawContext.canvas.nativeCanvas.drawText("${pL}м", (tp8.x + tp7.x)/2, tp8.y + 40f, textPaint)
-					drawContext.canvas.nativeCanvas.drawText("${pR}м", (tp4.x + tp3.x)/2, tp4.y + 40f, textPaint)
-					drawContext.canvas.nativeCanvas.drawText("${pLW}м", (tp5.x + tp6.x)/2, tp5.y + 40f, textPaint)
-					drawContext.canvas.nativeCanvas.drawText("${pLH}м", tp5.x + 60f, (tp4.y + tp5.y)/2, textPaint)
-					drawContext.canvas.nativeCanvas.drawText("${pTH}м", tp1.x - 60f, (tp1.y + tp8.y) / 2, textPaint)
+					val canvas = drawContext.canvas.nativeCanvas
+					fun formatDim(value: Double): String = String.format("%.1fм", value)
+
+					canvas.drawText(formatDim(tW), (tp1.x + tp2.x) / 2, tp1.y - 35f, textPaint)
+					canvas.drawText(formatDim(pTHL), tp1.x - 45f, (tp1.y + tp8.y) / 2 + 10f, textPaint)
+					canvas.drawText(formatDim(pL), (tp8.x + tp7.x) / 2, tp8.y + 40f, textPaint)
+					canvas.drawText(formatDim(pLLH), tp7.x - 45f, (tp7.y + tp6.y) / 2 + 10f, textPaint)
+					canvas.drawText(formatDim(pLW), (tp6.x + tp5.x) / 2, tp6.y + 50f, textPaint)
+					canvas.drawText(formatDim(pRLH), tp5.x + 45f, (tp5.y + tp4.y) / 2 + 10f, textPaint)
+					canvas.drawText(formatDim(pR), (tp4.x + tp3.x) / 2, tp4.y + 40f, textPaint)
+
+					val thrPaint = if (pTHRRaw < 0.1) {
+						Paint(textPaint).apply { color = android.graphics.Color.RED }
+					} else textPaint
+
+					val formattedTHR = String.format("%.2f", pTHRRaw)
+					canvas.drawText("${formattedTHR}м", tp2.x + 60f, (tp2.y + tp3.y) / 2 + 10f, thrPaint)
 				}
 			}
 		}

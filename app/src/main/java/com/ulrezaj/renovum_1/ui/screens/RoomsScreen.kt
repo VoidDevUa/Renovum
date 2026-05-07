@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -45,6 +46,7 @@ fun RoomsScreen(
 
 	Scaffold(
 		contentWindowInsets = WindowInsets(0, 0, 0, 0),
+		floatingActionButtonPosition = if (userSettings.isLeftHanded) FabPosition.Start else FabPosition.End,
 		floatingActionButton = {
 			FloatingActionButton(
 				onClick = {
@@ -98,6 +100,7 @@ fun RoomsScreen(
 							dimensions = "Вікон: $windowsCount, Дверей: $doorsCount",
 							showDimensions = userSettings.showDimensionsInCard,
 							isEditMode = isEditMode,
+							isLeftHanded = userSettings.isLeftHanded,
 							onDeleteClick = {
 								L.click("RoomCard Delete: ${room.name}")
 								onDeleteRoom(room)

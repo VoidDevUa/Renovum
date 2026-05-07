@@ -9,10 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.data.model.RoomShapeType
-import com.ulrezaj.renovum_1.ui.theme.Renovum_1Theme
 
 @Composable
 fun RoomCard(
@@ -21,6 +19,7 @@ fun RoomCard(
 	dimensions: String,
 	showDimensions: Boolean = true,
 	isEditMode: Boolean = false,
+	isLeftHanded: Boolean,
 	onDeleteClick: () -> Unit = {},
 	onClick: () -> Unit
 ) {
@@ -39,61 +38,48 @@ fun RoomCard(
 			modifier = Modifier.padding(16.dp),
 			verticalAlignment = Alignment.CenterVertically
 		) {
-			if (isEditMode) {
-				IconButton(onClick = onDeleteClick) {
-					Icon(
-						imageVector = Icons.Default.Delete,
-						contentDescription = "Видалити",
-						tint = MaterialTheme.colorScheme.error
-					)
-				}
-				Spacer(modifier = Modifier.width(8.dp))
-			}
-
-			Column(modifier = Modifier.weight(1f)) {
-				Row(
-					modifier = Modifier.fillMaxWidth(),
-					horizontalArrangement = Arrangement.SpaceBetween,
-					verticalAlignment = Alignment.CenterVertically
-				) {
-					Text(text = name, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
-
-					val shapeLabel = when(shapeType) {
-						RoomShapeType.RECTANGLE -> "Прямокутна"
-						RoomShapeType.L_SHAPED -> "Г-подібна"
-						RoomShapeType.T_SHAPED -> "Т-подібна"
+			val deleteButton = @Composable {
+				if (isEditMode) {
+					IconButton(onClick = onDeleteClick) {
+						Icon(
+							imageVector = Icons.Default.Delete,
+							contentDescription = "Видалити",
+							tint = MaterialTheme.colorScheme.error
+						)
 					}
-					Text(text = shapeLabel, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onTertiary.copy(alpha = 0.8f))
-				}
-				if (showDimensions) {
-					Text(text = dimensions, style = MaterialTheme.typography.bodyMedium)
 				}
 			}
-		}
-	}
-}
+			val infoBlock = @Composable {
+				Column(modifier = Modifier.weight(1f)) {
+					Row(
+						modifier = Modifier.fillMaxWidth(),
+						horizontalArrangement = Arrangement.SpaceBetween,
+						verticalAlignment = Alignment.CenterVertically
+					) {
+						Text(text = name, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun RoomCardPreview() {
-	Renovum_1Theme {
-		Column {
-			// З розмірами
-			RoomCard(
-				name = "Кухня",
-				shapeType = RoomShapeType.RECTANGLE,
-				dimensions = "4.0 х 3.0 м",
-				showDimensions = true,
-				onClick = { }
-			)
-			// Без розмірів (тільки назва і форма)
-			RoomCard(
-				name = "Спальня",
-				shapeType = RoomShapeType.RECTANGLE,
-				dimensions = "5.0 х 4.0 м",
-				showDimensions = false,
-				onClick = { }
-			)
+						val shapeLabel = when(shapeType) {
+							RoomShapeType.RECTANGLE -> "Прямокутна"
+							RoomShapeType.L_SHAPED -> "Г-подібна"
+							RoomShapeType.T_SHAPED -> "Т-подібна"
+						}
+						Text(text = shapeLabel, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onTertiary.copy(alpha = 0.8f))
+					}
+					if (showDimensions) {
+						Text(text = dimensions, style = MaterialTheme.typography.bodyMedium)
+					}
+				}
+			}
+
+			if (isLeftHanded) {
+				deleteButton()
+				if (isEditMode) Spacer(modifier = Modifier.width(8.dp))
+				infoBlock()
+			} else {
+				infoBlock()
+				if (isEditMode) Spacer(modifier = Modifier.width(8.dp))
+				deleteButton()
+			}
 		}
 	}
 }

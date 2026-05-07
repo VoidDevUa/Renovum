@@ -93,6 +93,7 @@ fun NavGraph(
 			if (initialRoom != null) {
 				CalcScreen(
 					currentRoom = initialRoom,
+					roomViewModel = roomViewModel,
 					allRooms = rooms,
 					userSettings = userSettings,
 					onRoomSelected = { selected ->
