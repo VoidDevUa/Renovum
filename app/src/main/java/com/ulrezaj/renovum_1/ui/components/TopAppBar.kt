@@ -1,5 +1,6 @@
 package com.ulrezaj.renovum_1.ui.components
 
+import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Edit
@@ -14,7 +15,8 @@ fun RenovumTopAppBar(
 	currentScreenTitle: String,
 	isLeftHanded: Boolean,
 	isEditMode: Boolean = false,
-	onEditClick: (() -> Unit)? = null
+	onEditClick: (() -> Unit)? = null,
+	onNavigateToEdit: (() -> Unit)? = null
 ) {
 	val editIcon = @Composable {
 		if (onEditClick != null) {
@@ -32,6 +34,20 @@ fun RenovumTopAppBar(
 		}
 	}
 
+	val navigateToEditIcon = @Composable {
+		if (onNavigateToEdit != null) {
+			IconButton(onClick = {
+				L.click("TopBar: Navigate to Edit Room Screen")
+				onNavigateToEdit()
+			}) {
+				Icon(
+					imageVector = Icons.Default.Edit,
+					contentDescription = "На сторінку редагування"
+				)
+			}
+		}
+	}
+
 	CenterAlignedTopAppBar(
 		title = { Text(currentScreenTitle, style = MaterialTheme.typography.titleLarge) },
 		colors = TopAppBarDefaults.topAppBarColors(
@@ -42,10 +58,20 @@ fun RenovumTopAppBar(
 			actionIconContentColor = Color.Unspecified
 		),
 		navigationIcon = {
-			if (isLeftHanded) editIcon()
+			if (isLeftHanded) {
+				Row {
+					editIcon()
+					navigateToEditIcon()
+				}
+			}
 		},
 		actions = {
-			if (!isLeftHanded) editIcon()
+			if (!isLeftHanded) {
+				Row {
+					editIcon()
+					navigateToEditIcon()
+				}
+			}
 		}
 	)
 }

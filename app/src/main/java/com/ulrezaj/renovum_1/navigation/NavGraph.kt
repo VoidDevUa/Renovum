@@ -22,6 +22,7 @@ import com.ulrezaj.renovum_1.ui.screens.AddRoomScreen
 import com.ulrezaj.renovum_1.ui.screens.CalcScreen
 import com.ulrezaj.renovum_1.ui.screens.CeilingScreen
 import com.ulrezaj.renovum_1.ui.screens.DoneScreen
+import com.ulrezaj.renovum_1.ui.screens.EditRoomScreen
 import com.ulrezaj.renovum_1.ui.screens.JobsScreen
 import com.ulrezaj.renovum_1.ui.screens.MaterialsScreen
 import com.ulrezaj.renovum_1.ui.screens.RoomsScreen
@@ -146,6 +147,24 @@ fun NavGraph(
 				roomViewModel = roomViewModel,
 				onSave = {
 					L.d("AddRoom: Save success, popping backstack")
+					navController.popBackStack()
+				}
+			)
+		}
+		composable(
+			// Використовуй константу з об'єкта Screen
+			route = Screen.EditRoom.route,
+			arguments = listOf(
+				navArgument("roomId") { type = NavType.StringType }
+			)
+		) { backStackEntry ->
+			val roomId = backStackEntry.arguments?.getString("roomId") ?: ""
+
+			EditRoomScreen(
+				roomId = roomId,
+				navController = navController,
+				roomViewModel = roomViewModel,
+				onSave = {
 					navController.popBackStack()
 				}
 			)

@@ -89,6 +89,15 @@ fun RenovumApp() {
 										isEditMode = !isEditMode
 										L.click("TopBar Edit Mode: $isEditMode")
 									}
+								} else null,
+								onNavigateToEdit = if (currentRoute?.startsWith(Screen.Calculations.route) == true) {
+									{
+										val roomId = navBackStackEntry?.arguments?.getString("roomId")
+										if (roomId != null) {
+											L.click("TopBar: Navigate to Edit Room $roomId")
+											navController.navigate(Screen.EditRoom.createRoute(roomId))
+										}
+									}
 								} else null
 							)
 						},
