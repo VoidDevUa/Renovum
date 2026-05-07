@@ -16,7 +16,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 sealed class Screen(val route: String, val title: String, val icon: ImageVector) {
 	object Rooms : Screen("rooms", "Кімнати", Icons.Default.Home)
 	object Calculations : Screen("calc", "Виміри", Icons.Default.Calculate)
-	object Jobs : Screen("jobs", "Роботи", Icons.AutoMirrored.Filled.List)
+	object Works : Screen("works", "Роботи", Icons.AutoMirrored.Filled.List)
 	object Done : Screen("done", "Виконано", Icons.Default.DoneAll)
 	object Settings : Screen("settings", "Налаштування", Icons.Default.Settings)
 	object Materials : Screen("materials", "Орієнтовний список матеріалів", Icons.Default.Inventory)
@@ -31,7 +31,7 @@ sealed class Screen(val route: String, val title: String, val icon: ImageVector)
 		val allScreens = listOf(
 			Rooms,
 			Calculations,
-			Jobs,
+			Works,
 			Done,
 			Settings,
 			Materials,

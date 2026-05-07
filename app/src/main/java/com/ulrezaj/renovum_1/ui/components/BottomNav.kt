@@ -18,7 +18,7 @@ fun BottomNav(
 	val screens = listOf(
 		Screen.Rooms,
 		Screen.Calculations,
-		Screen.Jobs,
+		Screen.Works,
 		Screen.Done
 	)
 

@@ -23,7 +23,7 @@ import com.ulrezaj.renovum_1.ui.screens.CalcScreen
 import com.ulrezaj.renovum_1.ui.screens.CeilingScreen
 import com.ulrezaj.renovum_1.ui.screens.DoneScreen
 import com.ulrezaj.renovum_1.ui.screens.EditRoomScreen
-import com.ulrezaj.renovum_1.ui.screens.JobsScreen
+import com.ulrezaj.renovum_1.ui.screens.WorksScreen
 import com.ulrezaj.renovum_1.ui.screens.MaterialsScreen
 import com.ulrezaj.renovum_1.ui.screens.RoomsScreen
 import com.ulrezaj.renovum_1.ui.screens.SettingsScreen
@@ -111,9 +111,13 @@ fun NavGraph(
 				}
 			}
 		}
-		composable(Screen.Jobs.route) {
-			LaunchedEffect(Unit) { L.nav("Screen: Jobs") }
-			JobsScreen()
+		composable(Screen.Works.route) {
+			LaunchedEffect(Unit) { L.nav("Screen: Works") }
+
+			WorksScreen(
+				roomViewModel = roomViewModel,
+				userSettings = userSettings
+			)
 		}
 		composable(Screen.Done.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Done") }
