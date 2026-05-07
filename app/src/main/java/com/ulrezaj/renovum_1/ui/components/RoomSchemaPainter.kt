@@ -1,0 +1,148 @@
+package com.ulrezaj.renovum_1.ui.components
+
+import android.graphics.Paint
+import android.graphics.Typeface
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.unit.dp
+import com.ulrezaj.renovum_1.data.model.RoomShapeType
+
+@Composable
+fun RoomSchemaPainter(
+	shapeType: RoomShapeType,
+	focusedField: String?,
+	paramValues: Map<String, String>,
+	modifier: Modifier = Modifier
+) {
+	val outlineColor = MaterialTheme.colorScheme.outline
+	val highlightColor = MaterialTheme.colorScheme.tertiary
+	val strokeWidth = 4.dp
+
+	val textPaint = Paint().apply {
+		color = android.graphics.Color.GRAY
+		textAlign = Paint.Align.CENTER
+		textSize = 32f
+		typeface = Typeface.DEFAULT_BOLD
+	}
+
+	Box(
+		modifier = modifier.fillMaxWidth().height(260.dp).padding(24.dp),
+		contentAlignment = Alignment.Center
+	) {
+		Canvas(modifier = Modifier.fillMaxSize()) {
+			val canvasW = size.width
+			val canvasH = size.height
+			val safePadding = 60f
+
+			fun String?.toDbl(def: Double = 4.0): Double = this?.toDoubleOrNull() ?: def
+			fun getCol(field: String): Color = if (field == focusedField) highlightColor else outlineColor
+
+			when (shapeType) {
+				RoomShapeType.RECTANGLE -> {
+					val mW = paramValues["Ширина"].toDbl(4.0)
+					val mL = paramValues["Довжина"].toDbl(5.0)
+					val scale = minOf((canvasW - safePadding * 2) / mW, (canvasH - safePadding * 2) / mL)
+					val dW = (mW * scale).toFloat()
+					val dL = (mL * scale).toFloat()
+					val x0 = (canvasW - dW) / 2
+					val y0 = (canvasH - dL) / 2
+
+					val p1 = Offset(x0, y0); val p2 = Offset(x0 + dW, y0)
+					val p3 = Offset(x0 + dW, y0 + dL); val p4 = Offset(x0, y0 + dL)
+
+					drawLine(getCol("Ширина"), p1, p2, strokeWidth.toPx())
+					drawLine(getCol("Довжина"), p2, p3, strokeWidth.toPx())
+					drawLine(getCol("Ширина"), p3, p4, strokeWidth.toPx())
+					drawLine(getCol("Довжина"), p4, p1, strokeWidth.toPx())
+
+					drawContext.canvas.nativeCanvas.drawText("${mW}м", (p1.x + p2.x) / 2, p1.y - 20f, textPaint)
+					drawContext.canvas.nativeCanvas.drawText("${mL}м", p2.x + 55f, (p2.y + p3.y) / 2, textPaint)
+				}
+				RoomShapeType.L_SHAPED -> {
+					val a = paramValues["A"].toDbl(6.0)
+					val b = paramValues["B"].toDbl(3.0)
+					val c = minOf(paramValues["C"].toDbl(3.0), a * 0.8)
+					val d = maxOf(paramValues["D"].toDbl(6.0), b + 0.5)
+
+					val scale = minOf((canvasW - safePadding * 2) / a, (canvasH - safePadding * 2) / d).toFloat()
+					val x0 = (canvasW - (a.toFloat() * scale)) / 2
+					val y0 = (canvasH - (d.toFloat() * scale)) / 2
+
+					val p1 = Offset(x0, y0)
+					val p2 = Offset(x0 + a.toFloat() * scale, y0)
+					val p3 = Offset(x0 + a.toFloat() * scale, y0 + b.toFloat() * scale)
+					val p4 = Offset(x0 + (a - c).toFloat() * scale, y0 + b.toFloat() * scale)
+					val p5 = Offset(x0 + (a - c).toFloat() * scale, y0 + d.toFloat() * scale)
+					val p6 = Offset(x0, y0 + d.toFloat() * scale)
+
+					val bottomWall = a - c
+					val innerVertical = d - b
+
+					drawLine(getCol("A"), p1, p2, strokeWidth.toPx())
+					drawLine(getCol("B"), p2, p3, strokeWidth.toPx())
+					drawLine(getCol("C"), p3, p4, strokeWidth.toPx())
+					drawLine(outlineColor, p4, p5, strokeWidth.toPx())
+					drawLine(outlineColor, p5, p6, strokeWidth.toPx())
+					drawLine(getCol("D"), p6, p1, strokeWidth.toPx())
+
+					drawContext.canvas.nativeCanvas.drawText("${a}м", (p1.x + p2.x)/2, p1.y - 20f, textPaint)
+					drawContext.canvas.nativeCanvas.drawText("${b}м", p2.x + 60f, (p2.y + p3.y)/2, textPaint)
+					drawContext.canvas.nativeCanvas.drawText("${c}м", (p3.x + p4.x)/2, p3.y + 40f, textPaint)
+					drawContext.canvas.nativeCanvas.drawText("${d}м", p1.x - 60f, (p1.y + p6.y)/2, textPaint)
+					drawContext.canvas.nativeCanvas.drawText("${bottomWall}м", (p5.x + p6.x) / 2, p5.y + 40f, textPaint)
+					drawContext.canvas.nativeCanvas.drawText("${innerVertical}м", p5.x + 60f, (p4.y + p5.y) / 2, textPaint)
+				}
+				RoomShapeType.T_SHAPED -> {
+					val pL = paramValues["Ліве плече"].toDbl(2.0)
+					val pR = paramValues["Праве плече"].toDbl(2.0)
+					val pLW = paramValues["Ширина ніжки"].toDbl(2.0)
+					val pLH = paramValues["Висота ніжки"].toDbl(3.0)
+					val pTH = paramValues["Висота верху"].toDbl(2.0)
+
+					val tW = pL + pLW + pR
+					val tH = pTH + pLH
+					val scale = minOf((canvasW - safePadding*2)/tW, (canvasH - safePadding*2)/tH).toFloat()
+					val x0 = (canvasW - tW.toFloat()*scale)/2
+					val y0 = (canvasH - tH.toFloat()*scale)/2
+
+					val tp1 = Offset(x0, y0)
+					val tp2 = Offset(x0 + tW.toFloat()*scale, y0)
+					val tp3 = Offset(x0 + tW.toFloat()*scale, y0 + pTH.toFloat()*scale)
+					val tp4 = Offset(x0 + (pL + pLW).toFloat()*scale, y0 + pTH.toFloat()*scale)
+					val tp5 = Offset(x0 + (pL + pLW).toFloat()*scale, y0 + tH.toFloat()*scale)
+					val tp6 = Offset(x0 + pL.toFloat()*scale, y0 + tH.toFloat()*scale)
+					val tp7 = Offset(x0 + pL.toFloat()*scale, y0 + pTH.toFloat()*scale)
+					val tp8 = Offset(x0, y0 + pTH.toFloat()*scale)
+
+					drawLine(outlineColor, tp1, tp2, strokeWidth.toPx())
+
+					drawLine(getCol("Ліве плече"), tp8, tp7, strokeWidth.toPx())
+					drawLine(getCol("Праве плече"), tp4, tp3, strokeWidth.toPx())
+
+					val topHeightCol = getCol("Висота верху")
+					drawLine(topHeightCol, tp1, tp8, strokeWidth.toPx())
+					drawLine(topHeightCol, tp2, tp3, strokeWidth.toPx())
+
+					drawLine(getCol("Ширина ніжки"), tp5, tp6, strokeWidth.toPx())
+					val legHCol = getCol("Висота ніжки")
+					drawLine(legHCol, tp4, tp5, strokeWidth.toPx())
+					drawLine(legHCol, tp6, tp7, strokeWidth.toPx())
+
+					drawContext.canvas.nativeCanvas.drawText("${tW}м", (tp1.x + tp2.x)/2, tp1.y - 25f, textPaint)
+					drawContext.canvas.nativeCanvas.drawText("${pL}м", (tp8.x + tp7.x)/2, tp8.y + 40f, textPaint)
+					drawContext.canvas.nativeCanvas.drawText("${pR}м", (tp4.x + tp3.x)/2, tp4.y + 40f, textPaint)
+					drawContext.canvas.nativeCanvas.drawText("${pLW}м", (tp5.x + tp6.x)/2, tp5.y + 40f, textPaint)
+					drawContext.canvas.nativeCanvas.drawText("${pLH}м", tp5.x + 60f, (tp4.y + tp5.y)/2, textPaint)
+					drawContext.canvas.nativeCanvas.drawText("${pTH}м", tp1.x - 60f, (tp1.y + tp8.y) / 2, textPaint)
+				}
+			}
+		}
+	}
+}

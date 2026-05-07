@@ -19,11 +19,12 @@ sealed class RoomParams {
 	) : RoomParams()
 
 	data class TShapedParams(
-		val topWidth: Double = 0.0,
-		val topHeight: Double = 0.0,
-		val legWidth: Double = 0.0,
-		val legHeight: Double = 0.0,
-		val height: Double = 0.0
+		val leftShoulder: Double,
+		val rightShoulder: Double,
+		val topHeight: Double,
+		val legWidth: Double,
+		val legHeight: Double,
+		val height: Double
 	) : RoomParams()
 
 	companion object {
@@ -44,7 +45,8 @@ sealed class RoomParams {
 					height = values["Висота"].toDoubleSafe()
 				)
 				RoomShapeType.T_SHAPED -> TShapedParams(
-					topWidth = values["Ширина верху"].toDoubleSafe(),
+					leftShoulder = values["Ліве плече"].toDoubleSafe(),
+					rightShoulder = values["Праве плече"].toDoubleSafe(),
 					topHeight = values["Висота верху"].toDoubleSafe(),
 					legWidth = values["Ширина ніжки"].toDoubleSafe(),
 					legHeight = values["Висота ніжки"].toDoubleSafe(),

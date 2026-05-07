@@ -29,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -40,6 +41,7 @@ import com.ulrezaj.renovum_1.data.model.RoomShapeType
 import com.ulrezaj.renovum_1.ui.components.dialogs.AddOpeningDialog
 import com.ulrezaj.renovum_1.ui.components.dialogs.RoomShapeDialog
 import com.ulrezaj.renovum_1.ui.components.list_Items.OpeningItem
+import com.ulrezaj.renovum_1.ui.components.RoomSchemaPainter
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
 
 @Composable
@@ -54,8 +56,9 @@ fun AddRoomScreen(
 	val selectedShape = remember { mutableStateOf(initialShapeType) }
 	val showShapeDialog = remember { mutableStateOf(false) }
 	val showOpeningDialog = remember { mutableStateOf(false) }
-	var openings by remember { mutableStateOf(listOf<OpeningEntity>()) }
+	val focusedField = remember { mutableStateOf<String?>(null) }
 
+	var openings by remember { mutableStateOf(listOf<OpeningEntity>()) }
 	var paramValues by remember { mutableStateOf(mapOf<String, String>()) }
 
 	Column(
@@ -73,6 +76,15 @@ fun AddRoomScreen(
 			Text("Обрана форма: ${selectedShape.value.getDisplayName()}")
 		}
 
+		RoomSchemaPainter(
+			shapeType = selectedShape.value,
+			focusedField = focusedField.value,
+			paramValues = paramValues,
+			modifier = Modifier
+				.fillMaxWidth()
+				.height(220.dp)
+		)
+
 		OutlinedTextField(
 			value = roomName.value,
 			onValueChange = { roomName.value = it },
@@ -83,9 +95,16 @@ fun AddRoomScreen(
 		HorizontalDivider()
 
 		val fields = when (selectedShape.value) {
-			RoomShapeType.RECTANGLE -> listOf("Довжина", "Ширина", "Висота")
-			RoomShapeType.L_SHAPED -> listOf("A", "B", "C", "D", "Висота")
-			RoomShapeType.T_SHAPED -> listOf("Ширина верху", "Висота верху", "Ширина ніжки", "Висота ніжки", "Висота")
+			RoomShapeType.RECTANGLE -> listOf(
+				"Довжина", "Ширина", "Висота"
+			)
+			RoomShapeType.L_SHAPED -> listOf(
+				"A", "B", "C", "D", "Висота"
+			)
+			RoomShapeType.T_SHAPED -> listOf(
+				"Ліве плече", "Праве плече", "Висота верху",
+				"Ширина ніжки", "Висота ніжки", "Висота"
+			)
 		}
 
 		fields.chunked(2).forEach { rowFields ->
@@ -102,7 +121,15 @@ fun AddRoomScreen(
 							}
 						},
 						label = { Text("$field (м)") },
-						modifier = Modifier.weight(1f),
+						modifier = Modifier
+							.weight(1f)
+							.onFocusChanged { focusState ->
+								if (focusState.isFocused) {
+									focusedField.value = field
+								} else if (focusedField.value == field) {
+									focusedField.value = null
+								}
+							},
 						keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
 						singleLine = true
 					)
