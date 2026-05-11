@@ -8,12 +8,15 @@ import com.ulrezaj.renovum_1.data.model.RoomEntity
 import com.ulrezaj.renovum_1.ui.components.topAppBar.elements.RoomSelectorDropdown
 import com.ulrezaj.renovum_1.ui.components.topAppBar.elements.EditModeIcon
 import com.ulrezaj.renovum_1.ui.components.topAppBar.elements.NavigateToEditRoomIcon
+import com.ulrezaj.renovum_1.ui.components.topAppBar.elements.TotalSumDisplay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RenovumTopAppBar(
 	currentScreenTitle: String,
 	isLeftHanded: Boolean,
+	totalSum: Double? = null,
+	onSumClick: (() -> Unit)? = null,
 	isEditMode: Boolean = false,
 	onEditClick: (() -> Unit)? = null,
 	onNavigateToEdit: (() -> Unit)? = null,
@@ -21,7 +24,7 @@ fun RenovumTopAppBar(
 	rooms: List<RoomEntity> = emptyList(),
 	onRoomSelected: ((RoomEntity) -> Unit)? = null
 ) {
-	val content = @Composable {
+	val controlsContent = @Composable {
 		Row(verticalAlignment = Alignment.CenterVertically) {
 			onEditClick?.let { onClick ->
 				EditModeIcon(isEditMode = isEditMode, onEditClick = onClick)
@@ -41,9 +44,21 @@ fun RenovumTopAppBar(
 		}
 	}
 
+	val sumContent = @Composable {
+		onSumClick?.let { onClick ->
+			totalSum?.let { sum ->
+				TotalSumDisplay(totalSum = sum, onClick = onClick)
+			}
+		}
+	}
+
 	CenterAlignedTopAppBar(
 		title = { Text(currentScreenTitle, style = MaterialTheme.typography.titleLarge) },
-		navigationIcon = { if (isLeftHanded) content() },
-		actions = { if (!isLeftHanded) content() }
+		navigationIcon = {
+			if (isLeftHanded) controlsContent() else sumContent()
+		},
+		actions = {
+			if (isLeftHanded) sumContent() else controlsContent()
+		}
 	)
 }

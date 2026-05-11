@@ -37,7 +37,8 @@ sealed class Screen(val route: String, val title: String, val icon: ImageVector)
 			Materials,
 			Ceiling,
 			About,
-			AddRoom
+			AddRoom,
+			EditRoom
 		)
 	}
 }

@@ -108,17 +108,32 @@ fun NavGraph(
 				}
 			}
 		}
-		composable(Screen.Works.route) {
-			LaunchedEffect(Unit) { L.nav("Screen: Works") }
+		composable(
+			route = "${Screen.Works.route}?roomId={roomId}",
+			arguments = listOf(navArgument("roomId") {
+				type = NavType.StringType
+				nullable = true
+				defaultValue = null
+			})
+		) {backStackEntry ->
+				val roomId = backStackEntry.arguments?.getString("roomId")
+				L.nav("Screen: Works")
+				LaunchedEffect(roomId) {
+					if (roomId != null) {
+						roomViewModel.rooms.find { it.id == roomId }?.let {
+							roomViewModel.selectRoom(it)
+						}
+					}
+				}
 
-			WorksScreen(
-				roomViewModel = roomViewModel,
-				userSettings = userSettings
-			)
+				WorksScreen(
+					roomViewModel = roomViewModel,
+					userSettings = userSettings
+				)
 		}
 		composable(Screen.Done.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Done") }
-			DoneScreen()
+			DoneScreen(roomViewModel = roomViewModel)
 		}
 		composable(Screen.Settings.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Settings") }
