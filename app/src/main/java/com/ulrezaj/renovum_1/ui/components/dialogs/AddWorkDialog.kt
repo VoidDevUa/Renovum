@@ -60,42 +60,56 @@ fun AddWorkDialog(
 		},
 		text = {
 			Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-				Text(
-					"Діапазон: 100 - 500 грн / ${work.unit.displayName}",
-					style = MaterialTheme.typography.bodySmall
-				)
-
+				if (work.minPrice > 0.0 || work.maxPrice > 0.0) {
+					Text(
+						text = "Діапазон: ${work.minPrice.toInt()} — ${work.maxPrice.toInt()} грн / ${work.unit.displayName}",
+						style = MaterialTheme.typography.bodySmall,
+						color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+					)
+				}
 				OutlinedTextField(
 					value = customPrice,
 					onValueChange = { if (it.all { char -> char.isDigit() || char == '.' }) customPrice = it },
-					label = { Text("Власна ціна (сер: ${work.averagePrice.toInt()})") },
+					label = { Text("Ціна за одиницю") },
+					placeholder = {
+						if (work.averagePrice > 0.0) {
+							Text("${work.averagePrice.toInt()}")
+						}
+					},
 					suffix = { Text("грн/${work.unit.displayName}") },
 					singleLine = true,
 					keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
 					modifier = Modifier.fillMaxWidth()
 				)
-
 				OutlinedTextField(
 					value = volume,
 					onValueChange = { if (it.all { char -> char.isDigit() || char == '.' }) volume = it },
-					label = { Text("Об'єм роботи (калк: 1.0)") },
+					label = { Text("Об'єм робіт") },
+					placeholder = { Text("1.0") },
 					suffix = { Text(work.unit.displayName) },
 					singleLine = true,
 					keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
 					modifier = Modifier.fillMaxWidth()
 				)
-
 				Card(
 					modifier = Modifier.fillMaxWidth(),
-					colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.4f))
+					colors = CardDefaults.cardColors(
+						containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.4f)
+					)
 				) {
 					Row(
-						modifier = Modifier.padding(12.dp),
+						modifier = Modifier
+							.fillMaxWidth()
+							.padding(12.dp),
 						horizontalArrangement = Arrangement.SpaceBetween,
 						verticalAlignment = Alignment.CenterVertically
 					) {
-						Text("Загальна сума:", style = MaterialTheme.typography.bodyMedium)
-						Text("${String.format("%.2f", totalSum)} ₴", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
+						Text("Разом:", style = MaterialTheme.typography.bodyMedium)
+						Text(
+							text = "${String.format("%.2f", totalSum)} ₴",
+							style = MaterialTheme.typography.titleMedium,
+							color = MaterialTheme.colorScheme.primary
+						)
 					}
 				}
 			}

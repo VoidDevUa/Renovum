@@ -6,6 +6,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.ulrezaj.renovum_1.data.UserSettings
@@ -13,7 +14,7 @@ import com.ulrezaj.renovum_1.navigation.NavGraph
 import com.ulrezaj.renovum_1.navigation.Screen
 import com.ulrezaj.renovum_1.ui.components.BottomNav
 import com.ulrezaj.renovum_1.ui.components.AppDrawer
-import com.ulrezaj.renovum_1.ui.components.RenovumTopAppBar
+import com.ulrezaj.renovum_1.ui.components.topAppBar.RenovumTopAppBar
 import com.ulrezaj.renovum_1.ui.theme.Renovum_1Theme
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
 import com.ulrezaj.renovum_1.utility.L
@@ -26,7 +27,6 @@ fun RenovumApp() {
 	val navController = rememberNavController()
 
 	var userSettings by remember { mutableStateOf(UserSettings()) }
-
 	var isEditMode by remember { mutableStateOf(false) }
 
 	val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -35,15 +35,18 @@ fun RenovumApp() {
 	val navBackStackEntry by navController.currentBackStackEntryAsState()
 	val currentRoute = navBackStackEntry?.destination?.route
 
-	LaunchedEffect(currentRoute) {
-		L.nav("Current route changed to: $currentRoute")
-	}
-
 	val currentScreen = remember(currentRoute) {
-		Screen.allScreens.find { it.route == currentRoute } ?: Screen.Rooms
+		Screen.allScreens.find { screen ->
+			val baseRoute = screen.route.split("/")[0].split("?")[0]
+			currentRoute?.startsWith(baseRoute) == true
+		} ?: Screen.Rooms
 	}
 
 	val layoutDirection = if (userSettings.isLeftHanded) LayoutDirection.Ltr else LayoutDirection.Rtl
+
+	LaunchedEffect(currentRoute) {
+		L.nav("Current route changed to: $currentRoute")
+	}
 
 	Renovum_1Theme(appTheme = userSettings.appTheme) {
 		CompositionLocalProvider(LocalLayoutDirection provides layoutDirection) {
@@ -65,6 +68,9 @@ fun RenovumApp() {
 							onNavigate = { route ->
 								L.click("Drawer Item: $route")
 								navController.navigate(route) {
+									popUpTo(navController.graph.findStartDestination().id) {
+										saveState = true
+									}
 									launchSingleTop = true
 									restoreState = true
 								}
@@ -84,17 +90,22 @@ fun RenovumApp() {
 								currentScreenTitle = currentScreen.title,
 								isLeftHanded = userSettings.isLeftHanded,
 								isEditMode = isEditMode,
-								onEditClick = if (currentRoute == Screen.Rooms.route) {
-									{
-										isEditMode = !isEditMode
-										L.click("TopBar Edit Mode: $isEditMode")
-									}
+
+								selectedRoom = roomViewModel.selectedRoom,
+								rooms = roomViewModel.rooms,
+
+								onRoomSelected = if (currentRoute == Screen.Works.route) {
+									{ room -> roomViewModel.selectRoom(room) }
 								} else null,
+
+								onEditClick = if (currentRoute == Screen.Rooms.route) {
+									{ isEditMode = !isEditMode }
+								} else null,
+
 								onNavigateToEdit = if (currentRoute?.startsWith(Screen.Calculations.route) == true) {
 									{
 										val roomId = navBackStackEntry?.arguments?.getString("roomId")
 										if (roomId != null) {
-											L.click("TopBar: Navigate to Edit Room $roomId")
 											navController.navigate(Screen.EditRoom.createRoute(roomId))
 										}
 									}
@@ -108,6 +119,9 @@ fun RenovumApp() {
 								onNavigate = { route ->
 									L.click("BottomNav Item: $route")
 									navController.navigate(route) {
+										popUpTo(navController.graph.findStartDestination().id) {
+											saveState = true
+										}
 										launchSingleTop = true
 										restoreState = true
 									}

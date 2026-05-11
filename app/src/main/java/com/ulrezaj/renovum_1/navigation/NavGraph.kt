@@ -78,29 +78,26 @@ fun NavGraph(
 
 			val rooms = roomViewModel.rooms
 
-			val initialRoom = if (!roomId.isNullOrEmpty()) {
-				rooms.find { it.id == roomId } ?: rooms.firstOrNull()
-			} else {
-				rooms.firstOrNull()
-			}
-
-			LaunchedEffect(roomId, initialRoom?.id) {
-				L.d("NavGraph: Rendering CalcScreen with roomId=$roomId")
-				if (initialRoom != null) {
-					L.d("NavGraph: Target room found: ${initialRoom.name}")
+			LaunchedEffect(roomId, rooms) {
+				if (roomId != null) {
+					rooms.find { it.id == roomId }?.let { roomViewModel.selectRoom(it) }
+				} else if (roomViewModel.selectedRoom == null) {
+					rooms.firstOrNull()?.let { roomViewModel.selectRoom(it) }
 				}
 			}
 
-			if (initialRoom != null) {
+			val activeRoom = roomViewModel.selectedRoom
+
+			if (activeRoom != null) {
 				CalcScreen(
-					currentRoom = initialRoom,
+					currentRoom = activeRoom,
 					roomViewModel = roomViewModel,
 					allRooms = rooms,
 					userSettings = userSettings,
 					onRoomSelected = { selected ->
 						L.nav("Switching Calc room to: ${selected.id}")
 						navController.navigate("${Screen.Calculations.route}?roomId=${selected.id}") {
-							popUpTo(Screen.Calculations.route) { inclusive = false }
+							popUpTo(Screen.Calculations.route) { inclusive = true }
 						}
 					}
 				)

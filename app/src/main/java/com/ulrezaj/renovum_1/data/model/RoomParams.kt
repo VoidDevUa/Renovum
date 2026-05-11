@@ -70,10 +70,10 @@ sealed class RoomParams {
 
 		override fun toMap() = mapOf(
 			"Ліве плече" to leftShoulder,
+			"Ширина ніжки" to legWidth,
 			"Праве плече" to rightShoulder,
 			"Висота верху (ліво)" to topHeightLeft,
 			"Висота верху (право)" to topHeightRight,
-			"Ширина ніжки" to legWidth,
 			"Ліва ніжка" to leftLegHeight,
 			"Права ніжка" to rightLegHeight
 		)
@@ -122,7 +122,7 @@ sealed class RoomParams {
 				RoomShapeType.T_SHAPED -> TShapedParams(
 					leftShoulder = values["Ліве плече"].toDoubleSafe("Ліве плече"),
 					rightShoulder = values["Праве плече"].toDoubleSafe("Праве плече"),
-					topHeightLeft = values["Висота верху (L)"].toDoubleSafe("Висота верху (L)"),
+					topHeightLeft = values["Висота верху (ліво)"].toDoubleSafe("Висота верху (ліво)"),
 					legWidth = values["Ширина ніжки"].toDoubleSafe("Ширина ніжки"),
 					leftLegHeight = values["Ліва ніжка"].toDoubleSafe("Ліва ніжка"),
 					rightLegHeight = values["Права ніжка"].toDoubleSafe("Права ніжка"),

@@ -75,8 +75,15 @@ fun WorkCard(
 					maxLines = 1,
 					overflow = TextOverflow.Ellipsis
 				)
+
+				val priceText = if (work.minPrice == 0.0 && work.maxPrice == 0.0) {
+					"Ціна договірна"
+				} else {
+					"від ${work.minPrice.toInt()} до ${work.maxPrice.toInt()} грн / ${work.unit.displayName}"
+				}
+
 				Text(
-					text = "від 100 до 500 грн / ${work.unit.displayName}",
+					text = priceText,
 					style = MaterialTheme.typography.bodyMedium,
 					color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
 				)
@@ -85,16 +92,18 @@ fun WorkCard(
 			Column(
 				horizontalAlignment = Alignment.End
 			) {
-				Text(
-					text = "${work.averagePrice.toInt()} ₴",
-					style = MaterialTheme.typography.titleMedium,
-					color = MaterialTheme.colorScheme.primary.copy(alpha = if (isDone) 0.6f else 1f)
-				)
-				Text(
-					text = "середня",
-					style = MaterialTheme.typography.labelMedium,
-					color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
-				)
+				if (work.averagePrice > 0.0) {
+					Text(
+						text = "${work.averagePrice.toInt()} ₴",
+						style = MaterialTheme.typography.titleMedium,
+						color = MaterialTheme.colorScheme.primary.copy(alpha = if (isDone) 0.6f else 1f)
+					)
+					Text(
+						text = "середня",
+						style = MaterialTheme.typography.labelMedium,
+						color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
+					)
+				}
 			}
 
 			if (!isLeftHanded) {

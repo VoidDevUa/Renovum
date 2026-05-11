@@ -1,9 +1,13 @@
 package com.ulrezaj.renovum_1.ui.viewmodels
 
+import androidx.compose.runtime.getValue
 import androidx.lifecycle.ViewModel
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.ulrezaj.renovum_1.data.model.AppliedWork
 import com.ulrezaj.renovum_1.data.model.RoomEntity
+import com.ulrezaj.renovum_1.data.model.WorkCategory
 import com.ulrezaj.renovum_1.data.model.WorkService
 import com.ulrezaj.renovum_1.utility.L
 
@@ -21,9 +25,19 @@ class RoomViewModel : ViewModel() {
 	private val _appliedWorks = mutableStateListOf<AppliedWork>()
 	val appliedWorks: List<AppliedWork> get() = _appliedWorks
 
+	private val _selectedRoom = androidx.compose.runtime.mutableStateOf<RoomEntity?>(null)
+	val selectedRoom: RoomEntity? get() = _selectedRoom.value
+	var lastSelectedCategory by mutableStateOf<WorkCategory?>(null)
+
+	fun selectRoom(room: RoomEntity) {
+		_selectedRoom.value = room
+		L.d("ViewModel: Room selected -> ${room.name}")
+	}
+
 	fun addRoom(room: RoomEntity) {
 		_rooms.add(room)
-		L.d("ViewModel: Room added: ${room.name} (ID: ${room.id}). Total rooms: ${_rooms.size}")
+		if (_selectedRoom.value == null) _selectedRoom.value = room
+		L.d("ViewModel: Room added: ${room.name}. Total: ${_rooms.size}")
 	}
 	fun deleteRoom(room: RoomEntity) {
 		val removed = _rooms.remove(room)
