@@ -10,10 +10,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
 import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.model.RoomEntity
 import com.ulrezaj.renovum_1.data.model.RoomShapeType
@@ -23,10 +21,10 @@ import com.ulrezaj.renovum_1.ui.screens.CalcScreen
 import com.ulrezaj.renovum_1.ui.screens.CeilingScreen
 import com.ulrezaj.renovum_1.ui.screens.DoneScreen
 import com.ulrezaj.renovum_1.ui.screens.EditRoomScreen
-import com.ulrezaj.renovum_1.ui.screens.WorksScreen
 import com.ulrezaj.renovum_1.ui.screens.MaterialsScreen
 import com.ulrezaj.renovum_1.ui.screens.RoomsScreen
 import com.ulrezaj.renovum_1.ui.screens.SettingsScreen
+import com.ulrezaj.renovum_1.ui.screens.WorksScreen
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
 import com.ulrezaj.renovum_1.utility.L
 
@@ -152,16 +150,8 @@ fun NavGraph(
 				}
 			)
 		}
-		composable(
-			route = Screen.EditRoom.route,
-			arguments = listOf(
-				navArgument("roomId") { type = NavType.StringType }
-			)
-		) { backStackEntry ->
-			val roomId = backStackEntry.arguments?.getString("roomId") ?: ""
-
+		composable(route = Screen.EditRoom.route) {
 			EditRoomScreen(
-				roomId = roomId,
 				navController = navController,
 				roomViewModel = roomViewModel,
 				onSave = {

@@ -1,5 +1,6 @@
 package com.ulrezaj.renovum_1.ui.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,6 +31,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -53,6 +55,8 @@ fun AddRoomScreen(
 	roomViewModel: RoomViewModel,
 	onSave: () -> Unit
 ) {
+	val context = LocalContext.current
+
 	val roomName = remember { mutableStateOf("") }
 	val selectedShape = remember { mutableStateOf(initialShapeType) }
 	val showShapeDialog = remember { mutableStateOf(false) }
@@ -212,7 +216,7 @@ fun AddRoomScreen(
 					}
 					else {
 						L.e("AddRoom: Save failed - Room name is blank")
-						//TODO Toast("Введіть назву кімнати")
+						Toast.makeText(context, "Введіть назву кімнати", Toast.LENGTH_SHORT).show()
 					}
 				},
 				modifier = Modifier.weight(1f)

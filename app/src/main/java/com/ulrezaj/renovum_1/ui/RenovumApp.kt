@@ -90,34 +90,27 @@ fun RenovumApp() {
 								currentScreenTitle = currentScreen.title,
 								isLeftHanded = userSettings.isLeftHanded,
 								isEditMode = isEditMode,
-
 								totalSum = if (currentRoute == Screen.Done.route) roomViewModel.getTotalDiscountedSum() else null,
 								onSumClick = if (currentRoute == Screen.Done.route) {
 									{ roomViewModel.showDiscountDialog = true }
 								} else null,
-
 								selectedRoom = roomViewModel.selectedRoom,
 								rooms = roomViewModel.rooms,
-
-								onRoomSelected = if (
-									currentRoute == Screen.Works.route || currentRoute == Screen.Calculations.route
-								) {
+								onRoomSelected = if (currentRoute == Screen.Works.route) {
 									{ room ->
 										L.d("TopAppBar: Switching room inside ViewModel to ${room.name}")
 										roomViewModel.selectRoom(room)
 									}
 								} else null,
-
 								onEditClick = if (currentRoute == Screen.Rooms.route) {
 									{ isEditMode = !isEditMode }
 								} else null,
-
 								onNavigateToEdit = if (currentRoute?.startsWith(Screen.Calculations.route) == true) {
 									{
 										val roomId = roomViewModel.selectedRoom?.id
 										if (roomId != null) {
 											L.nav("Navigating to EditRoom for id: $roomId")
-											navController.navigate(Screen.EditRoom.createRoute(roomId))
+											navController.navigate(Screen.EditRoom.route)
 										} else {
 											L.e("Navigation Error: selectedRoom is null")
 										}

@@ -23,9 +23,7 @@ sealed class Screen(val route: String, val title: String, val icon: ImageVector)
 	object Ceiling : Screen("ceiling", "Схема кріплення гіпсокартону", Icons.Default.GridOn)
 	object About : Screen("about", "Про додаток", Icons.Default.Info)
 	object AddRoom : Screen("add_room", "Додавання кімнати", Icons.Default.Add)
-	object EditRoom : Screen("edit_room/{roomId}", "Редагування", Icons.Default.Edit) {
-		fun createRoute(roomId: String) = "edit_room/$roomId"
-	}
+	object EditRoom : Screen("edit_room", "Редагування", Icons.Default.Edit)
 
 	companion object {
 		val allScreens = listOf(
