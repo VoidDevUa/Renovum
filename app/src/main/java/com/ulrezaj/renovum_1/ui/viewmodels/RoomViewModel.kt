@@ -73,9 +73,13 @@ class RoomViewModel : ViewModel() {
 	fun deleteRoom(room: RoomEntity) {
 		val removed = _rooms.remove(room)
 		if (removed) {
-			L.d("ViewModel: Room deleted: ${room.name}. Remaining: ${_rooms.size}")
-		} else {
-			L.e("ViewModel: Failed to delete room: ${room.name} (Not found in list)")
+			_appliedWorks.removeAll { it.roomId == room.id }
+
+			L.d("ViewModel: Room ${room.name} and its works deleted. Remaining rooms: ${_rooms.size}")
+
+			if (_selectedRoom.value?.id == room.id) {
+				_selectedRoom.value = _rooms.firstOrNull()
+			}
 		}
 	}
 

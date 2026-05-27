@@ -131,6 +131,6 @@ sealed class RoomParams {
 			}
 			L.d("RoomParams: Successfully created ${params::class.simpleName}")
 			return params
-			}
 		}
+	}
 }

@@ -100,22 +100,11 @@ fun RenovumApp() {
 								rooms = roomViewModel.rooms,
 
 								onRoomSelected = if (
-									currentRoute?.startsWith(Screen.Works.route) == true) {
+									currentRoute == Screen.Works.route || currentRoute == Screen.Calculations.route
+								) {
 									{ room ->
+										L.d("TopAppBar: Switching room inside ViewModel to ${room.name}")
 										roomViewModel.selectRoom(room)
-										val baseRoute = if (currentRoute.startsWith("works")) {
-											Screen.Works.route
-										} else {
-											Screen.Calculations.route
-										}
-
-										navController.navigate("$baseRoute?roomId=${room.id}") {
-											popUpTo(baseRoute) {
-												inclusive = true
-												saveState = false
-											}
-											launchSingleTop = true
-										}
 									}
 								} else null,
 

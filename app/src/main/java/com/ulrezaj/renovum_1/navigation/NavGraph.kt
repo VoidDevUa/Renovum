@@ -58,35 +58,29 @@ fun NavGraph(
 					navController.navigate(Screen.AddRoom.route)
 				},
 				onRoomClick = { room ->
-					L.nav("Rooms -> Calc?roomId=${room.id}")
-					navController.navigate("${Screen.Calculations.route}?roomId=${room.id}")
+					L.nav("Rooms -> Selecting Room and Navigating to Calc: ${room.id}")
+					roomViewModel.selectRoom(room)
+
+					navController.navigate(Screen.Calculations.route) {
+						popUpTo(Screen.Rooms.route) { saveState = true }
+						launchSingleTop = true
+						restoreState = true
+					}
 				},
 				onDeleteRoom = onDeleteRoom
 			)
 		}
-		composable(
-			route = "${Screen.Calculations.route}?roomId={roomId}",
-			arguments = listOf(navArgument("roomId") {
-				type = NavType.StringType
-				nullable = true
-				defaultValue = null
-			})
-		)
-		{ backStackEntry ->
-			val roomId = backStackEntry.arguments?.getString("roomId")
-			L.d("NavGraph: Rendering CalcScreen with roomId=$roomId")
+		composable(route = Screen.Calculations.route) {
+			L.d("NavGraph: Rendering CalcScreen")
 
 			val rooms = roomViewModel.rooms
+			val activeRoom = roomViewModel.selectedRoom
 
-			LaunchedEffect(roomId, rooms) {
-				if (roomId != null) {
-					rooms.find { it.id == roomId }?.let { roomViewModel.selectRoom(it) }
-				} else if (roomViewModel.selectedRoom == null) {
-					rooms.firstOrNull()?.let { roomViewModel.selectRoom(it) }
+			LaunchedEffect(activeRoom, rooms) {
+				if (activeRoom == null && rooms.isNotEmpty()) {
+					roomViewModel.selectRoom(rooms.first())
 				}
 			}
-
-			val activeRoom = roomViewModel.selectedRoom
 
 			if (activeRoom != null) {
 				CalcScreen(
@@ -95,10 +89,8 @@ fun NavGraph(
 					allRooms = rooms,
 					userSettings = userSettings,
 					onRoomSelected = { selected ->
-						L.nav("Switching Calc room to: ${selected.id}")
-						navController.navigate("${Screen.Calculations.route}?roomId=${selected.id}") {
-							popUpTo(Screen.Calculations.route) { inclusive = true }
-						}
+						L.nav("Switching Calc room inside ViewModel to: ${selected.id}")
+						roomViewModel.selectRoom(selected)
 					}
 				)
 			} else {
@@ -108,28 +100,21 @@ fun NavGraph(
 				}
 			}
 		}
-		composable(
-			route = "${Screen.Works.route}?roomId={roomId}",
-			arguments = listOf(navArgument("roomId") {
-				type = NavType.StringType
-				nullable = true
-				defaultValue = null
-			})
-		) {backStackEntry ->
-				val roomId = backStackEntry.arguments?.getString("roomId")
-				L.nav("Screen: Works")
-				LaunchedEffect(roomId) {
-					if (roomId != null) {
-						roomViewModel.rooms.find { it.id == roomId }?.let {
-							roomViewModel.selectRoom(it)
-						}
-					}
-				}
+		composable(route = Screen.Works.route) {
+			L.nav("Screen: Works")
+			val rooms = roomViewModel.rooms
+			val activeRoom = roomViewModel.selectedRoom
 
-				WorksScreen(
-					roomViewModel = roomViewModel,
-					userSettings = userSettings
-				)
+			LaunchedEffect(activeRoom, rooms) {
+				if (activeRoom == null && rooms.isNotEmpty()) {
+					roomViewModel.selectRoom(rooms.first())
+				}
+			}
+
+			WorksScreen(
+				roomViewModel = roomViewModel,
+				userSettings = userSettings
+			)
 		}
 		composable(Screen.Done.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Done") }
@@ -168,7 +153,6 @@ fun NavGraph(
 			)
 		}
 		composable(
-			// Використовуй константу з об'єкта Screen
 			route = Screen.EditRoom.route,
 			arguments = listOf(
 				navArgument("roomId") { type = NavType.StringType }

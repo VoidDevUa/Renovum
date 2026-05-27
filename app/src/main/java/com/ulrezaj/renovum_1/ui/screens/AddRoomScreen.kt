@@ -69,7 +69,8 @@ fun AddRoomScreen(
 			.verticalScroll(rememberScrollState()),
 		horizontalAlignment = Alignment.CenterHorizontally,
 		verticalArrangement = Arrangement.spacedBy(16.dp)
-	) {
+	)
+	{
 		OutlinedButton(
 			onClick = {
 				L.click("AddRoom: Open Shape Dialog")
@@ -162,7 +163,8 @@ fun AddRoomScreen(
 			TextButton(onClick = {
 				L.click("AddRoom: Open Add Opening Dialog")
 				showOpeningDialog.value = true
-			}) {
+			})
+			{
 				Icon(Icons.Default.Add, contentDescription = null)
 				Spacer(Modifier.width(4.dp))
 				Text("Додати")
@@ -210,6 +212,7 @@ fun AddRoomScreen(
 					}
 					else {
 						L.e("AddRoom: Save failed - Room name is blank")
+						//TODO Toast("Введіть назву кімнати")
 					}
 				},
 				modifier = Modifier.weight(1f)
