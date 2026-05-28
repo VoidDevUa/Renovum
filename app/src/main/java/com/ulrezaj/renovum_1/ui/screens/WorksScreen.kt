@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
@@ -207,9 +208,9 @@ fun WorksScreen(
 		)
 
 		LazyColumn(
-				modifier = Modifier.weight(1f),
-				verticalArrangement = Arrangement.spacedBy(8.dp),
-				contentPadding = PaddingValues(bottom = 16.dp)
+			modifier = Modifier.weight(1f),
+			verticalArrangement = Arrangement.spacedBy(8.dp),
+			contentPadding = PaddingValues(bottom = 16.dp)
 		) {
 			if (currentWorks.isEmpty()) {
 				item {
@@ -221,8 +222,10 @@ fun WorksScreen(
 					)
 				}
 			} else {
-				items(currentWorks.size) { index ->
-					val work = currentWorks[index]
+				items(
+					items = currentWorks,
+					key = { work -> work.id }
+				) { work ->
 					val isAlreadyDone = selectedRoom?.let {
 						roomViewModel.isWorkDone(work.id, it.id)
 					} ?: false

@@ -9,6 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewModelScope
 import com.ulrezaj.renovum_1.data.model.AppliedWork
 import com.ulrezaj.renovum_1.data.model.RoomEntity
+import com.ulrezaj.renovum_1.data.model.TargetSurface
 import com.ulrezaj.renovum_1.data.model.WorkCategory
 import com.ulrezaj.renovum_1.data.model.WorkSection
 import com.ulrezaj.renovum_1.data.model.WorkService
@@ -112,6 +113,37 @@ class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
 		val cleanWallArea = wallArea - openingsArea
 
 		return CalculatedData(floorArea, wallArea, cleanWallArea, openingsArea, perimeter, p.getExtraResults())
+	}
+
+	fun getSurfaceValue(target: TargetSurface, calcData: CalculatedData): Double {
+		return when (target) {
+			TargetSurface.FLOOR_AREA -> calcData.floorArea
+			TargetSurface.WALL_CLEAN_AREA -> calcData.cleanWallArea
+			TargetSurface.WALL_GROSS_AREA -> calcData.wallArea
+			TargetSurface.CEILING_AREA -> calcData.floorArea
+			TargetSurface.ROOM_PERIMETER -> calcData.perimeter
+			TargetSurface.ANY_SQUARE_METER, TargetSurface.ANY_RUNNING_METER -> 1.0
+			TargetSurface.NONE -> 0.0
+		}
+	}
+	fun getAvailableOptions(target: TargetSurface, calcData: CalculatedData): List<Pair<String, Double>> {
+		val options = mutableListOf<Pair<String, Double>>()
+
+		when (target) {
+			TargetSurface.ANY_SQUARE_METER -> {
+				options.add("Підлога: ${"%.1f".format(calcData.floorArea)}" to calcData.floorArea)
+				options.add("Стіни (чист.): ${"%.1f".format(calcData.cleanWallArea)}" to calcData.cleanWallArea)
+				options.add("Стіни (заг.): ${"%.1f".format(calcData.wallArea)}" to calcData.wallArea)
+			}
+
+			TargetSurface.ANY_RUNNING_METER -> {
+				options.add("Периметр: ${"%.1f".format(calcData.perimeter)}" to calcData.perimeter)
+			}
+
+			else -> {}
+		}
+
+		return options
 	}
 
 	fun saveDoneWork(

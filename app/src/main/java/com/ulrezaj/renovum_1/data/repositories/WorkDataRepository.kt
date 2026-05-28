@@ -1,5 +1,6 @@
 package com.ulrezaj.renovum_1.data.repositories
 
+import com.ulrezaj.renovum_1.data.model.TargetSurface
 import com.ulrezaj.renovum_1.data.model.WorkCategory
 import com.ulrezaj.renovum_1.data.model.WorkSection
 import com.ulrezaj.renovum_1.data.model.WorkService
@@ -23,7 +24,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 450.0,
 			maxPrice = 800.0,
-			averagePrice = 600.0
+			averagePrice = 600.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -32,7 +34,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 450.0,
 			maxPrice = 900.0,
-			averagePrice = 630.0
+			averagePrice = 630.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -41,7 +44,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 20.0,
 			maxPrice = 40.0,
-			averagePrice = 29.0
+			averagePrice = 29.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -50,7 +54,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 150.0,
 			maxPrice = 250.0,
-			averagePrice = 200.0
+			averagePrice = 200.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -59,7 +64,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 80.0,
 			maxPrice = 200.0,
-			averagePrice = 144.0
+			averagePrice = 144.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -68,7 +74,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 75.0,
 			maxPrice = 200.0,
-			averagePrice = 121.0
+			averagePrice = 121.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -77,16 +84,18 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 120.0,
 			maxPrice = 250.0,
-			averagePrice = 188.0
+			averagePrice = 188.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
-			name = "Розпилювання та шліфування країв плитки під 45 градусів",
+			name = "Розпилювання та шліфування країв плитки под 45 градусів",
 			unit = WorkUnit.MPOG,
 			minPrice = 300.0,
 			maxPrice = 600.0,
-			averagePrice = 467.0
+			averagePrice = 467.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -95,7 +104,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 600.0,
 			maxPrice = 1500.0,
-			averagePrice = 1024.0
+			averagePrice = 1024.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -104,7 +114,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 500.0,
 			maxPrice = 1200.0,
-			averagePrice = 879.0
+			averagePrice = 879.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -113,7 +124,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 500.0,
 			maxPrice = 1200.0,
-			averagePrice = 870.0
+			averagePrice = 870.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -122,7 +134,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 300.0,
 			maxPrice = 500.0,
-			averagePrice = 367.0
+			averagePrice = 367.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -131,7 +144,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 900.0,
 			maxPrice = 2500.0,
-			averagePrice = 1527.0
+			averagePrice = 1527.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -140,7 +154,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 120.0,
 			maxPrice = 290.0,
-			averagePrice = 199.0
+			averagePrice = 199.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -149,7 +164,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 200.0,
 			maxPrice = 600.0,
-			averagePrice = 339.0
+			averagePrice = 339.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -158,7 +174,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 700.0,
 			maxPrice = 2000.0,
-			averagePrice = 1262.0
+			averagePrice = 1262.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -167,7 +184,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 800.0,
 			maxPrice = 2000.0,
-			averagePrice = 1306.0
+			averagePrice = 1306.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -176,7 +194,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 1500.0,
 			maxPrice = 2563.0,
-			averagePrice = 2197.0
+			averagePrice = 2197.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -185,7 +204,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 250.0,
 			maxPrice = 650.0,
-			averagePrice = 374.0
+			averagePrice = 374.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -194,7 +214,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 400.0,
 			maxPrice = 500.0,
-			averagePrice = 433.0
+			averagePrice = 433.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -203,7 +224,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 690.0,
 			maxPrice = 1600.0,
-			averagePrice = 1117.0
+			averagePrice = 1117.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -212,7 +234,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 550.0,
 			maxPrice = 1500.0,
-			averagePrice = 977.0
+			averagePrice = 977.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -221,7 +244,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 600.0,
 			maxPrice = 1500.0,
-			averagePrice = 1061.0
+			averagePrice = 1061.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -230,7 +254,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 700.0,
 			maxPrice = 1500.0,
-			averagePrice = 1095.0
+			averagePrice = 1095.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -239,7 +264,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 470.0,
 			maxPrice = 1000.0,
-			averagePrice = 790.0
+			averagePrice = 790.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -248,7 +274,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 500.0,
 			maxPrice = 1100.0,
-			averagePrice = 828.0
+			averagePrice = 828.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -257,7 +284,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 500.0,
 			maxPrice = 758.0,
-			averagePrice = 657.0
+			averagePrice = 657.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -266,7 +294,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 800.0,
 			maxPrice = 2000.0,
-			averagePrice = 1244.0
+			averagePrice = 1244.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -275,7 +304,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 750.0,
 			maxPrice = 1500.0,
-			averagePrice = 1012.0
+			averagePrice = 1012.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -284,7 +314,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 700.0,
 			maxPrice = 1300.0,
-			averagePrice = 929.0
+			averagePrice = 929.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -293,7 +324,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 80.0,
 			maxPrice = 200.0,
-			averagePrice = 123.0
+			averagePrice = 123.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -302,7 +334,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 200.0,
 			maxPrice = 300.0,
-			averagePrice = 233.0
+			averagePrice = 233.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -311,7 +344,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 230.0,
-			averagePrice = 163.0
+			averagePrice = 163.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -320,7 +354,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 500.0,
 			maxPrice = 1000.0,
-			averagePrice = 745.0
+			averagePrice = 745.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		//endregion
 		//region Малярні роботи
@@ -331,7 +366,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 80.0,
 			maxPrice = 200.0,
-			averagePrice = 141.0
+			averagePrice = 141.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -340,7 +376,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 230.0,
-			averagePrice = 157.0
+			averagePrice = 157.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -349,7 +386,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 220.0,
-			averagePrice = 164.0
+			averagePrice = 164.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -358,7 +396,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 200.0,
-			averagePrice = 157.0
+			averagePrice = 157.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -367,7 +406,18 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 20.0,
 			maxPrice = 40.0,
-			averagePrice = 30.0
+			averagePrice = 30.0,
+			targetSurface = TargetSurface.FLOOR_AREA
+		),
+		WorkService(
+			section = WorkSection.FINISHING,
+			category = WorkCategory.PAINTING,
+			name = "Грунтовка стяжки під плитку",
+			unit = WorkUnit.M2,
+			minPrice = 20.0,
+			maxPrice = 40.0,
+			averagePrice = 29.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -376,7 +426,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 20.0,
 			maxPrice = 50.0,
-			averagePrice = 31.0
+			averagePrice = 31.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -385,7 +436,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 60.0,
 			maxPrice = 150.0,
-			averagePrice = 104.0
+			averagePrice = 104.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -394,7 +446,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 550.0,
-			averagePrice = 341.0
+			averagePrice = 341.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -403,16 +456,18 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 450.0,
-			averagePrice = 307.0
+			averagePrice = 307.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
-			name = "Підготовка бетонної стелі під фарбування або шпалери",
+			name = "Підготовка бетонної стелі под фарбування або шпалери",
 			unit = WorkUnit.M2,
 			minPrice = 250.0,
 			maxPrice = 650.0,
-			averagePrice = 422.0
+			averagePrice = 422.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -421,7 +476,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 220.0,
 			maxPrice = 650.0,
-			averagePrice = 386.0
+			averagePrice = 386.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -430,7 +486,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 180.0,
 			maxPrice = 450.0,
-			averagePrice = 298.0
+			averagePrice = 298.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -439,7 +496,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 45.0,
 			maxPrice = 120.0,
-			averagePrice = 80.0
+			averagePrice = 80.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -448,7 +506,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 150.0,
 			maxPrice = 350.0,
-			averagePrice = 259.0
+			averagePrice = 259.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -457,7 +516,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 200.0,
 			maxPrice = 550.0,
-			averagePrice = 325.0
+			averagePrice = 325.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -466,7 +526,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 190.0,
 			maxPrice = 450.0,
-			averagePrice = 296.0
+			averagePrice = 296.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -475,7 +536,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 80.0,
 			maxPrice = 180.0,
-			averagePrice = 126.0
+			averagePrice = 126.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -484,7 +546,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 300.0,
-			averagePrice = 169.0
+			averagePrice = 169.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -493,7 +556,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 250.0,
 			maxPrice = 500.0,
-			averagePrice = 354.0
+			averagePrice = 354.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -502,7 +566,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 75.0,
 			maxPrice = 200.0,
-			averagePrice = 129.0
+			averagePrice = 129.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -511,7 +576,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 250.0,
-			averagePrice = 165.0
+			averagePrice = 165.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -520,7 +586,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 45.0,
 			maxPrice = 100.0,
-			averagePrice = 76.0
+			averagePrice = 76.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -529,7 +596,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 45.0,
 			maxPrice = 140.0,
-			averagePrice = 80.0
+			averagePrice = 80.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -538,7 +606,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 120.0,
 			maxPrice = 250.0,
-			averagePrice = 189.0
+			averagePrice = 189.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -547,7 +616,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 200.0,
-			averagePrice = 162.0
+			averagePrice = 162.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -556,7 +626,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 250.0,
-			averagePrice = 174.0
+			averagePrice = 174.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -565,7 +636,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 80.0,
 			maxPrice = 150.0,
-			averagePrice = 112.0
+			averagePrice = 112.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -574,7 +646,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 150.0,
 			maxPrice = 350.0,
-			averagePrice = 249.0
+			averagePrice = 249.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -583,7 +656,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 150.0,
 			maxPrice = 350.0,
-			averagePrice = 259.0
+			averagePrice = 259.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -592,7 +666,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 80.0,
 			maxPrice = 200.0,
-			averagePrice = 135.0
+			averagePrice = 135.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		//endregion
 		//region Штукатурні роботи
@@ -603,7 +678,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 160.0,
 			maxPrice = 450.0,
-			averagePrice = 299.0
+			averagePrice = 299.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -612,7 +688,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 180.0,
 			maxPrice = 485.0,
-			averagePrice = 317.0
+			averagePrice = 317.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -621,7 +698,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 220.0,
 			maxPrice = 500.0,
-			averagePrice = 355.0
+			averagePrice = 355.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -630,7 +708,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 180.0,
 			maxPrice = 450.0,
-			averagePrice = 309.0
+			averagePrice = 309.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -639,7 +718,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 500.0,
-			averagePrice = 353.0
+			averagePrice = 353.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -648,7 +728,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 250.0,
 			maxPrice = 500.0,
-			averagePrice = 376.0
+			averagePrice = 376.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -657,7 +738,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 210.0,
 			maxPrice = 400.0,
-			averagePrice = 298.0
+			averagePrice = 298.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -666,7 +748,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 250.0,
 			maxPrice = 650.0,
-			averagePrice = 449.0
+			averagePrice = 449.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -675,7 +758,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 20.0,
 			maxPrice = 50.0,
-			averagePrice = 32.0
+			averagePrice = 32.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -684,7 +768,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 70.0,
 			maxPrice = 200.0,
-			averagePrice = 119.0
+			averagePrice = 119.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -693,7 +778,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 190.0,
 			maxPrice = 380.0,
-			averagePrice = 296.0
+			averagePrice = 296.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -702,7 +788,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 150.0,
 			maxPrice = 380.0,
-			averagePrice = 273.0
+			averagePrice = 273.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -711,7 +798,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 60.0,
 			maxPrice = 150.0,
-			averagePrice = 108.0
+			averagePrice = 108.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -720,7 +808,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 50.0,
 			maxPrice = 100.0,
-			averagePrice = 74.0
+			averagePrice = 74.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		//endregion
 		//region Монтаж гіпсокартону
@@ -731,7 +820,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 180.0,
 			maxPrice = 500.0,
-			averagePrice = 324.0
+			averagePrice = 324.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -740,7 +830,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 240.0,
 			maxPrice = 620.0,
-			averagePrice = 407.0
+			averagePrice = 407.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -749,7 +840,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 280.0,
 			maxPrice = 800.0,
-			averagePrice = 498.0
+			averagePrice = 498.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -758,16 +850,18 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 350.0,
 			maxPrice = 900.0,
-			averagePrice = 560.0
+			averagePrice = 560.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
-			name = "Монтаж напівкруглої конструкції (перегородки) з гісокартона",
+			name = "Монтаж напівкруглої構造 (перегородки) з гісокартона",
 			unit = WorkUnit.M2,
 			minPrice = 350.0,
 			maxPrice = 1000.0,
-			averagePrice = 629.0
+			averagePrice = 629.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -776,7 +870,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 700.0,
 			maxPrice = 1500.0,
-			averagePrice = 1130.0
+			averagePrice = 1130.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -785,7 +880,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 180.0,
 			maxPrice = 500.0,
-			averagePrice = 314.0
+			averagePrice = 314.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -794,7 +890,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 250.0,
 			maxPrice = 600.0,
-			averagePrice = 432.0
+			averagePrice = 432.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -803,7 +900,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 300.0,
 			maxPrice = 700.0,
-			averagePrice = 491.0
+			averagePrice = 491.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -812,7 +910,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 250.0,
 			maxPrice = 550.0,
-			averagePrice = 399.0
+			averagePrice = 399.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -821,7 +920,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 300.0,
 			maxPrice = 600.0,
-			averagePrice = 443.0
+			averagePrice = 443.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -830,7 +930,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 300.0,
 			maxPrice = 700.0,
-			averagePrice = 504.0
+			averagePrice = 504.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -839,7 +940,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 250.0,
 			maxPrice = 550.0,
-			averagePrice = 397.0
+			averagePrice = 397.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -848,7 +950,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 70.0,
 			maxPrice = 200.0,
-			averagePrice = 128.0
+			averagePrice = 128.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -857,7 +960,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 70.0,
 			maxPrice = 180.0,
-			averagePrice = 119.0
+			averagePrice = 119.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -866,7 +970,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 1000.0,
 			maxPrice = 3000.0,
-			averagePrice = 1910.0
+			averagePrice = 1910.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -875,7 +980,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 20.0,
 			maxPrice = 50.0,
-			averagePrice = 35.0
+			averagePrice = 35.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -884,9 +990,10 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 185.0,
 			maxPrice = 300.0,
-			averagePrice = 251.0
+			averagePrice = 251.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
-		//endregion
+//endregion
 		//region Поклейка шпалер
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -895,7 +1002,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 120.0,
 			maxPrice = 220.0,
-			averagePrice = 166.0
+			averagePrice = 166.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -904,7 +1012,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 120.0,
 			maxPrice = 250.0,
-			averagePrice = 184.0
+			averagePrice = 184.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -913,7 +1022,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 120.0,
 			maxPrice = 220.0,
-			averagePrice = 164.0
+			averagePrice = 164.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -922,7 +1032,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 120.0,
 			maxPrice = 270.0,
-			averagePrice = 190.0
+			averagePrice = 190.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -931,7 +1042,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 130.0,
 			maxPrice = 400.0,
-			averagePrice = 238.0
+			averagePrice = 238.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -940,7 +1052,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 180.0,
 			maxPrice = 400.0,
-			averagePrice = 257.0
+			averagePrice = 257.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -949,7 +1062,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 180.0,
 			maxPrice = 450.0,
-			averagePrice = 298.0
+			averagePrice = 298.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -958,7 +1072,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 110.0,
 			maxPrice = 200.0,
-			averagePrice = 159.0
+			averagePrice = 159.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -967,7 +1082,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 120.0,
 			maxPrice = 250.0,
-			averagePrice = 181.0
+			averagePrice = 181.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -976,7 +1092,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 145.0,
 			maxPrice = 300.0,
-			averagePrice = 218.0
+			averagePrice = 218.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -985,7 +1102,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 170.0,
 			maxPrice = 450.0,
-			averagePrice = 275.0
+			averagePrice = 275.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -994,7 +1112,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 170.0,
 			maxPrice = 500.0,
-			averagePrice = 288.0
+			averagePrice = 288.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1003,7 +1122,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 160.0,
 			maxPrice = 400.0,
-			averagePrice = 244.0
+			averagePrice = 244.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		//endregion
 		//region Чорнові роботи по підлозі
@@ -1014,7 +1134,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 150.0,
 			maxPrice = 330.0,
-			averagePrice = 238.0
+			averagePrice = 238.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1023,7 +1144,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 160.0,
 			maxPrice = 400.0,
-			averagePrice = 296.0
+			averagePrice = 296.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1032,7 +1154,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 220.0,
 			maxPrice = 550.0,
-			averagePrice = 379.0
+			averagePrice = 379.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1041,7 +1164,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 30.0,
 			maxPrice = 80.0,
-			averagePrice = 51.0
+			averagePrice = 51.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1050,7 +1174,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 500.0,
-			averagePrice = 368.0
+			averagePrice = 368.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1059,7 +1184,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 30.0,
 			maxPrice = 70.0,
-			averagePrice = 49.0
+			averagePrice = 49.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1068,7 +1194,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 50.0,
 			maxPrice = 150.0,
-			averagePrice = 88.0
+			averagePrice = 88.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1077,7 +1204,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 59.0,
 			maxPrice = 150.0,
-			averagePrice = 105.0
+			averagePrice = 105.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1086,7 +1214,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 50.0,
 			maxPrice = 120.0,
-			averagePrice = 84.0
+			averagePrice = 84.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1095,16 +1224,18 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 170.0,
 			maxPrice = 320.0,
-			averagePrice = 263.0
+			averagePrice = 263.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Установка маяків для стяжки на підлогу",
-			unit = WorkUnit.M2, // зазвичай за м2 площі або шт, у файлі не вказано специфічно, лишаємо за площею згідно з контекстом
+			unit = WorkUnit.M2,
 			minPrice = 50.0,
 			maxPrice = 120.0,
-			averagePrice = 89.0
+			averagePrice = 89.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1113,7 +1244,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 270.0,
-			averagePrice = 161.0
+			averagePrice = 161.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1122,7 +1254,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 500.0,
-			averagePrice = 347.0
+			averagePrice = 347.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		//endregion
 		//region Покриття для підлоги
@@ -1133,7 +1266,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 120.0,
 			maxPrice = 300.0,
-			averagePrice = 216.0
+			averagePrice = 216.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1142,7 +1276,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 80.0,
 			maxPrice = 230.0,
-			averagePrice = 144.0
+			averagePrice = 144.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1151,7 +1286,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 220.0,
 			maxPrice = 500.0,
-			averagePrice = 362.0
+			averagePrice = 362.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1160,7 +1296,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 250.0,
 			maxPrice = 600.0,
-			averagePrice = 391.0
+			averagePrice = 391.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1169,7 +1306,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 60.0,
 			maxPrice = 170.0,
-			averagePrice = 106.0
+			averagePrice = 106.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1178,7 +1316,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 125.0,
 			maxPrice = 270.0,
-			averagePrice = 192.0
+			averagePrice = 192.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1187,7 +1326,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 260.0,
-			averagePrice = 182.0
+			averagePrice = 182.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1196,7 +1336,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 210.0,
-			averagePrice = 163.0
+			averagePrice = 163.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1205,7 +1346,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 500.0,
-			averagePrice = 316.0
+			averagePrice = 316.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1214,7 +1356,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 250.0,
-			averagePrice = 168.0
+			averagePrice = 168.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1223,7 +1366,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 150.0,
 			maxPrice = 400.0,
-			averagePrice = 243.0
+			averagePrice = 243.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1232,7 +1376,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 95.0,
 			maxPrice = 200.0,
-			averagePrice = 155.0
+			averagePrice = 155.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1241,7 +1386,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 450.0,
 			maxPrice = 1000.0,
-			averagePrice = 659.0
+			averagePrice = 659.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1250,7 +1396,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 250.0,
 			maxPrice = 500.0,
-			averagePrice = 371.0
+			averagePrice = 371.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1259,7 +1406,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 180.0,
 			maxPrice = 280.0,
-			averagePrice = 243.0
+			averagePrice = 243.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1268,7 +1416,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 710.0,
 			maxPrice = 1000.0,
-			averagePrice = 891.0
+			averagePrice = 891.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1277,7 +1426,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 120.0,
 			maxPrice = 280.0,
-			averagePrice = 190.0
+			averagePrice = 190.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1286,7 +1436,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 300.0,
-			averagePrice = 166.0
+			averagePrice = 166.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1295,7 +1446,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 30.0,
 			maxPrice = 60.0,
-			averagePrice = 45.0
+			averagePrice = 45.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1304,7 +1456,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 150.0,
 			maxPrice = 300.0,
-			averagePrice = 236.0
+			averagePrice = 236.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1313,7 +1466,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 180.0,
 			maxPrice = 400.0,
-			averagePrice = 288.0
+			averagePrice = 288.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1322,7 +1476,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 260.0,
 			maxPrice = 600.0,
-			averagePrice = 397.0
+			averagePrice = 397.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1331,7 +1486,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 110.0,
 			maxPrice = 300.0,
-			averagePrice = 197.0
+			averagePrice = 197.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1340,7 +1496,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 70.0,
 			maxPrice = 126.0,
-			averagePrice = 103.0
+			averagePrice = 103.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1349,7 +1506,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 60.0,
 			maxPrice = 150.0,
-			averagePrice = 99.0
+			averagePrice = 99.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1358,7 +1516,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 130.0,
 			maxPrice = 300.0,
-			averagePrice = 225.0
+			averagePrice = 225.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1367,7 +1526,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 180.0,
 			maxPrice = 350.0,
-			averagePrice = 272.0
+			averagePrice = 272.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1376,7 +1536,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 270.0,
-			averagePrice = 174.0
+			averagePrice = 174.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1385,7 +1546,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 90.0,
 			maxPrice = 220.0,
-			averagePrice = 143.0
+			averagePrice = 143.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1394,7 +1556,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 170.0,
 			maxPrice = 400.0,
-			averagePrice = 291.0
+			averagePrice = 291.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1403,7 +1566,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 145.0,
 			maxPrice = 250.0,
-			averagePrice = 195.0
+			averagePrice = 195.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1412,7 +1576,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 120.0,
 			maxPrice = 300.0,
-			averagePrice = 202.0
+			averagePrice = 202.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1421,7 +1586,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 150.0,
 			maxPrice = 330.0,
-			averagePrice = 251.0
+			averagePrice = 251.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		//endregion
 		//region Стеля
@@ -1432,7 +1598,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 300.0,
 			maxPrice = 700.0,
-			averagePrice = 507.0
+			averagePrice = 507.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1441,7 +1608,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 170.0,
 			maxPrice = 390.0,
-			averagePrice = 238.0
+			averagePrice = 238.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1450,7 +1618,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 150.0,
 			maxPrice = 440.0,
-			averagePrice = 260.0
+			averagePrice = 260.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1459,7 +1628,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 120.0,
 			maxPrice = 250.0,
-			averagePrice = 181.0
+			averagePrice = 181.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1468,7 +1638,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 50.0,
 			maxPrice = 110.0,
-			averagePrice = 86.0
+			averagePrice = 86.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1477,7 +1648,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 80.0,
 			maxPrice = 170.0,
-			averagePrice = 122.0
+			averagePrice = 122.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1486,7 +1658,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 250.0,
-			averagePrice = 160.0
+			averagePrice = 160.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1495,7 +1668,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 190.0,
-			averagePrice = 136.0
+			averagePrice = 136.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1504,7 +1678,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 65.0,
 			maxPrice = 150.0,
-			averagePrice = 108.0
+			averagePrice = 108.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1513,7 +1688,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 250.0,
 			maxPrice = 500.0,
-			averagePrice = 350.0
+			averagePrice = 350.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1522,7 +1698,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 180.0,
 			maxPrice = 400.0,
-			averagePrice = 272.0
+			averagePrice = 272.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		//endregion
 		//region Монтаж вагонки
@@ -1533,7 +1710,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 600.0,
-			averagePrice = 340.0
+			averagePrice = 340.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1542,7 +1720,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 240.0,
 			maxPrice = 600.0,
-			averagePrice = 383.0
+			averagePrice = 383.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1551,7 +1730,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 170.0,
 			maxPrice = 420.0,
-			averagePrice = 294.0
+			averagePrice = 294.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1560,7 +1740,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 600.0,
-			averagePrice = 347.0
+			averagePrice = 347.0,
+			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1569,7 +1750,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 280.0,
 			maxPrice = 600.0,
-			averagePrice = 427.0
+			averagePrice = 427.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1578,7 +1760,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 280.0,
 			maxPrice = 670.0,
-			averagePrice = 460.0
+			averagePrice = 460.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1587,7 +1770,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 244.0,
 			maxPrice = 600.0,
-			averagePrice = 420.0
+			averagePrice = 420.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		//endregion
 		//region Декоративне оздоблення стін
@@ -1598,7 +1782,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 430.0,
-			averagePrice = 322.0
+			averagePrice = 322.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1607,7 +1792,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 240.0,
 			maxPrice = 450.0,
-			averagePrice = 361.0
+			averagePrice = 361.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1616,7 +1802,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 400.0,
-			averagePrice = 322.0
+			averagePrice = 322.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1625,7 +1812,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 550.0,
-			averagePrice = 360.0
+			averagePrice = 360.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1634,7 +1822,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 350.0,
 			maxPrice = 800.0,
-			averagePrice = 561.0
+			averagePrice = 561.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1643,7 +1832,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 350.0,
 			maxPrice = 950.0,
-			averagePrice = 589.0
+			averagePrice = 589.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1652,7 +1842,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 400.0,
 			maxPrice = 800.0,
-			averagePrice = 524.0
+			averagePrice = 524.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1661,7 +1852,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 440.0,
 			maxPrice = 1100.0,
-			averagePrice = 726.0
+			averagePrice = 726.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1670,7 +1862,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 450.0,
-			averagePrice = 333.0
+			averagePrice = 333.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1679,7 +1872,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 280.0,
 			maxPrice = 500.0,
-			averagePrice = 403.0
+			averagePrice = 403.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1688,7 +1882,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 350.0,
 			maxPrice = 750.0,
-			averagePrice = 567.0
+			averagePrice = 567.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1697,7 +1892,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 350.0,
 			maxPrice = 900.0,
-			averagePrice = 592.0
+			averagePrice = 592.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1706,7 +1902,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 280.0,
 			maxPrice = 550.0,
-			averagePrice = 451.0
+			averagePrice = 451.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1715,7 +1912,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 280.0,
 			maxPrice = 750.0,
-			averagePrice = 459.0
+			averagePrice = 459.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		//endregion
 		//region Стінова панель
@@ -1726,7 +1924,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 180.0,
 			maxPrice = 330.0,
-			averagePrice = 256.0
+			averagePrice = 256.0,
+			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1735,7 +1934,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 80.0,
 			maxPrice = 150.0,
-			averagePrice = 122.0
+			averagePrice = 122.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		//endregion
 		//region Ліпнина
@@ -1746,7 +1946,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 180.0,
 			maxPrice = 300.0,
-			averagePrice = 253.0
+			averagePrice = 253.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1755,7 +1956,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 155.0,
 			maxPrice = 350.0,
-			averagePrice = 229.0
+			averagePrice = 229.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1764,7 +1966,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 150.0,
 			maxPrice = 200.0,
-			averagePrice = 183.0
+			averagePrice = 183.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1773,7 +1976,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 170.0,
 			maxPrice = 350.0,
-			averagePrice = 230.0
+			averagePrice = 230.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1782,7 +1986,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 200.0,
 			maxPrice = 400.0,
-			averagePrice = 333.0
+			averagePrice = 333.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1791,7 +1996,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 400.0,
-			averagePrice = 292.0
+			averagePrice = 292.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1800,7 +2006,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 400.0,
 			maxPrice = 750.0,
-			averagePrice = 603.0
+			averagePrice = 603.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1809,7 +2016,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 350.0,
-			averagePrice = 270.0
+			averagePrice = 270.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1818,7 +2026,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 400.0,
 			maxPrice = 900.0,
-			averagePrice = 662.0
+			averagePrice = 662.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1827,7 +2036,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 320.0,
 			maxPrice = 700.0,
-			averagePrice = 527.0
+			averagePrice = 527.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1836,7 +2046,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 300.0,
 			maxPrice = 700.0,
-			averagePrice = 467.0
+			averagePrice = 467.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		//endregion
 		//region Розпис стін
@@ -1847,7 +2058,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 500.0,
 			maxPrice = 980.0,
-			averagePrice = 867.0
+			averagePrice = 867.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1856,7 +2068,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 2260.0,
 			maxPrice = 3100.0,
-			averagePrice = 2602.0
+			averagePrice = 2602.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1865,7 +2078,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 2500.0,
 			maxPrice = 3850.0,
-			averagePrice = 3196.0
+			averagePrice = 3196.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1874,7 +2088,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 3700.0,
 			maxPrice = 3900.0,
-			averagePrice = 3815.0
+			averagePrice = 3815.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1883,7 +2098,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 3000.0,
 			maxPrice = 5000.0,
-			averagePrice = 4090.0
+			averagePrice = 4090.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		//endregion
 		//region Роботи з каменем, мармуром, гранітом
@@ -1892,27 +2108,30 @@ object WorkDataRepository {
 			category = WorkCategory.STONE_WORKS,
 			name = "Шліфування та полірування мармуру",
 			unit = WorkUnit.M2,
-			minPrice = 0.0, // TODO: уточнити ціну
+			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Шліфування та полірування граніту",
 			unit = WorkUnit.M2,
-			minPrice = 0.0, // TODO: уточнити ціну
+			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Кристалізація мармуру",
 			unit = WorkUnit.M2,
-			minPrice = 0.0, // TODO: уточнити ціну
+			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1921,16 +2140,18 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 413.0,
 			maxPrice = 650.0,
-			averagePrice = 521.0
+			averagePrice = 521.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Реставрація мармуру або граніту",
 			unit = WorkUnit.M2,
-			minPrice = 0.0, // TODO: уточнити ціну
+			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1939,7 +2160,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 400.0,
-			averagePrice = 300.0
+			averagePrice = 300.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1948,7 +2170,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 700.0,
 			maxPrice = 971.0,
-			averagePrice = 857.0
+			averagePrice = 857.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1957,7 +2180,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 1678.0,
 			maxPrice = 3000.0,
-			averagePrice = 2226.0
+			averagePrice = 2226.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1966,7 +2190,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 350.0,
 			maxPrice = 540.0,
-			averagePrice = 421.0
+			averagePrice = 421.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1975,7 +2200,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 1210.0,
 			maxPrice = 2500.0,
-			averagePrice = 1737.0
+			averagePrice = 1737.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1984,7 +2210,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 300.0,
 			maxPrice = 372.0,
-			averagePrice = 334.0
+			averagePrice = 334.0,
+			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -1993,7 +2220,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 750.0,
 			maxPrice = 1200.0,
-			averagePrice = 1001.0
+			averagePrice = 1001.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -2002,7 +2230,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 1500.0,
 			maxPrice = 2500.0,
-			averagePrice = 2033.0
+			averagePrice = 2033.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -2011,7 +2240,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 1250.0,
 			maxPrice = 2500.0,
-			averagePrice = 1683.0
+			averagePrice = 1683.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		//endregion
 		//region Промислові підлоги
@@ -2022,7 +2252,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 280.0,
 			maxPrice = 430.0,
-			averagePrice = 343.0
+			averagePrice = 343.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -2031,7 +2262,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 350.0,
 			maxPrice = 550.0,
-			averagePrice = 446.0
+			averagePrice = 446.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -2040,7 +2272,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 320.0,
 			maxPrice = 460.0,
-			averagePrice = 390.0
+			averagePrice = 390.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -2049,7 +2282,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 150.0,
 			maxPrice = 270.0,
-			averagePrice = 220.0
+			averagePrice = 220.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -2058,7 +2292,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 160.0,
 			maxPrice = 300.0,
-			averagePrice = 242.0
+			averagePrice = 242.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -2067,7 +2302,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 160.0,
 			maxPrice = 310.0,
-			averagePrice = 232.0
+			averagePrice = 232.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
 			section = WorkSection.FINISHING,
@@ -2076,7 +2312,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 125.0,
 			maxPrice = 310.0,
-			averagePrice = 203.0
+			averagePrice = 203.0,
+			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		//endregion
 		//endregion ОЗДОБЛЮВАЛЬНІ РОБОТИ
@@ -2090,7 +2327,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 250.0,
-			averagePrice = 166.0
+			averagePrice = 166.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2099,7 +2337,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 70.0,
 			maxPrice = 170.0,
-			averagePrice = 121.0
+			averagePrice = 121.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2108,7 +2347,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 1200.0,
-			averagePrice = 803.0
+			averagePrice = 803.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2117,7 +2357,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 900.0,
 			maxPrice = 2200.0,
-			averagePrice = 1430.0
+			averagePrice = 1430.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2126,7 +2367,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 400.0,
 			maxPrice = 1000.0,
-			averagePrice = 657.0
+			averagePrice = 657.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2135,7 +2377,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 350.0,
 			maxPrice = 1000.0,
-			averagePrice = 634.0
+			averagePrice = 634.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2144,7 +2387,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 100.0,
 			maxPrice = 250.0,
-			averagePrice = 166.0
+			averagePrice = 166.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2153,7 +2397,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 100.0,
 			maxPrice = 250.0,
-			averagePrice = 160.0
+			averagePrice = 160.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2162,7 +2407,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 500.0,
-			averagePrice = 326.0
+			averagePrice = 326.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2171,7 +2417,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 130.0,
 			maxPrice = 400.0,
-			averagePrice = 243.0
+			averagePrice = 243.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2180,7 +2427,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 100.0,
 			maxPrice = 250.0,
-			averagePrice = 171.0
+			averagePrice = 171.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2189,7 +2437,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 80.0,
 			maxPrice = 200.0,
-			averagePrice = 129.0
+			averagePrice = 129.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2198,7 +2447,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 170.0,
 			maxPrice = 430.0,
-			averagePrice = 308.0
+			averagePrice = 308.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2207,7 +2457,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 25.0,
 			maxPrice = 55.0,
-			averagePrice = 39.0
+			averagePrice = 39.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2216,7 +2467,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 35.0,
 			maxPrice = 75.0,
-			averagePrice = 53.0
+			averagePrice = 53.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2225,7 +2477,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 30.0,
 			maxPrice = 73.0,
-			averagePrice = 51.0
+			averagePrice = 51.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2234,7 +2487,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 40.0,
 			maxPrice = 100.0,
-			averagePrice = 65.0
+			averagePrice = 65.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2243,7 +2497,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 150.0,
 			maxPrice = 310.0,
-			averagePrice = 216.0
+			averagePrice = 216.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2252,7 +2507,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 100.0,
 			maxPrice = 210.0,
-			averagePrice = 158.0
+			averagePrice = 158.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2261,7 +2517,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 70.0,
 			maxPrice = 180.0,
-			averagePrice = 118.0
+			averagePrice = 118.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2270,16 +2527,18 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 80.0,
 			maxPrice = 160.0,
-			averagePrice = 112.0
+			averagePrice = 112.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
-			name = "Монтаж короба пластикового",
+			name = "Монтаж короба plasticового",
 			unit = WorkUnit.MPOG,
 			minPrice = 40.0,
 			maxPrice = 100.0,
-			averagePrice = 63.0
+			averagePrice = 63.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2288,7 +2547,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 150.0,
 			maxPrice = 400.0,
-			averagePrice = 267.0
+			averagePrice = 267.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2297,7 +2557,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 260.0,
 			maxPrice = 700.0,
-			averagePrice = 465.0
+			averagePrice = 465.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2306,7 +2567,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 180.0,
 			maxPrice = 500.0,
-			averagePrice = 311.0
+			averagePrice = 311.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2315,7 +2577,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 120.0,
 			maxPrice = 300.0,
-			averagePrice = 198.0
+			averagePrice = 198.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2324,7 +2587,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 130.0,
 			maxPrice = 350.0,
-			averagePrice = 234.0
+			averagePrice = 234.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2333,7 +2597,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 670.0,
 			maxPrice = 1500.0,
-			averagePrice = 1116.0
+			averagePrice = 1116.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2342,7 +2607,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 120.0,
 			maxPrice = 320.0,
-			averagePrice = 214.0
+			averagePrice = 214.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2351,7 +2617,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 80.0,
 			maxPrice = 200.0,
-			averagePrice = 124.0
+			averagePrice = 124.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2360,7 +2627,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 4500.0,
 			maxPrice = 8500.0,
-			averagePrice = 6414.0
+			averagePrice = 6414.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2369,7 +2637,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 60.0,
 			maxPrice = 150.0,
-			averagePrice = 110.0
+			averagePrice = 110.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2378,7 +2647,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 10.0,
 			maxPrice = 25.0,
-			averagePrice = 16.0
+			averagePrice = 16.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2387,7 +2657,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 10.0,
 			maxPrice = 25.0,
-			averagePrice = 16.0
+			averagePrice = 16.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2396,16 +2667,18 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 35.0,
 			maxPrice = 70.0,
-			averagePrice = 52.0
+			averagePrice = 52.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
-			name = "Перенесення електрощитка в квартиру",
+			name = "Перенесення електрощитка in квартиру",
 			unit = WorkUnit.PCS,
 			minPrice = 1300.0,
 			maxPrice = 3000.0,
-			averagePrice = 2121.0
+			averagePrice = 2121.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2414,7 +2687,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 14000.0,
 			maxPrice = 35000.0,
-			averagePrice = 26352.0
+			averagePrice = 26352.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2423,7 +2697,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 18000.0,
 			maxPrice = 45000.0,
-			averagePrice = 32889.0
+			averagePrice = 32889.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2432,7 +2707,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 25000.0,
 			maxPrice = 65000.0,
-			averagePrice = 42333.0
+			averagePrice = 42333.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2441,7 +2717,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 30000.0,
 			maxPrice = 85000.0,
-			averagePrice = 53007.0
+			averagePrice = 53007.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2450,7 +2727,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 250.0,
 			maxPrice = 550.0,
-			averagePrice = 384.0
+			averagePrice = 384.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2459,7 +2737,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 280.0,
 			maxPrice = 555.0,
-			averagePrice = 390.0
+			averagePrice = 390.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2468,7 +2747,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 180.0,
 			maxPrice = 400.0,
-			averagePrice = 293.0
+			averagePrice = 293.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2477,7 +2757,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 235.0,
 			maxPrice = 520.0,
-			averagePrice = 390.0
+			averagePrice = 390.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2486,7 +2767,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 220.0,
 			maxPrice = 650.0,
-			averagePrice = 399.0
+			averagePrice = 399.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2495,7 +2777,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 150.0,
 			maxPrice = 400.0,
-			averagePrice = 246.0
+			averagePrice = 246.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2504,7 +2787,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 260.0,
-			averagePrice = 159.0
+			averagePrice = 159.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2513,7 +2797,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 88.0,
 			maxPrice = 250.0,
-			averagePrice = 158.0
+			averagePrice = 158.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2522,7 +2807,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 65.0,
 			maxPrice = 180.0,
-			averagePrice = 117.0
+			averagePrice = 117.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2531,7 +2817,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 50.0,
 			maxPrice = 120.0,
-			averagePrice = 76.0
+			averagePrice = 76.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2540,7 +2827,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 220.0,
 			maxPrice = 600.0,
-			averagePrice = 378.0
+			averagePrice = 378.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2549,7 +2837,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2200.0,
 			maxPrice = 5500.0,
-			averagePrice = 3915.0
+			averagePrice = 3915.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2558,7 +2847,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 250.0,
 			maxPrice = 600.0,
-			averagePrice = 416.0
+			averagePrice = 416.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2567,7 +2857,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 900.0,
 			maxPrice = 2100.0,
-			averagePrice = 1450.0
+			averagePrice = 1450.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2576,7 +2867,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 150.0,
 			maxPrice = 250.0,
-			averagePrice = 190.0
+			averagePrice = 190.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2585,7 +2877,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 55.0,
 			maxPrice = 150.0,
-			averagePrice = 106.0
+			averagePrice = 106.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2594,7 +2887,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 100.0,
 			maxPrice = 300.0,
-			averagePrice = 179.0
+			averagePrice = 179.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2603,7 +2897,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 150.0,
 			maxPrice = 400.0,
-			averagePrice = 254.0
+			averagePrice = 254.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2612,7 +2907,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 700.0,
 			maxPrice = 1800.0,
-			averagePrice = 1207.0
+			averagePrice = 1207.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2621,7 +2917,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 150.0,
 			maxPrice = 360.0,
-			averagePrice = 228.0
+			averagePrice = 228.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2630,7 +2927,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 450.0,
 			maxPrice = 1200.0,
-			averagePrice = 698.0
+			averagePrice = 698.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2639,7 +2937,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 300.0,
 			maxPrice = 550.0,
-			averagePrice = 448.0
+			averagePrice = 448.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2648,7 +2947,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 30.0,
 			maxPrice = 85.0,
-			averagePrice = 54.0
+			averagePrice = 54.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2657,7 +2957,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 500.0,
-			averagePrice = 329.0
+			averagePrice = 329.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2666,7 +2967,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 150.0,
 			maxPrice = 400.0,
-			averagePrice = 262.0
+			averagePrice = 262.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2675,7 +2977,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 150.0,
 			maxPrice = 300.0,
-			averagePrice = 212.0
+			averagePrice = 212.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2684,7 +2987,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 270.0,
 			maxPrice = 680.0,
-			averagePrice = 418.0
+			averagePrice = 418.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2693,7 +2997,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 100.0,
 			maxPrice = 300.0,
-			averagePrice = 179.0
+			averagePrice = 179.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2702,7 +3007,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 250.0,
 			maxPrice = 630.0,
-			averagePrice = 419.0
+			averagePrice = 419.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2711,7 +3017,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 8000.0,
 			maxPrice = 13000.0,
-			averagePrice = 11321.0
+			averagePrice = 11321.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Сантехнічні роботи
@@ -2722,7 +3029,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 169.0,
 			maxPrice = 450.0,
-			averagePrice = 301.0
+			averagePrice = 301.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2731,7 +3039,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 130.0,
 			maxPrice = 350.0,
-			averagePrice = 227.0
+			averagePrice = 227.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2740,7 +3049,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 395.0,
 			maxPrice = 1000.0,
-			averagePrice = 643.0
+			averagePrice = 643.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2749,7 +3059,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 80.0,
 			maxPrice = 150.0,
-			averagePrice = 105.0
+			averagePrice = 105.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2758,7 +3069,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 49.0,
 			maxPrice = 120.0,
-			averagePrice = 82.0
+			averagePrice = 82.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2767,7 +3079,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 170.0,
 			maxPrice = 350.0,
-			averagePrice = 252.0
+			averagePrice = 252.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2776,7 +3089,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 220.0,
 			maxPrice = 500.0,
-			averagePrice = 372.0
+			averagePrice = 372.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2785,7 +3099,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 339.0,
 			maxPrice = 800.0,
-			averagePrice = 543.0
+			averagePrice = 543.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2794,7 +3109,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 120.0,
 			maxPrice = 300.0,
-			averagePrice = 213.0
+			averagePrice = 213.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2803,7 +3119,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 1150.0,
 			maxPrice = 2500.0,
-			averagePrice = 1972.0
+			averagePrice = 1972.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2812,7 +3129,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 45.0,
 			maxPrice = 100.0,
-			averagePrice = 76.0
+			averagePrice = 76.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2821,7 +3139,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 50.0,
 			maxPrice = 100.0,
-			averagePrice = 80.0
+			averagePrice = 80.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2830,7 +3149,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 140.0,
 			maxPrice = 400.0,
-			averagePrice = 240.0
+			averagePrice = 240.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2839,7 +3159,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 600.0,
 			maxPrice = 1500.0,
-			averagePrice = 983.0
+			averagePrice = 983.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2848,7 +3169,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 25.0,
 			maxPrice = 60.0,
-			averagePrice = 41.0
+			averagePrice = 41.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2857,7 +3179,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2499.0,
 			maxPrice = 6000.0,
-			averagePrice = 3819.0
+			averagePrice = 3819.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2866,7 +3189,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 80.0,
 			maxPrice = 170.0,
-			averagePrice = 129.0
+			averagePrice = 129.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2875,7 +3199,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 80.0,
 			maxPrice = 170.0,
-			averagePrice = 117.0
+			averagePrice = 117.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2884,7 +3209,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1500.0,
 			maxPrice = 4000.0,
-			averagePrice = 2778.0
+			averagePrice = 2778.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2893,7 +3219,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 699.0,
 			maxPrice = 1500.0,
-			averagePrice = 1135.0
+			averagePrice = 1135.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2902,7 +3229,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 1100.0,
-			averagePrice = 849.0
+			averagePrice = 849.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2911,7 +3239,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 399.0,
 			maxPrice = 1000.0,
-			averagePrice = 639.0
+			averagePrice = 639.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2920,7 +3249,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1000.0,
 			maxPrice = 2500.0,
-			averagePrice = 1740.0
+			averagePrice = 1740.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2929,7 +3259,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 400.0,
 			maxPrice = 1000.0,
-			averagePrice = 690.0
+			averagePrice = 690.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2938,7 +3269,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 499.0,
 			maxPrice = 1250.0,
-			averagePrice = 812.0
+			averagePrice = 812.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2947,7 +3279,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 400.0,
 			maxPrice = 850.0,
-			averagePrice = 699.0
+			averagePrice = 699.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2956,7 +3289,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 350.0,
 			maxPrice = 700.0,
-			averagePrice = 573.0
+			averagePrice = 573.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2965,7 +3299,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 350.0,
 			maxPrice = 1000.0,
-			averagePrice = 612.0
+			averagePrice = 612.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2974,7 +3309,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 350.0,
 			maxPrice = 1000.0,
-			averagePrice = 607.0
+			averagePrice = 607.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2983,7 +3319,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 350.0,
 			maxPrice = 800.0,
-			averagePrice = 564.0
+			averagePrice = 564.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -2992,7 +3329,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1500.0,
 			maxPrice = 3500.0,
-			averagePrice = 2451.0
+			averagePrice = 2451.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3001,7 +3339,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1500.0,
 			maxPrice = 3000.0,
-			averagePrice = 2264.0
+			averagePrice = 2264.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3010,7 +3349,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 650.0,
 			maxPrice = 1500.0,
-			averagePrice = 1212.0
+			averagePrice = 1212.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3019,7 +3359,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 800.0,
 			maxPrice = 1700.0,
-			averagePrice = 1228.0
+			averagePrice = 1228.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3028,7 +3369,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1000.0,
 			maxPrice = 2000.0,
-			averagePrice = 1446.0
+			averagePrice = 1446.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3037,7 +3379,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1500.0,
 			maxPrice = 4000.0,
-			averagePrice = 2454.0
+			averagePrice = 2454.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3046,7 +3389,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 800.0,
 			maxPrice = 2000.0,
-			averagePrice = 1289.0
+			averagePrice = 1289.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3055,7 +3399,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 800.0,
 			maxPrice = 2000.0,
-			averagePrice = 1199.0
+			averagePrice = 1199.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3064,7 +3409,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1250.0,
 			maxPrice = 3100.0,
-			averagePrice = 2135.0
+			averagePrice = 2135.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3073,7 +3419,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 400.0,
 			maxPrice = 1000.0,
-			averagePrice = 690.0
+			averagePrice = 690.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3082,7 +3429,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 250.0,
 			maxPrice = 600.0,
-			averagePrice = 425.0
+			averagePrice = 425.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3091,7 +3439,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1100.0,
 			maxPrice = 3000.0,
-			averagePrice = 1936.0
+			averagePrice = 1936.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3100,7 +3449,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1500.0,
 			maxPrice = 3000.0,
-			averagePrice = 2073.0
+			averagePrice = 2073.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3109,7 +3459,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 800.0,
 			maxPrice = 2000.0,
-			averagePrice = 1329.0
+			averagePrice = 1329.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3118,7 +3469,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 3500.0,
 			maxPrice = 8000.0,
-			averagePrice = 5558.0
+			averagePrice = 5558.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3127,7 +3479,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 1000.0,
-			averagePrice = 732.0
+			averagePrice = 732.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3136,7 +3489,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 1200.0,
-			averagePrice = 882.0
+			averagePrice = 882.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3145,7 +3499,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 250.0,
 			maxPrice = 500.0,
-			averagePrice = 391.0
+			averagePrice = 391.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3154,7 +3509,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 999.0,
 			maxPrice = 1500.0,
-			averagePrice = 1154.0
+			averagePrice = 1154.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3163,7 +3519,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2400.0,
 			maxPrice = 5000.0,
-			averagePrice = 3342.0
+			averagePrice = 3342.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3172,7 +3529,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 800.0,
 			maxPrice = 1600.0,
-			averagePrice = 1188.0
+			averagePrice = 1188.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3181,7 +3539,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1300.0,
 			maxPrice = 2500.0,
-			averagePrice = 1743.0
+			averagePrice = 1743.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3190,7 +3549,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 160.0,
 			maxPrice = 300.0,
-			averagePrice = 209.0
+			averagePrice = 209.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3199,7 +3559,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 700.0,
 			maxPrice = 2000.0,
-			averagePrice = 1110.0
+			averagePrice = 1110.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3208,7 +3569,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 1500.0,
 			maxPrice = 2500.0,
-			averagePrice = 1956.0
+			averagePrice = 1956.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3217,7 +3579,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 120.0,
 			maxPrice = 300.0,
-			averagePrice = 198.0
+			averagePrice = 198.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3226,7 +3589,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 200.0,
-			averagePrice = 153.0
+			averagePrice = 153.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3235,7 +3599,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 200.0,
-			averagePrice = 155.0
+			averagePrice = 155.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3244,7 +3609,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 650.0,
 			maxPrice = 1500.0,
-			averagePrice = 1195.0
+			averagePrice = 1195.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3253,7 +3619,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 399.0,
 			maxPrice = 800.0,
-			averagePrice = 640.0
+			averagePrice = 640.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3262,7 +3629,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 700.0,
 			maxPrice = 2000.0,
-			averagePrice = 1228.0
+			averagePrice = 1228.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3271,7 +3639,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 400.0,
 			maxPrice = 1000.0,
-			averagePrice = 647.0
+			averagePrice = 647.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3280,7 +3649,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 750.0,
 			maxPrice = 1500.0,
-			averagePrice = 1209.0
+			averagePrice = 1209.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3289,7 +3659,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1900.0,
 			maxPrice = 5000.0,
-			averagePrice = 3098.0
+			averagePrice = 3098.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3298,7 +3669,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 700.0,
 			maxPrice = 2000.0,
-			averagePrice = 1313.0
+			averagePrice = 1313.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3307,7 +3679,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 750.0,
 			maxPrice = 1600.0,
-			averagePrice = 1274.0
+			averagePrice = 1274.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3316,7 +3689,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 200.0,
-			averagePrice = 161.0
+			averagePrice = 161.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		//endregion
 		//region Системи опалення
@@ -3327,7 +3701,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 3500.0,
 			maxPrice = 6000.0,
-			averagePrice = 4833.0
+			averagePrice = 4833.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3336,7 +3711,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 599.0,
 			maxPrice = 1200.0,
-			averagePrice = 864.0
+			averagePrice = 864.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3345,7 +3721,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 700.0,
 			maxPrice = 2000.0,
-			averagePrice = 1247.0
+			averagePrice = 1247.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3354,7 +3731,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 400.0,
 			maxPrice = 800.0,
-			averagePrice = 585.0
+			averagePrice = 585.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3363,7 +3741,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 50.0,
 			maxPrice = 100.0,
-			averagePrice = 74.0
+			averagePrice = 74.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3372,7 +3751,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 50.0,
 			maxPrice = 100.0,
-			averagePrice = 75.0
+			averagePrice = 75.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3381,7 +3761,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 120.0,
 			maxPrice = 250.0,
-			averagePrice = 185.0
+			averagePrice = 185.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3390,7 +3771,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1500.0,
 			maxPrice = 2600.0,
-			averagePrice = 2200.0
+			averagePrice = 2200.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3399,7 +3781,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 999.0,
 			maxPrice = 2000.0,
-			averagePrice = 1427.0
+			averagePrice = 1427.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3408,7 +3791,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 900.0,
 			maxPrice = 1500.0,
-			averagePrice = 1100.0
+			averagePrice = 1100.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3417,7 +3801,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2300.0,
 			maxPrice = 7000.0,
-			averagePrice = 3750.0
+			averagePrice = 3750.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3426,7 +3811,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 3999.0,
 			maxPrice = 5000.0,
-			averagePrice = 4580.0
+			averagePrice = 4580.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3435,7 +3821,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2999.0,
 			maxPrice = 6000.0,
-			averagePrice = 4140.0
+			averagePrice = 4140.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3444,7 +3831,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 6699.0,
 			maxPrice = 10000.0,
-			averagePrice = 8220.0
+			averagePrice = 8220.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3453,7 +3841,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 9000.0,
 			maxPrice = 10999.0,
-			averagePrice = 10166.0
+			averagePrice = 10166.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3462,7 +3851,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2499.0,
 			maxPrice = 4500.0,
-			averagePrice = 3200.0
+			averagePrice = 3200.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3471,7 +3861,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 650.0,
 			maxPrice = 1600.0,
-			averagePrice = 981.0
+			averagePrice = 981.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3480,7 +3871,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 599.0,
 			maxPrice = 1200.0,
-			averagePrice = 914.0
+			averagePrice = 914.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3489,7 +3881,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1050.0,
 			maxPrice = 2500.0,
-			averagePrice = 1642.0
+			averagePrice = 1642.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3498,7 +3891,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 820.0,
 			maxPrice = 2000.0,
-			averagePrice = 1530.0
+			averagePrice = 1530.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3507,7 +3901,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1100.0,
 			maxPrice = 2000.0,
-			averagePrice = 1550.0
+			averagePrice = 1550.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3516,7 +3911,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 375.0,
 			maxPrice = 600.0,
-			averagePrice = 503.0
+			averagePrice = 503.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3525,7 +3921,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 400.0,
 			maxPrice = 700.0,
-			averagePrice = 570.0
+			averagePrice = 570.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3534,7 +3931,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 355.0,
 			maxPrice = 550.0,
-			averagePrice = 461.0
+			averagePrice = 461.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3543,7 +3941,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 40.0,
 			maxPrice = 75.0,
-			averagePrice = 52.0
+			averagePrice = 52.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3552,7 +3951,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 70.0,
 			maxPrice = 120.0,
-			averagePrice = 92.0
+			averagePrice = 92.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3561,7 +3961,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1500.0,
 			maxPrice = 3000.0,
-			averagePrice = 2014.0
+			averagePrice = 2014.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3570,7 +3971,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1200.0,
 			maxPrice = 3000.0,
-			averagePrice = 2080.0
+			averagePrice = 2080.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3579,7 +3981,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1450.0,
 			maxPrice = 2800.0,
-			averagePrice = 2004.0
+			averagePrice = 2004.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3588,7 +3991,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2000.0,
 			maxPrice = 6000.0,
-			averagePrice = 3271.0
+			averagePrice = 3271.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3597,7 +4001,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 48000.0,
 			maxPrice = 55000.0,
-			averagePrice = 50750.0
+			averagePrice = 50750.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3606,7 +4011,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 950.0,
 			maxPrice = 1700.0,
-			averagePrice = 1467.0
+			averagePrice = 1467.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3615,7 +4021,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1050.0,
 			maxPrice = 2500.0,
-			averagePrice = 2042.0
+			averagePrice = 2042.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3624,7 +4031,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 650.0,
 			maxPrice = 1000.0,
-			averagePrice = 816.0
+			averagePrice = 816.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3633,7 +4041,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 49000.0,
 			maxPrice = 80000.0,
-			averagePrice = 59333.0
+			averagePrice = 59333.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3642,7 +4051,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1180.0,
 			maxPrice = 3000.0,
-			averagePrice = 2181.0
+			averagePrice = 2181.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3651,7 +4061,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2150.0,
 			maxPrice = 5000.0,
-			averagePrice = 3231.0
+			averagePrice = 3231.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3660,7 +4071,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 130.0,
 			maxPrice = 250.0,
-			averagePrice = 194.0
+			averagePrice = 194.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3669,7 +4081,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 99.0,
 			maxPrice = 200.0,
-			averagePrice = 126.0
+			averagePrice = 126.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3678,7 +4091,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 99.0,
 			maxPrice = 200.0,
-			averagePrice = 146.0
+			averagePrice = 146.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3687,7 +4101,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 4999.0,
 			maxPrice = 8000.0,
-			averagePrice = 5820.0
+			averagePrice = 5820.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3696,7 +4111,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 5000.0,
 			maxPrice = 10000.0,
-			averagePrice = 6840.0
+			averagePrice = 6840.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3705,7 +4121,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 3300.0,
 			maxPrice = 7000.0,
-			averagePrice = 4925.0
+			averagePrice = 4925.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3714,7 +4131,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 11300.0,
 			maxPrice = 18000.0,
-			averagePrice = 13060.0
+			averagePrice = 13060.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3723,7 +4141,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 4800.0,
 			maxPrice = 7200.0,
-			averagePrice = 5750.0
+			averagePrice = 5750.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3732,7 +4151,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 5000.0,
 			maxPrice = 8050.0,
-			averagePrice = 6370.0
+			averagePrice = 6370.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Кліматичне обладнання
@@ -3743,7 +4163,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 950.0,
 			maxPrice = 1650.0,
-			averagePrice = 1123.0
+			averagePrice = 1123.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3752,7 +4173,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 3000.0,
 			maxPrice = 8000.0,
-			averagePrice = 5340.0
+			averagePrice = 5340.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3761,7 +4183,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 500.0,
 			maxPrice = 1000.0,
-			averagePrice = 770.0
+			averagePrice = 770.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3770,7 +4193,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1200.0,
 			maxPrice = 2100.0,
-			averagePrice = 1793.0
+			averagePrice = 1793.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3779,7 +4203,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 3555.0,
 			maxPrice = 7200.0,
-			averagePrice = 5651.0
+			averagePrice = 5651.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3788,7 +4213,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 700.0,
 			maxPrice = 1320.0,
-			averagePrice = 1140.0
+			averagePrice = 1140.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3797,7 +4223,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 777.0,
 			maxPrice = 1650.0,
-			averagePrice = 1209.0
+			averagePrice = 1209.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3806,7 +4233,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1000.0,
 			maxPrice = 1200.0,
-			averagePrice = 1129.0
+			averagePrice = 1129.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3815,7 +4243,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 950.0,
 			maxPrice = 1700.0,
-			averagePrice = 1356.0
+			averagePrice = 1356.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3824,7 +4253,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 3700.0,
 			maxPrice = 6950.0,
-			averagePrice = 5931.0
+			averagePrice = 5933.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3833,7 +4263,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 4500.0,
 			maxPrice = 8250.0,
-			averagePrice = 6950.0
+			averagePrice = 6950.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3842,7 +4273,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 5700.0,
 			maxPrice = 8600.0,
-			averagePrice = 7664.0
+			averagePrice = 7664.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3851,7 +4283,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1200.0,
 			maxPrice = 1850.0,
-			averagePrice = 1675.0
+			averagePrice = 1675.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3860,7 +4293,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1600.0,
 			maxPrice = 2250.0,
-			averagePrice = 2000.0
+			averagePrice = 2000.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Водопостачання та очищення води
@@ -3871,7 +4305,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 550.0,
 			maxPrice = 1500.0,
-			averagePrice = 922.0
+			averagePrice = 922.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3880,7 +4315,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1200.0,
 			maxPrice = 3000.0,
-			averagePrice = 1947.0
+			averagePrice = 1947.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3889,7 +4325,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 585.0,
 			maxPrice = 1000.0,
-			averagePrice = 847.0
+			averagePrice = 847.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3898,7 +4335,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2999.0,
 			maxPrice = 3500.0,
-			averagePrice = 3158.0
+			averagePrice = 3158.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3907,7 +4345,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 5000.0,
 			maxPrice = 7099.0,
-			averagePrice = 5925.0
+			averagePrice = 5925.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3916,7 +4355,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 10000.0,
 			maxPrice = 12799.0,
-			averagePrice = 11273.0
+			averagePrice = 11273.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3925,7 +4365,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1500.0,
 			maxPrice = 2500.0,
-			averagePrice = 2133.0
+			averagePrice = 2133.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3934,7 +4375,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1650.0,
 			maxPrice = 2850.0,
-			averagePrice = 2260.0
+			averagePrice = 2260.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3943,7 +4385,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 7700.0,
 			maxPrice = 12000.0,
-			averagePrice = 10714.0
+			averagePrice = 10714.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3952,7 +4395,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 7700.0,
 			maxPrice = 13000.0,
-			averagePrice = 11259.0
+			averagePrice = 11259.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3961,7 +4405,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 12700.0,
 			maxPrice = 17900.0,
-			averagePrice = 15709.0
+			averagePrice = 15709.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3970,7 +4415,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 12700.0,
 			maxPrice = 18700.0,
-			averagePrice = 16900.0
+			averagePrice = 16900.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3979,7 +4425,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1400.0,
 			maxPrice = 2000.0,
-			averagePrice = 1773.0
+			averagePrice = 1773.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3988,7 +4435,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2000.0,
 			maxPrice = 2770.0,
-			averagePrice = 2257.0
+			averagePrice = 2257.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -3997,7 +4445,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 745.0,
 			maxPrice = 1000.0,
-			averagePrice = 832.0
+			averagePrice = 832.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4006,7 +4455,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1300.0,
 			maxPrice = 2500.0,
-			averagePrice = 2120.0
+			averagePrice = 2120.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4015,7 +4465,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1300.0,
 			maxPrice = 2300.0,
-			averagePrice = 1844.0
+			averagePrice = 1844.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4024,7 +4475,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 800.0,
 			maxPrice = 1300.0,
-			averagePrice = 1051.0
+			averagePrice = 1051.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4033,7 +4485,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 600.0,
 			maxPrice = 1300.0,
-			averagePrice = 1016.0
+			averagePrice = 1016.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4042,7 +4495,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 600.0,
 			maxPrice = 1000.0,
-			averagePrice = 818.0
+			averagePrice = 818.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4051,7 +4505,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 499.0,
 			maxPrice = 750.0,
-			averagePrice = 574.0
+			averagePrice = 574.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4060,7 +4515,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 800.0,
-			averagePrice = 713.0
+			averagePrice = 713.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4069,7 +4525,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 900.0,
-			averagePrice = 710.0
+			averagePrice = 710.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4078,7 +4535,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 820.0,
-			averagePrice = 703.0
+			averagePrice = 703.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4087,7 +4545,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 810.0,
 			maxPrice = 1000.0,
-			averagePrice = 915.0
+			averagePrice = 915.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4096,7 +4555,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 660.0,
-			averagePrice = 550.0
+			averagePrice = 550.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4105,7 +4565,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1500.0,
 			maxPrice = 3290.0,
-			averagePrice = 2358.0
+			averagePrice = 2358.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4114,7 +4575,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1300.0,
 			maxPrice = 1599.0,
-			averagePrice = 1474.0
+			averagePrice = 1474.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4123,7 +4585,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1200.0,
 			maxPrice = 1800.0,
-			averagePrice = 1417.0
+			averagePrice = 1417.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4132,7 +4595,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 800.0,
 			maxPrice = 1300.0,
-			averagePrice = 1058.0
+			averagePrice = 1058.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Тепла підлога
@@ -4143,7 +4607,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 250.0,
 			maxPrice = 550.0,
-			averagePrice = 379.0
+			averagePrice = 379.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4152,7 +4617,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 450.0,
-			averagePrice = 329.0
+			averagePrice = 329.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4161,7 +4627,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 250.0,
 			maxPrice = 420.0,
-			averagePrice = 319.0
+			averagePrice = 319.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4170,7 +4637,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 249.0,
 			maxPrice = 500.0,
-			averagePrice = 365.0
+			averagePrice = 365.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4179,7 +4647,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1200.0,
 			maxPrice = 2500.0,
-			averagePrice = 1807.0
+			averagePrice = 1807.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4188,7 +4657,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M3,
 			minPrice = 550.0,
 			maxPrice = 900.0,
-			averagePrice = 756.0
+			averagePrice = 756.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4197,7 +4667,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 70.0,
 			maxPrice = 120.0,
-			averagePrice = 92.0
+			averagePrice = 92.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4206,7 +4677,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 90.0,
 			maxPrice = 160.0,
-			averagePrice = 123.0
+			averagePrice = 123.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4215,7 +4687,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 770.0,
 			maxPrice = 1250.0,
-			averagePrice = 1014.0
+			averagePrice = 1014.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4224,7 +4697,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 900.0,
 			maxPrice = 1500.0,
-			averagePrice = 1147.0
+			averagePrice = 1147.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4233,7 +4707,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 400.0,
 			maxPrice = 900.0,
-			averagePrice = 665.0
+			averagePrice = 665.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Інтернет і ТБ
@@ -4244,7 +4719,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 20.0,
 			maxPrice = 50.0,
-			averagePrice = 35.0
+			averagePrice = 35.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4253,7 +4729,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 120.0,
 			maxPrice = 180.0,
-			averagePrice = 143.0
+			averagePrice = 143.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4262,7 +4739,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 950.0,
 			maxPrice = 1250.0,
-			averagePrice = 1142.0
+			averagePrice = 1142.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4271,7 +4749,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 750.0,
 			maxPrice = 1000.0,
-			averagePrice = 950.0
+			averagePrice = 950.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4280,7 +4759,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 100.0,
 			maxPrice = 155.0,
-			averagePrice = 137.0
+			averagePrice = 137.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4289,7 +4769,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 130.0,
 			maxPrice = 200.0,
-			averagePrice = 170.0
+			averagePrice = 170.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4298,7 +4779,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 20.0,
 			maxPrice = 50.0,
-			averagePrice = 33.0
+			averagePrice = 33.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4307,7 +4789,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 120.0,
 			maxPrice = 215.0,
-			averagePrice = 153.0
+			averagePrice = 153.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4316,7 +4799,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 100.0,
 			maxPrice = 200.0,
-			averagePrice = 151.0
+			averagePrice = 151.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4325,7 +4809,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 400.0,
 			maxPrice = 550.0,
-			averagePrice = 475.0
+			averagePrice = 475.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4334,7 +4819,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 50.0,
 			maxPrice = 140.0,
-			averagePrice = 82.0
+			averagePrice = 82.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Охоронні системи та контроль доступу
@@ -4345,7 +4831,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 30.0,
 			maxPrice = 40.0,
-			averagePrice = 33.0
+			averagePrice = 33.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4354,7 +4841,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 50.0,
 			maxPrice = 85.0,
-			averagePrice = 73.0
+			averagePrice = 73.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4363,7 +4851,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 220.0,
 			maxPrice = 300.0,
-			averagePrice = 255.0
+			averagePrice = 255.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4372,7 +4861,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 1000.0,
-			averagePrice = 730.0
+			averagePrice = 730.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4381,7 +4871,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 300.0,
-			averagePrice = 240.0
+			averagePrice = 240.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4390,7 +4881,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 260.0,
-			averagePrice = 240.0
+			averagePrice = 240.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4399,7 +4891,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 150.0,
 			maxPrice = 250.0,
-			averagePrice = 213.0
+			averagePrice = 213.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4408,7 +4901,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 900.0,
-			averagePrice = 700.0
+			averagePrice = 700.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4417,7 +4911,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 800.0,
 			maxPrice = 1200.0,
-			averagePrice = 967.0
+			averagePrice = 967.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4426,7 +4921,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 600.0,
 			maxPrice = 1200.0,
-			averagePrice = 833.0
+			averagePrice = 833.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4435,7 +4931,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1000.0,
 			maxPrice = 1500.0,
-			averagePrice = 1167.0
+			averagePrice = 1167.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4444,7 +4941,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 800.0,
 			maxPrice = 1200.0,
-			averagePrice = 1000.0
+			averagePrice = 1000.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4453,7 +4951,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1600.0,
 			maxPrice = 1800.0,
-			averagePrice = 1733.0
+			averagePrice = 1733.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4462,7 +4961,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 3500.0,
 			maxPrice = 5000.0,
-			averagePrice = 4360.0
+			averagePrice = 4360.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4471,7 +4971,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 3000.0,
 			maxPrice = 5500.0,
-			averagePrice = 4000.0
+			averagePrice = 4000.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4480,7 +4981,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 5500.0,
 			maxPrice = 8000.0,
-			averagePrice = 7175.0
+			averagePrice = 7175.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4489,7 +4991,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1000.0,
 			maxPrice = 2000.0,
-			averagePrice = 1583.0
+			averagePrice = 1583.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4498,7 +5001,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1300.0,
 			maxPrice = 1500.0,
-			averagePrice = 1433.0
+			averagePrice = 1433.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4507,7 +5011,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 650.0,
 			maxPrice = 1200.0,
-			averagePrice = 813.0
+			averagePrice = 813.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Пожежна сигналізація
@@ -4518,7 +5023,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 300.0,
-			averagePrice = 257.0
+			averagePrice = 257.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4527,7 +5033,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 250.0,
 			maxPrice = 390.0,
-			averagePrice = 308.0
+			averagePrice = 308.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4536,7 +5043,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 310.0,
-			averagePrice = 260.0
+			averagePrice = 260.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4545,7 +5053,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 250.0,
 			maxPrice = 380.0,
-			averagePrice = 296.0
+			averagePrice = 296.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4554,7 +5063,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 250.0,
 			maxPrice = 360.0,
-			averagePrice = 295.0
+			averagePrice = 295.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4563,7 +5073,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 325.0,
 			maxPrice = 440.0,
-			averagePrice = 384.0
+			averagePrice = 384.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4572,7 +5083,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 250.0,
 			maxPrice = 350.0,
-			averagePrice = 317.0
+			averagePrice = 317.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4581,7 +5093,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 180.0,
 			maxPrice = 280.0,
-			averagePrice = 243.0
+			averagePrice = 243.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4590,7 +5103,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 300.0,
 			maxPrice = 380.0,
-			averagePrice = 343.0
+			averagePrice = 343.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4599,7 +5113,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 260.0,
 			maxPrice = 320.0,
-			averagePrice = 293.0
+			averagePrice = 293.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4608,7 +5123,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 1000.0,
-			averagePrice = 764.0
+			averagePrice = 764.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4617,7 +5133,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2000.0,
 			maxPrice = 3500.0,
-			averagePrice = 2888.0
+			averagePrice = 2888.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4626,7 +5143,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 3500.0,
 			maxPrice = 5500.0,
-			averagePrice = 4575.0
+			averagePrice = 4575.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4635,7 +5153,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 5000.0,
 			maxPrice = 8000.0,
-			averagePrice = 6463.0
+			averagePrice = 6463.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4644,7 +5163,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 5000.0,
 			maxPrice = 12000.0,
-			averagePrice = 8750.0
+			averagePrice = 8750.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4653,7 +5173,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 4750.0,
 			maxPrice = 9000.0,
-			averagePrice = 6550.0
+			averagePrice = 6550.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Системи відеоспостереження
@@ -4664,7 +5185,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 380.0,
 			maxPrice = 800.0,
-			averagePrice = 666.0
+			averagePrice = 666.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4673,7 +5195,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 1000.0,
-			averagePrice = 820.0
+			averagePrice = 820.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4682,7 +5205,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 700.0,
 			maxPrice = 1350.0,
-			averagePrice = 1010.0
+			averagePrice = 1010.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4691,7 +5215,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 800.0,
 			maxPrice = 1200.0,
-			averagePrice = 1000.0
+			averagePrice = 1000.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4700,7 +5225,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1100.0,
 			maxPrice = 1500.0,
-			averagePrice = 1267.0
+			averagePrice = 1267.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4709,7 +5235,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 300.0,
 			maxPrice = 600.0,
-			averagePrice = 476.0
+			averagePrice = 476.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4718,7 +5245,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 350.0,
 			maxPrice = 750.0,
-			averagePrice = 488.0
+			averagePrice = 488.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4727,7 +5255,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 600.0,
 			maxPrice = 950.0,
-			averagePrice = 738.0
+			averagePrice = 738.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4736,7 +5265,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 300.0,
 			maxPrice = 500.0,
-			averagePrice = 400.0
+			averagePrice = 400.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4745,7 +5275,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1000.0,
 			maxPrice = 2000.0,
-			averagePrice = 1667.0
+			averagePrice = 1667.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4754,7 +5285,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1000.0,
 			maxPrice = 2000.0,
-			averagePrice = 1683.0
+			averagePrice = 1683.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4763,7 +5295,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 700.0,
-			averagePrice = 567.0
+			averagePrice = 567.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4772,7 +5305,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 450.0,
 			maxPrice = 980.0,
-			averagePrice = 683.0
+			averagePrice = 683.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Системи пожежогасіння
@@ -4783,7 +5317,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 600.0,
 			maxPrice = 1100.0,
-			averagePrice = 900.0
+			averagePrice = 900.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4792,7 +5327,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 800.0,
 			maxPrice = 1300.0,
-			averagePrice = 1100.0
+			averagePrice = 1100.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4801,7 +5337,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 700.0,
 			maxPrice = 800.0,
-			averagePrice = 750.0
+			averagePrice = 750.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4810,7 +5347,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2000.0,
 			maxPrice = 3000.0,
-			averagePrice = 2500.0
+			averagePrice = 2500.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4819,7 +5357,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 4000.0,
 			maxPrice = 6000.0,
-			averagePrice = 5333.0
+			averagePrice = 5333.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4828,7 +5367,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 4000.0,
 			maxPrice = 6000.0,
-			averagePrice = 5000.0
+			averagePrice = 5000.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4837,7 +5377,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 2500.0,
 			maxPrice = 6000.0,
-			averagePrice = 4500.0
+			averagePrice = 4500.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4846,7 +5387,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 3500.0,
 			maxPrice = 6000.0,
-			averagePrice = 4833.0
+			averagePrice = 4833.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4855,7 +5397,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 2500.0,
 			maxPrice = 6000.0,
-			averagePrice = 3767.0
+			averagePrice = 3767.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4864,7 +5407,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 280.0,
 			maxPrice = 330.0,
-			averagePrice = 310.0
+			averagePrice = 310.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4873,7 +5417,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 500.0,
 			maxPrice = 700.0,
-			averagePrice = 630.0
+			averagePrice = 630.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		//endregion
 		//region Газифікація
@@ -4884,7 +5429,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4893,7 +5439,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4902,7 +5449,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4911,7 +5459,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4920,7 +5469,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4929,7 +5479,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4938,7 +5489,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4947,7 +5499,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4956,7 +5509,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Ліфти та ескалатори
@@ -4967,7 +5521,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4976,7 +5531,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4985,7 +5541,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -4994,7 +5551,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Розумний будинок
@@ -5005,7 +5563,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5014,7 +5573,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Альтернативні джерела енергії
@@ -5025,7 +5585,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5034,7 +5595,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5043,7 +5605,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5052,7 +5615,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5061,7 +5625,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5070,7 +5635,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5079,7 +5645,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5088,7 +5655,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Системи вентиляції
@@ -5099,7 +5667,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5108,7 +5677,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5117,7 +5687,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5126,7 +5697,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5135,7 +5707,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5144,7 +5717,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5153,7 +5727,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5162,7 +5737,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5171,7 +5747,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5180,7 +5757,8 @@ object WorkDataRepository {
 			unit = WorkUnit.JOB,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5189,7 +5767,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.ENGINEERING,
@@ -5198,7 +5777,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 0.0,
 			maxPrice = 0.0,
-			averagePrice = 0.0
+			averagePrice = 0.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		//endregion
 		//endregion ІНЖЕНЕРНІ СИСТЕМИ ТА КОМУНІКАЦІЇ
@@ -5212,7 +5792,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 150.0,
 			maxPrice = 400.0,
-			averagePrice = 260.0
+			averagePrice = 260.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5221,7 +5802,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 500.0,
-			averagePrice = 356.0
+			averagePrice = 356.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5230,7 +5812,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 350.0,
 			maxPrice = 1000.0,
-			averagePrice = 651.0
+			averagePrice = 651.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5239,7 +5822,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 400.0,
-			averagePrice = 305.0
+			averagePrice = 305.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Демонтаж вікон і дверей
@@ -5250,7 +5834,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 250.0,
 			maxPrice = 520.0,
-			averagePrice = 380.0
+			averagePrice = 380.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5259,7 +5844,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 500.0,
-			averagePrice = 366.0
+			averagePrice = 366.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5268,7 +5854,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 500.0,
 			maxPrice = 1000.0,
-			averagePrice = 780.0
+			averagePrice = 780.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5277,7 +5864,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1000.0,
 			maxPrice = 2400.0,
-			averagePrice = 1633.0
+			averagePrice = 1633.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5286,7 +5874,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 150.0,
 			maxPrice = 380.0,
-			averagePrice = 250.0
+			averagePrice = 250.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5295,7 +5884,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1200.0,
 			maxPrice = 2200.0,
-			averagePrice = 1707.0
+			averagePrice = 1707.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Знесення стін і перегородок
@@ -5306,7 +5896,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 230.0,
-			averagePrice = 168.0
+			averagePrice = 168.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5315,7 +5906,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 450.0,
-			averagePrice = 318.0
+			averagePrice = 318.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5324,7 +5916,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 450.0,
-			averagePrice = 358.0
+			averagePrice = 358.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5333,7 +5926,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 250.0,
 			maxPrice = 750.0,
-			averagePrice = 494.0
+			averagePrice = 494.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5342,7 +5936,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 295.0,
 			maxPrice = 900.0,
-			averagePrice = 542.0
+			averagePrice = 542.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5351,7 +5946,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 400.0,
 			maxPrice = 1000.0,
-			averagePrice = 716.0
+			averagePrice = 716.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5360,7 +5956,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 250.0,
-			averagePrice = 176.0
+			averagePrice = 176.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5369,7 +5966,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 77.0,
 			maxPrice = 210.0,
-			averagePrice = 153.0
+			averagePrice = 153.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5378,7 +5976,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 80.0,
 			maxPrice = 180.0,
-			averagePrice = 133.0
+			averagePrice = 133.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		//endregion
 		//region Отвори і штроби
@@ -5389,7 +5988,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 750.0,
 			maxPrice = 1500.0,
-			averagePrice = 1206.0
+			averagePrice = 1206.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5398,7 +5998,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 800.0,
 			maxPrice = 2200.0,
-			averagePrice = 1416.0
+			averagePrice = 1416.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5407,7 +6008,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 1500.0,
 			maxPrice = 2600.0,
-			averagePrice = 2092.0
+			averagePrice = 2092.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5416,7 +6018,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 80.0,
 			maxPrice = 200.0,
-			averagePrice = 137.0
+			averagePrice = 137.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5425,7 +6028,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 110.0,
 			maxPrice = 150.0,
-			averagePrice = 134.0
+			averagePrice = 134.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5434,7 +6038,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 1110.0,
 			maxPrice = 3000.0,
-			averagePrice = 1801.0
+			averagePrice = 1801.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Видалення фарби
@@ -5445,7 +6050,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 90.0,
 			maxPrice = 200.0,
-			averagePrice = 126.0
+			averagePrice = 126.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5454,7 +6060,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 100.0,
 			maxPrice = 180.0,
-			averagePrice = 137.0
+			averagePrice = 137.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5463,7 +6070,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 85.0,
 			maxPrice = 150.0,
-			averagePrice = 113.0
+			averagePrice = 113.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5472,7 +6080,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 160.0,
-			averagePrice = 124.0
+			averagePrice = 124.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5481,7 +6090,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 150.0,
 			maxPrice = 260.0,
-			averagePrice = 206.0
+			averagePrice = 206.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5490,7 +6100,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 100.0,
 			maxPrice = 180.0,
-			averagePrice = 147.0
+			averagePrice = 147.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5499,7 +6110,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 180.0,
 			maxPrice = 200.0,
-			averagePrice = 197.0
+			averagePrice = 197.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5508,7 +6120,8 @@ object WorkDataRepository {
 			unit = WorkUnit.PCS,
 			minPrice = 200.0,
 			maxPrice = 330.0,
-			averagePrice = 278.0
+			averagePrice = 278.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5517,7 +6130,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 200.0,
 			maxPrice = 320.0,
-			averagePrice = 272.0
+			averagePrice = 272.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		//endregion
 		//region Демонтаж настінних покриттів
@@ -5528,7 +6142,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 95.0,
 			maxPrice = 250.0,
-			averagePrice = 165.0
+			averagePrice = 165.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5537,7 +6152,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 90.0,
 			maxPrice = 200.0,
-			averagePrice = 150.0
+			averagePrice = 150.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5546,7 +6162,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 35.0,
 			maxPrice = 100.0,
-			averagePrice = 71.0
+			averagePrice = 71.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5555,7 +6172,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 95.0,
 			maxPrice = 150.0,
-			averagePrice = 114.0
+			averagePrice = 114.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5564,7 +6182,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 80.0,
 			maxPrice = 150.0,
-			averagePrice = 121.0
+			averagePrice = 121.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		//endregion
 		//region Демонтаж підлогових покриттів
@@ -5575,7 +6194,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 120.0,
 			maxPrice = 300.0,
-			averagePrice = 222.0
+			averagePrice = 222.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5584,7 +6204,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 60.0,
 			maxPrice = 160.0,
-			averagePrice = 112.0
+			averagePrice = 112.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5593,7 +6214,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 75.0,
 			maxPrice = 190.0,
-			averagePrice = 128.0
+			averagePrice = 128.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5602,7 +6224,8 @@ object WorkDataRepository {
 			unit = WorkUnit.MPOG,
 			minPrice = 20.0,
 			maxPrice = 50.0,
-			averagePrice = 36.0
+			averagePrice = 36.0,
+			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5611,7 +6234,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 80.0,
 			maxPrice = 220.0,
-			averagePrice = 149.0
+			averagePrice = 149.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5620,7 +6244,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 40.0,
 			maxPrice = 100.0,
-			averagePrice = 69.0
+			averagePrice = 69.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5629,7 +6254,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 60.0,
 			maxPrice = 132.0,
-			averagePrice = 97.0
+			averagePrice = 97.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5638,7 +6264,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 50.0,
 			maxPrice = 132.0,
-			averagePrice = 89.0
+			averagePrice = 89.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		//endregion
 		//region Знесення будівель і будівель
@@ -5649,7 +6276,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 700.0,
 			maxPrice = 1500.0,
-			averagePrice = 1015.0
+			averagePrice = 1015.0,
+			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5658,7 +6286,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M3,
 			minPrice = 1000.0,
 			maxPrice = 1900.0,
-			averagePrice = 1378.0
+			averagePrice = 1378.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Демонтаж металоконструкцій
@@ -5669,7 +6298,8 @@ object WorkDataRepository {
 			unit = WorkUnit.TONN,
 			minPrice = 2000.0,
 			maxPrice = 4000.0,
-			averagePrice = 2972.0
+			averagePrice = 2972.0,
+			targetSurface = TargetSurface.NONE
 		),
 		//endregion
 		//region Інший демонтаж
@@ -5680,7 +6310,8 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 125.0,
 			maxPrice = 300.0,
-			averagePrice = 204.0
+			averagePrice = 204.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
 			section = WorkSection.DEMOLITION,
@@ -5689,8 +6320,9 @@ object WorkDataRepository {
 			unit = WorkUnit.M2,
 			minPrice = 700.0,
 			maxPrice = 1500.0,
-			averagePrice = 1010.0
-		)
+			averagePrice = 1010.0,
+			targetSurface = TargetSurface.ANY_SQUARE_METER
+		),
 		//endregion
 		//endregion ЗНЕСЕННЯ І ДЕМОНТАЖ
 	)

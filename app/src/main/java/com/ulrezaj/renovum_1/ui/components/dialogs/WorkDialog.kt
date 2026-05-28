@@ -48,6 +48,7 @@ import com.ulrezaj.renovum_1.data.model.AppliedWork
 import com.ulrezaj.renovum_1.data.model.RoomEntity
 import com.ulrezaj.renovum_1.data.model.WorkService
 import com.ulrezaj.renovum_1.data.model.OpeningType
+import com.ulrezaj.renovum_1.data.model.TargetSurface
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -71,11 +72,13 @@ fun WorkDialog(
 		mutableStateOf(appliedWork?.quantity?.toString() ?: "")
 	}
 
+	val calcData = roomViewModel.calculateRoomData(room)
 	val finalPrice = priceInput.toDoubleOrNull() ?: workService.averagePrice
-	val finalVolume = qtyInput.toDoubleOrNull() ?: 1.0
+	val suggestedValue = roomViewModel.getSurfaceValue(workService.targetSurface, calcData)
+	val displaySuggestedValue = String.format("%.2f", suggestedValue)
+	val finalVolume = qtyInput.toDoubleOrNull() ?: suggestedValue
 	val totalSum = finalPrice * finalVolume
 
-	val calcData = roomViewModel.calculateRoomData(room)
 	val pagerState = rememberPagerState(initialPage = 1, pageCount = { 2 })
 	var expandedSection by remember { mutableIntStateOf(0) }
 
@@ -263,6 +266,8 @@ fun WorkDialog(
 									)
 								}
 
+								val options = roomViewModel.getAvailableOptions(workService.targetSurface, calcData)
+
 								Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
 									Text(
 										text = "Об'єм робіт",
@@ -274,9 +279,7 @@ fun WorkDialog(
 										value = qtyInput,
 										onValueChange = { if (it.all { char -> char.isDigit() || char == '.' }) qtyInput = it },
 										placeholder = {
-											Text(
-												text = "1.0"
-											)
+											Text(text = if (workService.targetSurface != TargetSurface.NONE) displaySuggestedValue else "1.0")
 										},
 										suffix = { Text(workService.unit.displayName) },
 										singleLine = true,
@@ -284,6 +287,39 @@ fun WorkDialog(
 										modifier = Modifier.fillMaxWidth(),
 										colors = customTextFieldColors
 									)
+									if (options.isNotEmpty()) {
+										Column(
+											modifier = Modifier
+												.fillMaxWidth()
+												.padding(top = 8.dp),
+											verticalArrangement = Arrangement.spacedBy(4.dp)
+										) {
+											options.forEach { (label, value) ->
+												Card(
+													onClick = { qtyInput = String.format("%.2f", value).replace(",", ".") },
+													modifier = Modifier
+														.fillMaxWidth()
+														.height(36.dp),
+													colors = CardDefaults.cardColors(
+														containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+													),
+													shape = MaterialTheme.shapes.medium
+												) {
+													Box(
+														modifier = Modifier.fillMaxSize(),
+														contentAlignment = Alignment.Center
+													) {
+														Text(
+															text = label,
+															style = MaterialTheme.typography.titleMedium,
+															fontWeight = FontWeight.Medium,
+															color = MaterialTheme.colorScheme.onSurfaceVariant
+														)
+													}
+												}
+											}
+										}
+									}
 								}
 
 								Card(
@@ -291,7 +327,7 @@ fun WorkDialog(
 									colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.4f))
 								) {
 									Row(
-										modifier = Modifier.fillMaxWidth().padding(12.dp),
+										modifier = Modifier.fillMaxWidth().padding(8.dp),
 										horizontalArrangement = Arrangement.SpaceBetween,
 										verticalAlignment = Alignment.CenterVertically
 									) {

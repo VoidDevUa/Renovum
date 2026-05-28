@@ -33,7 +33,8 @@ data class WorkService(
 	val unit: WorkUnit,
 	val minPrice: Double,
 	val maxPrice: Double,
-	val averagePrice: Double
+	val averagePrice: Double,
+	val targetSurface: TargetSurface = TargetSurface.NONE
 )
 
 data class AppliedWork(
