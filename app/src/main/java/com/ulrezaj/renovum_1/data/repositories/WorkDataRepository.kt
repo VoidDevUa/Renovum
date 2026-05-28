@@ -13,7 +13,7 @@ object WorkDataRepository {
 		return WorkCategory.entries.filter { it.section == section }
 	}
 
-	val allWorks = listOf(
+	val allWorks = listOf   (
 		//region ОЗДОБЛЮВАЛЬНІ РОБОТИ
 		//region Плиточні роботи
 		WorkService(

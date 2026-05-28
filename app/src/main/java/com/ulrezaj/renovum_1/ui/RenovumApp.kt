@@ -5,11 +5,16 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.ulrezaj.renovum_1.data.UserSettings
+import com.ulrezaj.renovum_1.data.local.AppDatabase
+import com.ulrezaj.renovum_1.data.repositories.RoomRepository
 import com.ulrezaj.renovum_1.navigation.NavGraph
 import com.ulrezaj.renovum_1.navigation.Screen
 import com.ulrezaj.renovum_1.ui.components.BottomNav
@@ -23,7 +28,17 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RenovumApp() {
-	val roomViewModel: RoomViewModel = viewModel()
+	val context = LocalContext.current
+	val roomViewModel: RoomViewModel = viewModel(
+		factory = @Suppress("UNCHECKED_CAST") object : ViewModelProvider.Factory {
+			override fun <T : ViewModel> create(modelClass: Class<T>): T {
+				val database = AppDatabase.getDatabase(context)
+				val repository = RoomRepository(database.roomDao())
+				return RoomViewModel(repository) as T
+			}
+		}
+	)
+
 	val navController = rememberNavController()
 
 	var userSettings by remember { mutableStateOf(UserSettings()) }

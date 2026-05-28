@@ -6,14 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.viewModelScope
 import com.ulrezaj.renovum_1.data.model.AppliedWork
 import com.ulrezaj.renovum_1.data.model.RoomEntity
 import com.ulrezaj.renovum_1.data.model.WorkCategory
 import com.ulrezaj.renovum_1.data.model.WorkSection
 import com.ulrezaj.renovum_1.data.model.WorkService
 import com.ulrezaj.renovum_1.data.model.WorkUnit
+import com.ulrezaj.renovum_1.data.repositories.RoomRepository
 import com.ulrezaj.renovum_1.data.repositories.WorkDataRepository
 import com.ulrezaj.renovum_1.utility.L
+import kotlinx.coroutines.launch
 
 data class CalculatedData(
 	val floorArea: Double,
@@ -22,7 +25,7 @@ data class CalculatedData(
 	val extra: Map<String, Double>
 )
 
-class RoomViewModel : ViewModel() {
+class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
 	private val _rooms = mutableStateListOf<RoomEntity>()
 	val rooms: List<RoomEntity> get() = _rooms
 
@@ -31,14 +34,31 @@ class RoomViewModel : ViewModel() {
 
 	private val _selectedRoom = mutableStateOf<RoomEntity?>(null)
 	val selectedRoom: RoomEntity? get() = _selectedRoom.value
-	var lastSelectedCategory by mutableStateOf<WorkCategory?>(null)
 
+	var lastSelectedCategory by mutableStateOf<WorkCategory?>(null)
 	var projectDiscountPercent by mutableDoubleStateOf(0.0)
 		private set
-
 	var showDiscountDialog by mutableStateOf(false)
-
 	var workToEdit by mutableStateOf<AppliedWork?>(null)
+
+	init {
+		viewModelScope.launch {
+			roomRepository.allRooms.collect { dbRooms ->
+				_rooms.clear()
+				_rooms.addAll(dbRooms)
+				L.d("ViewModel: Synced rooms from DB. Total: ${_rooms.size}")
+
+				if (_selectedRoom.value == null || dbRooms.none { it.id == _selectedRoom.value?.id }) {
+					_selectedRoom.value = dbRooms.firstOrNull()
+				} else {
+					val updated = dbRooms.find { it.id == _selectedRoom.value?.id }
+					if (updated != _selectedRoom.value) {
+						_selectedRoom.value = updated
+					}
+				}
+			}
+		}
+	}
 
 	fun updateDiscount(newPercent: Double) {
 		projectDiscountPercent = newPercent.coerceIn(0.0, 100.0)
@@ -66,20 +86,17 @@ class RoomViewModel : ViewModel() {
 	}
 
 	fun addRoom(room: RoomEntity) {
-		_rooms.add(room)
-		if (_selectedRoom.value == null) _selectedRoom.value = room
-		L.d("ViewModel: Room added: ${room.name}. Total: ${_rooms.size}")
+		viewModelScope.launch {
+			roomRepository.insert(room)
+			L.d("ViewModel: Triggered DB insert for room: ${room.name}")
+		}
 	}
 	fun deleteRoom(room: RoomEntity) {
-		val removed = _rooms.remove(room)
-		if (removed) {
+		viewModelScope.launch {
 			_appliedWorks.removeAll { it.roomId == room.id }
 
-			L.d("ViewModel: Room ${room.name} and its works deleted. Remaining rooms: ${_rooms.size}")
-
-			if (_selectedRoom.value?.id == room.id) {
-				_selectedRoom.value = _rooms.firstOrNull()
-			}
+			roomRepository.delete(room)
+			L.d("ViewModel: Triggered DB delete for room: ${room.name}")
 		}
 	}
 

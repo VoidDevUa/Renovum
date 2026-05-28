@@ -176,7 +176,6 @@ fun EditRoomScreen(
 						L.d("EditRoom: Updating room ID ${room.id}. Old name: ${room.name}, New name: ${updatedRoom.name}")
 						L.d("EditRoom: New Params: $paramValues, Openings count: ${openings.size}")
 
-						roomViewModel.deleteRoom(room)
 						roomViewModel.addRoom(updatedRoom)
 						roomViewModel.selectRoom(updatedRoom)
 
