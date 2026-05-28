@@ -165,7 +165,20 @@ fun EditRoomScreen(
 			Button(
 				onClick = {
 					L.click("EditRoom: Update clicked")
-					if (roomName.value.isNotBlank()) {
+
+					val currentHeight = paramValues["Висота"]?.toDoubleOrNull() ?: 0.0
+
+					val hasInvalidOpenings = openings.any { (it.height.toDoubleOrNull() ?: 0.0) > currentHeight }
+
+					if (roomName.value.isBlank()) {
+						L.e("EditRoom: Update failed - Room name is blank")
+						Toast.makeText(context, "Введіть назву кімнати", Toast.LENGTH_SHORT).show()
+					}
+					else if (hasInvalidOpenings) {
+						L.e("EditRoom: Update failed - Opening height exceeds room height")
+						Toast.makeText(context, "Висота прорізу(-ів) більша за висоту кімнати!", Toast.LENGTH_LONG).show()
+					}
+					else {
 						val updatedParams = RoomParams.fromMap(room.shapeType, paramValues)
 						val updatedRoom = room.copy(
 							name = roomName.value,
@@ -174,16 +187,11 @@ fun EditRoomScreen(
 						)
 
 						L.d("EditRoom: Updating room ID ${room.id}. Old name: ${room.name}, New name: ${updatedRoom.name}")
-						L.d("EditRoom: New Params: $paramValues, Openings count: ${openings.size}")
-
 						roomViewModel.addRoom(updatedRoom)
 						roomViewModel.selectRoom(updatedRoom)
 
 						L.d("EditRoom: Room updated successfully")
 						onSave()
-					} else {
-						L.e("EditRoom: Update failed - Room name is blank")
-						Toast.makeText(context, "Введіть назву кімнати", Toast.LENGTH_SHORT).show()
 					}
 				},
 				modifier = Modifier.weight(1f)
@@ -194,7 +202,10 @@ fun EditRoomScreen(
 	}
 
 	if (showOpeningDialog.value) {
+		val currentCeilingHeight = paramValues["Висота"]?.toDoubleOrNull() ?: 3.0
+
 		AddOpeningDialog(
+			maxHeight = currentCeilingHeight,
 			onDismiss = { showOpeningDialog.value = false },
 			onConfirm = { newOpening ->
 				L.d("EditRoom: Opening added: ${newOpening.type} (${newOpening.width}x${newOpening.height})")

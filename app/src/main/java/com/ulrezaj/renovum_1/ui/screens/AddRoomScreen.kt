@@ -198,12 +198,22 @@ fun AddRoomScreen(
 			Button(
 				onClick = {
 					L.click("AddRoom: Save clicked")
-					if (roomName.value.isNotBlank()) {
+
+					val currentHeight = paramValues["Висота"]?.toDoubleOrNull() ?: 0.0
+					val hasInvalidOpenings = openings.any { (it.height.toDoubleOrNull() ?: 0.0) > currentHeight }
+
+					if (roomName.value.isBlank()) {
+						L.e("AddRoom: Save failed - Room name is blank")
+						Toast.makeText(context, "Введіть назву кімнати", Toast.LENGTH_SHORT).show()
+					}
+					else if (hasInvalidOpenings) {
+						L.e("AddRoom: Save failed - Opening height exceeds room height")
+						Toast.makeText(context, "Висота прорізу(-ів) більша за висоту кімнати!", Toast.LENGTH_SHORT).show()
+					}
+					else {
 						val roomParams = RoomParams.fromMap(selectedShape.value, paramValues)
 
 						L.d("AddRoom: Creating room ${roomName.value} with shape ${selectedShape.value}")
-						L.d("AddRoom: Params: $paramValues, Openings count: ${openings.size}")
-
 						val newRoom = RoomEntity(
 							name = roomName.value,
 							shapeType = selectedShape.value,
@@ -213,10 +223,6 @@ fun AddRoomScreen(
 
 						roomViewModel.addRoom(newRoom)
 						onSave()
-					}
-					else {
-						L.e("AddRoom: Save failed - Room name is blank")
-						Toast.makeText(context, "Введіть назву кімнати", Toast.LENGTH_SHORT).show()
 					}
 				},
 				modifier = Modifier.weight(1f)
@@ -240,7 +246,9 @@ fun AddRoomScreen(
 	}
 
 	if (showOpeningDialog.value) {
+		val currentCeilingHeight = paramValues["Висота"]?.toDoubleOrNull() ?: 3.0
 		AddOpeningDialog(
+			maxHeight = currentCeilingHeight,
 			onDismiss = { showOpeningDialog.value = false },
 			onConfirm = { newOpening ->
 				L.d("AddRoom: Opening added: ${newOpening.type} (${newOpening.width}x${newOpening.height})")

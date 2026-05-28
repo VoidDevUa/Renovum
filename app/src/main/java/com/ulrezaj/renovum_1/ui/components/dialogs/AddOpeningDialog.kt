@@ -1,11 +1,13 @@
 package com.ulrezaj.renovum_1.ui.components.dialogs
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
@@ -24,14 +26,23 @@ import com.ulrezaj.renovum_1.data.model.OpeningEntity
 import com.ulrezaj.renovum_1.data.model.OpeningType
 import com.ulrezaj.renovum_1.utility.L
 
+@SuppressLint("DefaultLocale")
 @Composable
 fun AddOpeningDialog(
+	maxHeight: Double,
 	onDismiss: () -> Unit,
 	onConfirm: (OpeningEntity) -> Unit
 ) {
 	var type by remember { mutableStateOf(OpeningType.WINDOW) }
 	var width by remember { mutableStateOf("") }
 	var height by remember { mutableStateOf("") }
+
+	val numericWidth = width.toDoubleOrNull() ?: 0.0
+	val numericHeight = height.toDoubleOrNull() ?: 0.0
+
+	val isHeightError = numericHeight > maxHeight
+	val isInputValid = width.isNotBlank() && height.isNotBlank() &&
+			numericWidth > 0.0 && numericHeight > 0.0 && !isHeightError
 
 	AlertDialog(
 		onDismissRequest = {
@@ -61,7 +72,8 @@ fun AddOpeningDialog(
 					onValueChange = { if (it.all { c -> c.isDigit() || c == '.' }) width = it },
 					label = { Text("Ширина (м)") },
 					keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-					singleLine = true
+					singleLine = true,
+					modifier = Modifier.fillMaxWidth()
 				)
 
 				OutlinedTextField(
@@ -69,13 +81,23 @@ fun AddOpeningDialog(
 					onValueChange = { if (it.all { c -> c.isDigit() || c == '.' }) height = it },
 					label = { Text("Висота (м)") },
 					keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-					singleLine = true
+					singleLine = true,
+					isError = isHeightError,
+					supportingText = {
+						if (isHeightError) {
+							Text(
+								text = "Висота прорізу не може перевищувати висоту стелі (${String.format("%.2f", maxHeight)} м)",
+								color = MaterialTheme.colorScheme.error
+							)
+						}
+					},
+					modifier = Modifier.fillMaxWidth()
 				)
 			}
 		},
 		confirmButton = {
 			Button(
-				enabled = width.isNotBlank() && height.isNotBlank(),
+				enabled = isInputValid, // Кнопка активна тільки якщо все ок
 				onClick = {
 					L.click("OpeningDialog: Confirming $type ${width}x${height}")
 					onConfirm(OpeningEntity(type.displayName, width, height, type))
