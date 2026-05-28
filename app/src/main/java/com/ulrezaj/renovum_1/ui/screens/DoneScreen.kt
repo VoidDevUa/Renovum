@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.data.repositories.WorkDataRepository
 import com.ulrezaj.renovum_1.ui.components.dialogs.DiscountDialog
-import com.ulrezaj.renovum_1.ui.components.dialogs.EditWorkDialog
+import com.ulrezaj.renovum_1.ui.components.dialogs.WorkDialog
 import com.ulrezaj.renovum_1.ui.components.list_Items.DoneRoomCard
 import com.ulrezaj.renovum_1.ui.components.list_Items.DoneWorkCard
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
@@ -41,13 +41,16 @@ fun DoneScreen(roomViewModel: RoomViewModel) {
 
 	roomViewModel.workToEdit?.let { applied ->
 		val service = WorkDataRepository.allWorks.find { it.id == applied.workId }
+		val roomOfWork = roomViewModel.rooms.find { it.id == applied.roomId }
 
-		if (service != null) {
-			EditWorkDialog(
-				appliedWork = applied,
-				service = service,
+		if (service != null && roomOfWork != null) {
+			WorkDialog(
+				workService = service,
+				room = roomOfWork,
+				roomViewModel = roomViewModel,
+				appliedWork = applied, // Передаємо об'єкт -> режим РЕДАГУВАННЯ
 				onDismiss = { roomViewModel.workToEdit = null },
-				onConfirm = { newPrice, newQty ->
+				onSave = { newPrice, newQty ->
 					roomViewModel.updateAppliedWork(applied, newPrice, newQty)
 					roomViewModel.workToEdit = null
 				},

@@ -47,7 +47,7 @@ fun RoomSchemaPainter(
 	}
 
 	Box(
-		modifier = modifier.fillMaxWidth().height(260.dp).padding(24.dp),
+		modifier = modifier.fillMaxWidth().height(260.dp).padding(18.dp),
 		contentAlignment = Alignment.Center
 	) {
 		Canvas(modifier = Modifier.fillMaxSize()) {

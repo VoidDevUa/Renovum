@@ -42,7 +42,7 @@ import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.model.WorkService
 import com.ulrezaj.renovum_1.data.repositories.WorkDataRepository
-import com.ulrezaj.renovum_1.ui.components.dialogs.AddWorkDialog
+import com.ulrezaj.renovum_1.ui.components.dialogs.WorkDialog
 import com.ulrezaj.renovum_1.ui.components.list_Items.WorkCard
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
 
@@ -81,21 +81,21 @@ fun WorksScreen(
 	var workToProcess by remember { mutableStateOf<WorkService?>(null) }
 
 	val textFieldColors = OutlinedTextFieldDefaults.colors(
-		focusedBorderColor = MaterialTheme.colorScheme.primary, // DarkText/LightText
+		focusedBorderColor = MaterialTheme.colorScheme.primary,
 		unfocusedBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f),
 		focusedLabelColor = MaterialTheme.colorScheme.primary,
 		unfocusedLabelColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
 	)
 
-	if (showAddDialog && workToProcess != null) {
-		AddWorkDialog(
-			work = workToProcess!!,
-			roomName = selectedRoom?.name ?: "",
+	if (showAddDialog && workToProcess != null && selectedRoom != null) {
+		WorkDialog(
+			workService = workToProcess!!,
+			room = selectedRoom,
+			roomViewModel = roomViewModel,
+			appliedWork = null,
 			onDismiss = { showAddDialog = false },
 			onSave = { price, vol ->
-				selectedRoom?.let { room ->
-					roomViewModel.saveDoneWork(room, workToProcess!!, price, vol)
-				}
+				roomViewModel.saveDoneWork(selectedRoom, workToProcess!!, price, vol)
 				showAddDialog = false
 			}
 		)

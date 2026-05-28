@@ -21,6 +21,8 @@ import kotlinx.coroutines.launch
 data class CalculatedData(
 	val floorArea: Double,
 	val wallArea: Double,
+	val cleanWallArea: Double,
+	val allOpeningsArea: Double,
 	val perimeter: Double,
 	val extra: Map<String, Double>
 )
@@ -106,9 +108,10 @@ class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
 		val perimeter = p.getPerimeter()
 
 		val openingsArea = room.openings.sumOf { it.width.toDouble() * it.height.toDouble() }
-		val wallArea = (perimeter * p.roomHeight) - openingsArea
+		val wallArea = (perimeter * p.roomHeight)
+		val cleanWallArea = wallArea - openingsArea
 
-		return CalculatedData(floorArea, wallArea, perimeter, p.getExtraResults())
+		return CalculatedData(floorArea, wallArea, cleanWallArea, openingsArea, perimeter, p.getExtraResults())
 	}
 
 	fun saveDoneWork(

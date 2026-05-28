@@ -17,7 +17,7 @@ import com.ulrezaj.renovum_1.data.model.RoomEntity
 import com.ulrezaj.renovum_1.data.model.RoomShapeType
 import com.ulrezaj.renovum_1.ui.screens.AboutScreen
 import com.ulrezaj.renovum_1.ui.screens.AddRoomScreen
-import com.ulrezaj.renovum_1.ui.screens.CalcScreen
+import com.ulrezaj.renovum_1.ui.screens.calc_screen.CalcScreen
 import com.ulrezaj.renovum_1.ui.screens.CeilingScreen
 import com.ulrezaj.renovum_1.ui.screens.DoneScreen
 import com.ulrezaj.renovum_1.ui.screens.EditRoomScreen
