@@ -1,7 +1,6 @@
 package com.ulrezaj.renovum_1.ui.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SegmentedButton
@@ -10,7 +9,6 @@ import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.ui.theme.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -20,9 +18,9 @@ fun ThemeSelector(
 	onThemeSelected: (AppTheme) -> Unit
 ) {
 	val options = listOf(
-		AppTheme.Light to "Світла",
-		AppTheme.Dark to "Темна",
-		AppTheme.System to "Системна"
+		AppTheme.LIGHT to "Світла",
+		AppTheme.DARK to "Темна",
+		AppTheme.SYSTEM to "Системна"
 	)
 
 	SingleChoiceSegmentedButtonRow(

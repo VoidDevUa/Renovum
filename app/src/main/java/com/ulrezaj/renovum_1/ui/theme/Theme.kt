@@ -49,16 +49,16 @@ private val DarkColorScheme = darkColorScheme(
 
 @Composable
 fun Renovum_1Theme(
-	appTheme: AppTheme = AppTheme.System,
+	appTheme: AppTheme = AppTheme.SYSTEM,
 	content: @Composable () -> Unit
 ) {
-	val darkTheme = when (appTheme) {
-		AppTheme.Light -> false
-		AppTheme.Dark -> true
-		AppTheme.System -> isSystemInDarkTheme()
+	val DARKTheme = when (appTheme) {
+		AppTheme.LIGHT -> false
+		AppTheme.DARK -> true
+		AppTheme.SYSTEM -> isSystemInDarkTheme()
 	}
 
-	val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
+	val colorScheme = if (DARKTheme) DarkColorScheme else LightColorScheme
 
 	val view = LocalView.current
 	if (!view.isInEditMode) {
@@ -67,7 +67,7 @@ fun Renovum_1Theme(
 			window.statusBarColor = colorScheme.background.toArgb()
 
 			val controller = WindowCompat.getInsetsController(window, view)
-			controller.isAppearanceLightStatusBars = !darkTheme
+			controller.isAppearanceLightStatusBars = !DARKTheme
 		}
 	}
 

@@ -1,10 +1,13 @@
 package com.ulrezaj.renovum_1.ui
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -12,7 +15,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.ulrezaj.renovum_1.data.UserSettings
+import com.ulrezaj.renovum_1.data.UserSettingsManager
 import com.ulrezaj.renovum_1.data.local.AppDatabase
 import com.ulrezaj.renovum_1.data.repositories.RoomRepository
 import com.ulrezaj.renovum_1.data.repositories.WorkRepository
@@ -30,6 +33,16 @@ import kotlinx.coroutines.launch
 @Composable
 fun RenovumApp() {
 	val context = LocalContext.current
+
+	val settingsManager = remember { UserSettingsManager(context) }
+	val userSettingsOrNull by settingsManager.userSettingsFlow.collectAsState(initial = null)
+
+	val userSettings = userSettingsOrNull
+	if (userSettings == null) {
+		Box(modifier = Modifier.fillMaxSize())
+		return
+	}
+
 	val roomViewModel: RoomViewModel = viewModel(
 		factory = @Suppress("UNCHECKED_CAST") object : ViewModelProvider.Factory {
 			override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -45,7 +58,6 @@ fun RenovumApp() {
 
 	val navController = rememberNavController()
 
-	var userSettings by remember { mutableStateOf(UserSettings()) }
 	var isEditMode by remember { mutableStateOf(false) }
 
 	val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -164,7 +176,9 @@ fun RenovumApp() {
 							userSettings = userSettings,
 							onSettingsChange = { newSettings ->
 								L.d("Settings updated: LeftHanded=${newSettings.isLeftHanded}")
-								userSettings = newSettings
+								scope.launch {
+									settingsManager.saveSettings(newSettings)
+								}
 							},
 							isEditMode = isEditMode,
 							roomViewModel = roomViewModel,
