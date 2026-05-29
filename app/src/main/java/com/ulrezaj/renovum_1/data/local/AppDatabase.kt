@@ -5,14 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.ulrezaj.renovum_1.data.local.daos.AppliedWorkDao
 import com.ulrezaj.renovum_1.data.local.daos.RoomDao
+import com.ulrezaj.renovum_1.data.model.AppliedWork
 import com.ulrezaj.renovum_1.data.model.RoomEntity
 
-@Database(entities = [RoomEntity::class], version = 1, exportSchema = false)
+@Database(entities = [RoomEntity::class, AppliedWork::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
 	abstract fun roomDao(): RoomDao
+	abstract fun appliedWorkDao(): AppliedWorkDao
 
 	companion object {
 		@Volatile
@@ -25,7 +28,7 @@ abstract class AppDatabase : RoomDatabase() {
 					AppDatabase::class.java,
 					"renovum_database"
 				)
-					.fallbackToDestructiveMigration(true)
+					.fallbackToDestructiveMigration(false)
 					.build()
 				INSTANCE = instance
 				instance

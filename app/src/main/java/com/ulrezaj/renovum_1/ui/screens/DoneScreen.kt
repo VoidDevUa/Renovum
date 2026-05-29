@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -23,9 +25,11 @@ import com.ulrezaj.renovum_1.utility.L
 @SuppressLint("DefaultLocale")
 @Composable
 fun DoneScreen(roomViewModel: RoomViewModel) {
-	val groupedWorks = roomViewModel.getGroupedWorks()
+	val groupedWorks by roomViewModel.groupedWorksState.collectAsState()
 
 	val expandedStates = remember { mutableStateMapOf<String, Boolean>() }
+
+	val currentWorkToEdit = roomViewModel.workToEdit
 
 	if (roomViewModel.showDiscountDialog) {
 		DiscountDialog(
@@ -39,7 +43,7 @@ fun DoneScreen(roomViewModel: RoomViewModel) {
 		)
 	}
 
-	roomViewModel.workToEdit?.let { applied ->
+	currentWorkToEdit?.let { applied ->
 		val service = WorkDataRepository.allWorks.find { it.id == applied.workId }
 		val roomOfWork = roomViewModel.rooms.find { it.id == applied.roomId }
 
@@ -48,7 +52,7 @@ fun DoneScreen(roomViewModel: RoomViewModel) {
 				workService = service,
 				room = roomOfWork,
 				roomViewModel = roomViewModel,
-				appliedWork = applied, // Передаємо об'єкт -> режим РЕДАГУВАННЯ
+				appliedWork = applied,
 				onDismiss = { roomViewModel.workToEdit = null },
 				onSave = { newPrice, newQty ->
 					roomViewModel.updateAppliedWork(applied, newPrice, newQty)

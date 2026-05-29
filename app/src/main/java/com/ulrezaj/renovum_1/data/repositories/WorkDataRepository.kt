@@ -14,10 +14,11 @@ object WorkDataRepository {
 		return WorkCategory.entries.filter { it.section == section }
 	}
 
-	val allWorks = listOf   (
+	val allWorks = listOf(
 		//region ОЗДОБЛЮВАЛЬНІ РОБОТИ
 		//region Плиточні роботи
 		WorkService(
+			id = "03f597cf-9ab7-4ff6-b27f-2ba6561ba318",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Укладання плитки на підлогу",
@@ -28,6 +29,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "e2ff675b-776e-4f80-ac4d-fd4821c6a026",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Укладання плитки на стіни",
@@ -38,6 +40,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "249f6cd1-6606-483d-bfdb-77eb7d15a650",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Грунтовка стяжки під плитку",
@@ -48,6 +51,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "417c1c4d-137b-4c75-8b13-1b108e9bb0f7",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Різання плитки, шліфування кромок",
@@ -58,6 +62,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "358eb4cc-4b04-4f88-ba80-1cbe2306fa78",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Установка куточків при укладанні плитки",
@@ -68,6 +73,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "71b33f02-2fcc-48ba-8314-7bea508ed7c2",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Затирка швів плитки (стандартна)",
@@ -78,6 +84,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "1cab41bf-66c3-4c7a-8436-fb2bf4635981",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Отвір в плитці під розетку або трубу",
@@ -88,6 +95,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "849df5d9-7fab-44b3-8059-b9fc01930b70",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Розпилювання та шліфування країв плитки под 45 градусів",
@@ -98,6 +106,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "0e1bacea-36f5-4362-b065-0595d28a5ca0",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Укладання плитки кабанчик",
@@ -108,6 +117,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "a45c7ac6-f940-484c-af92-51151f00856e",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Декоративна гіпсова плитка",
@@ -118,6 +128,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "95b321ba-cbc9-472b-b37d-d1353227a158",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Поклейка гіпсової цеглинки на стіни",
@@ -128,6 +139,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "18dfb5fa-1fba-4c2a-ac81-352b70d323f4",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Монтаж керамічних плінтусів",
@@ -138,6 +150,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "ee5375ec-f214-4181-a24b-98b1b7f4e0d2",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Виготовлення та монтаж ревізійного люка з плитки на магнітах",
@@ -148,6 +161,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "6833d19b-0971-4ca6-a947-c5462b444b2e",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Монтаж плиткового декоративного куточка",
@@ -158,6 +172,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "765d2778-4978-469a-b70d-e70a4a17d32c",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Установка керамічного фриза до 100 мм",
@@ -168,6 +183,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "12b6c6b9-088a-4507-a823-c9f463f7b752",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Облицювання стін мозаїкою",
@@ -178,6 +194,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "b84fbb06-558a-4de2-8a06-4dec7fb27c96",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Облицювання укосів мозаїчною плиткою",
@@ -188,6 +205,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "f3bade34-edb0-4fc0-bfa0-9b3ecd72c504",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Монтаж декоративного панно з керамічної плитки",
@@ -198,6 +216,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "7a4e1da6-d66d-4f9b-8826-7ace5bf2c68b",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Укладання фриза з плитки (до 20 см)",
@@ -208,6 +227,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "ec1e3076-b52f-4b8f-a64f-575eff610baa",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Облицювання плиткою укосу, підвіконня",
@@ -218,6 +238,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "937718e3-5f2c-4799-a8be-4589f945f539",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Безшовна укладання плитки",
@@ -228,6 +249,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "eda79a39-06fb-43a1-8718-8a3d0f6bf1b8",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Укладання клінкерної плитки",
@@ -238,6 +260,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "31fc5b97-6d7e-4fd6-8d57-65b868bbe148",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Укладання декоративного каменю",
@@ -248,6 +271,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "b1113410-8d3e-40c1-9f1c-b494ce3ed9df",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Укладання плитки на ступені - радіусні",
@@ -258,6 +282,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "7b58ff40-a5b8-45ad-a1eb-7bd6a1b94195",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Укладання плитки на ступені - прямі",
@@ -268,6 +293,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e68f7ef9-27a9-420b-9838-87cc3ab23e30",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Укладання підрізаної з торців (ректифікованої) плитки",
@@ -278,6 +304,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "8358f964-528c-40a3-8fc1-d25a16cd4da9",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Монтаж капіносів ступенів",
@@ -288,6 +315,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a5ac2998-e1a1-4450-b928-9c0c4a3dd6c1",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Укладання мармуру або граніту",
@@ -298,6 +326,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "04d508d4-5677-41e9-b586-9a49eaa88621",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Укладання керамограніта товщиною від 15 мм",
@@ -308,6 +337,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "b150aa02-fa6f-4966-be3b-566f2dbcc463",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Укладання керамічного паркету до 1200 мм",
@@ -318,6 +348,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "c6def3a1-eb1e-4a69-8b8e-aa8907228689",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Затирка швів плитки (напівсуха)",
@@ -328,6 +359,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "ec0dec16-1a18-4dfe-92b2-54bcf1160d7b",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Затирка швів плитки (Двокомпонентна епоксидна)",
@@ -338,6 +370,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "a5a897b7-d4ec-4659-8f23-6dc2943778c9",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Затирка швів плитки (герметична)",
@@ -348,6 +381,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "dc2c8cd2-f538-4354-a42d-9c81a17b0050",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.TILING,
 			name = "Облицювання плиткою короба",
@@ -360,6 +394,7 @@ object WorkDataRepository {
 		//endregion
 		//region Малярні роботи
 		WorkService(
+			id = "04ce804a-08da-435c-b3e7-d328491f223d",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Фарбування стін водоемульсійною фарбою",
@@ -370,6 +405,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "b2eb252a-7ce5-49e5-ab74-0ccc0fa37eac",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Фарбування стелі водоемульсійною фарбою",
@@ -380,6 +416,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "aff37a8e-65a6-4f31-9600-aabf2d7c7b89",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Фарбування стелі фарбопультом (пульвер)",
@@ -390,6 +427,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "4a73a56f-253f-431e-803a-b38b15bedda9",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Фарбування стін фарбопультом (пульвер)",
@@ -400,6 +438,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "f404d516-8980-4bb9-8583-1eeb6cc9604b",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Грунтовка під стяжку",
@@ -410,6 +449,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "cd3d22ca-5e90-460b-abfc-b25c4323e4e8",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Грунтовка стяжки під плитку",
@@ -420,6 +460,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "96c3ba99-5adb-4b90-afc4-8a282b9dd496",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Грунтовка стін, стелі (1 шар)",
@@ -430,6 +471,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "18b2d49a-eb33-45ef-90c9-82d33a404a90",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Установка малярської сітки на стіни або стелю",
@@ -440,6 +482,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "73f77fa1-6621-483e-bdd2-089f3641e9c2",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Підготовка г. к. стелі під фарбування або поклейку шпалер",
@@ -450,6 +493,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "556c8cd2-6185-42b3-bea8-2330f32a6d6b",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Підготовка г. к. стіни під фарбування або шпалери",
@@ -460,6 +504,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "422038fd-ad42-4123-bb53-c1882da5a380",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Підготовка бетонної стелі под фарбування або шпалери",
@@ -470,6 +515,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "fc5f0468-0b67-46ad-bf81-694a4adcf633",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Підготовка бетонної стіни під фарбування або шпалери",
@@ -480,6 +526,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "ef8dec21-487a-484c-bcfd-faaf2edfbdfe",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Підготовка укосів під фарбування",
@@ -490,6 +537,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "1f8399ca-81f3-470f-a4f1-b049c0c86152",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Посилення зовнішніх кутів перфорованим куточком",
@@ -500,6 +548,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "08894a5b-849c-418d-8c04-92d8e89eea68",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Оздоблення міжрівневих торців стелі",
@@ -510,6 +559,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "0f9f9ddc-5f47-4cd9-8ec8-351ea356c6f1",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Оздоблення ніш прихованого світла",
@@ -520,6 +570,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "89057f8b-af7b-4cda-8900-2fe79a0d4d20",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Оздоблення укосів",
@@ -530,6 +581,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "197abe56-67aa-4b3b-a0e2-c71071660705",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Грунтовка і фарбування водопровідних труб",
@@ -540,6 +592,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "6db28ea7-cda4-480f-8f10-9a33d388a5b6",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Монтаж пінопластового стельового багета c фарбуванням",
@@ -550,6 +603,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "c1d7a995-fcfd-4285-8557-8b3045785e7e",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Фарбування вікна",
@@ -560,6 +614,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8d689951-0a8a-43cf-a15e-59fcccd11f06",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Наклейка скловолокна",
@@ -570,6 +625,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "4a5d7a99-1667-48d3-907a-8764e3036936",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Безповітряне фарбування",
@@ -580,6 +636,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "bc4b3107-c91d-4be2-995c-fe212722b9c2",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Армування стрічкою стику на стіні або стелі",
@@ -590,6 +647,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "58598157-8423-4198-b52d-4e0cd5b16c61",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Закладення швів гіпсокартонних конструкцій",
@@ -600,6 +658,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "0f5e33cb-32a4-4c4d-94d3-3c80383634eb",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Монтаж настінних декорів, карнизів, молдингів з поліуретану",
@@ -610,6 +669,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "731e3c69-398c-4320-8262-76a654ec7018",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Шпаклівка, фарбування багета (поліуретан)",
@@ -620,6 +680,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "d6ffe57b-a9e4-4758-9187-8cc3c8048ee8",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Фарбування дерев’яних поверхонь",
@@ -630,6 +691,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "aa1c4295-11c9-428a-b045-7f5166afd979",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Герметизація акрилом примикання плитки до стелі",
@@ -640,6 +702,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "6580a86c-ca45-4185-95d0-1ef47c24ef41",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Монтаж на стелю поліуретан-багета c фарбуванням і шпаклівкою",
@@ -650,6 +713,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "39e21088-c668-4637-8e08-e9c1be7ebc93",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Монтаж на стелю поліуретан-молдингу c фарбуванням і шпаклівкою",
@@ -660,6 +724,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "789b37cf-67cb-4de3-9862-be90631778ab",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PAINTING,
 			name = "Фарбування відкосів",
@@ -672,6 +737,7 @@ object WorkDataRepository {
 		//endregion
 		//region Штукатурні роботи
 		WorkService(
+			id = "6c0db437-b209-4810-ac10-ca598f41c10a",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Стартова штукатурка (стіна по маяках або стеля під правило)",
@@ -682,6 +748,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "aa6927d7-cc31-487b-9b4d-ab280f4cb0b0",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Ручна Маякова штукатурка (до 2 см)",
@@ -692,6 +759,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "f550a6aa-1154-4f43-9560-99eabc14878d",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Ручна Маякова штукатурка (більше 2 см)",
@@ -702,6 +770,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "2f702157-1bbd-43a8-b776-8b28c604345d",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Ручна штукатурка укосів",
@@ -712,6 +781,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "c3ba7990-e82a-4cdc-9ab7-218b1f0189f7",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Ручна штукатурка кривих поверхонь",
@@ -722,6 +792,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "8067898e-80ac-4d95-b3db-c66841eda747",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Ручна штукатурка ніш під радіатори",
@@ -732,6 +803,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8a6b1096-6554-42a7-90dd-fe0a6bebfe0d",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Машинна штукатурка стін",
@@ -742,6 +814,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "09bc9a2b-4c4b-45cd-a70c-380fcf95efdf",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Машинна штукатурка стель",
@@ -752,6 +825,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "d91e9949-4f66-4e31-9075-a5de7c29120e",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Грунтовка стін, стелі (1 шар) під штукатурку",
@@ -762,6 +836,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "04bd5b97-8f41-4d5f-a557-bc18dde05f69",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Набивання (монтаж) штукатурної сітки",
@@ -772,6 +847,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "001c7dae-e56a-45e4-a826-f3708c726b4d",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Машинна штукатурка укосів",
@@ -782,6 +858,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "307d7091-e001-4828-a14c-e0169a411a21",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Машинне нанесення фінішної шпаклівки",
@@ -792,6 +869,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "286ed0a4-146c-4c34-ab07-342f65a7c5c2",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Монтаж маяків з розміткою площин на стелі",
@@ -802,6 +880,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "74201069-fd98-4aee-ae3c-0bb2b3b13aeb",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.PLASTERING,
 			name = "Грунтовка бетоноконтактом",
@@ -814,6 +893,7 @@ object WorkDataRepository {
 		//endregion
 		//region Монтаж гіпсокартону
 		WorkService(
+			id = "b69c8904-0b2e-4a86-9a28-d573d02dcd53",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Монтаж гіпсокартону на стіну",
@@ -824,6 +904,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "eefd8701-6db9-4cba-a1e7-673263d59119",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Монтаж гіпсокартону на стелю",
@@ -834,6 +915,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "07047144-e097-40b2-b9a2-e048bc017895",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Монтаж перегородок з гіпсокартону (2 сторони)",
@@ -844,6 +926,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "4ed01fbd-6868-42bf-9567-08df844c60bb",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Монтаж напівкруглої конструкцій (стіни) з гіпсокартону",
@@ -854,6 +937,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "c3b1877f-e1e0-4049-b030-daf847c4658b",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Монтаж напівкруглої構造 (перегородки) з гісокартона",
@@ -864,6 +948,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e3e1439e-7fcc-4b18-a169-491727533ab7",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Облаштування декор. елементів з гіпсокартону (Ніш, арок та ін.)",
@@ -874,6 +959,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "7c05ed29-b3af-402c-9044-12f45bf73985",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Монтаж укосів з гіпсокартону",
@@ -884,6 +970,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "719b10e3-40d0-4577-b31b-2bc8d3eb9388",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Облаштування г / к стелі багаторівневого, прямого",
@@ -894,6 +981,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "7a6d6b41-fd66-4525-ab9e-335703bc9a03",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Облаштування г / к стелі багаторівневого, півколо",
@@ -904,6 +992,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "6ce55b3b-e25d-4a55-85b9-160befc1b4ed",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Облаштування гіпсокартонного короба по периметру",
@@ -914,6 +1003,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "1437a308-deb6-4349-aa92-6fba06cd0ce9",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Облаштування гіпсокартонного короба по периметру (півколо)",
@@ -924,6 +1014,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "c872e9f2-495e-44b4-a21d-99a624d4d090",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Облаштування ніші в стелі з гіпсокартону з підсвічуванням",
@@ -934,6 +1025,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "7d00f152-4ae6-44ba-8cab-acc48edca3b0",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Обшивка труб гіпсокартоном",
@@ -944,6 +1036,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "db99892a-9059-4bbb-a871-7b2ab137eb4c",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Утеплення гіпсокартону мінватою в один шар",
@@ -954,6 +1047,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "9838005c-5bbb-4787-93b6-44ee2f5ab318",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Утеплення гіпсокартону стіродуром",
@@ -964,6 +1058,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "80157c05-2d3c-4a36-a17f-1f68795cb0da",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Оздоблення г / к інсталяції в с / в",
@@ -974,6 +1069,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d75ea204-ffa3-4e68-a9a2-3c1c832d2ccb",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Монтаж звукоізоляційної стрічки на профіль",
@@ -984,6 +1080,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "0433e77b-44d4-4c97-9937-43c170b0d89e",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.DRYWALL,
 			name = "Звукоізоляція стіни або стелі Tecsound s70",
@@ -996,6 +1093,7 @@ object WorkDataRepository {
 //endregion
 		//region Поклейка шпалер
 		WorkService(
+			id = "94b76662-6b2c-4610-8eed-449ec228523d",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Поклейка паперових шпалер на стіну",
@@ -1006,6 +1104,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "d6c6c0db-3754-4914-9e5d-73a119e6b826",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Поклейка паперових шпалер на стелю",
@@ -1016,6 +1115,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "c58b987d-795c-41b0-ab21-92f1f53cbe81",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Поклейка шпалер на вініловій або флізеліновій основі на стіну",
@@ -1026,6 +1126,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "cba11a1e-5bfb-487e-b857-5fff3513476f",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Поклейка шпалер на вініловій або флізеліновій основі на стелю",
@@ -1036,6 +1137,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "68d27aa7-efef-49b0-9363-3ca0b73fceea",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Поклейка шпалер на тканинній основі або на шовкотрафаретній",
@@ -1046,6 +1148,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "943aa150-27f3-4776-b201-03f9b931aebb",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Поклейка бамбукових шпалер на стіни",
@@ -1056,6 +1159,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "e38a1299-b86f-483e-8935-4db8b09e3cbd",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Поклейка бамбукових шпалер на стелю",
@@ -1066,6 +1170,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "b7e309b6-7381-4963-ad5b-df4557f9e409",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Поклейка скло шпалер на стіни",
@@ -1076,6 +1181,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "4f37de7b-c061-46ad-8bce-b0a396b9b140",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Поклейка скло шпалер на стелю",
@@ -1086,6 +1192,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "2dba0cb0-902b-4c22-8e84-4c2089aba43f",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Поклейка пробкових шпалер на стіни",
@@ -1096,6 +1203,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "da26e34e-b8e1-4c2f-8caf-0b99b13f52f6",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Поклейка пробкових шпалер на стелю",
@@ -1106,6 +1214,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "072c7139-7eae-4bd7-9037-437857dce1f9",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Поклейка фото шпалер на стіни",
@@ -1116,6 +1225,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "49cd1007-acfb-4ebd-9383-0d41a72c899a",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALLPAPER,
 			name = "Нанесення рідких шпалер",
@@ -1128,6 +1238,7 @@ object WorkDataRepository {
 		//endregion
 		//region Чорнові роботи по підлозі
 		WorkService(
+			id = "b449e9c4-fba7-4d9b-aaea-b640257c3d90",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Заливка підлоги самовирівнюється розчином",
@@ -1138,6 +1249,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "0140831e-0ad2-480b-bb52-ac1576e40e62",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Цементно-піщана стяжка до 5 см",
@@ -1148,6 +1260,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "15d3503d-66c1-4693-becc-77d57abb5b4b",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Цементно-піщана стяжка 5-10 см",
@@ -1158,6 +1271,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "e0829703-e8a6-4909-8e2d-185f1b588baa",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Нанесення грунтовки, 2 шари",
@@ -1168,6 +1282,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "9154d07c-0f86-4f0b-b66c-5c29bbb2293f",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Стяжка підлоги з керамзитом",
@@ -1178,6 +1293,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "5907f89a-99c4-4396-bf6e-51ffc9b73acb",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Монтаж плівкової гідроізоляції для стяжки",
@@ -1188,6 +1304,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "5ffd617c-cee7-42a5-a5dd-baa9853b03a9",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Армування стяжки підлоги",
@@ -1198,6 +1315,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "14f81715-374b-4884-b83d-a817481ecdc7",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Утеплення підлоги (стіродуром) на стяжку",
@@ -1208,6 +1326,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "e7bd32d6-2b91-4619-9a91-afebb3789f58",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Монтаж армуючої сітки для стяжки",
@@ -1218,6 +1337,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "066a2e1a-e3e0-41f0-bce1-c2ceffd01461",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Облаштування машинної стяжки самовирівнюючими сумішами",
@@ -1228,6 +1348,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "ae0b9536-cc68-4b26-a935-1bc141d98c53",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Установка маяків для стяжки на підлогу",
@@ -1238,6 +1359,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "584b1160-2368-4c79-83b2-c75ba9c6cea5",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Шліфування стяжки підлоги",
@@ -1248,6 +1370,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "6806f7c0-d7a3-483e-b903-27482b122525",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.ROUGH_FLOORS,
 			name = "Стяжка з пінополістиролбетону",
@@ -1260,6 +1383,7 @@ object WorkDataRepository {
 		//endregion
 		//region Покриття для підлоги
 		WorkService(
+			id = "e6617163-12c5-48d2-a0bd-b83ada58ba03",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Укладання ламінату",
@@ -1270,6 +1394,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "b1d1ca46-682b-4210-91a0-39470bd15b51",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Укладання лінолеуму або килимового покриття без клею",
@@ -1280,6 +1405,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "e8288238-c151-44ac-874b-dc0a1c0c07ca",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Укладання паркетної дошки на підлогу (клей)",
@@ -1290,6 +1416,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "6302aad2-9f9f-463b-a7ae-a43c04f3b9c3",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Укладання тришарової паркетної дошки на підлогу",
@@ -1300,6 +1427,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "4f99718d-2ff1-49d5-b656-a56c0b261f0e",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Установка пластикових плінтусів",
@@ -1310,6 +1438,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "208db0b5-93af-4508-9216-22717fa3fca2",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Монтаж МДФ плінтусів",
@@ -1320,6 +1449,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "2bbef936-5bf5-46ef-8925-87852f25dac5",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Монтаж дерев'яного плінтуса",
@@ -1330,6 +1460,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "d15712ac-1abf-4456-8dd7-bae5378139fe",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Укладання фанери на підлогу",
@@ -1340,6 +1471,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "f5b148f6-1632-4729-9d68-392d37bb7c87",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Влаштування підлоги з ламінованого паркету",
@@ -1350,6 +1482,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "9ed00d66-1787-4a4a-aff0-06c1a92e407a",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Монтаж перехідної планки прямий",
@@ -1360,6 +1493,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "1dd8d869-6d4f-4881-9ff1-2ea7945962d7",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Монтаж перехідної радіусної планки",
@@ -1370,6 +1504,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "9b1a686e-be4f-4089-8b8a-418225090ac4",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Установка обмежувача двері",
@@ -1380,6 +1515,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c0e88844-b9f7-4879-bbd1-c101038173c8",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Циклювання паркету + покриття лаком",
@@ -1390,6 +1526,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "fd33faaf-f6ec-4869-a522-cd56ab6dd9ae",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Монтаж дерев'яної підлоги зі шпунтом",
@@ -1400,6 +1537,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "fbf319ab-4b96-4bef-8c94-f77f41a896d6",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Брашіровка паркету",
@@ -1410,6 +1548,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "2b009d8c-d5e4-4fe4-a4cc-f30ffd523926",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Художній паркет",
@@ -1420,6 +1559,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "00f70121-91c9-4df6-bef8-6e072c655efd",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Монтаж плінтуса з поліуретану",
@@ -1430,6 +1570,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "30a584a5-fe79-4251-8e2e-fc715129b52d",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Укладання чорнової підлоги з фанери або OSB",
@@ -1440,6 +1581,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "cecaada8-66b1-4126-bc87-44bc85f1cd74",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Очищення підлоги від пилу і сміття",
@@ -1450,6 +1592,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "b3682f1e-ea33-464b-9208-0be6afa07f72",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Укладання ламінату по діагоналі",
@@ -1460,6 +1603,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "52a28640-ef17-4a26-9880-9d10923c2403",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Облаштування вінілової плитки LG Decotile",
@@ -1470,6 +1614,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "fa5f7e20-71f9-4008-a971-0d6552a9cf35",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Лакування паркету (в 3 шари), з шпаклівкою щілин",
@@ -1480,6 +1625,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "147659dc-2833-4b8e-ba50-06b426646dbf",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Облаштування комерційного лінолеуму на клей",
@@ -1490,6 +1636,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "820f74f5-220c-42ad-b0bf-1d703c500953",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Зварювання швів комерційного лінолеуму",
@@ -1500,6 +1647,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "b788901f-7f7d-4870-873e-eece890294e1",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Фарбування плінтуса",
@@ -1510,6 +1658,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "76937788-6bc1-4e4f-b463-52fd12ef203c",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Облаштування дерев'яних лаг",
@@ -1520,6 +1669,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "ca4e9a55-1d2c-4c87-8e8d-5cb476fdde60",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Монтаж підлогової дошки",
@@ -1530,6 +1680,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "afa16236-6099-4629-98aa-80543a6b8a19",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Облаштування OSB або фанери на підлогу",
@@ -1540,6 +1691,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "4f9cb1c9-d1b3-48ee-a180-1d1e7c34b888",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Фарбування дощатих підлог",
@@ -1550,6 +1702,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "128f057c-de9e-4bbb-a42e-25341366c428",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Лакування дощатої підлоги (зі шліфовкою)",
@@ -1560,6 +1713,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "db75863c-b776-4dbd-9d1b-5336fa74021c",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Укладання лінолеуму або килимового покриття на клей",
@@ -1570,6 +1724,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "bf491beb-d786-47bc-aa1e-53da369d23c6",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Шпаклівка, шліфування фанери на підлозі",
@@ -1580,6 +1735,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "ad1fc332-fc80-4e30-bc7f-a95acd1d8082",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.FLOORING,
 			name = "Монтаж плінтуса з алюмінію",
@@ -1592,6 +1748,7 @@ object WorkDataRepository {
 		//endregion
 		//region Стеля
 		WorkService(
+			id = "e5e4ebf1-68c3-45d6-98db-6ffea96445c4",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.CEILING,
 			name = "Натяжні стелі",
@@ -1602,6 +1759,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "a87d87ff-6d2a-4d91-81f1-29447f6391b4",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.CEILING,
 			name = "Підвісна стеля Армстронг",
@@ -1612,6 +1770,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "f6deca6a-15d6-4de5-931a-a6de926b4f29",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.CEILING,
 			name = "Облаштування OSB, фанери на стелю",
@@ -1622,6 +1781,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "5070b30d-5b4b-4674-b321-b888db946c36",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.CEILING,
 			name = "Облаштування обрешітки стелі дерев'яною рейкою",
@@ -1632,6 +1792,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "8b551a24-73af-4825-ae5a-be5d45fc2e70",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.CEILING,
 			name = "Облаштування куточків ПВХ стелі",
@@ -1642,6 +1803,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "a402f35f-75e3-40bc-baba-035ad6c8d6d8",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.CEILING,
 			name = "Облаштування пінопластового стельового багета на прямі поверхні (до 80мм)",
@@ -1652,6 +1814,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "89600b6b-b763-4106-9717-0ad788fd4f0d",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.CEILING,
 			name = "Облаштування поліуретанового стельового багета на прямі поверхні (до 100мм)",
@@ -1662,6 +1825,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "bd823417-9593-4e7a-81db-9b46c5c358b1",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.CEILING,
 			name = "Монтаж молдингів стелі (до 80мм)",
@@ -1672,6 +1836,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "10938059-7eaf-427a-9d3f-df251fc0b149",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.CEILING,
 			name = "Шпаклівка, фарбування багета (пінопласт)",
@@ -1682,6 +1847,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "402552f8-e6a9-42f9-b392-e2e694d623d0",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.CEILING,
 			name = "Облаштування ліпнини з гіпсу по периметру стелі",
@@ -1692,6 +1858,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "0cba0311-ce30-4488-892f-41dc5912e0ff",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.CEILING,
 			name = "Стелі Грильято",
@@ -1704,6 +1871,7 @@ object WorkDataRepository {
 		//endregion
 		//region Монтаж вагонки
 		WorkService(
+			id = "c1792328-f4b3-4847-95af-0dfb7b6bddae",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WAGONKA,
 			name = "Монтаж дерев'яної вагонки на стіну",
@@ -1714,6 +1882,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "d50b1402-25ba-43d5-b6c8-4dd6f4ed38ab",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WAGONKA,
 			name = "Монтаж дерев'яної вагонки на стелю",
@@ -1724,6 +1893,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "6b764492-30da-4eac-a3f2-7ac8ef1a83c5",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WAGONKA,
 			name = "Обшивка стін пластиковою вагонкою",
@@ -1734,6 +1904,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "8d46e6a6-4e0e-48af-9ddd-8210ca39f300",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WAGONKA,
 			name = "Обшивка стелі пластиковою вагонкою",
@@ -1744,6 +1915,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.CEILING_AREA
 		),
 		WorkService(
+			id = "7e40e826-efa3-4e13-82e2-cc348edde386",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WAGONKA,
 			name = "Монтаж блок хауса",
@@ -1754,6 +1926,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "9e98b5a8-fa2e-4825-89a0-6d739d9db031",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WAGONKA,
 			name = "Монтаж терасної дошки",
@@ -1764,6 +1937,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "0eb10229-6c44-410e-82ca-a83c455118ba",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WAGONKA,
 			name = "Монтаж фальш бруса",
@@ -1776,6 +1950,7 @@ object WorkDataRepository {
 		//endregion
 		//region Декоративне оздоблення стін
 		WorkService(
+			id = "fe1ef174-df52-4c7e-a48a-9fed1f0d65ae",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Облаштування фактурної штукатурки на гіпсовій основі",
@@ -1786,6 +1961,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "617ac80a-c5a7-45cb-909e-0f70a500c665",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Мармурова крихта",
@@ -1796,6 +1972,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "045598d1-f884-4e9c-a352-08cd1b8456f0",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Механізоване нанесення камінцевої штукатурки (баранчик)",
@@ -1806,6 +1983,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "27bb44f7-6899-4056-b078-cc4bfe626e10",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Штукатурка американка",
@@ -1816,6 +1994,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "80909706-fb2b-4eb9-9058-d2eed2bfe6bd",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Венеціанська штукатурка",
@@ -1826,6 +2005,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "b328aea1-ab63-44ab-93e6-0590366c1f77",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Штукатурка з ефектом бетону",
@@ -1836,6 +2016,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "286420b8-7e68-458d-a8d6-388a88baa27a",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Штукатурка Травертин",
@@ -1846,6 +2027,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "47b4c570-87a4-48a2-959c-89a24a5b7fd7",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Штукатурка Марморіно",
@@ -1856,6 +2038,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "f89997e9-452a-491b-b32c-1f5aeed2e406",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Штукатурка короїд",
@@ -1866,6 +2049,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "6999a40b-6359-40e1-8d62-e94fef4830e3",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Штукатурка Гротто",
@@ -1876,6 +2060,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "996a8b5a-ae4e-4325-8bdd-657bca2f8892",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Штукатурка Марсельський віск",
@@ -1886,6 +2071,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "aea682b0-1ca6-4c0e-95a4-dc27d455c78f",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Штукатурка Кракелюр",
@@ -1896,6 +2082,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "9cdfbcdc-2f0b-48a5-afd6-abe1430aab6e",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Штукатурка Креос (Сахара)",
@@ -1906,6 +2093,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "699c4557-59ab-4418-908b-bc8d909e04b6",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_DECOR,
 			name = "Штукатурка Отточенто",
@@ -1918,6 +2106,7 @@ object WorkDataRepository {
 		//endregion
 		//region Стінова панель
 		WorkService(
+			id = "bf35650a-4843-4629-a96d-dc1399e46ded",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_PANELS,
 			name = "Монтаж настінних панелей ПВХ, МДФ по каркасу",
@@ -1928,6 +2117,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.WALL_CLEAN_AREA
 		),
 		WorkService(
+			id = "e9f7fb02-344c-4c88-b397-885e7be51c26",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.WALL_PANELS,
 			name = "Монтаж МДФ куточків",
@@ -1940,6 +2130,7 @@ object WorkDataRepository {
 		//endregion
 		//region Ліпнина
 		WorkService(
+			id = "c78720c8-6e65-4b78-958c-d8c9b931b508",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STUCCO,
 			name = "Розетки з гіпсу",
@@ -1950,6 +2141,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8a018056-0a36-4a2f-a7a2-6125fdab2a6b",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STUCCO,
 			name = "Карнизи з гіпсу",
@@ -1960,6 +2152,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "ecf7b858-d2f8-4c0d-9a50-99ee99a81a00",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STUCCO,
 			name = "Плінтуса з гіпсу",
@@ -1970,6 +2163,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "cd3bb20a-4da2-4c20-9c55-d7080f6155ab",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STUCCO,
 			name = "Молдинг з гіпсу",
@@ -1980,6 +2174,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "8fd15c5d-b4f3-4aae-a23a-b4e4d6d9c033",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STUCCO,
 			name = "Колони з гіпсу",
@@ -1990,6 +2185,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "669f1616-3e4e-4286-bb6f-e4b6654242df",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STUCCO,
 			name = "Кутовий гіпсовий елемент",
@@ -2000,6 +2196,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "7f418894-6838-41f8-b89f-9e43dba83b69",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STUCCO,
 			name = "Пілястри з гіпсу",
@@ -2010,6 +2207,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "ae077676-de5d-4d49-b1f6-a44a3993e169",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STUCCO,
 			name = "Світильники точкові гіпсові",
@@ -2020,6 +2218,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "1ad750e4-aeb0-40ed-a2dd-d6384b67e3e0",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STUCCO,
 			name = "Ліпнина (монтаж за м2)",
@@ -2030,6 +2229,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "016467eb-051f-4ce4-9aad-dd07a57bee97",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STUCCO,
 			name = "Ліпнина (монтаж за м.пог.)",
@@ -2040,6 +2240,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "d638f970-50e3-4451-9e62-2d731fb504a4",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STUCCO,
 			name = "Позолота ліпнини",
@@ -2052,6 +2253,7 @@ object WorkDataRepository {
 		//endregion
 		//region Розпис стін
 		WorkService(
+			id = "1f3c01ac-6589-4231-a91a-f1a44b3823fc",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.MURALS,
 			name = "Проста розпис (трафаретний)",
@@ -2062,6 +2264,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "3c73949e-bc61-4069-bb18-3dd31d307bb3",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.MURALS,
 			name = "Нескладний розпис (графіка, логотипи)",
@@ -2072,6 +2275,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "1e96aada-46ff-4161-91cb-feb4d2c79e50",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.MURALS,
 			name = "Середній розпис (багато відтінків, небо)",
@@ -2082,6 +2286,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "a74a2bbc-f9e2-4a14-80a2-b713e8ba7057",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.MURALS,
 			name = "Складна розпис (живопис, 3D, деталізація)",
@@ -2092,6 +2297,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "d2bd1531-cba7-4864-ab3c-6c561a12f721",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.MURALS,
 			name = "Дуже складна розпис (якість картини)",
@@ -2104,6 +2310,7 @@ object WorkDataRepository {
 		//endregion
 		//region Роботи з каменем, мармуром, гранітом
 		WorkService(
+			id = "48c4e2ab-32bf-45c9-9e85-461cbc98f884",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Шліфування та полірування мармуру",
@@ -2114,6 +2321,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "cb35a8d5-85e7-4bb2-bc85-b1717dcc8f5e",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Шліфування та полірування граніту",
@@ -2124,6 +2332,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "58afde46-6982-464b-9e6c-1ac4880118b7",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Кристалізація мармуру",
@@ -2134,6 +2343,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "3df6da86-075b-43a2-899a-226ff8545a39",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Очищення мармуру та граніту",
@@ -2144,6 +2354,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "0f2d9df9-b965-44e5-b7ab-8a12d9f7a043",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Реставрація мармуру або граніту",
@@ -2154,6 +2365,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "f480926c-431c-435b-a7d7-c4102654941e",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Свердління отворів",
@@ -2164,6 +2376,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c5d53d1c-c037-4273-81a9-a684e34330a8",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Монтаж підвіконня",
@@ -2174,6 +2387,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "0419e304-bdbc-440a-bf95-a325752eaac0",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Монтаж стільниць, стійок",
@@ -2184,6 +2398,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "b990139d-a13c-4075-a960-5c3db94b92ba",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Монтаж плінтуса (камінь)",
@@ -2194,6 +2409,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "89fed3cb-d286-4f27-90bf-599d8f77ccd1",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Монтаж сходів прямих (ступінь і присхідців)",
@@ -2204,6 +2420,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "355a6636-18b7-4a8a-9a1f-341410ab5268",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Монтаж плінтуса на підлозі",
@@ -2214,6 +2431,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ROOM_PERIMETER
 		),
 		WorkService(
+			id = "838bec11-9808-48c2-b8e9-fd9116fdc3d7",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Монтаж (укладання) каменю на підлогу, стіни",
@@ -2224,6 +2442,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "ab589fdb-1eac-4c7f-874b-3d07ca8cb920",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Монтаж слебна великими модулями (від 1500х1500 мм)",
@@ -2234,6 +2453,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "5e9dffa8-ab00-4c5c-8967-f345dfd918fb",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.STONE_WORKS,
 			name = "Монтаж (облицювання) фасаду (вентильований)",
@@ -2246,6 +2466,7 @@ object WorkDataRepository {
 		//endregion
 		//region Промислові підлоги
 		WorkService(
+			id = "eb9a5980-d6ea-402b-8a6b-e669200abeb6",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.INDUSTRIAL_FLOORS,
 			name = "Полімерні промислові підлоги",
@@ -2256,6 +2477,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "e3fe0f46-5205-4ab1-91b3-c9b6849e34d7",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.INDUSTRIAL_FLOORS,
 			name = "Бетонні промислові підлоги з топінгом",
@@ -2266,6 +2488,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "18d18af2-85a8-4200-8e4f-f1678588161a",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.INDUSTRIAL_FLOORS,
 			name = "Промислові підлоги з полірованого бетону",
@@ -2276,6 +2499,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "e4bd6d00-1557-4d69-a453-f1637e598941",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.INDUSTRIAL_FLOORS,
 			name = "Промислові підлоги ПВХ плити",
@@ -2286,6 +2510,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "4dbadc7e-79e1-4173-8b50-9587d20718e2",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.INDUSTRIAL_FLOORS,
 			name = "Виготовлення антистатичного полімерного покриття від 2 мм",
@@ -2296,6 +2521,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "c8bc6300-3d3c-4a65-bdb8-d034d91b1bc5",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.INDUSTRIAL_FLOORS,
 			name = "Виготовлення промислового полімерного покриття типу налив від 2 мм",
@@ -2306,6 +2532,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.FLOOR_AREA
 		),
 		WorkService(
+			id = "5aed2360-7788-495d-8b50-2c34be398272",
 			section = WorkSection.FINISHING,
 			category = WorkCategory.INDUSTRIAL_FLOORS,
 			name = "Знепилювання бетонної підлоги, кольорове полімерне покриття",
@@ -2321,6 +2548,7 @@ object WorkDataRepository {
 		//region ІНЖЕНЕРНІ СИСТЕМИ ТА КОМУНІКАЦІЇ
 		//region Електромонтажні роботи
 		WorkService(
+			id = "add387db-0967-4d48-8f36-ee54547f0ecb",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Штроблення під проводку в бетоні (глибина 2 см)",
@@ -2331,6 +2559,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "983bdb28-688f-4359-ad55-d8b8b9d31d8e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Штроблення під проводку в цеглі (глибина 2 см)",
@@ -2341,6 +2570,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "ea01a5cf-019b-45d0-ae1a-2cc79c7448fc",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Облаштування ніші (цегла)",
@@ -2351,6 +2581,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "7f6b7645-31f7-4878-b41b-145cfc41dc10",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Облаштування ніші (бетон)",
@@ -2361,6 +2592,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e9d466da-28f0-463e-9a3d-7f5503863b1f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка електрощитка",
@@ -2371,6 +2603,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "f87aeeb6-67e0-47f2-ac9e-a229b6cb3edf",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Підключення електролічильника",
@@ -2381,6 +2614,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c3627cf1-137d-4913-955b-3f446c692803",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка автоматів (1 фаза)",
@@ -2391,6 +2625,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c851b8ab-500d-4249-86c1-cc8700d6f93d",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж автомата",
@@ -2401,6 +2636,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "99e83626-8e8e-463b-a41f-3da6a432b28a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка силових вимикачів, УЗО",
@@ -2411,6 +2647,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "75dc13e5-3d03-4d8f-847d-2c059460c3ac",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Вирізка отвору і установка распредкоробки (бетон)",
@@ -2421,6 +2658,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "ef0e840f-2fec-42ad-9e4b-7577d7e41f40",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Вирізка отвору і установка распредкоробки (цегла)",
@@ -2431,6 +2669,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e9d72edf-4e0a-4f21-b05f-11936f053497",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Вирізка отвору і установка распредкоробки (гіпсокартон)",
@@ -2441,6 +2680,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "249fa61b-4848-4f8f-a08c-804b39c5bb18",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Збірка распредкоробки, розпаювання проводів",
@@ -2451,6 +2691,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c31f08a5-80a5-4a2a-8e63-485568c3b6fa",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Підведення дроту і його закріплення (відкрита проводка)",
@@ -2461,6 +2702,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "d2671a4b-76bf-49fc-a6ad-b7f6a7e54156",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Підведення дроту і його закріплення (гофротруба)",
@@ -2471,6 +2713,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "c32b4528-c339-43e0-bc2f-0cc13fd450fd",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Підведення кабелю перетином вище 4 кв.мм (відкрита проводка)",
@@ -2481,6 +2724,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "505c0138-5e94-4455-bd94-506407011f5f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Підведення кабелю перетином вище 10 кв.мм (відкрита проводка)",
@@ -2491,6 +2735,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "4281b78d-48bf-4fbe-a529-16db04d77b6d",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Вирізка отвору і установка коробки (бетон)",
@@ -2501,6 +2746,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "6ee0653d-7252-4ee7-8421-a3440b3ef575",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Вирізка отвору і установка коробки (цегла)",
@@ -2511,6 +2757,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "82b6ea0d-3d16-499f-aee6-b9f603782e48",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Вирізка отвору і установка коробки (гіпсокартон)",
@@ -2521,6 +2768,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "4bf6bc62-86af-4da4-b787-08f375affd70",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка і підключення розеток і вимикачів",
@@ -2531,6 +2779,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "99c70e9a-ded4-4096-aff0-41ca2c48a330",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж короба plasticового",
@@ -2541,6 +2790,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "a159a2db-afcc-4cee-aa3f-8b63055d26f3",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка і підключення світильника Армстронг",
@@ -2551,6 +2801,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d1fd9879-ef31-4025-9572-6fb5dfbd1a2c",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка люстри",
@@ -2561,6 +2812,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c7ec63e4-697f-4cee-bfda-ceab9922fc80",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж світильника настінного, бра",
@@ -2571,6 +2823,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8f42a222-8d43-4671-887a-11a6ae2e06c9",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж точкового світильника (без трансформатора)",
@@ -2581,6 +2834,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "b261f438-bc1d-4f13-9151-39dd2832ad9d",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка і підключення трансформатора",
@@ -2591,6 +2845,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "113212fb-8c3b-4703-a2fe-36b711fed3d1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж і підключення стабілізатора напруги",
@@ -2601,6 +2856,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8affb42d-35e0-4cc7-97d7-1a5724643396",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка датчиків (слаботочка)",
@@ -2611,6 +2867,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2c386095-1f59-4450-8ff9-bcc5db3b81d2",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Свердління наскрізних отворів в стіні до 25 мм",
@@ -2621,6 +2878,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "89064c63-d3da-48b6-8542-961271b18511",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Облаштування контуру заземлення (комплекс)",
@@ -2631,6 +2889,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a83f2923-8006-4948-a634-bd69ad8d4b3c",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Демонтаж силового кабелю",
@@ -2641,6 +2900,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "38ab6201-5735-4e70-b844-7d1b60d3922a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Демонтаж відкритої електропроводки",
@@ -2651,6 +2911,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "4e3429e4-8208-440e-b717-5a1c250a409a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Демонтаж інших кабелів/проводки",
@@ -2661,6 +2922,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "6cabc785-0dbc-4f78-bf46-cf9cdbe5e483",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Відключення і демонтаж точок (розетки, вимикачі, лампи)",
@@ -2671,6 +2933,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c731560f-4877-438f-8a47-4940167abf72",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Перенесення електрощитка in квартиру",
@@ -2681,6 +2944,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "6536e689-a4f2-42db-8e63-fb03ab6d40e5",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Заміна електропроводки в 1-кімнатній квартирі (комплекс)",
@@ -2691,6 +2955,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c6c2b0bf-4afc-4380-8378-853ba0fb2504",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Заміна електропроводки в 2-кімнатній квартирі (комплекс)",
@@ -2701,6 +2966,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5187ad76-e4b4-494a-94d6-7bbd1b787b82",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Заміна електропроводки в 3-кімнатній квартирі (комплекс)",
@@ -2711,6 +2977,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "084cbbc2-0427-4e97-a3af-f82db45e1c80",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Заміна електропроводки в 4-кімнатній квартирі (комплекс)",
@@ -2721,6 +2988,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "424b46e4-94ea-4624-9bc6-0a561c34bd34",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка світильників ландшафтних в грунт",
@@ -2731,6 +2999,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e0f911a0-4ed7-4ad2-8b48-281759d2181b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка світильників в ступені (бетон)",
@@ -2741,6 +3010,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "eaa85717-ba33-4e22-8039-083c973bb474",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка світильників грунтових (без бетону)",
@@ -2751,6 +3021,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "97550271-3343-4003-8f7d-92c74160388e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка світильників підводних",
@@ -2761,6 +3032,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a5bc19c8-9721-45d7-9fe8-17c6b4b56876",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка та підключення прожектора фасаду",
@@ -2771,6 +3043,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "ad59c938-8651-4dbb-a6e3-e10cfe0f5812",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка світлодіодних світильників",
@@ -2781,6 +3054,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "af25ed22-af6b-4b6b-bc7f-9844a540572e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Розробка схеми електропроводки",
@@ -2791,6 +3065,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "3d93f8e8-84c3-4e3a-af37-7aadde334ca6",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Штроблення стіни під проводку в бетоні (загальне)",
@@ -2801,6 +3076,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "f59fcc48-5a57-4c14-b1b8-253b4f82b14f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Штроблення стіни під провід в цеглі (загальне)",
@@ -2811,6 +3087,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "4625aab4-882a-41eb-acfb-f97e7c1c5b53",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Штроблення стіни під провід в гіпсокартоні",
@@ -2821,6 +3098,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "e772b4e1-0571-479d-ab52-928d83c925b8",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка врізного або канального вентилятора",
@@ -2831,6 +3109,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8268da45-d770-4bb3-8c3e-a26ae604e329",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка кондиціонера електриком",
@@ -2841,6 +3120,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d20e84cf-107f-4395-8976-4b9c17779a4e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж датчика системи Нептун",
@@ -2851,6 +3131,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "dd4691ac-03b2-4895-9cf0-243d2eef2829",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Підключення блоку управління системи Нептун",
@@ -2861,6 +3142,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2cf32412-84f3-45a8-9532-2e9bc0778dad",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж розетки СКС",
@@ -2871,6 +3153,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "6e7af620-eae1-4755-bda7-3819fff744b7",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Прозвонка проводки в приміщенні",
@@ -2881,6 +3164,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "a93562da-5701-4ed0-904d-fd7dcf5f51a0",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж кнопки дзвінка",
@@ -2891,6 +3175,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "f45c517c-7bdd-4301-a03f-b1611666e393",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Встановлення та підключення вхідного дзвінка",
@@ -2901,6 +3186,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d8f09d89-9a0a-4e4d-affb-d3489eb6a8b3",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж і установка домофона",
@@ -2911,6 +3197,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "37c55157-cbaa-48df-9dde-c0a19559df7f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж стрічки LED освітлення в коробі",
@@ -2921,6 +3208,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "d9ab5194-97cb-4bf9-9883-9390be5d0f5a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж і підключення рушникосушки електричної",
@@ -2931,6 +3219,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "0c9723cf-227c-4d94-80a3-a2a54351c890",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Облаштування отвору під вентилятор",
@@ -2941,6 +3230,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "1d6d789f-ee3e-48e7-ad5e-8349498122cc",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Закладення штроби",
@@ -2951,6 +3241,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "8103446b-1689-4c7e-adf2-6fdd8d9e9fb4",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж електричних точок по бетону (комплекс)",
@@ -2961,6 +3252,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "bd2dd024-740b-436b-b066-522672982e6f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж електричних точок по цеглі (комплекс)",
@@ -2971,6 +3263,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e196a5d8-8d28-4b60-a12d-bed2140e1873",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж електричних точок в гіпсокартоні (комплекс)",
@@ -2981,6 +3274,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "265f05e5-3474-4fbc-8af0-a4ffd43662fd",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Установка автомата (3 фази)",
@@ -2991,6 +3285,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "1f5521c7-ad07-4694-8a07-910108b4a4d9",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Заміна електричної розетки (демонтаж + монтаж)",
@@ -3001,6 +3296,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "4c1af04c-9ec3-4ea2-a20f-a2176575f07c",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Встановлення реле напруги",
@@ -3011,6 +3307,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "074d111b-dcb7-42d1-8479-647981314155",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELECTRIC,
 			name = "Монтаж та підключення ДБЖ",
@@ -3023,6 +3320,7 @@ object WorkDataRepository {
 		//endregion
 		//region Сантехнічні роботи
 		WorkService(
+			id = "0f927f2d-5e07-4626-a4c0-9a402f44e36b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Штроблення під труби в бетоні (глибина 5 см)",
@@ -3033,6 +3331,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "1d0f44cd-12c7-4eba-8e49-95da3587da82",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Штроблення під труби в цеглі (глибина 5 см)",
@@ -3043,6 +3342,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "ca2124e5-7e7a-4495-9872-cb9b34670c2e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Демонтаж ванни",
@@ -3053,6 +3353,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e67df9fd-e52d-43f8-8d25-66d32524b42f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Демонтаж каналізації",
@@ -3063,6 +3364,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "f2301d82-0845-426b-bf27-cb57e0d56c83",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Демонтаж сталевих труб х/г води",
@@ -3073,6 +3375,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "9652fd79-1924-4372-971f-2723031cf3d5",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Демонтаж умивальника",
@@ -3083,6 +3386,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2f08605a-deae-4ee3-b7ec-749f9582d837",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Демонтаж унітазу",
@@ -3093,6 +3397,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "29bbfdd4-74aa-4e6c-a5db-82ab7901d426",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Заміна арматури в бачку унітазу",
@@ -3103,6 +3408,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "77e0c98e-4b9a-4da7-b18e-6560104d73a7",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Заміна гнучкої підводки",
@@ -3113,6 +3419,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "297c1466-d337-4aa9-9d06-a13bf06dca34",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Переварювання стояків (заміна труб)",
@@ -3123,6 +3430,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "dc09897a-5328-462f-80b8-0e71b1c28333",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Прокладка металопластикових труб водопостачання Ø16-40",
@@ -3133,6 +3441,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "42648919-0e48-4838-84a8-cdcc302e1590",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Прокладка поліпропіленових труб водопостачання Ø16-40",
@@ -3143,6 +3452,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "4636af3d-476b-40ac-9e32-e997ee8d819c",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Прокладка мідних труб водопостачання",
@@ -3153,6 +3463,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "693533ef-ac05-44cb-be1f-2958a990dd2c",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Врізка в стояк (1 точка врізу)",
@@ -3163,6 +3474,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "bcba749c-d878-4946-94dc-bd942489bc4c",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Ізоляція труб",
@@ -3173,6 +3485,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "2d705f67-2cb1-45f9-8fd6-b4485c1f37c3",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Заміна стояка каналізації в межах 1 поверху",
@@ -3183,6 +3496,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "ca1011ef-bd21-4a91-8815-847f1023638f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Внутрішня розводка труб каналізації 50мм",
@@ -3193,6 +3507,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "a4504dfa-cbbd-4ed2-91a2-4e97166cb383",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Розводка труб каналізації (1 елемент з'єднання)",
@@ -3203,6 +3518,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "833951bf-e3e3-47cc-981b-7030b653be3a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка ванни (без змішувача)",
@@ -3213,6 +3529,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2016e40c-3ad1-4617-8977-554becbfee19",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка унітазу або біде",
@@ -3223,6 +3540,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c9a2c25c-aee0-46ed-8aeb-c787b44ae078",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка умивальника або мийки",
@@ -3233,6 +3551,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "b83f377a-b98c-470c-83b1-231a7d36f12e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка змішувача (ванна, умивальник, біде, душ)",
@@ -3243,6 +3562,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "6e4b3b4c-71b3-404a-bdb4-837963d6684b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка і підключення бойлера",
@@ -3253,6 +3573,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "51ad7aa5-f9fa-461c-8224-bdc8fca2dd6c",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка і підключення пральної/посудомийної машини",
@@ -3263,6 +3584,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "72f0744b-fea6-491b-aa91-8e96f0ef5746",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка лічильника води",
@@ -3273,6 +3595,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "f2cbe008-4c0c-44c1-a160-7910243358b4",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Зварна точка",
@@ -3283,6 +3606,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e8380584-9543-4b5b-8e64-dec52b08a2fe",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Зварний шов",
@@ -3293,6 +3617,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "a75eb90c-b7ef-4963-9cf8-e70041ec6835",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Точка холодної води",
@@ -3303,6 +3628,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5cb56a05-7aff-4226-9948-d79be8f8ac69",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Точка гарячої води",
@@ -3313,6 +3639,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "fdd419c7-e420-4836-a896-e97ec54b1a45",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Точка каналізації",
@@ -3323,6 +3650,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a5027f41-09ae-4de2-96f9-779dc3f1697d",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Облаштування стояків",
@@ -3333,6 +3661,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "7f44f70d-7f48-4a10-8fa6-e40f933e2e81",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж колектора",
@@ -3343,6 +3672,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8e406305-ee18-4650-a1b4-041fa1fc29fa",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж гідроакумулятора",
@@ -3353,6 +3683,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "28df3fc4-34b3-4cc6-8d5b-d05b230e7466",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж простого фільтра очищення води осмос",
@@ -3363,6 +3694,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "07e0f7ba-8706-4ac0-abfb-3d6b09703f70",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Расчеканка чавунної каналізації",
@@ -3373,6 +3705,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "f65a5300-93f8-43be-94ba-6fc8a7284492",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж сололіфт",
@@ -3383,6 +3716,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "7af3b250-b570-4f7e-b9fc-9b9d8a131fac",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж гігієнічного душу",
@@ -3393,6 +3727,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8bd9e1f5-1905-43f9-8c4f-d5449bf02585",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж кухонного подрібнювача",
@@ -3403,6 +3738,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c4c309c3-f18a-433c-a597-b528cbe20232",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж мультибокса (вбудований змішувач)",
@@ -3413,6 +3749,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8348a5fa-faab-434d-a8ca-ce8df12b91eb",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка душової штанги з лійкою",
@@ -3423,6 +3760,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "506d21bd-fbbc-4fcf-a6f9-2bde1f24cd9e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка сифона",
@@ -3433,6 +3771,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "eeb327a1-2ac9-4104-8e1a-ef180b8a13a4",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка інсталяції",
@@ -3443,6 +3782,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "56e15ff3-d9ce-4962-bd05-33550a904703",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка душового піддону",
@@ -3453,6 +3793,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "23972c68-4156-4e54-8048-fbb0a2711175",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж трапа",
@@ -3463,6 +3804,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "7b4ce8f4-b7b3-466d-9901-35a9f8e48e3a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка і підключення ванни з гідромасажем",
@@ -3473,6 +3815,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "df3330a4-79a4-4481-b886-865bfe5e94eb",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж редуктора тиску",
@@ -3483,6 +3826,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "ac736082-cfae-4524-a432-1310f659b07d",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж фільтра самопромивного",
@@ -3493,6 +3837,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "23233ec6-e009-4162-9769-2c395c33cea1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж водозапірної арматури (кран, вентиль)",
@@ -3503,6 +3848,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e3e7274b-d3bc-4fbf-96a0-de9166dde8fa",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Заміна крана для води",
@@ -3513,6 +3859,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8e7ca6dd-2575-4fed-855c-d99671fc0bf2",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж каналізаційної насосної станції",
@@ -3523,6 +3870,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "87ef896a-4be1-4412-bbcc-98196c0b3061",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Врізка в каналізаційний стояк",
@@ -3533,6 +3881,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "bf0711a5-4817-40d2-ae87-a5461ae56ab2",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж зворотного клапана каналізації",
@@ -3543,6 +3892,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e8825478-6dea-40c3-a35a-5ea21f09600b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Механічна прочищення каналізації",
@@ -3553,6 +3903,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "2b7dea44-3dff-46cc-8df3-28d06a075f13",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Прочищення вертикальних труб каналізації (стояк)",
@@ -3563,6 +3914,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "77864e54-eee0-4e17-b8d8-30d64ac03a19",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Гідродинамічна прочищення каналізації",
@@ -3573,6 +3925,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "4ba40c22-aeb0-4545-af58-6511575559e1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Внутрішня розводка труб каналізації 110 мм",
@@ -3583,6 +3936,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "9d7be0f5-a677-4021-9240-46de984f41b0",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Прокладка металопластикових труб водопостачання Ø55-63",
@@ -3593,6 +3947,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "032c2273-9b41-40f1-9e3c-3b598856716a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Прокладка поліпропіленових труб водопостачання Ø55-63",
@@ -3603,6 +3958,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "f112234c-bb6b-4ef4-87ad-a5a1b6891fc5",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка навісного пісуара",
@@ -3613,6 +3969,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "3682133f-d296-46aa-abd8-ba32a350e3f4",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка сифона подвійного на кухню",
@@ -3623,6 +3980,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "f369c6ca-40ec-4b26-84cf-6c7cfa62d2b5",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка проточного водонагрівача",
@@ -3633,6 +3991,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2750860d-7615-4d7c-a165-6c0fe8d7baf2",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка настінного змішувача",
@@ -3643,6 +4002,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "04d52d75-f8eb-482f-afe8-282a90829c9a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка і підключення рушникосушки",
@@ -3653,6 +4013,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "b472533a-f2dd-4a85-9279-0e872f49739c",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Установка душової кабіни (без змішувача)",
@@ -3663,6 +4024,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "af1345ef-7591-433f-9eb0-32e73ad3b55e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж Біде на навісній консолі",
@@ -3673,6 +4035,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c2b644a0-5a51-42ad-90ef-eb6a7daa10ba",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Монтаж унітазу на навісній консолі з кнопкою",
@@ -3683,6 +4046,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8b3911e8-7d91-4e94-a71b-34548d5246ab",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.PLUMBING,
 			name = "Забивання швів ванни або піддону (силікон)",
@@ -3695,6 +4059,7 @@ object WorkDataRepository {
 		//endregion
 		//region Системи опалення
 		WorkService(
+			id = "7dd43dc0-5c0e-4c13-8fe3-9bd4c2c350dd",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж котла підлогового газового до 55 кВт",
@@ -3705,6 +4070,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "7c6ecbf9-6a13-4c73-ac48-92b997903e45",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Демонтаж підлогового котла",
@@ -3715,6 +4081,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5f1ce567-8e21-4246-849f-e6599ecc6758",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка батареї опалення",
@@ -3725,6 +4092,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "0f707d83-f27c-435e-bc3f-a27b084176c7",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Підключення батареї",
@@ -3735,6 +4103,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "734fe59e-df31-4a23-8d1a-021f42be22c0",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Прокладка металопластикових труб опалення Ø16-40",
@@ -3745,6 +4114,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "9de41e1c-e849-4498-a36f-e0e040efe41f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Прокладка поліпропіленових труб опалення Ø16-40",
@@ -3755,6 +4125,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "98bc2da8-9ee3-49d8-89a6-82e6649721a7",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Прокладка мідних труб опалення",
@@ -3765,6 +4136,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "84546da4-062b-4966-a5e9-e4f1913b37a5",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж стояків",
@@ -3775,6 +4147,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "1013ea1e-79c5-41fa-8a14-aa870b00225e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж колектора",
@@ -3785,6 +4158,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "b3ce5520-f8f4-4ce5-bf68-51612cfa6eb5",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Випробування системи тиском в 6 бар",
@@ -3795,6 +4169,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "f5705b52-f24c-44bf-a01f-3e7441fd6be8",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка настінного двоконтурного газового котла до 32 кВт",
@@ -3805,6 +4180,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5c1b6c43-5019-443b-bbf5-15ce4432bdfb",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка настінного одноконтурного котла з бойлером до 32 кВт",
@@ -3815,6 +4191,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "6579cd23-cdab-45d1-9f14-1176d49be022",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка конденсаційного котла",
@@ -3825,6 +4202,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "f1e8a46d-5634-4e1b-99f5-318a2e2718fc",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка твердопаливного котла до 55 кВт",
@@ -3835,6 +4213,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "32ec7924-ed41-4d46-bf02-92baf91d9b0e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка пелетного котла (зі складанням бункера)",
@@ -3845,6 +4224,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "fad30f4c-d5f6-4c21-aac0-e93b54fc0f59",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка електрокотла до 28 кВт",
@@ -3855,6 +4235,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "cdcde49f-666b-492b-ad20-4c51be687bad",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Запуск котла",
@@ -3865,6 +4246,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "4231dc3a-235f-43bd-bf50-dc38e56070b8",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж насоса",
@@ -3875,6 +4257,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c684f2ab-e60c-4174-909f-93297dd61171",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Промивання системи опалення",
@@ -3885,6 +4268,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "05fc0876-5c6f-40b8-879a-4aad7ddd74bf",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Запуск системи опалення",
@@ -3895,6 +4279,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5cd91740-6748-4f72-8c7a-574031037471",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Збірка димоходу котла в котельні",
@@ -3905,6 +4290,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "b8960f25-c6d2-4ac3-8c49-acdf3a6bf8f9",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка електро датчика (бойлер, зовнішній, температур)",
@@ -3915,6 +4301,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "fd039392-0148-4dfa-b4b3-d51f50b0f3de",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка контролера або кімнатного термостата",
@@ -3925,6 +4312,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "6f2e8e77-41ea-41ed-bc37-893633daf7ff",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка додаткового термостата в бойлер",
@@ -3935,6 +4323,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "be194ecb-ba4c-4da4-aa0f-018acfd84240",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Прокладка труб зшитий поліетилен",
@@ -3945,6 +4334,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "296e8691-7d34-4487-88ff-f5f556d30081",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Опресування фітингів зшитий поліетилен",
@@ -3955,6 +4345,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "7e16280a-9148-42fa-b827-1a443ccbf792",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж газової колонки",
@@ -3965,6 +4356,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c7bc6c02-3b31-4c08-8fa4-24497c5de755",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Перенесення радіатора опалення",
@@ -3975,6 +4367,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "4118f025-8193-4220-9c23-f13bcb814549",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж гідрострілки опалення",
@@ -3985,6 +4378,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2d473ff6-3130-4dff-922a-7d24aa3322d0",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж бойлера непрямого нагріву до 300 л.",
@@ -3995,6 +4389,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "7ca05183-621d-494f-85f2-282ba8f604fb",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Обв'язка котельні міддю",
@@ -4005,6 +4400,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "3ab02784-9996-4d1e-a259-2db482d3f65f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж насосної групи",
@@ -4015,6 +4411,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "84e9988d-b6b6-4dc1-bbdd-4966c79cc7b6",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж колектора опалення",
@@ -4025,6 +4422,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5945719a-dc89-4cbf-926f-8f8db4cc50d3",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж труби димоходу турбованого (без отвору)",
@@ -4035,6 +4433,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "38ff8239-e10f-4e3d-adba-a3805383220b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Обв'язка котельні до 40 кВт під ключ",
@@ -4045,6 +4444,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "ea7f0f44-a500-49b7-89b9-75be1148bdb8",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка і підключення Гребінки опалення до 5 контурів",
@@ -4055,6 +4455,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a5c80e00-c450-4e40-be41-018629f83ab1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка і підключення Гребінки понад 5 контурів",
@@ -4065,6 +4466,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c2de2057-f735-4063-806f-b8a3535bb257",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Прокладка металопластикових труб опалення Ø55-63",
@@ -4075,6 +4477,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "1632f43c-428c-4740-a23b-27efac2a9127",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Прокладка металопластикових труб опалення Ø55-63 (варіант 2)",
@@ -4085,6 +4488,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "ccd1a535-ee6f-4482-82b5-69774bd4fcf9",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Прокладка поліпропіленових труб опалення Ø55-63",
@@ -4095,6 +4499,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "ea5587c7-5b43-4bf5-92fd-000b591045fd",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка настінного двоконтурного газового котла 32 -100 кВт",
@@ -4105,6 +4510,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "11da4846-b33c-4514-a1c5-0b55b1baf2f4",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж котла підлогового газового 55-100кВт",
@@ -4115,6 +4521,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d4a207c5-c5a6-4835-abbe-c07ad441304b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка електрокотла 28-60 кВт",
@@ -4125,6 +4532,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5b37be8f-8e17-4560-8ac6-a2c4ecfa74e5",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Установка твердопаливного котла 55-100 кВт",
@@ -4135,6 +4543,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "b36dba70-ea0a-49b5-9e7c-96e3649c5dbe",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж бойлера непрямого нагріву понад 300 л.",
@@ -4145,6 +4554,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e17ea613-3876-4a6a-b17b-e1cd8cd176db",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.HEATING_SYSTEMS,
 			name = "Монтаж буферної ємності для тт котла",
@@ -4157,6 +4567,7 @@ object WorkDataRepository {
 		//endregion
 		//region Кліматичне обладнання
 		WorkService(
+			id = "a0f8ff3b-82e4-4e61-ae7d-b69f752a2dad",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Профілактика кондиціонера",
@@ -4167,6 +4578,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a6da6013-b328-4a42-907f-fa5e2e1e1d7a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Монтаж кондиціонера 7-9-10-12",
@@ -4177,6 +4589,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "7758c385-99e0-455a-8007-5ba277635561",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Монтаж магістралі (за 1 м)",
@@ -4187,6 +4600,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "c69cfad5-fbcf-4f44-9c8f-c71430f2be2d",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Повний демонтаж кондиціонера",
@@ -4197,6 +4611,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d98fa21d-4ea3-4f9a-8540-9365fb55fde8",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Монтаж централізованої системи кондиціонування",
@@ -4207,6 +4622,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "0655099e-848f-4f52-9fcf-c9bdb5171f21",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Демонтаж внутрішнього блоку кондиціонера",
@@ -4217,6 +4633,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "95d5a2eb-a879-44c9-ac5b-0ac378008fbf",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Монтаж внутрішнього блоку кондиціонера",
@@ -4227,6 +4644,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "58d1356c-bed0-4a28-a249-9ae7ee88d5cc",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Демонтаж зовнішнього блоку кондиціонера",
@@ -4237,6 +4655,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "258eea94-c40d-48d1-81b3-c90d4f57c142",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Монтаж зовнішнього блоку спліт-системи",
@@ -4247,6 +4666,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "3dbfb664-aa9b-4854-a061-c426adef34d1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Монтаж кондиціонера 15-18",
@@ -4257,6 +4677,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "71717ad3-d8ff-49a6-8219-ff1905223a77",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Монтаж кондиціонера 24",
@@ -4267,6 +4688,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "16ed275c-fbd0-4fe7-9ba5-cf21836b602a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Монтаж кондиціонера 30",
@@ -4277,6 +4699,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "03f47bba-abfb-4691-98c4-c6dfc79f7b20",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Фанкойли настінні",
@@ -4287,6 +4710,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "33b871a9-7246-4182-a409-0a6bfbadd0a7",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.CLIMATE_EQUIPMENT,
 			name = "Фанкойли стельові",
@@ -4299,6 +4723,7 @@ object WorkDataRepository {
 		//endregion
 		//region Водопостачання та очищення води
 		WorkService(
+			id = "1eb891c0-90ae-43d1-9fa5-ef2041bd5c7f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Виїзд фахівця на об'єкт (огляд, консультація, заміри) до 50км",
@@ -4309,6 +4734,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "76bf593b-afdd-4e3e-a4c0-1b4d92bd3162",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Монтаж насосної станції",
@@ -4319,6 +4745,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "cfbeb7db-55e2-4db8-98a0-76bb3ea2c1c1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Монтаж автоматики для насосної станції",
@@ -4329,6 +4756,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "ce298f98-9fff-4189-ac1e-0ace218a5e71",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Установка погружного насоса (свердловина)",
@@ -4339,6 +4767,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a1298a08-0dab-4ecc-822e-5d83a15f13b1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Установка глибинного насоса до 40м з облаштуванням",
@@ -4349,6 +4778,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a0f73248-9b8b-4633-b30c-65fe0d845112",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Установка глибинного насоса понад 40м з облаштуванням",
@@ -4359,6 +4789,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d0939b36-663a-4881-90af-7430eea2ba1a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Установка і підключення гідроакумулятора (до 300 л.)",
@@ -4369,6 +4800,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "04f7659a-eacf-4aa4-a446-76b3ab1c7e8e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Монтаж складної системи водоочищення",
@@ -4379,6 +4811,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "3bac316d-1819-4631-b29c-8054f19af430",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Установка однієї фільтруючої колони до 1354",
@@ -4389,6 +4822,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "afc2f8aa-4d07-41c8-b87d-4eada77cb935",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Установка однієї фільтруючої колони від 1465 до 1665",
@@ -4399,6 +4833,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "c7361bd5-9992-44a0-8c4c-0f66834f8bd7",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Установка однієї фільтруючої колони від 1865 до 2162",
@@ -4409,6 +4844,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "47e7ee81-4ec7-44c5-bfe2-9500a78055b4",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Установка однієї фільтруючої колони понад 2162",
@@ -4419,6 +4855,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "710d1ab2-80d1-46ca-a92e-fd44e7210b06",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Налаштування та перевірка керуючого клапана очищення води",
@@ -4429,6 +4866,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "91ae9fc0-aba0-44af-a322-44f95e08cfb1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Чистка та ремонт керуючого клапана без деталей",
@@ -4439,6 +4877,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2b573d73-9cfa-4a0b-8655-b3e429a99580",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Хімічний аналіз води",
@@ -4449,6 +4888,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e53ab007-c390-4f85-893a-966220018873",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Монтаж УФ знезаражувача води",
@@ -4459,6 +4899,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e43a9dec-b75c-434a-b177-3110e66b9d03",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Чистка та ремонт сольового бака фільтра",
@@ -4469,6 +4910,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a9dd249c-1dd8-46f2-bf63-6757ffc1e4c2",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Завантаження / вивантаження фільтруючої системи кабінетного типу",
@@ -4479,6 +4921,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "71533d0b-4e67-4902-8d43-2107f2a30b00",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Завантаження / вивантаження фільтруючої системи колонного типу до 1354",
@@ -4489,6 +4932,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a43acc6e-ca12-467f-8279-729fd0bc47f0",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Діагностика та ремонт альтернатора фільтра очищення",
@@ -4499,6 +4943,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d811e7ba-85fa-4163-babe-8e855c1c7edc",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Виїзд фахівця на об'єкт по місту",
@@ -4509,6 +4954,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "cf4adab6-67ff-4ea3-9cad-8b6425cdb7d3",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Очищення бака сольового резервуара",
@@ -4519,6 +4965,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "fc863a9c-404a-4bb8-ba63-ded3d7454485",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Промивка іонообмінної смоли (без демонтажу)",
@@ -4529,6 +4976,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5365285a-3232-4385-b034-875401af247a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Знезараження іонообмінної смоли гіпохлоридом натрію",
@@ -4539,6 +4987,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "4d4eba53-26ff-4f7b-b9a2-ce445939d447",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Ремонт блоку управління фільтра очищення води",
@@ -4549,6 +4998,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d3f661f2-15f9-476d-aec6-04aaf8179c87",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Чистка інжектора фільтра очищення води",
@@ -4559,6 +5009,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5d1b3623-4310-4079-93e3-4b44066b1257",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Установка погружного насоса (колодязь)",
@@ -4569,6 +5020,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "7cb4b849-0312-4832-9052-a03c69a1f458",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Установка автоматики для погружного насоса (комплекс)",
@@ -4579,6 +5031,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "73ee20fa-a8ee-4fe7-bea3-4df609e81708",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Обв'язка фільтра-колби механічного очищення з байпасом",
@@ -4589,6 +5042,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "6d0070f4-94a3-400b-bc9c-bc15d1c9594f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.WATER_SUPPLY,
 			name = "Обв'язка фільтра-колби механічного очищення без байпаса",
@@ -4601,6 +5055,7 @@ object WorkDataRepository {
 		//endregion
 		//region Тепла підлога
 		WorkService(
+			id = "4b456bf6-d30e-45a7-a1f9-0c3188129458",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.UNDERFLOOR_HEATING,
 			name = "Укладання електричної теплої підлоги",
@@ -4611,6 +5066,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "2119d0c8-a968-4071-9427-de75d0a4d4e8",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.UNDERFLOOR_HEATING,
 			name = "Монтаж матів інфрачервоної підлоги",
@@ -4621,6 +5077,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "efb13b2f-82df-43a7-b1fa-35f9d8dc8869",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.UNDERFLOOR_HEATING,
 			name = "Укладання труби теплої підлоги (стін) згідно з проектом",
@@ -4631,6 +5088,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "6786a898-06c4-41a2-935f-64e07a20e0f1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.UNDERFLOOR_HEATING,
 			name = "Установка та підключення термодатчика теплої підлоги",
@@ -4641,6 +5099,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "0a34b50c-f21f-449a-bdac-e5e1a13a63d5",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.UNDERFLOOR_HEATING,
 			name = "Збірка і установка змішувального вузла для теплої підлоги",
@@ -4651,6 +5110,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "71dc5a81-3eb6-4e3b-a7c0-9e4b25438f21",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.UNDERFLOOR_HEATING,
 			name = "Укладання утеплювача для теплої підлоги",
@@ -4661,6 +5121,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "ba525e3e-9ab1-4d56-a7fb-0a1f1041a8a5",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.UNDERFLOOR_HEATING,
 			name = "Установка кріплення труби (стіни) для теплої підлоги",
@@ -4671,6 +5132,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "b5b752eb-bb19-4b1a-9ac0-08ee09c79e5d",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.UNDERFLOOR_HEATING,
 			name = "Установка відстінкової ізоляції і деформаційних швів",
@@ -4681,6 +5143,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "3dfa17cf-7021-49fc-8cf5-2abca920fbc0",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.UNDERFLOOR_HEATING,
 			name = "Випробування системи теплої підлоги тиском 6 бар",
@@ -4691,6 +5154,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "aaf56670-0f78-47a2-be46-25f068e9b0aa",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.UNDERFLOOR_HEATING,
 			name = "Пуск теплої підлоги (стін) через 28 днів після бетонування",
@@ -4701,6 +5165,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "52e4d952-6d6c-45bd-9945-714b508fc171",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.UNDERFLOOR_HEATING,
 			name = "Монтаж регуляторів теплих підлог",
@@ -4713,6 +5178,7 @@ object WorkDataRepository {
 		//endregion
 		//region Інтернет і ТБ
 		WorkService(
+			id = "7324c3a2-5740-4903-a6d7-4a6fe906776d",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.INTERNET_TV,
 			name = "Прокладка кабелю для ТВ (без штроблення)",
@@ -4723,6 +5189,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "2f744dbf-9ed6-4947-b0c3-484c03ca9c4c",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.INTERNET_TV,
 			name = "Прокладка кабелю для ТВ (зі штробленням)",
@@ -4733,6 +5200,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "449c5f08-097b-4ac2-b40d-07070b2aac4b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.INTERNET_TV,
 			name = "Установка супутникової або ефірної антени",
@@ -4743,6 +5211,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "bafbd6ea-5557-4fdc-974a-aedea6b353e1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.INTERNET_TV,
 			name = "Налаштування супутникової антени і тюнера",
@@ -4753,6 +5222,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "cd0df217-e023-48c1-94a9-dc20f5668d02",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.INTERNET_TV,
 			name = "Установка розетки для ТБ або супутника",
@@ -4763,6 +5233,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a459dac7-a858-40bc-b418-35095bdad809",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.INTERNET_TV,
 			name = "Установка розгалужувача або підсилювача ТВ",
@@ -4773,6 +5244,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "7feda94e-d883-4613-91d9-a268b677c641",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.INTERNET_TV,
 			name = "Прокладка кабелю для інтернет (без штроблення)",
@@ -4783,6 +5255,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "41b14b9d-b088-47d4-b349-39822894e32d",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.INTERNET_TV,
 			name = "Прокладка кабелю для інтернет (зі штробленням)",
@@ -4793,6 +5266,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "a1dc232e-c72d-430e-a86c-43508dd6d368",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.INTERNET_TV,
 			name = "Установка розетки комп'ютерної",
@@ -4803,6 +5277,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "f3401d82-b3d2-490f-998d-69d271734d42",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.INTERNET_TV,
 			name = "Установка і настройка маршрутизатора",
@@ -4813,6 +5288,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e26f4a51-3c65-4411-b208-f75cd2750f4b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.INTERNET_TV,
 			name = "Обтиск крученої пари (роз'єм)",
@@ -4825,6 +5301,7 @@ object WorkDataRepository {
 		//endregion
 		//region Охоронні системи та контроль доступу
 		WorkService(
+			id = "3c7e5bd5-ca0d-4af2-af2b-e9627a652ff9",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Прокладка проводу для сигналізації (без штроблення)",
@@ -4835,6 +5312,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "0fa0ad39-5859-494a-80d7-bb97bcc4be79",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Прокладка проводу для сигналізації (зі штробленням)",
@@ -4845,6 +5323,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "5a767991-cd5f-47d4-b022-a875d8d503e8",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Установка проводового датчика, клавіатури, сирени",
@@ -4855,6 +5334,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "1480ee4a-5707-4da1-b2af-096a68cf664a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Установка, підключення, налагодження 'централі'",
@@ -4865,6 +5345,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "9b711e64-99f1-4ba4-8b08-b7b41221a7a1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Установка бездротового охоронного датчика",
@@ -4875,6 +5356,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "bc685a36-7a61-46a6-a4b1-e451109b788e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Монтаж датчика контролю положення дверей",
@@ -4885,6 +5367,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2f7d8db7-85fa-42f5-acb6-e01b61b91fa2",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Монтаж кнопки запиту на вихід",
@@ -4895,6 +5378,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "cf91ea59-27e6-429c-b61e-f7a7ff504072",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Монтаж накладного зчитувача магнітних карт",
@@ -4905,6 +5389,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "1233dc8b-1258-4592-9a1a-9f9e245fd6fd",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Монтаж і підключення мережевого контролера доступу",
@@ -4915,6 +5400,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2b2bc478-3ca1-4696-92b1-5115e2d50194",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Монтаж замка накладного електромеханічного",
@@ -4925,6 +5411,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d06da28a-bd2d-4d41-a53d-e82d711b7d84",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Монтаж замка врізного електромеханічного",
@@ -4935,6 +5422,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "90e32093-d635-473f-bb62-dd7f16b20ae8",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Монтаж електрозащілки двері (хвіртки)",
@@ -4945,6 +5433,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "6ba901e2-2abc-4202-b0c8-19bdcc84ea3e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Монтаж хвіртки електромеханічної",
@@ -4955,6 +5444,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "3c85623f-ebdb-4d4d-b6d8-980ca3f081fd",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Монтаж турнікета роторного поясного",
@@ -4965,6 +5455,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2aaf3ca1-9975-4d9f-8872-1879e06991a1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Монтаж шлагбаума",
@@ -4975,6 +5466,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "42d9903b-f05d-49ce-bfcb-7b70a9afa66b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Монтаж турнікета роторного повноростового",
@@ -4985,6 +5477,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "715292ff-421b-477c-97a5-db9eae7ad908",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Пуско-налагоджувальні роботи системи доступу",
@@ -4995,6 +5488,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a75b8932-5b4b-47d6-af9d-defee9756c20",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Програмування системи контролю доступу",
@@ -5005,6 +5499,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2c0e42c4-26bc-48aa-9873-bcc4aff3bf1b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SECURITY_SYSTEMS,
 			name = "Монтаж замка електромагнітного",
@@ -5017,6 +5512,7 @@ object WorkDataRepository {
 		//endregion
 		//region Пожежна сигналізація
 		WorkService(
+			id = "e800b81b-5fb1-43fd-9a92-fdb7e6b81efc",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Монтаж теплового пожежного сповіщувача",
@@ -5027,6 +5523,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "da682ac1-04ac-4258-ae80-7cab9ce533f0",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Монтаж димового пожежного сповіщувача",
@@ -5037,6 +5534,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "62dc9aae-f5fd-437b-81c9-7fba70001619",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Монтаж пожежного сповіщувача полум'я",
@@ -5047,6 +5545,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "50f78135-b875-403d-925c-13ea87912236",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Монтаж ручного пожежного сповіщувача (ІПР)",
@@ -5057,6 +5556,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2bcc34b7-8076-4357-a2fc-b93c836332c7",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Монтаж звукового сповіщувача в приміщенні",
@@ -5067,6 +5567,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d1204fb0-af2f-423a-aed7-3b1ace433c41",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Монтаж звукового сповіщувача на вулиці",
@@ -5077,6 +5578,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "35c47e86-c0cb-4c8a-bd17-abd2bf77b51a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Монтаж мовного пожежного сповіщувача",
@@ -5087,6 +5589,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "0340e3a1-85c6-4fb7-9b04-4093fac7d2bf",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Монтаж світлового сповіщувача (табличка 'вихід')",
@@ -5097,6 +5600,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "05211b11-7f91-47d5-979f-42a7f7eb1679",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Монтаж вибухозахищеного пожежного сповіщувача",
@@ -5107,6 +5611,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "6a5757ac-9b5e-4adb-b747-a703f9a6b316",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Монтаж лінійного пожежного сповіщувача",
@@ -5117,6 +5622,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e5719613-df00-477b-acb4-997f912b363b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Монтаж блоку живлення пожежної сигналізації",
@@ -5127,6 +5633,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "fcaeb498-433e-4a4e-99a5-a4268657a5eb",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Налаштування АСУ 1 категорії 2-4 каналу",
@@ -5137,6 +5644,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5a084534-b443-4973-96ed-1d1ca970c923",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Налаштування АСУ 1 категорії 8-16 каналів",
@@ -5147,6 +5655,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "304a15db-bfa0-4296-9267-16740ff55cd6",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Налаштування АСУ 1 категорії 16-24 каналів",
@@ -5157,6 +5666,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d6413b5e-3ea6-4e3a-bd07-a4d62ddc05f1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Проектні роботи системи пожежної сигналізації",
@@ -5167,6 +5677,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "08389de3-5c4e-4b29-8638-84139ba12ed4",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_ALARM,
 			name = "Пуско-налагоджувальні роботи системи пожежної сигналізації",
@@ -5179,6 +5690,7 @@ object WorkDataRepository {
 		//endregion
 		//region Системи відеоспостереження
 		WorkService(
+			id = "0e08d334-fe7e-4e52-81a3-64423ee731ba",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Монтаж внутрішньої відеокамери",
@@ -5189,6 +5701,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "71d05a8d-f239-45a8-ad86-92f3e864fedd",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Установка вуличної відеокамери",
@@ -5199,6 +5712,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "4735f867-1e89-4a8d-a07f-206921c58411",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Установка вуличної відеокамери на висоті",
@@ -5209,6 +5723,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "399e0546-13b5-4289-ba38-472012c60f6e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Установка і настройка відеореєстратора",
@@ -5219,6 +5734,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "bc583c4a-8324-43d3-90aa-f48f2f453817",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Встановлення та налаштування сервера відеоспостереження на базі ПК",
@@ -5229,6 +5745,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5edab9d5-7d39-4411-b1e0-724c4fd91117",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Установка і настройка мікрофона",
@@ -5239,6 +5756,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a637e65e-e0a8-45bf-b734-5536f39a5ce7",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Установка блоку живлення відеоспостереження в приміщенні",
@@ -5249,6 +5767,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "021cb82f-f429-464a-91fe-e27b99d1cd04",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Установка блоку живлення відеоспостереження на вулиці",
@@ -5259,6 +5778,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "f312b411-fd34-440f-8a61-fcb2744d96a8",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Налаштування доступу на відеореєстратор з комп'ютера/мобільного",
@@ -5269,6 +5789,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "196d7d37-2225-4a53-b12b-b4dcb564e158",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Налаштування модуля авторозпізнавання номерів",
@@ -5279,6 +5800,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "a873eb9f-6b59-46fe-b98a-0b18a19193ab",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Налаштування модуля авторозпізнавання осіб",
@@ -5289,6 +5811,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "67d102e1-5e59-401c-b90b-f6f655144135",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Монтаж відеопідсилювача-коректора / розгалужувача",
@@ -5299,6 +5822,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "3edbf334-50ee-446b-aa06-6163d2d82157",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VIDEO_SURVEILLANCE,
 			name = "Підключення та монтаж охоронного відеомонітора",
@@ -5311,6 +5835,7 @@ object WorkDataRepository {
 		//endregion
 		//region Системи пожежогасіння
 		WorkService(
+			id = "b6c824f4-284c-4522-84fc-9a32a6d2378b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_EXTINGUISHING,
 			name = "Установка відкритого спринклера водяного пожежогасіння",
@@ -5321,6 +5846,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8df749cc-5788-421a-8307-f7322cfe0470",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_EXTINGUISHING,
 			name = "Установка прихованого спринклера водяного пожежогасіння",
@@ -5331,6 +5857,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "706f5e1c-61eb-4503-9f2c-99dbd5205f2e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_EXTINGUISHING,
 			name = "Монтаж манометра пожежогасіння",
@@ -5341,6 +5868,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "65d06a9e-1516-48cb-af28-0926d696fe66",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_EXTINGUISHING,
 			name = "Монтаж насоса пожежогасіння",
@@ -5351,6 +5879,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "b35cf4ab-ff33-4779-940c-fc87d27b6ec6",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_EXTINGUISHING,
 			name = "Монтаж вузла управління пожежогасіння",
@@ -5361,6 +5890,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d94a7596-ed14-4a33-9d4b-b076f1625a3d",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_EXTINGUISHING,
 			name = "Монтаж бака системи пожежогасіння",
@@ -5371,6 +5901,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "abceeac3-0f88-439b-b52e-cbeb15b281b7",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_EXTINGUISHING,
 			name = "Пневматичне випробування системи пожежогасіння",
@@ -5381,6 +5912,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "f3baee6b-ec83-42ab-a494-17cf62fefa59",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_EXTINGUISHING,
 			name = "Гідравлічне випробування системи пожежогасіння",
@@ -5391,6 +5923,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "34260d0c-5918-42e2-8453-c177cad20c87",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_EXTINGUISHING,
 			name = "Монтаж системи спринклерного пожежогасіння під ключ",
@@ -5401,6 +5934,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "65322d28-b929-4ea1-bdde-e58ad2274a37",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_EXTINGUISHING,
 			name = "Монтаж труби пожежогасіння (40-100мм)",
@@ -5411,6 +5945,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "cd9b8ab7-500f-41dd-84a2-17b1ee7b1acb",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.FIRE_EXTINGUISHING,
 			name = "Монтаж труби пожежогасіння (150-250мм)",
@@ -5423,6 +5958,7 @@ object WorkDataRepository {
 		//endregion
 		//region Газифікація
 		WorkService(
+			id = "d30f9d97-5a14-47c0-9ff0-5232b4a3d5b0",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.GASIFICATION,
 			name = "Газифікація приватного будинку під ключ",
@@ -5433,6 +5969,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "655b5c9d-2f8f-4344-acb3-872e73e3cd27",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.GASIFICATION,
 			name = "Прокладка газової труби НД під землею",
@@ -5443,6 +5980,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "44a2eceb-b603-4e6d-bc0d-9e9dd3c8182a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.GASIFICATION,
 			name = "Монтаж газового лічильника",
@@ -5453,6 +5991,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "d096975a-18f5-4082-a360-bf4de25e498e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.GASIFICATION,
 			name = "Прокладка газової труби НД надземної",
@@ -5463,6 +6002,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "3873d674-6e24-4084-a9ce-4aaf731bdd00",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.GASIFICATION,
 			name = "Супровід отримання тех. умов на газифікацію",
@@ -5473,6 +6013,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2798013f-6b66-4afa-8f0e-e4b6f2444189",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.GASIFICATION,
 			name = "Виїзд на місце для консультації з газифікації (до 30 км)",
@@ -5483,6 +6024,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "1efa8919-eff4-430d-8629-4f1216e54627",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.GASIFICATION,
 			name = "Врізка в газову трубу НД",
@@ -5493,6 +6035,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8986cc16-9ee3-4009-a064-ab6e014d4173",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.GASIFICATION,
 			name = "Врізка в газову трубу СД",
@@ -5503,6 +6046,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "2056c422-0f59-41ed-a7c5-95444b04e609",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.GASIFICATION,
 			name = "Перенесення газової труби в квартирі (під ключ)",
@@ -5515,6 +6059,7 @@ object WorkDataRepository {
 		//endregion
 		//region Ліфти та ескалатори
 		WorkService(
+			id = "c86b435b-3afa-473e-a469-e944929547e0",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELEVATORS,
 			name = "Монтаж ліфта в приватному будинку",
@@ -5525,6 +6070,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "4c953f6b-e440-4776-9a7c-35fb39ebaacc",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELEVATORS,
 			name = "Монтаж ліфта в багатоповерховому будинку",
@@ -5535,6 +6081,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "cc0751e6-5fc0-4e97-bd00-a4b0237d98b1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELEVATORS,
 			name = "Ремонт ліфта",
@@ -5545,6 +6092,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "897d3775-314b-46f5-83e5-ec4e15eaa07f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.ELEVATORS,
 			name = "Діагностика несправностей ліфта",
@@ -5557,6 +6105,7 @@ object WorkDataRepository {
 		//endregion
 		//region Розумний будинок
 		WorkService(
+			id = "f2ff476f-f2f1-4d5d-9ced-d44082a24fd1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SMART_HOME,
 			name = "Проектування (прорахунок) системи розумний будинок",
@@ -5567,6 +6116,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "b1c09b48-9c16-41d9-b3a7-20122c48c0f2",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.SMART_HOME,
 			name = "Монтаж системи 'розумний будинок'",
@@ -5579,6 +6129,7 @@ object WorkDataRepository {
 		//endregion
 		//region Альтернативні джерела енергії
 		WorkService(
+			id = "dff34eee-6cd6-42b1-93ee-0a146c205c9e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.RENEWABLE_ENERGY,
 			name = "Проектування і розрахунок сонячної електростанції",
@@ -5589,6 +6140,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "17808377-3a04-428b-96a9-5b9457f225f8",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.RENEWABLE_ENERGY,
 			name = "Проектування і розрахунок вітряної електростанції",
@@ -5599,6 +6151,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "dbeed709-3a7d-4fd0-a1c8-7de4c59f66d4",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.RENEWABLE_ENERGY,
 			name = "Проектування і розрахунок сонячного колектора гарячої води",
@@ -5609,6 +6162,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e07f5847-dc98-4ace-8068-450a345b6027",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.RENEWABLE_ENERGY,
 			name = "Проектування і розрахунок (геотермального) теплового насоса",
@@ -5619,6 +6173,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "f57c3fe1-05b1-4702-ba22-dbce0d07eb2d",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.RENEWABLE_ENERGY,
 			name = "Монтаж і запуск сонячної електростанції",
@@ -5629,6 +6184,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "25442014-ef9c-4dcc-94c9-2c1805c7a7ad",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.RENEWABLE_ENERGY,
 			name = "Монтаж і запуск вітряної електростанції",
@@ -5639,6 +6195,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "f19a24bb-e254-46a0-8156-b4c685f7267b",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.RENEWABLE_ENERGY,
 			name = "Монтаж і запуск сонячного колектора гарячої води",
@@ -5649,6 +6206,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "b8d83e7d-5371-4c21-93b0-1fc9c2ad8a32",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.RENEWABLE_ENERGY,
 			name = "Монтаж і запуск (геотермального) теплового насоса",
@@ -5661,6 +6219,7 @@ object WorkDataRepository {
 		//endregion
 		//region Системи вентиляції
 		WorkService(
+			id = "527b271a-a275-499e-a2a8-5a8cccd5e1e9",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VENTILATION,
 			name = "Монтаж повітроводів",
@@ -5671,6 +6230,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "65894fb2-e938-44e9-92a0-0ce4a9ba617f",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VENTILATION,
 			name = "Монтаж вентиляторів",
@@ -5681,6 +6241,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "330ba5de-3196-4500-8d29-567bee13b346",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VENTILATION,
 			name = "Монтаж фільтрів",
@@ -5691,6 +6252,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "866c19f0-679a-43aa-b127-6425ae2e2c7e",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VENTILATION,
 			name = "Монтаж зворотнього клапана",
@@ -5701,6 +6263,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5a7d183d-e0a4-4cd4-9d66-f6fb3941083d",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VENTILATION,
 			name = "Монтаж припливно-витяжної установки",
@@ -5711,6 +6274,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "44eacc97-2ba9-4191-a371-405803db8ae3",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VENTILATION,
 			name = "Монтаж канального вентилятора",
@@ -5721,6 +6285,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "ae8dfd95-1cb0-44bb-857b-85cc9701113a",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VENTILATION,
 			name = "Монтаж дахового вентилятора",
@@ -5731,6 +6296,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "b2b37e93-4371-49d1-b7df-e93826339eb1",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VENTILATION,
 			name = "Перевірка стану трубопроводів та запірної арматури",
@@ -5741,6 +6307,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "dbbd0bfc-f4cb-45e0-92b8-03682727b480",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VENTILATION,
 			name = "Заправка водяного (гліколевого) контуру",
@@ -5751,6 +6318,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "5b0c7147-a8fa-419e-8c20-524429262d37",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VENTILATION,
 			name = "Злив водяного (гліколевого) контуру",
@@ -5761,6 +6329,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "79dbf2eb-8633-482d-9eaa-7d70e284727c",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VENTILATION,
 			name = "Утеплення повітроводів",
@@ -5771,6 +6340,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "dc9065b3-6b67-4b10-bf18-e5bdb86b21cd",
 			section = WorkSection.ENGINEERING,
 			category = WorkCategory.VENTILATION,
 			name = "Прокладання кабелю",
@@ -5786,6 +6356,7 @@ object WorkDataRepository {
 		//region ЗНЕСЕННЯ І ДЕМОНТАЖ
 		//region Демонтаж сантехніки
 		WorkService(
+			id = "84422ce3-35f1-406a-b44f-00976f636d15",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_PLUMBING,
 			name = "Демонтаж умивальника",
@@ -5796,6 +6367,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "b75f4e7e-adfb-4664-b723-df104d22f2f0",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_PLUMBING,
 			name = "Демонтаж унітазу",
@@ -5806,6 +6378,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "888c8e14-b211-4191-a461-877cb770f8e0",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_PLUMBING,
 			name = "Демонтаж ванни",
@@ -5816,6 +6389,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "8e2810ff-925b-4228-b423-89b105fec050",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_PLUMBING,
 			name = "Демонтаж батареї",
@@ -5828,6 +6402,7 @@ object WorkDataRepository {
 		//endregion
 		//region Демонтаж вікон і дверей
 		WorkService(
+			id = "433be4e3-a450-4fbd-a5a9-7c5e4ba985d4",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WINDOWS_DOORS,
 			name = "Демонтаж вікна",
@@ -5838,6 +6413,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "94797ed8-1901-4c53-8d4d-3fec06d149aa",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WINDOWS_DOORS,
 			name = "Демонтаж дверного блоку міжкімнатного",
@@ -5848,6 +6424,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "91c13a62-faa8-41c0-beca-49a1c5ac66ea",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WINDOWS_DOORS,
 			name = "Демонтаж броньованих дверей",
@@ -5858,6 +6435,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "e81528b5-f023-41f4-86d9-c16c70daea8f",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WINDOWS_DOORS,
 			name = "Демонтаж балконного блоку",
@@ -5868,6 +6446,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "6dada646-ec60-4cbc-91a2-335586376172",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WINDOWS_DOORS,
 			name = "Демонтаж підвіконня, відливу",
@@ -5878,6 +6457,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "29eff70f-5eb7-4600-9639-03a8ffb29686",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WINDOWS_DOORS,
 			name = "Демонтаж балконної тумби",
@@ -5890,6 +6470,7 @@ object WorkDataRepository {
 		//endregion
 		//region Знесення стін і перегородок
 		WorkService(
+			id = "464f42cf-10af-4dc0-9418-db63f8dd9895",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALLS_STRUCTURE,
 			name = "Демонтаж цегляної перегородки (пів цегли)",
@@ -5900,6 +6481,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "ae06382e-63b4-4b96-b351-31203dfd8aa8",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALLS_STRUCTURE,
 			name = "Демонтаж цегляної перегородки (1 цегла)",
@@ -5910,6 +6492,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "38e7b782-27b4-4b8f-9d82-a204f03a821c",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALLS_STRUCTURE,
 			name = "Знесення цегляної або гіпсової перегородки (1,5 цегли)",
@@ -5920,6 +6503,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "7913d5ee-4fde-4dd8-ab50-d3c4b0a3ea82",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALLS_STRUCTURE,
 			name = "Знесення цегляної або гіпсової перегородки (2 цегли)",
@@ -5930,6 +6514,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "5570c0b7-fad3-4b94-aeaa-7d2f5286d1d9",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALLS_STRUCTURE,
 			name = "Демонтаж цегляної або гіпсової перегородки (2,5 цегли)",
@@ -5940,6 +6525,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "f90bf1bd-ef81-40c0-9911-573452f0d72b",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALLS_STRUCTURE,
 			name = "Знесення цегляної або гіпсової перегородки (3 цегли)",
@@ -5950,6 +6536,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "7932e936-4b2a-4d6d-ace4-a45d43d90625",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALLS_STRUCTURE,
 			name = "Демонтаж стіни з ацеїду, гіпсоліту, ГКЛ",
@@ -5960,6 +6547,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "89c241e5-79d6-4779-aaad-d71990f0dc02",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALLS_STRUCTURE,
 			name = "Демонтаж гіпсокартону",
@@ -5970,6 +6558,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "84f5b092-6bcc-4151-b3d3-819e07e65497",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALLS_STRUCTURE,
 			name = "Розшивання стиків з/б плит, тріщин",
@@ -5982,6 +6571,7 @@ object WorkDataRepository {
 		//endregion
 		//region Отвори і штроби
 		WorkService(
+			id = "9bb005e8-2a8b-49b8-ac13-578e47a5e760",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.OPENINGS_STROBES,
 			name = "Отвори в бетоні (до 10 см)",
@@ -5992,6 +6582,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "308428a2-1295-46f2-b9fe-d4a3a0780bf6",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.OPENINGS_STROBES,
 			name = "Отвори в бетоні (10-15 см)",
@@ -6002,6 +6593,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "32c1b860-83b9-4bae-a78f-cd32c381b9f2",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.OPENINGS_STROBES,
 			name = "Отвори в бетоні (15-20 см)",
@@ -6012,6 +6604,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "fce7cf8c-6f3b-4f9f-aebb-f4dec3da3097",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.OPENINGS_STROBES,
 			name = "Прорізання шва в цеглі (глибина до 5 см)",
@@ -6022,6 +6615,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "d1cbc095-83d8-4e8b-be29-e44d61cfe04f",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.OPENINGS_STROBES,
 			name = "Прорізання вигнутого шва в цеглі (глибина до 5 см)",
@@ -6032,6 +6626,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "3587f940-571b-4786-aa7e-5e9a48d509db",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.OPENINGS_STROBES,
 			name = "Розширення отвору для вхідних дверей",
@@ -6044,6 +6639,7 @@ object WorkDataRepository {
 		//endregion
 		//region Видалення фарби
 		WorkService(
+			id = "a91e8202-4c6f-4283-bbfc-e454d3907705",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.PAINT_REMOVAL,
 			name = "Видалення фарби зі стіни",
@@ -6054,6 +6650,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "6cbb0291-7955-45cd-be0e-2d47c69e4772",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.PAINT_REMOVAL,
 			name = "Видалення фарби зі стелі",
@@ -6064,6 +6661,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "f93c2511-8bce-46be-8d5d-53dfc13aaf46",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.PAINT_REMOVAL,
 			name = "Видалення побілки зі стелі",
@@ -6074,6 +6672,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "fcfb7db0-f3ed-4d4a-b24c-c356af54a70f",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.PAINT_REMOVAL,
 			name = "Видалення масляної фарби з труби",
@@ -6084,6 +6683,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "c9a03b12-4524-43a2-8e3b-12ebf3d46c69",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.PAINT_REMOVAL,
 			name = "Видалення масляної фарби з поверхні",
@@ -6094,6 +6694,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "9c207cbd-6dcc-49db-a814-ccf74797fae6",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.PAINT_REMOVAL,
 			name = "Видалення масляної фарби з підвіконня",
@@ -6104,6 +6705,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "0a84721c-0f4f-4a4c-a8b0-80134ed3cd40",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.PAINT_REMOVAL,
 			name = "Видалення масляної фарби з рами вікна",
@@ -6114,6 +6716,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "a65fcd3f-3818-4bda-9e7d-941104d03da6",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.PAINT_REMOVAL,
 			name = "Видалення масляної фарби з радіатора",
@@ -6124,6 +6727,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "221eb363-0480-419a-bd01-7ea4c0389376",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.PAINT_REMOVAL,
 			name = "Видалення масляної фарби з радіатора (за м²)",
@@ -6136,6 +6740,7 @@ object WorkDataRepository {
 		//endregion
 		//region Демонтаж настінних покриттів
 		WorkService(
+			id = "54657d71-5d8f-4dc8-81a3-d619fc4eb74b",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALL_COVERINGS,
 			name = "Демонтаж плитки",
@@ -6146,6 +6751,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "7a570262-1847-450e-8393-b2aed1611c93",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALL_COVERINGS,
 			name = "Демонтаж штукатурки",
@@ -6156,6 +6762,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "014fb1e8-835e-4a5f-9665-460f74ed812f",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALL_COVERINGS,
 			name = "Зняття шпалер",
@@ -6166,6 +6773,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "c868938c-a7cc-4382-bdc7-f7de57dc43f7",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALL_COVERINGS,
 			name = "Демонтаж дерев'яної вагонки",
@@ -6176,6 +6784,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "7fe644ec-9275-4db0-a2de-f71e53ebe342",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_WALL_COVERINGS,
 			name = "Демонтаж панелей",
@@ -6188,6 +6797,7 @@ object WorkDataRepository {
 		//endregion
 		//region Демонтаж підлогових покриттів
 		WorkService(
+			id = "87f8d0f4-9e14-455f-97ba-1355e9cf1b5b",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_FLOOR_COVERINGS,
 			name = "Демонтаж стяжки до 10 см",
@@ -6198,6 +6808,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "9e8af876-b07f-4437-9b48-0b6577468f4b",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_FLOOR_COVERINGS,
 			name = "Видалення лінолеуму на клею",
@@ -6208,6 +6819,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "d74c3c8b-6a5d-4b82-b3be-3cfd5d6e0dd7",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_FLOOR_COVERINGS,
 			name = "Демонтаж старого паркету",
@@ -6218,6 +6830,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "fd4805aa-d2a2-48f9-b88c-f86075f31cc3",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_FLOOR_COVERINGS,
 			name = "Демонтаж плінтуса",
@@ -6228,6 +6841,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_RUNNING_METER
 		),
 		WorkService(
+			id = "06178086-5107-4234-a524-45b3e8040a95",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_FLOOR_COVERINGS,
 			name = "Демонтаж стяжки до 5 см",
@@ -6238,6 +6852,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "410df319-0b1a-4ba5-8e77-7f2b041358a2",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_FLOOR_COVERINGS,
 			name = "Демонтаж лінолеуму або ковроліну",
@@ -6248,6 +6863,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "cd861e1c-9290-4051-b804-43324c7814cf",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_FLOOR_COVERINGS,
 			name = "Демонтаж паркетної підлоги",
@@ -6258,6 +6874,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "acc99b24-80a9-45e5-834e-15518e722455",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_FLOOR_COVERINGS,
 			name = "Демонтаж ламінату",
@@ -6270,6 +6887,7 @@ object WorkDataRepository {
 		//endregion
 		//region Знесення будівель і будівель
 		WorkService(
+			id = "49f59c2a-6963-41c0-8148-9c38917fe1ea",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_BUILDINGS,
 			name = "Демонтаж будівель і споруд (за м²)",
@@ -6280,6 +6898,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.NONE
 		),
 		WorkService(
+			id = "308af6e0-053d-4926-a1be-80ab0d02c9d9",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_BUILDINGS,
 			name = "Демонтаж будівель і споруд (за м³)",
@@ -6292,6 +6911,7 @@ object WorkDataRepository {
 		//endregion
 		//region Демонтаж металоконструкцій
 		WorkService(
+			id = "4e1011bb-16e1-4ac5-b168-1151d666655e",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_METAL,
 			name = "Демонтаж металоконструкцій",
@@ -6304,6 +6924,7 @@ object WorkDataRepository {
 		//endregion
 		//region Інший демонтаж
 		WorkService(
+			id = "ba496e6b-eaf3-482f-917c-a311ddb2b297",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_OTHER,
 			name = "Демонтаж перекриття з дерева",
@@ -6314,6 +6935,7 @@ object WorkDataRepository {
 			targetSurface = TargetSurface.ANY_SQUARE_METER
 		),
 		WorkService(
+			id = "612c2cf1-3013-4740-9b51-810955a69af4",
 			section = WorkSection.DEMOLITION,
 			category = WorkCategory.DEMO_OTHER,
 			name = "Демонтаж перекриття з бетону",

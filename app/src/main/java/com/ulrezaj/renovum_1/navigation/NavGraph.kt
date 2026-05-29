@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -72,17 +73,20 @@ fun NavGraph(
 			L.d("NavGraph: Rendering CalcScreen")
 
 			val rooms = roomViewModel.rooms
-			val activeRoom = roomViewModel.selectedRoom
+			// Використовуємо 'by', щоб дістати чистий RoomEntity? і підписатися на зміни
+			val activeRoom by roomViewModel.selectedRoom
 
-			LaunchedEffect(activeRoom, rooms) {
+			// LaunchedEffect тепер стежить за конкретним ID кімнати або фактом її наявності
+			LaunchedEffect(activeRoom?.id, rooms) {
 				if (activeRoom == null && rooms.isNotEmpty()) {
 					roomViewModel.selectRoom(rooms.first())
 				}
 			}
 
-			if (activeRoom != null) {
+			val room = activeRoom
+			if (room != null) {
 				CalcScreen(
-					currentRoom = activeRoom,
+					currentRoom = room,
 					roomViewModel = roomViewModel,
 					allRooms = rooms,
 					userSettings = userSettings,
@@ -101,9 +105,9 @@ fun NavGraph(
 		composable(route = Screen.Works.route) {
 			L.nav("Screen: Works")
 			val rooms = roomViewModel.rooms
-			val activeRoom = roomViewModel.selectedRoom
+			val activeRoom by roomViewModel.selectedRoom
 
-			LaunchedEffect(activeRoom, rooms) {
+			LaunchedEffect(activeRoom?.id, rooms) {
 				if (activeRoom == null && rooms.isNotEmpty()) {
 					roomViewModel.selectRoom(rooms.first())
 				}

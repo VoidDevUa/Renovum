@@ -1,11 +1,13 @@
 package com.ulrezaj.renovum_1.ui.viewmodels
 
+import android.annotation.SuppressLint
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableDoubleStateOf
-import androidx.lifecycle.ViewModel
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ulrezaj.renovum_1.data.model.AppliedWork
 import com.ulrezaj.renovum_1.data.model.RoomEntity
@@ -16,7 +18,12 @@ import com.ulrezaj.renovum_1.data.model.WorkService
 import com.ulrezaj.renovum_1.data.model.WorkUnit
 import com.ulrezaj.renovum_1.data.repositories.RoomRepository
 import com.ulrezaj.renovum_1.data.repositories.WorkDataRepository
+import com.ulrezaj.renovum_1.data.repositories.WorkRepository
 import com.ulrezaj.renovum_1.utility.L
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 data class CalculatedData(
@@ -28,15 +35,23 @@ data class CalculatedData(
 	val extra: Map<String, Double>
 )
 
-class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
+@SuppressLint("SdCardPath")
+class RoomViewModel(
+	private val roomRepository: RoomRepository,
+	private val workRepository: WorkRepository
+) : ViewModel() {
 	private val _rooms = mutableStateListOf<RoomEntity>()
 	val rooms: List<RoomEntity> get() = _rooms
 
-	private val _appliedWorks = mutableStateListOf<AppliedWork>()
-	val appliedWorks: List<AppliedWork> get() = _appliedWorks
+	val appliedWorks: StateFlow<List<AppliedWork>> = workRepository.allWorks
+		.stateIn(
+			scope = viewModelScope,
+			started = SharingStarted.WhileSubscribed(5000),
+			initialValue = emptyList()
+		)
 
 	private val _selectedRoom = mutableStateOf<RoomEntity?>(null)
-	val selectedRoom: RoomEntity? get() = _selectedRoom.value
+	val selectedRoom: State<RoomEntity?> = _selectedRoom
 
 	var lastSelectedCategory by mutableStateOf<WorkCategory?>(null)
 	var projectDiscountPercent by mutableDoubleStateOf(0.0)
@@ -72,7 +87,7 @@ class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
 	 * Сума всіх робіт БЕЗ знижки
 	 */
 	fun getTotalRawSum(): Double {
-		return _appliedWorks.sumOf { it.priceAtTime * it.quantity }
+		return appliedWorks.value.sumOf { it.priceAtTime * it.quantity }
 	}
 
 	/**
@@ -96,10 +111,9 @@ class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
 	}
 	fun deleteRoom(room: RoomEntity) {
 		viewModelScope.launch {
-			_appliedWorks.removeAll { it.roomId == room.id }
-
+			workRepository.deleteWorksByRoomId(room.id)
 			roomRepository.delete(room)
-			L.d("ViewModel: Triggered DB delete for room: ${room.name}")
+			L.d("ViewModel: Successfully deleted room ${room.name} and its works from DB")
 		}
 	}
 
@@ -146,82 +160,78 @@ class RoomViewModel(private val roomRepository: RoomRepository) : ViewModel() {
 		return options
 	}
 
-	fun saveDoneWork(
-		room: RoomEntity,
-		work: WorkService,
-		price: Double,
-		quantity: Double
-	) {
+	fun saveAppliedWork(room: RoomEntity, work: WorkService, price: Double, quantity: Double) {
 		val newWork = AppliedWork(
 			workId = work.id,
 			roomId = room.id,
-			priceAtTime = price,
-			quantity = quantity
+			quantity = quantity,
+			priceAtTime = price
 		)
-		_appliedWorks.add(newWork)
-		L.d("ViewModel: Saved ${work.name} for ${room.name}. Qty: $quantity")
-	}
-
-	/**
-	 * Групує виконані роботи по кімнатах.
-	 * Повертає Map, де ключ — Кімната, а значення — список пар (Виконана робота, Опис послуги)
-	 */
-	fun getGroupedWorks(): Map<RoomEntity, List<Pair<AppliedWork, WorkService>>> {
-		return _appliedWorks.groupBy { work ->
-			_rooms.find { it.id == work.roomId }
+		viewModelScope.launch {
+			workRepository.insert(newWork)
+			L.d("ViewModel: Saved ${work.name} to DB for ${room.name}")
 		}
-			.filterKeys { it != null }
-			.mapKeys { it.key!! }
-			.mapValues { entry ->
-				entry.value.map { applied ->
-					val service = WorkDataRepository.allWorks.find { it.id == applied.workId }
-						?: WorkService(
-							id = applied.workId,
-							section = WorkSection.FINISHING,
-							category = WorkCategory.PAINTING,
-							name = "Невідома робота",
-							unit = WorkUnit.M2,
-							minPrice = 0.0,
-							maxPrice = 0.0,
-							averagePrice = 0.0
-						)
-					applied to service
-				}
-			}
 	}
 
 	/**
-	 * Загальна сума всіх робіт у проєкті
+	 * Видаляє виконану роботу
 	 */
-	fun getTotalProjectSum(): Double {
-		return _appliedWorks.sumOf { it.priceAtTime * it.quantity }
-	}
-
-	fun isWorkDone(workId: String, roomId: String): Boolean {
-		return _appliedWorks.any { it.workId == workId && it.roomId == roomId }
+	fun deleteAppliedWork(work: AppliedWork) {
+		viewModelScope.launch {
+			workRepository.delete(work)
+			L.d("ViewModel: Removed from DB: ${work.workId}")
+		}
 	}
 
 	/**
 	 * Оновлює існуючу роботу в списку
 	 */
 	fun updateAppliedWork(originalWork: AppliedWork, newPrice: Double, newQuantity: Double) {
-		val index = _appliedWorks.indexOf(originalWork)
-		if (index != -1) {
-			_appliedWorks[index] = originalWork.copy(
-				priceAtTime = newPrice,
-				quantity = newQuantity
-			)
-			L.d("ViewModel: Updated work at index $index. New total: ${newPrice * newQuantity}")
+		viewModelScope.launch {
+			val updatedWork = originalWork.copy(priceAtTime = newPrice, quantity = newQuantity)
+			workRepository.update(updatedWork)
+			L.d("ViewModel: Updated in DB. New total: ${newPrice * newQuantity}")
 		}
 	}
 
 	/**
-	 * Видаляє виконану роботу (якщо раптом у діалозі захочеш додати кнопку видалення)
+	 * Групує виконані роботи по кімнатах.
+	 * Повертає Map, де ключ — Кімната, а значення — список пар (Виконана робота, Опис послуги)
 	 */
-	fun deleteAppliedWork(work: AppliedWork) {
-		if (_appliedWorks.remove(work)) {
-			L.d("ViewModel: Removed applied work: ${work.workId}")
-		}
+	val groupedWorksState: StateFlow<Map<RoomEntity, List<Pair<AppliedWork, WorkService>>>> =
+		appliedWorks.map { worksList ->
+			worksList.groupBy { work ->
+				_rooms.find { it.id == work.roomId }
+			}
+				.filterKeys { it != null }
+				.mapKeys { it.key!! }
+				.mapValues { entry ->
+					entry.value.map { applied ->
+						val service = WorkDataRepository.allWorks.find { it.id == applied.workId }
+							?: WorkService(
+								id = applied.workId,
+								section = WorkSection.FINISHING,
+								category = WorkCategory.PAINTING,
+								name = "Невідома робота",
+								unit = WorkUnit.M2,
+								minPrice = 0.0,
+								maxPrice = 0.0,
+								averagePrice = 0.0
+							)
+						applied to service
+					}
+				}
+		}.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyMap())
+
+	/**
+	 * Загальна сума всіх робіт у проєкті
+	 */
+	fun getTotalProjectSum(): Double {
+		return appliedWorks.value.sumOf { it.priceAtTime * it.quantity }
+	}
+
+	fun isWorkDone(workId: String, roomId: String): Boolean {
+		return appliedWorks.value.any { it.workId == workId && it.roomId == roomId }
 	}
 
 	fun getWorkServiceById(workId: String): WorkService? {

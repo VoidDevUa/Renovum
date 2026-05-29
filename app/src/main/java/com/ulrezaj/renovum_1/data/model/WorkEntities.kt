@@ -1,6 +1,7 @@
 package com.ulrezaj.renovum_1.data.model
 
-import java.util.UUID
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 enum class WorkUnit(val displayName: String) {
 	M2("м²"),
@@ -26,7 +27,7 @@ enum class WorkUnit(val displayName: String) {
 }
 
 data class WorkService(
-	val id: String = UUID.randomUUID().toString(),
+	val id: String,
 	val section: WorkSection,
 	val category: WorkCategory,
 	val name: String,
@@ -37,8 +38,9 @@ data class WorkService(
 	val targetSurface: TargetSurface = TargetSurface.NONE
 )
 
+@Entity(tableName = "applied_works")
 data class AppliedWork(
-	val id: String = UUID.randomUUID().toString(),
+	@PrimaryKey(autoGenerate = true) val id: Int = 0,
 	val workId: String,
 	val roomId: String,
 	val quantity: Double,

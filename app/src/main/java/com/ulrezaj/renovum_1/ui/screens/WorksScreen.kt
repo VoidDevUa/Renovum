@@ -29,7 +29,9 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -53,7 +55,8 @@ fun WorksScreen(
 	roomViewModel: RoomViewModel,
 	userSettings: UserSettings
 ) {
-	val selectedRoom = roomViewModel.selectedRoom
+	val appliedWorks by roomViewModel.appliedWorks.collectAsState()
+	val selectedRoom by roomViewModel.selectedRoom
 	val roomsCount = roomViewModel.rooms.size
 
 	val sections = remember { WorkDataRepository.allSections }
@@ -78,7 +81,7 @@ fun WorksScreen(
 		roomViewModel.lastSelectedCategory = selectedCategory
 	}
 
-	var showAddDialog by remember { mutableStateOf(false) }
+	val showAddDialog = remember { mutableStateOf(false) }
 	var workToProcess by remember { mutableStateOf<WorkService?>(null) }
 
 	val textFieldColors = OutlinedTextFieldDefaults.colors(
@@ -88,18 +91,20 @@ fun WorksScreen(
 		unfocusedLabelColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
 	)
 
-	if (showAddDialog && workToProcess != null && selectedRoom != null) {
-		WorkDialog(
-			workService = workToProcess!!,
-			room = selectedRoom,
-			roomViewModel = roomViewModel,
-			appliedWork = null,
-			onDismiss = { showAddDialog = false },
-			onSave = { price, vol ->
-				roomViewModel.saveDoneWork(selectedRoom, workToProcess!!, price, vol)
-				showAddDialog = false
-			}
-		)
+	selectedRoom?.let { room ->
+		if (showAddDialog.value && workToProcess != null) {
+			WorkDialog(
+				workService = workToProcess!!,
+				room = room,
+				roomViewModel = roomViewModel,
+				appliedWork = null,
+				onDismiss = { showAddDialog.value = false },
+				onSave = { price, vol ->
+					roomViewModel.saveAppliedWork(room, workToProcess!!, price, vol)
+					showAddDialog.value = false
+				}
+			)
+		}
 	}
 
 	Column(
@@ -207,39 +212,41 @@ fun WorksScreen(
 			color = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
 		)
 
-		LazyColumn(
-			modifier = Modifier.weight(1f),
-			verticalArrangement = Arrangement.spacedBy(8.dp),
-			contentPadding = PaddingValues(bottom = 16.dp)
-		) {
-			if (currentWorks.isEmpty()) {
-				item {
-					Text(
-						"Робіт для категорії \"${selectedCategory.displayName}\" поки немає",
-						style = MaterialTheme.typography.bodyMedium,
-						color = Color.Gray,
-						modifier = Modifier.padding(16.dp)
-					)
-				}
-			} else {
-				items(
-					items = currentWorks,
-					key = { work -> work.id }
-				) { work ->
-					val isAlreadyDone = selectedRoom?.let {
-						roomViewModel.isWorkDone(work.id, it.id)
-					} ?: false
+		key(selectedRoom?.id) {
+			LazyColumn(
+				modifier = Modifier.weight(1f),
+				verticalArrangement = Arrangement.spacedBy(8.dp),
+				contentPadding = PaddingValues(bottom = 16.dp)
+			) {
+				if (currentWorks.isEmpty()) {
+					item {
+						Text(
+							"Робіт для категорії \"${selectedCategory.displayName}\" поки немає",
+							style = MaterialTheme.typography.bodyMedium,
+							color = Color.Gray,
+							modifier = Modifier.padding(16.dp)
+						)
+					}
+				} else {
+					items(
+						items = currentWorks,
+						key = { work -> work.id }
+					) { work ->
+						val isAlreadyDone = selectedRoom?.let { room ->
+							appliedWorks.any { it.workId == work.id && it.roomId == room.id }
+						} ?: false
 
-					WorkCard(
-						work = work,
-						isLeftHanded = userSettings.isLeftHanded,
-						enabled = selectedRoom != null && !isAlreadyDone,
-						isDone = isAlreadyDone,
-						onAddClick = {
-							workToProcess = work
-							showAddDialog = true
-						}
-					)
+						WorkCard(
+							work = work,
+							isLeftHanded = userSettings.isLeftHanded,
+							enabled = selectedRoom != null && !isAlreadyDone,
+							isDone = isAlreadyDone,
+							onAddClick = {
+								workToProcess = work
+								showAddDialog.value = true
+							}
+						)
+					}
 				}
 			}
 		}

@@ -33,7 +33,7 @@ fun EditRoomScreen(
 ) {
 	val context = LocalContext.current
 
-	val room = roomViewModel.selectedRoom
+	val room = roomViewModel.selectedRoom.value
 
 	if (room == null) {
 		L.e("EditRoom: selectedRoom is null, cannot edit")

@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.local.AppDatabase
 import com.ulrezaj.renovum_1.data.repositories.RoomRepository
+import com.ulrezaj.renovum_1.data.repositories.WorkRepository
 import com.ulrezaj.renovum_1.navigation.NavGraph
 import com.ulrezaj.renovum_1.navigation.Screen
 import com.ulrezaj.renovum_1.ui.components.BottomNav
@@ -33,8 +34,11 @@ fun RenovumApp() {
 		factory = @Suppress("UNCHECKED_CAST") object : ViewModelProvider.Factory {
 			override fun <T : ViewModel> create(modelClass: Class<T>): T {
 				val database = AppDatabase.getDatabase(context)
-				val repository = RoomRepository(database.roomDao())
-				return RoomViewModel(repository) as T
+
+				val roomRepository = RoomRepository(database.roomDao())
+				val workRepository = WorkRepository(database.appliedWorkDao())
+
+				return RoomViewModel(roomRepository, workRepository) as T
 			}
 		}
 	)
@@ -109,7 +113,7 @@ fun RenovumApp() {
 								onSumClick = if (currentRoute == Screen.Done.route) {
 									{ roomViewModel.showDiscountDialog = true }
 								} else null,
-								selectedRoom = roomViewModel.selectedRoom,
+								selectedRoom = roomViewModel.selectedRoom.value,
 								rooms = roomViewModel.rooms,
 								onRoomSelected = if (currentRoute == Screen.Works.route) {
 									{ room ->
@@ -122,7 +126,7 @@ fun RenovumApp() {
 								} else null,
 								onNavigateToEdit = if (currentRoute?.startsWith(Screen.Calculations.route) == true) {
 									{
-										val roomId = roomViewModel.selectedRoom?.id
+										val roomId = roomViewModel.selectedRoom.value?.id
 										if (roomId != null) {
 											L.nav("Navigating to EditRoom for id: $roomId")
 											navController.navigate(Screen.EditRoom.route)
