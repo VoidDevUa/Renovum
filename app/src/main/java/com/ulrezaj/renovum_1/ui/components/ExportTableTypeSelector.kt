@@ -8,7 +8,6 @@ import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.ulrezaj.renovum_1.ui.theme.AppTheme
 
 @Composable
 fun ExportTableTypeSelector(
