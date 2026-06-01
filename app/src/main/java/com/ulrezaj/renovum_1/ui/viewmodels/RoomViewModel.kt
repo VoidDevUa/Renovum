@@ -11,7 +11,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.model.AppliedWork
 import com.ulrezaj.renovum_1.data.model.ReportData
 import com.ulrezaj.renovum_1.data.model.RoomEntity
@@ -268,15 +267,10 @@ class RoomViewModel(
 						totalDiscountedSum = getTotalDiscountedSum()
 					)
 
-					val temporarySettings = UserSettings(
-						groupWordByRooms = isGroupedByRooms,
-						showDiscountInWord = true
-					)
-
 					WordExportManager.createWordDocument(
 						context = context,
 						data = reportData,
-						settings = temporarySettings
+						isGroupedByRooms = isGroupedByRooms
 					)
 				} catch (e: Exception) {
 					L.e("RoomViewModel: Помилка генерації документа у фоні", e)
@@ -292,6 +286,26 @@ class RoomViewModel(
 			} else {
 				Toast.makeText(context, "Не вдалося згенерувати файл", Toast.LENGTH_SHORT).show()
 				WordExportManager.cancelNotification(context)
+			}
+		}
+	}
+
+	/**
+	 * Повністю очищає поточний проєкт: видаляє всі кімнати та всі додані роботи
+	 */
+	fun clearCurrentProject() {
+		viewModelScope.launch {
+			try {
+				_rooms.forEach { room ->
+					workRepository.deleteWorksByRoomId(room.id)
+				}
+				_rooms.forEach { room ->
+					roomRepository.delete(room)
+				}
+				updateDiscount(0.0)
+				L.d("ViewModel: Поточний об'єкт успішно зачищено")
+			} catch (e: Exception) {
+				L.e("ViewModel: Помилка повного очищення об'єкта", e)
 			}
 		}
 	}

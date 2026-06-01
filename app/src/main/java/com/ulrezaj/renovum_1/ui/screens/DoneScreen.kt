@@ -1,6 +1,7 @@
 package com.ulrezaj.renovum_1.ui.screens
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -49,6 +50,8 @@ fun DoneScreen(roomViewModel: RoomViewModel) {
 	val currentWorkToEdit = roomViewModel.workToEdit
 
 	val showExportDialog = remember { mutableStateOf(false) }
+	val showClearDialog = remember { mutableStateOf(false) }
+
 	val context = LocalContext.current
 
 	if (roomViewModel.showDiscountDialog) {
@@ -169,8 +172,19 @@ fun DoneScreen(roomViewModel: RoomViewModel) {
 			onDismiss = { showExportDialog.value = false },
 			onConfirm = { isGroupedByRooms ->
 				showExportDialog.value = false
-
 				roomViewModel.generateWordReportInBackground(context, isGroupedByRooms)
+				showClearDialog.value = true
+			}
+		)
+	}
+
+	if (showClearDialog.value) {
+		com.ulrezaj.renovum_1.ui.components.dialogs.ClearProjectDialog(
+			onDismiss = { showClearDialog.value = false },
+			onConfirm = {
+				showClearDialog.value = false
+				roomViewModel.clearCurrentProject()
+				Toast.makeText(context, "Дані об'єкта повністю очищено", Toast.LENGTH_SHORT).show()
 			}
 		)
 	}

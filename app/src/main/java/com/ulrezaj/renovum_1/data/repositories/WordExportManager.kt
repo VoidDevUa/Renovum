@@ -15,16 +15,17 @@ import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toBitmap
-import com.ulrezaj.renovum_1.data.model.ReportData
-import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.model.AppliedWork
+import com.ulrezaj.renovum_1.data.model.ReportData
 import com.ulrezaj.renovum_1.data.model.WorkService
 import com.ulrezaj.renovum_1.utility.L
 import org.apache.commons.io.output.ByteArrayOutputStream
 import org.apache.poi.common.usermodel.PictureType
 import org.apache.poi.util.Units
 import org.apache.poi.wp.usermodel.HeaderFooterType
-import org.apache.poi.xwpf.usermodel.*
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment
+import org.apache.poi.xwpf.usermodel.XWPFDocument
+import org.apache.poi.xwpf.usermodel.XWPFTable
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTabJc
 import java.io.ByteArrayInputStream
 import java.io.File
@@ -36,7 +37,7 @@ object WordExportManager {
 	private const val CHANNEL_ID = "renovum_export_channel"
 	private const val NOTIFICATION_ID = 101
 
-	fun createWordDocument(context: Context, data: ReportData, settings: UserSettings): File? {
+	fun createWordDocument(context: Context, data: ReportData, isGroupedByRooms: Boolean): File? {
 		clearOldWordCache(context)
 		try {
 			val fileName = "Koshtorys_${data.projectName.replace(" ", "_")}.docx"
@@ -181,7 +182,7 @@ object WordExportManager {
 			// ==========================================
 			// 4. СПИСОК РОБІТ (З групуванням чи без)
 			// ==========================================
-			if (settings.groupWordByRooms) {
+			if (isGroupedByRooms) {
 				data.roomsWithWorks.forEach { (room, works) ->
 					val roomTotal = works.sumOf { it.first.priceAtTime * it.first.quantity }
 
@@ -250,7 +251,7 @@ object WordExportManager {
 			val discountCell = rowFooter.getCell(0).apply {
 				setWidth("5400")
 			}
-			if (settings.showDiscountInWord && data.discountPercent > 0) {
+			if (isGroupedByRooms && data.discountPercent > 0) {
 				discountCell.paragraphs[0].createRun().apply {
 					fontSize = 12
 					fontFamily = "Arial"
