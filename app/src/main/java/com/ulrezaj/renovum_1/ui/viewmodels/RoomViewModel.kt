@@ -1,6 +1,8 @@
 package com.ulrezaj.renovum_1.ui.viewmodels
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableDoubleStateOf
@@ -9,7 +11,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.model.AppliedWork
+import com.ulrezaj.renovum_1.data.model.ReportData
 import com.ulrezaj.renovum_1.data.model.RoomEntity
 import com.ulrezaj.renovum_1.data.model.TargetSurface
 import com.ulrezaj.renovum_1.data.model.WorkCategory
@@ -17,14 +21,19 @@ import com.ulrezaj.renovum_1.data.model.WorkSection
 import com.ulrezaj.renovum_1.data.model.WorkService
 import com.ulrezaj.renovum_1.data.model.WorkUnit
 import com.ulrezaj.renovum_1.data.repositories.RoomRepository
+import com.ulrezaj.renovum_1.data.repositories.WordExportManager
 import com.ulrezaj.renovum_1.data.repositories.WorkDataRepository
 import com.ulrezaj.renovum_1.data.repositories.WorkRepository
 import com.ulrezaj.renovum_1.utility.L
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 data class CalculatedData(
 	val floorArea: Double,
@@ -237,5 +246,53 @@ class RoomViewModel(
 	fun getWorkServiceById(workId: String): WorkService? {
 		// Тут логіка пошуку у твоєму загальному списку робіт
 		return null
+	}
+
+	fun generateWordReportInBackground(context: Context, isGroupedByRooms: Boolean) {
+		viewModelScope.launch {
+			WordExportManager.showProgressNotification(context)
+
+			Toast.makeText(context, "Формування файлу кошторису...", Toast.LENGTH_SHORT).show()
+
+			val wordFile = withContext(Dispatchers.IO) {
+				try {
+					val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+					val currentDateString = dateFormat.format(java.util.Date())
+
+					val reportData = ReportData(
+						projectName = "Об'єкт №${rooms.size}",
+						dateString = currentDateString,
+						roomsWithWorks = groupedWorksState.value,
+						totalRawSum = getTotalRawSum(),
+						discountPercent = projectDiscountPercent,
+						totalDiscountedSum = getTotalDiscountedSum()
+					)
+
+					val temporarySettings = UserSettings(
+						groupWordByRooms = isGroupedByRooms,
+						showDiscountInWord = true
+					)
+
+					WordExportManager.createWordDocument(
+						context = context,
+						data = reportData,
+						settings = temporarySettings
+					)
+				} catch (e: Exception) {
+					L.e("RoomViewModel: Помилка генерації документа у фоні", e)
+					null
+				}
+			}
+
+			if (wordFile != null && wordFile.exists()) {
+				L.d("RoomViewModel: Фоновий файл успішно створено!")
+				Toast.makeText(context, "Файл кошторис створено успішно!", Toast.LENGTH_LONG).show()
+
+				WordExportManager.showSuccessNotification(context, wordFile)
+			} else {
+				Toast.makeText(context, "Не вдалося згенерувати файл", Toast.LENGTH_SHORT).show()
+				WordExportManager.cancelNotification(context)
+			}
+		}
 	}
 }

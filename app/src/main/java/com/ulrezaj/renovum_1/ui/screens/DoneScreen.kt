@@ -1,8 +1,6 @@
 package com.ulrezaj.renovum_1.ui.screens
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,33 +26,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.core.content.FileProvider
-import com.ulrezaj.renovum_1.data.UserSettings
-import com.ulrezaj.renovum_1.data.model.ReportData
-import com.ulrezaj.renovum_1.data.repositories.WordExportManager
 import com.ulrezaj.renovum_1.data.repositories.WorkDataRepository
 import com.ulrezaj.renovum_1.ui.components.dialogs.DiscountDialog
+import com.ulrezaj.renovum_1.ui.components.dialogs.ExportFormatDialog
 import com.ulrezaj.renovum_1.ui.components.dialogs.WorkDialog
 import com.ulrezaj.renovum_1.ui.components.list_Items.DoneRoomCard
 import com.ulrezaj.renovum_1.ui.components.list_Items.DoneWorkCard
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
 import com.ulrezaj.renovum_1.utility.L
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 @SuppressLint("DefaultLocale")
 @Composable
 fun DoneScreen(roomViewModel: RoomViewModel) {
 	val groupedWorks by roomViewModel.groupedWorksState.collectAsState()
-
 	val expandedStates = remember { mutableStateMapOf<String, Boolean>() }
-
 	val currentWorkToEdit = roomViewModel.workToEdit
+
+	val showExportDialog = remember { mutableStateOf(false) }
+	val context = LocalContext.current
 
 	if (roomViewModel.showDiscountDialog) {
 		DiscountDialog(
@@ -134,58 +129,11 @@ fun DoneScreen(roomViewModel: RoomViewModel) {
 				.fillMaxWidth()
 				.padding(horizontal = 16.dp, vertical = 12.dp)
 		) {
-			val context = LocalContext.current
-
 			Button(
 				onClick = {
-					L.click("DoneScreen: Сформувати звіт Word")
+					L.click("DoneScreen: Натиснуто кнопку експорту")
 
-					val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
-					val currentDateString = dateFormat.format(java.util.Date())
-
-					val reportData = ReportData(
-						projectName = "Об'єкт №${roomViewModel.rooms.size}",
-						dateString = currentDateString,
-						roomsWithWorks = groupedWorks,
-						totalRawSum = roomViewModel.getTotalRawSum(),
-						discountPercent = roomViewModel.projectDiscountPercent,
-						totalDiscountedSum = roomViewModel.getTotalDiscountedSum()
-					)
-
-					val temporarySettings = UserSettings(
-						groupWordByRooms = true,
-						showDiscountInWord = true
-					)
-
-					val wordFile = WordExportManager.createWordDocument(
-						context = context,
-						data = reportData,
-						settings = temporarySettings
-					)
-
-					if (wordFile != null && wordFile.exists()) {
-						L.d("DoneScreen: УСПІХ! Файл готовий. Надсилаємо...")
-
-						try {
-							val fileUri: Uri = FileProvider.getUriForFile(
-								context,
-								"${context.packageName}.fileprovider",
-								wordFile
-							)
-
-							val shareIntent = Intent(Intent.ACTION_SEND).apply {
-								type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-								putExtra(Intent.EXTRA_STREAM, fileUri)
-								addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-							}
-
-							context.startActivity(Intent.createChooser(shareIntent, "Надіслати кошторис..."))
-						} catch (e: Exception) {
-							L.e("DoneScreen: Помилка запуску ShareIntent", e)
-						}
-					} else {
-						L.e("DoneScreen: Не вдалося згенерувати або знайти файл")
-					}
+					showExportDialog.value = true
 				},
 				modifier = Modifier
 					.fillMaxWidth()
@@ -213,5 +161,17 @@ fun DoneScreen(roomViewModel: RoomViewModel) {
 				}
 			}
 		}
+	}
+
+	if (showExportDialog.value) {
+		ExportFormatDialog(
+			initialGroupByRooms = true,
+			onDismiss = { showExportDialog.value = false },
+			onConfirm = { isGroupedByRooms ->
+				showExportDialog.value = false
+
+				roomViewModel.generateWordReportInBackground(context, isGroupedByRooms)
+			}
+		)
 	}
 }

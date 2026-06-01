@@ -1,12 +1,19 @@
 package com.ulrezaj.renovum_1.data.repositories
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
+import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toBitmap
 import com.ulrezaj.renovum_1.data.model.ReportData
 import com.ulrezaj.renovum_1.data.UserSettings
@@ -25,6 +32,9 @@ import java.io.FileOutputStream
 import java.util.Locale
 
 object WordExportManager {
+
+	private const val CHANNEL_ID = "renovum_export_channel"
+	private const val NOTIFICATION_ID = 101
 
 	fun createWordDocument(context: Context, data: ReportData, settings: UserSettings): File? {
 		clearOldWordCache(context)
@@ -372,7 +382,7 @@ object WordExportManager {
 
 			val rowData = arrayOf(
 				service.name,
-				"$formattedQuantity ${service.unit}",
+				"$formattedQuantity ${service.unit.displayName}",
 				"$pricePerUnitFormatted грн",
 				"$totalWorkPriceFormatted грн"
 			)
@@ -414,6 +424,93 @@ object WordExportManager {
 			}
 		} catch (e: Exception) {
 			L.e("WordExportManager: Помилка очищення старого файлового кешу", e)
+		}
+	}
+
+	/**
+	 * Створює канал сповіщень
+	 * Цей метод безпечно викликати щоразу перед показом — якщо канал є, система його не дублюватиме.
+	 */
+	private fun createNotificationChannel(context: Context) {
+		val name = "Експорт кошторисів"
+		val descriptionText = "Сповіщення про стан створення файлів кошторису"
+		val importance = NotificationManager.IMPORTANCE_DEFAULT
+		val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+			description = descriptionText
+		}
+		val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+		notificationManager.createNotificationChannel(channel)
+	}
+
+	/**
+	 * Показує початкове сповіщення, яке не можна змахнути (іде процес)
+	 */
+	fun showProgressNotification(context: Context) {
+		createNotificationChannel(context)
+
+		val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+		val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+			.setSmallIcon(android.R.drawable.stat_sys_download)
+			.setContentTitle("Формування кошторису")
+			.setContentText("Будь ласка, зачекайте, файл створюється...")
+			.setPriority(NotificationCompat.PRIORITY_DEFAULT)
+			.setOngoing(true)
+			.setAutoCancel(false)
+			.build()
+
+		notificationManager.notify(NOTIFICATION_ID, notification)
+	}
+
+	/**
+	 * Оновлює сповіщення на фінальне (успіх), додає клац для відкриття файлу
+	 */
+	fun showSuccessNotification(context: Context, file: File) {
+		val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+		val fileUri: Uri = FileProvider.getUriForFile(
+			context,
+			"${context.packageName}.fileprovider",
+			file
+		)
+
+		val openFileIntent = Intent(Intent.ACTION_VIEW).apply {
+			setDataAndType(fileUri, "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+			addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+			addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+		}
+
+		val pendingIntentFlags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+
+		val contentIntent = PendingIntent.getActivity(
+			context,
+			0,
+			openFileIntent,
+			pendingIntentFlags
+		)
+
+		val notification = NotificationCompat.Builder(context, CHANNEL_ID)
+			.setSmallIcon(android.R.drawable.stat_sys_download_done)
+			.setContentTitle("Кошторис створено!")
+			.setContentText("Натисніть, щоб відкрити файл")
+			.setPriority(NotificationCompat.PRIORITY_DEFAULT)
+			.setOngoing(false)
+			.setAutoCancel(true)
+			.setContentIntent(contentIntent)
+			.build()
+
+		notificationManager.notify(NOTIFICATION_ID, notification)
+	}
+
+	/**
+	 * 4. Скасовує сповіщення (якщо сталася помилка і треба його просто прибрати)
+	 */
+	fun cancelNotification(context: Context) {
+		try {
+			val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+			notificationManager.cancel(NOTIFICATION_ID)
+		} catch (e: Exception) {
+			L.e("WordExportManager: Не вдалося скасувати сповіщення", e)
 		}
 	}
 }
