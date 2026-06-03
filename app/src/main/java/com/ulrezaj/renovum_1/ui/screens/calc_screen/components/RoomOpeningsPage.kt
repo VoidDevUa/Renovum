@@ -1,4 +1,4 @@
-package com.ulrezaj.renovum_1.ui.screens.calc_screen
+package com.ulrezaj.renovum_1.ui.screens.calc_screen.components
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility

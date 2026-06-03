@@ -23,9 +23,10 @@ import com.ulrezaj.renovum_1.ui.screens.CeilingScreen
 import com.ulrezaj.renovum_1.ui.screens.DoneScreen
 import com.ulrezaj.renovum_1.ui.screens.EditRoomScreen
 import com.ulrezaj.renovum_1.ui.screens.MaterialsScreen
-import com.ulrezaj.renovum_1.ui.screens.RoomsScreen
-import com.ulrezaj.renovum_1.ui.screens.SettingsScreen
+import com.ulrezaj.renovum_1.ui.screens.rooms_screen.RoomsScreen
+import com.ulrezaj.renovum_1.ui.screens.settings_screen.SettingsScreen
 import com.ulrezaj.renovum_1.ui.screens.WorksScreen
+import com.ulrezaj.renovum_1.ui.screens.archive_screen.ArchiveScreen
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
 import com.ulrezaj.renovum_1.utility.L
 
@@ -66,17 +67,16 @@ fun NavGraph(
 						restoreState = true
 					}
 				},
-				onDeleteRoom = onDeleteRoom
+				onDeleteRoom = onDeleteRoom,
+				onSettingsChange = onSettingsChange
 			)
 		}
 		composable(route = Screen.Calculations.route) {
 			L.d("NavGraph: Rendering CalcScreen")
 
 			val rooms = roomViewModel.rooms
-			// Використовуємо 'by', щоб дістати чистий RoomEntity? і підписатися на зміни
 			val activeRoom by roomViewModel.selectedRoom
 
-			// LaunchedEffect тепер стежить за конкретним ID кімнати або фактом її наявності
 			LaunchedEffect(activeRoom?.id, rooms) {
 				if (activeRoom == null && rooms.isNotEmpty()) {
 					roomViewModel.selectRoom(rooms.first())
@@ -120,7 +120,10 @@ fun NavGraph(
 		}
 		composable(Screen.Done.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Done") }
-			DoneScreen(roomViewModel = roomViewModel)
+			DoneScreen(
+				roomViewModel = roomViewModel,
+				userSettings = userSettings
+			)
 		}
 		composable(Screen.Settings.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Settings") }
@@ -129,13 +132,20 @@ fun NavGraph(
 				onSettingsChange = onSettingsChange
 			)
 		}
+		composable(Screen.Ceiling.route) {
+			LaunchedEffect(Unit) { L.nav("Screen: Ceiling") }
+			CeilingScreen()
+		}
 		composable(Screen.Materials.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Materials") }
 			MaterialsScreen()
 		}
-		composable(Screen.Ceiling.route) {
-			LaunchedEffect(Unit) { L.nav("Screen: Ceiling") }
-			CeilingScreen()
+		composable(Screen.Archive.route) {
+			LaunchedEffect(Unit) { L.nav("Screen: Archive") }
+			ArchiveScreen(
+				roomViewModel = roomViewModel,
+				userSettings = userSettings
+			)
 		}
 		composable(Screen.About.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: About") }

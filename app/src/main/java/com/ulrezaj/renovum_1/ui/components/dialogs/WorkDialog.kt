@@ -180,7 +180,7 @@ fun WorkDialog(
 										)
 										rows.forEach { (label, value) ->
 											Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-												Text(label, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.outline)
+												Text(label, style = MaterialTheme.typography.bodySmall)
 												Text(value, style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold)
 											}
 										}

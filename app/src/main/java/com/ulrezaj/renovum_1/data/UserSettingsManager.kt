@@ -18,6 +18,10 @@ class UserSettingsManager(private val context: Context) {
 		val SHOW_DIMENSIONS_KEY = booleanPreferencesKey("show_dimensions")
 		val IS_LEFT_HANDED_KEY = booleanPreferencesKey("is_left_handed")
 		val DIALOG_COLUMNS_KEY = intPreferencesKey("dialog_columns")
+
+		val MASTER_NAME_KEY = stringPreferencesKey("master_name")
+		val MASTER_PHONE_KEY = stringPreferencesKey("master_phone")
+		val CURRENT_OBJECT_ADDRESS_KEY = stringPreferencesKey("current_object_address")
 	}
 
 	val userSettingsFlow: Flow<UserSettings> = context.dataStore.data.map { preferences ->
@@ -32,7 +36,10 @@ class UserSettingsManager(private val context: Context) {
 			appTheme = theme,
 			showDimensionsInCard = preferences[SHOW_DIMENSIONS_KEY] ?: true,
 			isLeftHanded = preferences[IS_LEFT_HANDED_KEY] ?: false,
-			dialogColumns = preferences[DIALOG_COLUMNS_KEY] ?: 2
+			dialogColumns = preferences[DIALOG_COLUMNS_KEY] ?: 2,
+			masterName = preferences[MASTER_NAME_KEY] ?: "",
+			masterPhone = preferences[MASTER_PHONE_KEY] ?: "",
+			currentObjectAddress = preferences[CURRENT_OBJECT_ADDRESS_KEY] ?: ""
 		)
 	}
 
@@ -42,6 +49,9 @@ class UserSettingsManager(private val context: Context) {
 			preferences[SHOW_DIMENSIONS_KEY] = settings.showDimensionsInCard
 			preferences[IS_LEFT_HANDED_KEY] = settings.isLeftHanded
 			preferences[DIALOG_COLUMNS_KEY] = settings.dialogColumns
+			preferences[MASTER_NAME_KEY] = settings.masterName
+			preferences[MASTER_PHONE_KEY] = settings.masterPhone
+			preferences[CURRENT_OBJECT_ADDRESS_KEY] = settings.currentObjectAddress
 		}
 	}
 }
