@@ -60,6 +60,9 @@ fun RenovumApp() {
 
 	var isEditMode by remember { mutableStateOf(false) }
 
+	val totalRawSum by roomViewModel.totalRawSumState.collectAsState()
+	val currentDiscountedSum = totalRawSum * (1.0 - roomViewModel.projectDiscountPercent / 100.0)
+
 	val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 	val scope = rememberCoroutineScope()
 
@@ -121,7 +124,7 @@ fun RenovumApp() {
 								currentScreenTitle = currentScreen.title,
 								isLeftHanded = userSettings.isLeftHanded,
 								isEditMode = isEditMode,
-								totalSum = if (currentRoute == Screen.Done.route) roomViewModel.getTotalDiscountedSum() else null,
+								totalSum = if (currentRoute == Screen.Done.route) currentDiscountedSum else null,
 								onSumClick = if (currentRoute == Screen.Done.route) {
 									{ roomViewModel.showDiscountDialog = true }
 								} else null,

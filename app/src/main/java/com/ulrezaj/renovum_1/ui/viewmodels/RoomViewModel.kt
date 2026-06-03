@@ -67,6 +67,47 @@ class RoomViewModel(
 	var showDiscountDialog by mutableStateOf(false)
 	var workToEdit by mutableStateOf<AppliedWork?>(null)
 
+	val totalRawSumState: StateFlow<Double> = appliedWorks
+		.map { worksList -> worksList.sumOf { it.priceAtTime * it.quantity } }
+		.stateIn(
+			scope = viewModelScope,
+			started = SharingStarted.Eagerly,
+			initialValue = 0.0
+		)
+
+	/**
+	 * Групує виконані роботи по кімнатах.
+	 * Повертає Map, де ключ — Кімната, а значення — список пар (Виконана робота, Опис послуги)
+	 */
+	val groupedWorksState: StateFlow<Map<RoomEntity, List<Pair<AppliedWork, WorkService>>>> =
+		appliedWorks.map { worksList ->
+			worksList.groupBy { work ->
+				_rooms.find { it.id == work.roomId }
+			}
+				.filterKeys { it != null }
+				.mapKeys { it.key!! }
+				.mapValues { entry ->
+					entry.value.map { applied ->
+						val service = WorkDataRepository.allWorks.find { it.id == applied.workId }
+							?: WorkService(
+								id = applied.workId,
+								section = WorkSection.FINISHING,
+								category = WorkCategory.PAINTING,
+								name = "Невідома робота",
+								unit = WorkUnit.M2,
+								minPrice = 0.0,
+								maxPrice = 0.0,
+								averagePrice = 0.0
+							)
+						applied to service
+					}
+				}
+		}.stateIn(
+			viewModelScope,
+			SharingStarted.WhileSubscribed(5000),
+			emptyMap()
+		)
+
 	init {
 		viewModelScope.launch {
 			roomRepository.allRooms.collect { dbRooms ->
@@ -94,16 +135,13 @@ class RoomViewModel(
 	/**
 	 * Сума всіх робіт БЕЗ знижки
 	 */
-	fun getTotalRawSum(): Double {
-		return appliedWorks.value.sumOf { it.priceAtTime * it.quantity }
-	}
+	fun getTotalRawSum(): Double = totalRawSumState.value
 
 	/**
 	 * Сума всіх робіт З урахуванням знижки
 	 */
 	fun getTotalDiscountedSum(): Double {
-		val raw = getTotalRawSum()
-		return raw * (1.0 - projectDiscountPercent / 100.0)
+		return totalRawSumState.value * (1.0 - projectDiscountPercent / 100.0)
 	}
 
 	fun selectRoom(room: RoomEntity) {
@@ -200,51 +238,6 @@ class RoomViewModel(
 			workRepository.update(updatedWork)
 			L.d("ViewModel: Updated in DB. New total: ${newPrice * newQuantity}")
 		}
-	}
-
-	/**
-	 * Групує виконані роботи по кімнатах.
-	 * Повертає Map, де ключ — Кімната, а значення — список пар (Виконана робота, Опис послуги)
-	 */
-	val groupedWorksState: StateFlow<Map<RoomEntity, List<Pair<AppliedWork, WorkService>>>> =
-		appliedWorks.map { worksList ->
-			worksList.groupBy { work ->
-				_rooms.find { it.id == work.roomId }
-			}
-				.filterKeys { it != null }
-				.mapKeys { it.key!! }
-				.mapValues { entry ->
-					entry.value.map { applied ->
-						val service = WorkDataRepository.allWorks.find { it.id == applied.workId }
-							?: WorkService(
-								id = applied.workId,
-								section = WorkSection.FINISHING,
-								category = WorkCategory.PAINTING,
-								name = "Невідома робота",
-								unit = WorkUnit.M2,
-								minPrice = 0.0,
-								maxPrice = 0.0,
-								averagePrice = 0.0
-							)
-						applied to service
-					}
-				}
-		}.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyMap())
-
-	/**
-	 * Загальна сума всіх робіт у проєкті
-	 */
-	fun getTotalProjectSum(): Double {
-		return appliedWorks.value.sumOf { it.priceAtTime * it.quantity }
-	}
-
-	fun isWorkDone(workId: String, roomId: String): Boolean {
-		return appliedWorks.value.any { it.workId == workId && it.roomId == roomId }
-	}
-
-	fun getWorkServiceById(workId: String): WorkService? {
-		// Тут логіка пошуку у твоєму загальному списку робіт
-		return null
 	}
 
 	fun generateWordReportInBackground(context: Context, isGroupedByRooms: Boolean) {

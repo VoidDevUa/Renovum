@@ -73,10 +73,8 @@ fun NavGraph(
 			L.d("NavGraph: Rendering CalcScreen")
 
 			val rooms = roomViewModel.rooms
-			// Використовуємо 'by', щоб дістати чистий RoomEntity? і підписатися на зміни
 			val activeRoom by roomViewModel.selectedRoom
 
-			// LaunchedEffect тепер стежить за конкретним ID кімнати або фактом її наявності
 			LaunchedEffect(activeRoom?.id, rooms) {
 				if (activeRoom == null && rooms.isNotEmpty()) {
 					roomViewModel.selectRoom(rooms.first())
