@@ -1,6 +1,8 @@
 package com.ulrezaj.renovum_1.ui.components.dialogs
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,11 +11,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -29,17 +36,70 @@ import com.ulrezaj.renovum_1.ui.components.ExportTableTypeSelector
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ExportFormatDialog(
+	initialAddress: String,
 	initialGroupByRooms: Boolean,
 	onDismiss: () -> Unit,
-	onConfirm: (Boolean) -> Unit
+	onConfirm: (Boolean, String, String) -> Unit
 ){
 	val selectedGroupType = remember { mutableStateOf(initialGroupByRooms) }
+
+	val address = remember { mutableStateOf(initialAddress) }
+	val customFileName = remember { mutableStateOf("Koshtorys_${initialAddress.replace(" ", "_")}") }
+	val isCustomNameVisible = remember { mutableStateOf(false) }
 
 	AlertDialog(
 		onDismissRequest = onDismiss,
 		title = { Text("Експорт даних", style = MaterialTheme.typography.titleLarge) },
 		text = {
 			Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+				OutlinedTextField(
+					value = address.value,
+					onValueChange = {
+						address.value = it
+						if (!isCustomNameVisible.value) {
+							customFileName.value = "Koshtorys_${it.replace(" ", "_")}"
+						}
+					},
+					label = { Text("Адреса об'єкта в документі") },
+					modifier = Modifier.fillMaxWidth(),
+					singleLine = true
+				)
+
+				if (!isCustomNameVisible.value) {
+					Row(
+						modifier = Modifier
+							.fillMaxWidth()
+							.clickable { isCustomNameVisible.value = true }
+							.padding(vertical = 4.dp),
+						verticalAlignment = Alignment.CenterVertically,
+						horizontalArrangement = Arrangement.spacedBy(4.dp)
+					) {
+						Icon(
+							imageVector = Icons.Default.Edit,
+							contentDescription = "Edit name",
+							modifier = Modifier.size(16.dp),
+							tint = MaterialTheme.colorScheme.primary
+						)
+						Text(
+							text = "Змінити назву файлу (зараз: ${customFileName.value}.docx)",
+							style = MaterialTheme.typography.bodySmall,
+							color = MaterialTheme.colorScheme.primary
+						)
+					}
+				}
+
+				AnimatedVisibility(visible = isCustomNameVisible.value) {
+					OutlinedTextField(
+						value = customFileName.value,
+						onValueChange = { customFileName.value = it },
+						label = { Text("Назва файлу (.docx)") },
+						modifier = Modifier.fillMaxWidth(),
+						singleLine = true
+					)
+				}
+
+				HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+
 				Text("Оберіть тип виводу даних:", style = MaterialTheme.typography.bodyMedium)
 
 				ExportTableTypeSelector(
@@ -83,8 +143,11 @@ fun ExportFormatDialog(
 			}
 		},
 		confirmButton = {
-			TextButton(onClick = { onConfirm(selectedGroupType.value) }) {
-				Text("Зберегти")
+			TextButton(
+				onClick = { onConfirm(selectedGroupType.value, address.value, customFileName.value) },
+				enabled = address.value.isNotBlank() && customFileName.value.isNotBlank()
+			) {
+				Text("Згенерувати")
 			}
 		},
 		dismissButton = {

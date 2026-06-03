@@ -33,6 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.repositories.WorkDataRepository
 import com.ulrezaj.renovum_1.ui.components.dialogs.DiscountDialog
 import com.ulrezaj.renovum_1.ui.components.dialogs.ExportFormatDialog
@@ -44,7 +45,10 @@ import com.ulrezaj.renovum_1.utility.L
 
 @SuppressLint("DefaultLocale")
 @Composable
-fun DoneScreen(roomViewModel: RoomViewModel) {
+fun DoneScreen(
+	roomViewModel: RoomViewModel,
+	userSettings: UserSettings
+) {
 	val groupedWorks by roomViewModel.groupedWorksState.collectAsState()
 	val expandedStates = remember { mutableStateMapOf<String, Boolean>() }
 	val currentWorkToEdit = roomViewModel.workToEdit
@@ -168,11 +172,18 @@ fun DoneScreen(roomViewModel: RoomViewModel) {
 
 	if (showExportDialog.value) {
 		ExportFormatDialog(
-			initialGroupByRooms = true,
+			initialAddress = userSettings.currentObjectAddress,
+			initialGroupByRooms = userSettings.groupWordByRooms,
 			onDismiss = { showExportDialog.value = false },
-			onConfirm = { isGroupedByRooms ->
+			onConfirm = { isGroupedByRooms, finalAddress, customFileName ->
 				showExportDialog.value = false
-				roomViewModel.generateWordReportInBackground(context, isGroupedByRooms)
+				roomViewModel.generateWordReportInBackground(
+					context = context,
+					isGroupedByRooms = isGroupedByRooms,
+					targetAddress = finalAddress,
+					customFileName = customFileName,
+					userSettings = userSettings
+				)
 				showClearDialog.value = true
 			}
 		)

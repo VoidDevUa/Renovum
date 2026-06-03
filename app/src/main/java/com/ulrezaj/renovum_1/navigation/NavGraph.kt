@@ -23,8 +23,8 @@ import com.ulrezaj.renovum_1.ui.screens.CeilingScreen
 import com.ulrezaj.renovum_1.ui.screens.DoneScreen
 import com.ulrezaj.renovum_1.ui.screens.EditRoomScreen
 import com.ulrezaj.renovum_1.ui.screens.MaterialsScreen
-import com.ulrezaj.renovum_1.ui.screens.RoomsScreen
-import com.ulrezaj.renovum_1.ui.screens.SettingsScreen
+import com.ulrezaj.renovum_1.ui.screens.rooms_screen.RoomsScreen
+import com.ulrezaj.renovum_1.ui.screens.settings_screen.SettingsScreen
 import com.ulrezaj.renovum_1.ui.screens.WorksScreen
 import com.ulrezaj.renovum_1.ui.screens.archive_screen.ArchiveScreen
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
@@ -67,7 +67,8 @@ fun NavGraph(
 						restoreState = true
 					}
 				},
-				onDeleteRoom = onDeleteRoom
+				onDeleteRoom = onDeleteRoom,
+				onSettingsChange = onSettingsChange
 			)
 		}
 		composable(route = Screen.Calculations.route) {
@@ -119,7 +120,10 @@ fun NavGraph(
 		}
 		composable(Screen.Done.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Done") }
-			DoneScreen(roomViewModel = roomViewModel)
+			DoneScreen(
+				roomViewModel = roomViewModel,
+				userSettings = userSettings
+			)
 		}
 		composable(Screen.Settings.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Settings") }

@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.model.AppliedWork
 import com.ulrezaj.renovum_1.data.model.ReportData
 import com.ulrezaj.renovum_1.data.model.RoomEntity
@@ -34,6 +35,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 data class CalculatedData(
@@ -137,8 +139,6 @@ class RoomViewModel(
 		projectDiscountPercent = newPercent.coerceIn(0.0, 100.0)
 		L.d("ViewModel: Discount updated to $projectDiscountPercent%")
 	}
-
-
 	fun getTotalRawSum(): Double = totalRawSumState.value
 	fun getTotalDiscountedSum(): Double {
 		return totalRawSumState.value * (1.0 - projectDiscountPercent / 100.0)
@@ -231,7 +231,13 @@ class RoomViewModel(
 		}
 	}
 
-	fun generateWordReportInBackground(context: Context, isGroupedByRooms: Boolean) {
+	fun generateWordReportInBackground(
+		context: Context,
+		isGroupedByRooms: Boolean,
+		targetAddress: String,
+		customFileName: String,
+		userSettings: UserSettings
+	) {
 		val appContext = context.applicationContext
 
 		viewModelScope.launch {
@@ -242,10 +248,10 @@ class RoomViewModel(
 				try {
 					val locale = appContext.resources.configuration.locales[0] ?: Locale.getDefault()
 					val dateFormat = SimpleDateFormat("dd.MM.yyyy", locale)
-					val currentDateString = dateFormat.format(java.util.Date())
+					val currentDateString = dateFormat.format(Date())
 
 					val reportData = ReportData(
-						projectName = "Об'єкт №${rooms.size}",
+						projectName = targetAddress,
 						dateString = currentDateString,
 						roomsWithWorks = groupedWorksState.value,
 						totalRawSum = getTotalRawSum(),
@@ -256,7 +262,9 @@ class RoomViewModel(
 					WordExportManager.createWordDocument(
 						context = appContext,
 						data = reportData,
-						isGroupedByRooms = isGroupedByRooms
+						isGroupedByRooms = isGroupedByRooms,
+						customFileName = customFileName,
+						userSettings = userSettings
 					)
 				} catch (e: Exception) {
 					L.e("RoomViewModel: Помилка генерації документа", e)
@@ -290,7 +298,7 @@ class RoomViewModel(
 				withContext(Dispatchers.Main) {
 					updateDiscount(0.0)
 				}
-				L.d("ViewModel: Поточний об'єкт успішно зачищено")
+				L.d("ViewModel: Поточний об'єкт успішно очищено")
 			} catch (e: Exception) {
 				L.e("ViewModel: Помилка повного очищення об'єкта", e)
 			}

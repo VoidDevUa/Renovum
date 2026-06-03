@@ -1,6 +1,12 @@
-package com.ulrezaj.renovum_1.ui.screens
+package com.ulrezaj.renovum_1.ui.screens.settings_screen.components
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
@@ -14,11 +20,15 @@ import com.ulrezaj.renovum_1.ui.components.ThemeSelector
 import com.ulrezaj.renovum_1.utility.L
 
 @Composable
-fun SettingsScreen(
+fun AppSettingsTab(
 	settings: UserSettings,
 	onSettingsChange: (UserSettings) -> Unit
 ) {
-	Column(modifier = Modifier.padding(16.dp)) {
+	Column(
+		modifier = Modifier
+			.fillMaxSize()
+			.padding(16.dp)
+	) {
 		Text(
 			"Зовнішній вигляд",
 			style = MaterialTheme.typography.labelLarge,

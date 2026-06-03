@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.createBitmap
 import androidx.core.graphics.drawable.toBitmap
+import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.model.AppliedWork
 import com.ulrezaj.renovum_1.data.model.ReportData
 import com.ulrezaj.renovum_1.data.model.WorkService
@@ -26,10 +27,17 @@ import java.math.BigInteger
 import java.util.Locale
 
 object WordExportManager {
-	fun createWordDocument(context: Context, data: ReportData, isGroupedByRooms: Boolean): File? {
+	fun createWordDocument(
+		context: Context,
+		data: ReportData,
+		isGroupedByRooms: Boolean,
+		customFileName: String,
+		userSettings: UserSettings
+	): File? {
 		val appContext = context.applicationContext
 		try {
-			val fileName = "Koshtorys_${data.projectName.replace(" ", "_")}.docx"
+			val projectName = customFileName.ifBlank { data.projectName }
+			val finalFileName = "Koshtorys_${projectName.replace(" ", "_")}.docx"
 			val document = XWPFDocument()
 
 			// ==========================================
@@ -69,7 +77,7 @@ object WordExportManager {
 			footerParagraph.ctp.addNewFldSimple().instr = "PAGE"
 
 			// ==========================================
-			// 2. ШАПКА ДОКУМЕНТА (Таблиця 1х2)
+			// 2. ШАПКА ФАЙЛУ
 			// ==========================================
 			val headerTable = document.createTable(1, 2)
 			headerTable.removeBorders()
@@ -131,41 +139,25 @@ object WordExportManager {
 			}
 
 			// Права комірка: Дані майстра
-			val rightCell = rowHeader.getCell(1).apply {
-				setWidth(colWidthsHeader[1].toString())
-			}
+			val rightCell = rowHeader.getCell(1).apply { setWidth(colWidthsHeader[1].toString()) }
 
-			rightCell.paragraphs[0].apply {
-				alignment = ParagraphAlignment.RIGHT
-				spacingAfter = 0
-			}.createRun().apply {
-				fontSize = 11
-				fontFamily = "Arial"
-				setText("Майстер: Олександрович О.О.")
-			}
+			val masterNameText = userSettings.masterName.ifBlank { "Не вказано" }
+			val masterPhoneText = userSettings.masterPhone.ifBlank { "Не вказано" }
 
-			rightCell.addParagraph().apply {
-				alignment = ParagraphAlignment.RIGHT
-				spacingAfter = 0
-			}.createRun().apply {
-				fontSize = 11
-				fontFamily = "Arial"
-				setText("Тел: +38 (097) 123-45-67")
+			rightCell.paragraphs[0].apply { alignment = ParagraphAlignment.RIGHT }.createRun().apply {
+				fontSize = 11; fontFamily = "Arial"; setText("Майстер: $masterNameText")
 			}
-
-			rightCell.addParagraph().apply {
-				alignment = ParagraphAlignment.RIGHT
-				spacingAfter = 0
-			}.createRun().apply {
-				fontSize = 11
-				fontFamily = "Arial"
-				setText("Адреса: ${data.projectName}")
+			rightCell.addParagraph().apply { alignment = ParagraphAlignment.RIGHT }.createRun().apply {
+				fontSize = 11; fontFamily = "Arial"; setText("Тел: $masterPhoneText")
+			}
+			rightCell.addParagraph().apply { alignment = ParagraphAlignment.RIGHT }.createRun().apply {
+				fontSize = 11; fontFamily = "Arial"; setText("Адреса об'єкта: ${data.projectName}")
 			}
 
 			document.createParagraph().spacingAfter = 240
 
 			// ==========================================
-			// 3. ГОЛОВНИЙ ЗАГОЛОВОК
+			// 3. ЗАГОЛОВОК
 			// ==========================================
 			val titleParagraph = document.createParagraph().apply {
 				alignment = ParagraphAlignment.CENTER
@@ -238,50 +230,41 @@ object WordExportManager {
 			}
 
 			// ==========================================
-			// 5. НИЗ ДОКУМЕНТА (Підвал)
+			// 5. НИЗ ДОКУМЕНТА
 			// ==========================================
 			document.createParagraph().spacingBefore = 200
 
 			val footerTable = document.createTable(1, 2)
-			footerTable.removeBorders()
-
+				.apply { removeBorders() }
 			val rowFooter = footerTable.getRow(0)
+			val discountCell = rowFooter.getCell(0)
+				.apply { setWidth("5400") }
 
-			val discountCell = rowFooter.getCell(0).apply {
-				setWidth("5400")
-			}
 			if (isGroupedByRooms && data.discountPercent > 0) {
 				discountCell.paragraphs[0].createRun().apply {
-					fontSize = 12
-					fontFamily = "Arial"
-					setText("Знижка: ${formatDouble(data.discountPercent)}%")
-				}
+					fontSize = 12; fontFamily = "Arial"
+					setText("Знижка: ${formatDouble(data.discountPercent)}%") }
 			}
 
-			val totalCell = rowFooter.getCell(1).apply {
-				setWidth("4533")
-			}
-			val totalParagraph = totalCell.paragraphs[0].apply {
-				alignment = ParagraphAlignment.RIGHT
-				spacingAfter = 0
-			}
+			val totalParagraph = rowFooter.getCell(1)
+				.apply { setWidth("4533") }.paragraphs[0]
+				.apply { alignment = ParagraphAlignment.RIGHT }
+
 			totalParagraph.createRun().apply {
-				isBold = true
-				fontSize = 14
-				fontFamily = "Arial"
-				setText("ДО ОПЛАТИ: ${formatDouble(data.totalDiscountedSum)} грн")
-			}
+				isBold = true; fontSize = 14; fontFamily = "Arial"
+				setText("ДО ОПЛАТИ: ${formatDouble(data.totalDiscountedSum)} грн") }
+
 
 			val archiveDir = File(appContext.filesDir, "Archive")
-			if (!archiveDir.exists()) archiveDir.mkdirs()
-			val archiveFile = File(archiveDir, fileName)
+				.apply { if (!exists()) mkdirs() }
+			val archiveFile = File(archiveDir, finalFileName)
+
 			FileOutputStream(archiveFile).use { out ->
 				document.write(out)
 			}
-			L.d("WordExportManager: Файл успішно збережено в локальний архів додатка")
 
+			L.d("WordExportManager: Файл збережено: $finalFileName")
 			RenovumFileProvider.saveToPublicDocuments(appContext, archiveFile)
-
 			document.close()
 			return archiveFile
 		} catch (e: Exception) {

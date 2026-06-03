@@ -9,5 +9,9 @@ data class UserSettings(
 	val dialogColumns: Int = 2,
 	// НАЛАШТУВАННЯ WORD
 	val groupWordByRooms: Boolean = true,
-	val showDiscountInWord: Boolean = true
+	val showDiscountInWord: Boolean = true,
+	// ПРОФІЛЬ ТА ПОТОЧНИЙ ОБ'ЄКТ
+	val masterName: String = "",
+	val masterPhone: String = "",
+	val currentObjectAddress: String = "" // Порожній рядок означає, що ремонт не почато
 )
