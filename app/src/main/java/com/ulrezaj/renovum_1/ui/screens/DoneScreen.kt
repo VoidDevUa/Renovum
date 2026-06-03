@@ -34,7 +34,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.data.UserSettings
+import com.ulrezaj.renovum_1.data.UserSettingsManager
 import com.ulrezaj.renovum_1.data.repositories.WorkDataRepository
+import com.ulrezaj.renovum_1.ui.components.dialogs.ClearProjectDialog
 import com.ulrezaj.renovum_1.ui.components.dialogs.DiscountDialog
 import com.ulrezaj.renovum_1.ui.components.dialogs.ExportFormatDialog
 import com.ulrezaj.renovum_1.ui.components.dialogs.WorkDialog
@@ -140,7 +142,11 @@ fun DoneScreen(
 				onClick = {
 					L.click("DoneScreen: Натиснуто кнопку експорту")
 
-					showExportDialog.value = true
+					if (groupedWorks.isEmpty()) {
+						Toast.makeText(context, "Неможливо створити звіт: додайте кімнати та роботи", Toast.LENGTH_LONG).show()
+					} else {
+						showExportDialog.value = true
+					}
 				},
 				modifier = Modifier
 					.fillMaxWidth()
@@ -190,11 +196,16 @@ fun DoneScreen(
 	}
 
 	if (showClearDialog.value) {
-		com.ulrezaj.renovum_1.ui.components.dialogs.ClearProjectDialog(
+		ClearProjectDialog(
 			onDismiss = { showClearDialog.value = false },
 			onConfirm = {
 				showClearDialog.value = false
-				roomViewModel.clearCurrentProject()
+				roomViewModel.clearCurrentProject(
+					onClearAddress = {
+						val manager = UserSettingsManager(context)
+						manager.saveSettings(userSettings.copy(currentObjectAddress = ""))
+					}
+				)
 				Toast.makeText(context, "Дані об'єкта повністю очищено", Toast.LENGTH_SHORT).show()
 			}
 		)

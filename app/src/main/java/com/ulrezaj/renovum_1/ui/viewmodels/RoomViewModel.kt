@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.model.AppliedWork
+import com.ulrezaj.renovum_1.data.model.CalculatedData
 import com.ulrezaj.renovum_1.data.model.ReportData
 import com.ulrezaj.renovum_1.data.model.RoomEntity
 import com.ulrezaj.renovum_1.data.model.TargetSurface
@@ -37,15 +38,6 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-
-data class CalculatedData(
-	val floorArea: Double,
-	val wallArea: Double,
-	val cleanWallArea: Double,
-	val allOpeningsArea: Double,
-	val perimeter: Double,
-	val extra: Map<String, Double>
-)
 
 @SuppressLint("SdCardPath")
 class RoomViewModel(
@@ -284,9 +276,9 @@ class RoomViewModel(
 	}
 
 	/**
-	 * Повністю очищає поточний проєкт: видаляє всі кімнати та всі додані роботи
+	 * Повністю очищує поточний проєкт: видаляє всі кімнати, роботи та адресу об'єкта
 	 */
-	fun clearCurrentProject() {
+	fun clearCurrentProject(onClearAddress: suspend () -> Unit) {
 		viewModelScope.launch(Dispatchers.IO) {
 			try {
 				_rooms.forEach { room ->
@@ -295,6 +287,7 @@ class RoomViewModel(
 				_rooms.forEach { room ->
 					roomRepository.delete(room)
 				}
+				onClearAddress()
 				withContext(Dispatchers.Main) {
 					updateDiscount(0.0)
 				}
