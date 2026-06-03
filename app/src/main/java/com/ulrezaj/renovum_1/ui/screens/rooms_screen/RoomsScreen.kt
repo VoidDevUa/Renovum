@@ -128,7 +128,7 @@ fun RoomsScreen(
 						horizontalAlignment = Alignment.CenterHorizontally
 					) {
 						Text(
-							text = "Немає active об'єкта",
+							text = "Немає активного ремонту",
 							style = MaterialTheme.typography.headlineSmall,
 							color = MaterialTheme.colorScheme.onSurfaceVariant,
 							textAlign = TextAlign.Center
