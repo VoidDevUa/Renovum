@@ -1,24 +1,16 @@
 package com.ulrezaj.renovum_1.data.repositories
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.ContentValues
 import android.content.Context
-import android.content.Intent
 import android.graphics.Bitmap
-import android.net.Uri
-import android.os.Build
-import android.os.Environment
-import android.provider.MediaStore
-import androidx.core.app.NotificationCompat
+import android.graphics.Canvas
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
+import androidx.core.graphics.createBitmap
 import androidx.core.graphics.drawable.toBitmap
 import com.ulrezaj.renovum_1.data.model.AppliedWork
 import com.ulrezaj.renovum_1.data.model.ReportData
 import com.ulrezaj.renovum_1.data.model.WorkService
 import com.ulrezaj.renovum_1.utility.L
+import com.ulrezaj.renovum_1.utility.RenovumFileProvider
 import org.apache.commons.io.output.ByteArrayOutputStream
 import org.apache.poi.common.usermodel.PictureType
 import org.apache.poi.util.Units
@@ -34,12 +26,8 @@ import java.math.BigInteger
 import java.util.Locale
 
 object WordExportManager {
-
-	private const val CHANNEL_ID = "renovum_export_channel"
-	private const val NOTIFICATION_ID = 101
-
 	fun createWordDocument(context: Context, data: ReportData, isGroupedByRooms: Boolean): File? {
-		clearOldWordCache(context)
+		val appContext = context.applicationContext
 		try {
 			val fileName = "Koshtorys_${data.projectName.replace(" ", "_")}.docx"
 			val document = XWPFDocument()
@@ -98,9 +86,20 @@ object WordExportManager {
 				spacingAfter = 60
 			}
 			try {
-				val drawableId = context.applicationInfo.icon
-				val drawable = ContextCompat.getDrawable(context, drawableId)
-				val bitmap = drawable?.toBitmap()
+				val drawableId = appContext.applicationInfo.icon
+				val drawable = ContextCompat.getDrawable(appContext, drawableId)
+
+				val bitmap = drawable?.let { d ->
+					try {
+						d.toBitmap(48, 48, Bitmap.Config.ARGB_8888)
+					} catch (_: Exception) {
+						val bmp = createBitmap(48, 48)
+						val canvas = Canvas(bmp)
+						d.setBounds(0, 0, canvas.width, canvas.height)
+						d.draw(canvas)
+						bmp
+					}
+				}
 
 				if (bitmap != null) {
 					val stream = ByteArrayOutputStream()
@@ -108,7 +107,6 @@ object WordExportManager {
 					val byteArray = stream.toByteArray()
 
 					val imageRun = imgParagraph.createRun()
-
 					imageRun.addPicture(
 						ByteArrayInputStream(byteArray),
 						PictureType.PNG,
@@ -274,47 +272,18 @@ object WordExportManager {
 				setText("ДО ОПЛАТИ: ${formatDouble(data.totalDiscountedSum)} грн")
 			}
 
-			val cacheFile = File(context.cacheDir, fileName)
-			FileOutputStream(cacheFile).use { out ->
+			val archiveDir = File(appContext.filesDir, "Archive")
+			if (!archiveDir.exists()) archiveDir.mkdirs()
+			val archiveFile = File(archiveDir, fileName)
+			FileOutputStream(archiveFile).use { out ->
 				document.write(out)
 			}
-			L.d("WordExportManager: Локальний файл для ShareIntent створено успішно")
+			L.d("WordExportManager: Файл успішно збережено в локальний архів додатка")
 
-			try {
-				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-					val contentValues = ContentValues().apply {
-						put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
-						put(MediaStore.MediaColumns.MIME_TYPE, "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
-						put(MediaStore.MediaColumns.RELATIVE_PATH, "${Environment.DIRECTORY_DOCUMENTS}/Renovum")
-					}
-
-					val contentResolver = context.contentResolver
-					val uri = contentResolver.insert(MediaStore.Files.getContentUri("external"), contentValues)
-
-					if (uri != null) {
-						contentResolver.openOutputStream(uri).use { mediaOut ->
-							if (mediaOut != null) {
-								document.write(mediaOut)
-								L.d("WordExportManager: Копію файлу успішно збережено в Documents/Renovum")
-							}
-						}
-					}
-				} else {
-					val documentsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
-					val renovumDir = File(documentsDir, "Renovum")
-					if (!renovumDir.exists()) renovumDir.mkdirs()
-
-					val publicFile = File(renovumDir, fileName)
-					FileOutputStream(publicFile).use { publicOut ->
-						document.write(publicOut)
-					}
-				}
-			} catch (mediaException: Exception) {
-				L.e("WordExportManager: Не вдалося зберегти копію в загальну папку Documents", mediaException)
-			}
+			RenovumFileProvider.saveToPublicDocuments(appContext, archiveFile)
 
 			document.close()
-			return cacheFile
+			return archiveFile
 		} catch (e: Exception) {
 			L.e("WordExportManager: Помилка створення документу", e)
 			return null
@@ -392,115 +361,6 @@ object WordExportManager {
 					setText(rowData[i])
 				}
 			}
-		}
-	}
-
-	/**
-	 * Видаляє всі старі згенеровані файли кошторисів з кешу додатка
-	 */
-	fun clearOldWordCache(context: Context) {
-		try {
-			val cacheDir = context.cacheDir
-			val oldFiles = cacheDir.listFiles { _, name ->
-				name.startsWith("Koshtorys_") && name.endsWith(".docx")
-			}
-			oldFiles?.forEach { file ->
-				if (file.exists()) {
-					val deleted = file.delete()
-					if (deleted) {
-						L.d("WordExportManager: Старий кеш-файл ${file.name} видалено")
-					}
-				}
-			}
-		} catch (e: Exception) {
-			L.e("WordExportManager: Помилка очищення старого файлового кешу", e)
-		}
-	}
-
-	/**
-	 * Створює канал сповіщень
-	 * Цей метод безпечно викликати щоразу перед показом — якщо канал є, система його не дублюватиме.
-	 */
-	private fun createNotificationChannel(context: Context) {
-		val name = "Експорт кошторисів"
-		val descriptionText = "Сповіщення про стан створення файлів кошторису"
-		val importance = NotificationManager.IMPORTANCE_DEFAULT
-		val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
-			description = descriptionText
-		}
-		val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-		notificationManager.createNotificationChannel(channel)
-	}
-
-	/**
-	 * Показує початкове сповіщення, яке не можна змахнути (іде процес)
-	 */
-	fun showProgressNotification(context: Context) {
-		createNotificationChannel(context)
-
-		val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-		val notification = NotificationCompat.Builder(context, CHANNEL_ID)
-			.setSmallIcon(android.R.drawable.stat_sys_download)
-			.setContentTitle("Формування кошторису")
-			.setContentText("Будь ласка, зачекайте, файл створюється...")
-			.setPriority(NotificationCompat.PRIORITY_DEFAULT)
-			.setOngoing(true)
-			.setAutoCancel(false)
-			.build()
-
-		notificationManager.notify(NOTIFICATION_ID, notification)
-	}
-
-	/**
-	 * Оновлює сповіщення на фінальне (успіх), додає клац для відкриття файлу
-	 */
-	fun showSuccessNotification(context: Context, file: File) {
-		val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-		val fileUri: Uri = FileProvider.getUriForFile(
-			context,
-			"${context.packageName}.fileprovider",
-			file
-		)
-
-		val openFileIntent = Intent(Intent.ACTION_VIEW).apply {
-			setDataAndType(fileUri, "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
-			addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-			addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-		}
-
-		val pendingIntentFlags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-
-		val contentIntent = PendingIntent.getActivity(
-			context,
-			0,
-			openFileIntent,
-			pendingIntentFlags
-		)
-
-		val notification = NotificationCompat.Builder(context, CHANNEL_ID)
-			.setSmallIcon(android.R.drawable.stat_sys_download_done)
-			.setContentTitle("Кошторис створено!")
-			.setContentText("Натисніть, щоб відкрити файл")
-			.setPriority(NotificationCompat.PRIORITY_DEFAULT)
-			.setOngoing(false)
-			.setAutoCancel(true)
-			.setContentIntent(contentIntent)
-			.build()
-
-		notificationManager.notify(NOTIFICATION_ID, notification)
-	}
-
-	/**
-	 * Скасовує сповіщення (якщо сталася помилка і треба його просто прибрати)
-	 */
-	fun cancelNotification(context: Context) {
-		try {
-			val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-			notificationManager.cancel(NOTIFICATION_ID)
-		} catch (e: Exception) {
-			L.e("WordExportManager: Не вдалося скасувати сповіщення", e)
 		}
 	}
 

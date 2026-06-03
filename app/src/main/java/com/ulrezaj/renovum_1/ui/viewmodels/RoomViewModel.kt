@@ -24,6 +24,7 @@ import com.ulrezaj.renovum_1.data.repositories.WordExportManager
 import com.ulrezaj.renovum_1.data.repositories.WorkDataRepository
 import com.ulrezaj.renovum_1.data.repositories.WorkRepository
 import com.ulrezaj.renovum_1.utility.L
+import com.ulrezaj.renovum_1.utility.RenovumNotificationManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -31,6 +32,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -50,6 +52,10 @@ class RoomViewModel(
 ) : ViewModel() {
 	private val _rooms = mutableStateListOf<RoomEntity>()
 	val rooms: List<RoomEntity> get() = _rooms
+
+	val archiveFiles = mutableStateListOf<File>()
+	val selectedArchiveFiles = mutableStateListOf<File>()
+	var isArchiveSelectMode by mutableStateOf(false)
 
 	val appliedWorks: StateFlow<List<AppliedWork>> = workRepository.allWorks
 		.stateIn(
@@ -132,14 +138,8 @@ class RoomViewModel(
 		L.d("ViewModel: Discount updated to $projectDiscountPercent%")
 	}
 
-	/**
-	 * Сума всіх робіт БЕЗ знижки
-	 */
-	fun getTotalRawSum(): Double = totalRawSumState.value
 
-	/**
-	 * Сума всіх робіт З урахуванням знижки
-	 */
+	fun getTotalRawSum(): Double = totalRawSumState.value
 	fun getTotalDiscountedSum(): Double {
 		return totalRawSumState.value * (1.0 - projectDiscountPercent / 100.0)
 	}
@@ -148,7 +148,6 @@ class RoomViewModel(
 		_selectedRoom.value = room
 		L.d("ViewModel: Room selected -> ${room.name}")
 	}
-
 	fun addRoom(room: RoomEntity) {
 		viewModelScope.launch {
 			roomRepository.insert(room)
@@ -218,20 +217,12 @@ class RoomViewModel(
 			L.d("ViewModel: Saved ${work.name} to DB for ${room.name}")
 		}
 	}
-
-	/**
-	 * Видаляє виконану роботу
-	 */
 	fun deleteAppliedWork(work: AppliedWork) {
 		viewModelScope.launch {
 			workRepository.delete(work)
 			L.d("ViewModel: Removed from DB: ${work.workId}")
 		}
 	}
-
-	/**
-	 * Оновлює існуючу роботу в списку
-	 */
 	fun updateAppliedWork(originalWork: AppliedWork, newPrice: Double, newQuantity: Double) {
 		viewModelScope.launch {
 			val updatedWork = originalWork.copy(priceAtTime = newPrice, quantity = newQuantity)
@@ -241,14 +232,16 @@ class RoomViewModel(
 	}
 
 	fun generateWordReportInBackground(context: Context, isGroupedByRooms: Boolean) {
-		viewModelScope.launch {
-			WordExportManager.showProgressNotification(context)
+		val appContext = context.applicationContext
 
-			Toast.makeText(context, "Формування файлу кошторису...", Toast.LENGTH_SHORT).show()
+		viewModelScope.launch {
+			RenovumNotificationManager.showProgressNotification(appContext)
+			Toast.makeText(appContext, "Формування файлу кошторису...", Toast.LENGTH_SHORT).show()
 
 			val wordFile = withContext(Dispatchers.IO) {
 				try {
-					val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
+					val locale = appContext.resources.configuration.locales[0] ?: Locale.getDefault()
+					val dateFormat = SimpleDateFormat("dd.MM.yyyy", locale)
 					val currentDateString = dateFormat.format(java.util.Date())
 
 					val reportData = ReportData(
@@ -261,24 +254,23 @@ class RoomViewModel(
 					)
 
 					WordExportManager.createWordDocument(
-						context = context,
+						context = appContext,
 						data = reportData,
 						isGroupedByRooms = isGroupedByRooms
 					)
 				} catch (e: Exception) {
-					L.e("RoomViewModel: Помилка генерації документа у фоні", e)
+					L.e("RoomViewModel: Помилка генерації документа", e)
 					null
 				}
 			}
 
 			if (wordFile != null && wordFile.exists()) {
 				L.d("RoomViewModel: Фоновий файл успішно створено!")
-				Toast.makeText(context, "Файл кошторис створено успішно!", Toast.LENGTH_LONG).show()
-
-				WordExportManager.showSuccessNotification(context, wordFile)
+				Toast.makeText(appContext, "Файл-кошторис створено успішно!", Toast.LENGTH_LONG).show()
+				RenovumNotificationManager.showSuccessNotification(appContext, wordFile)
 			} else {
-				Toast.makeText(context, "Не вдалося згенерувати файл", Toast.LENGTH_SHORT).show()
-				WordExportManager.cancelNotification(context)
+				Toast.makeText(appContext, "Не вдалося згенерувати файл", Toast.LENGTH_SHORT).show()
+				RenovumNotificationManager.cancelExportNotification(appContext)
 			}
 		}
 	}
@@ -287,7 +279,7 @@ class RoomViewModel(
 	 * Повністю очищає поточний проєкт: видаляє всі кімнати та всі додані роботи
 	 */
 	fun clearCurrentProject() {
-		viewModelScope.launch {
+		viewModelScope.launch(Dispatchers.IO) {
 			try {
 				_rooms.forEach { room ->
 					workRepository.deleteWorksByRoomId(room.id)
@@ -295,10 +287,86 @@ class RoomViewModel(
 				_rooms.forEach { room ->
 					roomRepository.delete(room)
 				}
-				updateDiscount(0.0)
+				withContext(Dispatchers.Main) {
+					updateDiscount(0.0)
+				}
 				L.d("ViewModel: Поточний об'єкт успішно зачищено")
 			} catch (e: Exception) {
 				L.e("ViewModel: Помилка повного очищення об'єкта", e)
+			}
+		}
+	}
+
+	/**
+	 * Зчитує всі файли .docx із локального архіву додатка
+	 */
+	fun loadArchiveFiles(context: Context) {
+		val appContext = context.applicationContext
+		viewModelScope.launch(Dispatchers.IO) {
+			try {
+				val archiveDir = File(appContext.filesDir, "Archive")
+				if (archiveDir.exists()) {
+					val files = archiveDir.listFiles { _, name -> name.endsWith(".docx") }
+
+					withContext(Dispatchers.Main) {
+						archiveFiles.clear()
+						if (files != null) {
+							archiveFiles.addAll(files.sortedByDescending { it.lastModified() })
+						}
+					}
+				} else {
+					withContext(Dispatchers.Main) { archiveFiles.clear() }
+				}
+			} catch (e: Exception) {
+				L.e("RoomViewModel: Помилка завантаження файлів архіву", e)
+			}
+		}
+	}
+
+	/**
+	 * Перемикає виділення файлу (для мультивибору)
+	 */
+	fun toggleArchiveFileSelection(file: File) {
+		if (selectedArchiveFiles.contains(file)) {
+			selectedArchiveFiles.remove(file)
+			if (selectedArchiveFiles.isEmpty()) {
+				isArchiveSelectMode = false
+			}
+		} else {
+			selectedArchiveFiles.add(file)
+			isArchiveSelectMode = true
+		}
+	}
+
+	/**
+	 * Очищає виділення та виходить з режиму вибору
+	 */
+	fun clearArchiveSelection() {
+		selectedArchiveFiles.clear()
+		isArchiveSelectMode = false
+	}
+
+	/**
+	 * Видаляє всі виділені файли з пам'яті пристрою та оновлює список
+	 */
+	fun deleteSelectedArchiveFiles(context: Context) {
+		val appContext = context.applicationContext
+		viewModelScope.launch(Dispatchers.IO) {
+			try {
+				selectedArchiveFiles.forEach { file ->
+					if (file.exists()) {
+						val deleted = file.delete()
+						if (deleted) {
+							L.d("RoomViewModel: Файл ${file.name} видалено")
+						}
+					}
+				}
+				withContext(Dispatchers.Main) {
+					clearArchiveSelection()
+					loadArchiveFiles(appContext)
+				}
+			} catch (e: Exception) {
+				L.e("RoomViewModel: Помилка при видаленні файлів", e)
 			}
 		}
 	}

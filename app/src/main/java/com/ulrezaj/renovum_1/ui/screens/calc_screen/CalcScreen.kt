@@ -24,7 +24,9 @@ import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.model.RoomEntity
 import com.ulrezaj.renovum_1.ui.components.RoomSchemaPainter
 import com.ulrezaj.renovum_1.ui.components.topAppBar.elements.RoomSelectorDropdown
-import com.ulrezaj.renovum_1.ui.screens.calc_screen.utils.CalcPagerHeader
+import com.ulrezaj.renovum_1.ui.screens.calc_screen.components.RoomOpeningsPage
+import com.ulrezaj.renovum_1.ui.screens.calc_screen.components.RoomResultsPage
+import com.ulrezaj.renovum_1.ui.screens.calc_screen.components.CalcPagerHeader
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
 import com.ulrezaj.renovum_1.utility.L
 

@@ -138,6 +138,8 @@ fun RenovumApp() {
 								} else null,
 								onEditClick = if (currentRoute == Screen.Rooms.route) {
 									{ isEditMode = !isEditMode }
+								} else if (currentRoute == Screen.Archive.route) {
+									{ roomViewModel.isArchiveSelectMode = !roomViewModel.isArchiveSelectMode }
 								} else null,
 								onNavigateToEdit = if (currentRoute?.startsWith(Screen.Calculations.route) == true) {
 									{

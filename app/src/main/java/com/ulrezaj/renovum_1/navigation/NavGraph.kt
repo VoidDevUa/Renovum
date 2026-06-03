@@ -26,6 +26,7 @@ import com.ulrezaj.renovum_1.ui.screens.MaterialsScreen
 import com.ulrezaj.renovum_1.ui.screens.RoomsScreen
 import com.ulrezaj.renovum_1.ui.screens.SettingsScreen
 import com.ulrezaj.renovum_1.ui.screens.WorksScreen
+import com.ulrezaj.renovum_1.ui.screens.archive_screen.ArchiveScreen
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
 import com.ulrezaj.renovum_1.utility.L
 
@@ -127,13 +128,20 @@ fun NavGraph(
 				onSettingsChange = onSettingsChange
 			)
 		}
+		composable(Screen.Ceiling.route) {
+			LaunchedEffect(Unit) { L.nav("Screen: Ceiling") }
+			CeilingScreen()
+		}
 		composable(Screen.Materials.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Materials") }
 			MaterialsScreen()
 		}
-		composable(Screen.Ceiling.route) {
-			LaunchedEffect(Unit) { L.nav("Screen: Ceiling") }
-			CeilingScreen()
+		composable(Screen.Archive.route) {
+			LaunchedEffect(Unit) { L.nav("Screen: Archive") }
+			ArchiveScreen(
+				roomViewModel = roomViewModel,
+				userSettings = userSettings
+			)
 		}
 		composable(Screen.About.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: About") }

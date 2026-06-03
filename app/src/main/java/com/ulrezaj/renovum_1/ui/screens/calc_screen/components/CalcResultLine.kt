@@ -1,4 +1,4 @@
-package com.ulrezaj.renovum_1.ui.screens.calc_screen.utils
+package com.ulrezaj.renovum_1.ui.screens.calc_screen.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

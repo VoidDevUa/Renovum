@@ -6,6 +6,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Calculate
 import androidx.compose.material.icons.filled.DoneAll
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.FolderOpen
 import androidx.compose.material.icons.filled.GridOn
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
@@ -20,6 +21,7 @@ sealed class Screen(val route: String, val title: String, val icon: ImageVector)
 	object Done : Screen("done", "Виконано", Icons.Default.DoneAll)
 	object Settings : Screen("settings", "Налаштування", Icons.Default.Settings)
 	object Materials : Screen("materials", "Орієнтовний список матеріалів", Icons.Default.Inventory)
+	object Archive : Screen("archive", "Архів кошторисів", Icons.Default.FolderOpen)
 	object Ceiling : Screen("ceiling", "Схема кріплення гіпсокартону", Icons.Default.GridOn)
 	object About : Screen("about", "Про додаток", Icons.Default.Info)
 	object AddRoom : Screen("add_room", "Додавання кімнати", Icons.Default.Add)
@@ -33,6 +35,7 @@ sealed class Screen(val route: String, val title: String, val icon: ImageVector)
 			Done,
 			Settings,
 			Materials,
+			Archive,
 			Ceiling,
 			About,
 			AddRoom,

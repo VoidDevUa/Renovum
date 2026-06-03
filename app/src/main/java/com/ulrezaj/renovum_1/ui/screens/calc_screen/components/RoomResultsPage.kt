@@ -1,4 +1,4 @@
-package com.ulrezaj.renovum_1.ui.screens.calc_screen
+package com.ulrezaj.renovum_1.ui.screens.calc_screen.components
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
@@ -27,7 +27,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.data.model.RoomEntity
-import com.ulrezaj.renovum_1.ui.screens.calc_screen.utils.CalcResultLine
 import com.ulrezaj.renovum_1.ui.viewmodels.CalculatedData
 
 @SuppressLint("DefaultLocale")
