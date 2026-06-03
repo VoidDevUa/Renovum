@@ -30,6 +30,7 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTabJc
 import java.io.ByteArrayInputStream
 import java.io.File
 import java.io.FileOutputStream
+import java.math.BigInteger
 import java.util.Locale
 
 object WordExportManager {
@@ -50,10 +51,10 @@ object WordExportManager {
 			val sectPr = if (documentPr.isSetSectPr) documentPr.sectPr else documentPr.addNewSectPr()
 			val pageMar = if (sectPr.isSetPgMar) sectPr.pgMar else sectPr.addNewPgMar()
 
-			pageMar.top = java.math.BigInteger.valueOf(850)    // 42.5pt
-			pageMar.bottom = java.math.BigInteger.valueOf(850) // 42.5pt
-			pageMar.right = java.math.BigInteger.valueOf(850)  // 42.5pt
-			pageMar.left = java.math.BigInteger.valueOf(1417)  // 70.85pt
+			pageMar.top = BigInteger.valueOf(850)    // 42.5pt
+			pageMar.bottom = BigInteger.valueOf(850) // 42.5pt
+			pageMar.right = BigInteger.valueOf(850)  // 42.5pt
+			pageMar.left = BigInteger.valueOf(1417)  // 70.85pt
 
 			// ==========================================
 			// 1. КОЛОНТИТУЛИ ТА НУМЕРАЦІЯ
@@ -196,7 +197,7 @@ object WordExportManager {
 					val tabs = if (pPr.isSetTabs) pPr.tabs else pPr.addNewTabs()
 					tabs.addNewTab().apply {
 						setVal(STTabJc.RIGHT)
-						pos = java.math.BigInteger.valueOf(9933)
+						pos = BigInteger.valueOf(9933)
 					}
 
 					roomParagraph.createRun().apply {
@@ -209,7 +210,7 @@ object WordExportManager {
 						isBold = true
 						fontSize = 14
 						fontFamily = "Arial"
-						setText("\tЗаг. сума: $roomTotal грн")
+						setText("\tЗаг. сума: ${formatDouble(roomTotal)} грн")
 					}
 
 					buildWorksTable(document, works)
@@ -255,7 +256,7 @@ object WordExportManager {
 				discountCell.paragraphs[0].createRun().apply {
 					fontSize = 12
 					fontFamily = "Arial"
-					setText("Знижка: ${data.discountPercent}%")
+					setText("Знижка: ${formatDouble(data.discountPercent)}%")
 				}
 			}
 
@@ -270,7 +271,7 @@ object WordExportManager {
 				isBold = true
 				fontSize = 14
 				fontFamily = "Arial"
-				setText("ДО ОПЛАТИ: ${data.totalDiscountedSum} грн")
+				setText("ДО ОПЛАТИ: ${formatDouble(data.totalDiscountedSum)} грн")
 			}
 
 			val cacheFile = File(context.cacheDir, fileName)
@@ -365,21 +366,9 @@ object WordExportManager {
 			val row = table.getRow(index + 1)
 			val totalWorkPrice = applied.priceAtTime * applied.quantity
 
-			val pricePerUnitFormatted = String.format(Locale.US, "%.2f", applied.priceAtTime)
-				.replace(".00", "")
-				.replace(Regex("\\.(\\d)0$"), ".$1")
-
-			val totalWorkPriceFormatted = String.format(Locale.US, "%.2f", totalWorkPrice)
-				.replace(".00", "")
-				.replace(Regex("\\.(\\d)0$"), ".$1")
-
-			val formattedQuantity = if (applied.quantity % 1.0 == 0.0) {
-				applied.quantity.toInt().toString()
-			} else {
-				String.format(Locale.US, "%.2f", applied.quantity)
-					.replace(".00", "")
-					.replace(Regex("\\.(\\d)0$"), ".$1")
-			}
+			val pricePerUnitFormatted = formatDouble(applied.priceAtTime)
+			val totalWorkPriceFormatted = formatDouble(totalWorkPrice)
+			val formattedQuantity = formatDouble(applied.quantity)
 
 			val rowData = arrayOf(
 				service.name,
@@ -504,7 +493,7 @@ object WordExportManager {
 	}
 
 	/**
-	 * 4. Скасовує сповіщення (якщо сталася помилка і треба його просто прибрати)
+	 * Скасовує сповіщення (якщо сталася помилка і треба його просто прибрати)
 	 */
 	fun cancelNotification(context: Context) {
 		try {
@@ -513,5 +502,15 @@ object WordExportManager {
 		} catch (e: Exception) {
 			L.e("WordExportManager: Не вдалося скасувати сповіщення", e)
 		}
+	}
+
+	/**
+	 * Форматує число до максимум 2 знаків після коми.
+	 * Прибирає .00 або кінцеві нулі (наприклад, 10.50 -> 10.5, 10.00 -> 10)
+	 */
+	private fun formatDouble(value: Double): String {
+		return String.format(Locale.US, "%.2f", value)
+			.replace(".00", "")
+			.replace(Regex("\\.(\\d)0$"), ".$1")
 	}
 }
