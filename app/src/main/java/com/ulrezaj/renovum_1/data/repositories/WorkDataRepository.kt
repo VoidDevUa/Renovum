@@ -33,7 +33,7 @@ object WorkDataRepository {
 
 			L.d("WorkDataRepository: Успішно завантажено ${allWorks.size} робіт з JSON!")
 		} catch (e: Exception) {
-			L.d("WorkDataRepository: Помилка завантаження JSON: ${e.message}")
+			L.e("WorkDataRepository: Помилка завантаження JSON: ${e.message}")
 			allWorks = emptyList()
 		}
 	}

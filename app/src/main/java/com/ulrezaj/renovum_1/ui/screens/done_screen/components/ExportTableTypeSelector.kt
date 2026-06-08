@@ -1,4 +1,4 @@
-package com.ulrezaj.renovum_1.ui.components
+package com.ulrezaj.renovum_1.ui.screens.done_screen.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme

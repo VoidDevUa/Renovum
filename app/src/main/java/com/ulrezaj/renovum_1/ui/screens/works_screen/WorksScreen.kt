@@ -1,5 +1,6 @@
-package com.ulrezaj.renovum_1.ui.screens
+package com.ulrezaj.renovum_1.ui.screens.works_screen
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -128,7 +129,7 @@ fun WorksScreen(
 			modifier = Modifier.fillMaxWidth().height(48.dp),
 			elevation = CardDefaults.cardElevation(2.dp),
 			colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
-			border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f))
+			border = BorderStroke(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f))
 		) {
 			Row(
 				modifier = Modifier.fillMaxSize(),

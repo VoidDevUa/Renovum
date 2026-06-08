@@ -45,12 +45,12 @@ sealed class RoomParams {
 			"D" to d
 		)
 
-		override fun getFloorArea() = (a * b) + (c * (d - b))
+		override fun getFloorArea() = (a * d) - (c * (d - b))
 		override fun getPerimeter() = 2 * (a + d)
 
 		override fun getExtraResults() = mapOf(
-			"Площа основи" to (a * b),
-			"Площа виступу" to (c * (d - b))
+			"Площа шапки" to (a * b),
+			"Площа виступу" to (a * d - a * b)
 		)
 	}
 	data class TShapedParams(

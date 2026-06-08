@@ -3,14 +3,12 @@ package com.ulrezaj.renovum_1.ui
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -26,7 +24,6 @@ import com.ulrezaj.renovum_1.navigation.Screen
 import com.ulrezaj.renovum_1.ui.components.BottomNav
 import com.ulrezaj.renovum_1.ui.components.AppDrawer
 import com.ulrezaj.renovum_1.ui.components.topAppBar.RenovumTopAppBar
-import com.ulrezaj.renovum_1.ui.screens.WorksScreen
 import com.ulrezaj.renovum_1.ui.theme.Renovum_1Theme
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
 import com.ulrezaj.renovum_1.utility.L
@@ -97,7 +94,7 @@ fun RenovumApp() {
 
 			ModalNavigationDrawer(
 				drawerState = drawerState,
-				gesturesEnabled = true,
+				gesturesEnabled = false,
 				drawerContent = {
 					CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
 						AppDrawer(

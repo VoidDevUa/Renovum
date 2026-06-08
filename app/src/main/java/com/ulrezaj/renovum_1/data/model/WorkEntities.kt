@@ -11,7 +11,6 @@ enum class WorkUnit(val displayName: String) {
 	MPOG("м.пог."),
 	PCS("шт."),
 	POINT("точ."),
-	TONN("тонна"),
 	JOB("роб.");
 
 	companion object {

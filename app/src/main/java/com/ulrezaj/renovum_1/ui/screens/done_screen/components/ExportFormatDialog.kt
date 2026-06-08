@@ -1,4 +1,4 @@
-package com.ulrezaj.renovum_1.ui.components.dialogs
+package com.ulrezaj.renovum_1.ui.screens.done_screen.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -31,7 +31,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.R
-import com.ulrezaj.renovum_1.ui.components.ExportTableTypeSelector
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

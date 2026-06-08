@@ -25,7 +25,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -36,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.model.OpeningType
 import com.ulrezaj.renovum_1.data.model.RoomEntity
-import com.ulrezaj.renovum_1.ui.components.list_Items.RoomCard
+import com.ulrezaj.renovum_1.ui.screens.rooms_screen.components.RoomCard
 import com.ulrezaj.renovum_1.ui.screens.rooms_screen.components.NewProjectDialog
 import com.ulrezaj.renovum_1.utility.L
 
@@ -50,10 +49,6 @@ fun RoomsScreen(
 	onDeleteRoom: (RoomEntity) -> Unit,
 	onSettingsChange: (UserSettings) -> Unit
 ) {
-	LaunchedEffect(rooms.size) {
-		L.d("RoomsScreen: Displaying ${rooms.size} rooms")
-	}
-
 	val roomToDelete = remember { mutableStateOf<RoomEntity?>(null) }
 	val showNewProjectDialog = remember { mutableStateOf(false) }
 

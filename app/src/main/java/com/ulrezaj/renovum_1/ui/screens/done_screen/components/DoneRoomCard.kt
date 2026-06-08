@@ -1,4 +1,4 @@
-package com.ulrezaj.renovum_1.ui.components.list_Items
+package com.ulrezaj.renovum_1.ui.screens.done_screen.components
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement

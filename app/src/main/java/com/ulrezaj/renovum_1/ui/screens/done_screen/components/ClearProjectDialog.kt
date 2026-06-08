@@ -1,4 +1,4 @@
-package com.ulrezaj.renovum_1.ui.components.dialogs
+package com.ulrezaj.renovum_1.ui.screens.done_screen.components
 
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.MaterialTheme

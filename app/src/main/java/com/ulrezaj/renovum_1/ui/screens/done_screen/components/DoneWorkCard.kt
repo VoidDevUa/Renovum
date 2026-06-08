@@ -1,6 +1,7 @@
-package com.ulrezaj.renovum_1.ui.components.list_Items
+package com.ulrezaj.renovum_1.ui.screens.done_screen.components
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,7 +36,7 @@ fun DoneWorkCard(
 		colors = CardDefaults.cardColors(
 			containerColor = MaterialTheme.colorScheme.surface
 		),
-		border = androidx.compose.foundation.BorderStroke(
+		border = BorderStroke(
 			0.5.dp,
 			MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
 		)

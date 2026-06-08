@@ -1,4 +1,4 @@
-package com.ulrezaj.renovum_1.ui.screens
+package com.ulrezaj.renovum_1.ui.screens.done_screen
 
 import android.annotation.SuppressLint
 import android.widget.Toast
@@ -36,12 +36,12 @@ import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.UserSettingsManager
 import com.ulrezaj.renovum_1.data.repositories.WorkDataRepository
-import com.ulrezaj.renovum_1.ui.components.dialogs.ClearProjectDialog
-import com.ulrezaj.renovum_1.ui.components.dialogs.DiscountDialog
-import com.ulrezaj.renovum_1.ui.components.dialogs.ExportFormatDialog
+import com.ulrezaj.renovum_1.ui.screens.done_screen.components.ClearProjectDialog
+import com.ulrezaj.renovum_1.ui.screens.done_screen.components.DiscountDialog
+import com.ulrezaj.renovum_1.ui.screens.done_screen.components.ExportFormatDialog
 import com.ulrezaj.renovum_1.ui.components.dialogs.WorkDialog
-import com.ulrezaj.renovum_1.ui.components.list_Items.DoneRoomCard
-import com.ulrezaj.renovum_1.ui.components.list_Items.DoneWorkCard
+import com.ulrezaj.renovum_1.ui.screens.done_screen.components.DoneRoomCard
+import com.ulrezaj.renovum_1.ui.screens.done_screen.components.DoneWorkCard
 import com.ulrezaj.renovum_1.ui.viewmodels.RoomViewModel
 import com.ulrezaj.renovum_1.utility.L
 

@@ -38,10 +38,6 @@ fun CalcScreen(
 	userSettings: UserSettings,
 	onRoomSelected: (RoomEntity) -> Unit
 ) {
-	LaunchedEffect(currentRoom.id) {
-		L.d("CalcScreen: Active room is ${currentRoom.name} (ID: ${currentRoom.id})")
-	}
-
 	val data = roomViewModel.calculateRoomData(currentRoom)
 	val pagerState = rememberPagerState(pageCount = { 2 })
 	val scope = rememberCoroutineScope()

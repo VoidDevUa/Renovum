@@ -87,15 +87,21 @@ fun ProfileSettingsTab(
 			verticalAlignment = Alignment.CenterVertically,
 			horizontalArrangement = Arrangement.spacedBy(8.dp)
 		) {
-			OutlinedTextField(
-				value = nameInput.value,
-				onValueChange = { if (it.length <= 45) nameInput.value = it },
-				label = { Text("ПІБ Майстра / Назва компанії") },
-				placeholder = { Text("напр. ФОП Петренко В.О.") },
-				modifier = Modifier.weight(1f),
-				singleLine = true,
-				readOnly = !isEditingName.value
-			)
+			if (isEditingName.value) {
+				OutlinedTextField(
+					value = nameInput.value,
+					onValueChange = { if (it.length <= 45) nameInput.value = it },
+					label = { Text("ПІБ Майстра / Назва компанії") },
+					modifier = Modifier.weight(1f),
+					singleLine = true
+				)
+			} else {
+				// Заміна на звичайний Text, коли редагування вимкнено
+				Column(modifier = Modifier.weight(1f).padding(horizontal = 8.dp, vertical = 16.dp)) {
+					Text("ПІБ Майстра / Назва компанії", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
+					Text(nameInput.value.ifBlank { "Не вказано" }, style = MaterialTheme.typography.bodyLarge)
+				}
+			}
 
 			IconButton(
 				onClick = {
@@ -108,8 +114,7 @@ fun ProfileSettingsTab(
 			) {
 				Icon(
 					imageVector = if (isEditingName.value) Icons.Default.Check else Icons.Default.Edit,
-					contentDescription = if (isEditingName.value) "Зберегти" else "Редагувати",
-					tint = if (isEditingName.value) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+					contentDescription = null
 				)
 			}
 		}
@@ -119,27 +124,24 @@ fun ProfileSettingsTab(
 			verticalAlignment = Alignment.CenterVertically,
 			horizontalArrangement = Arrangement.spacedBy(8.dp)
 		) {
-			OutlinedTextField(
-				value = phoneInput.value,
-				onValueChange = { if (it.length <= 13) phoneInput.value = it },
-				label = { Text("Номер телефону") },
-				placeholder = { Text("+38") },
-				isError = isPhoneInvalid,
-				supportingText = {
-					if (isPhoneInvalid) {
-						Text("Некоректний номер (не вистачає цифр)", color = MaterialTheme.colorScheme.error)
-					}
-				},
-				modifier = Modifier
-					.weight(1f)
-					.onFocusChanged { focusState ->
-						if (focusState.isFocused && phoneInput.value.isBlank()) {
-							phoneInput.value = "+38"
-						}
+			if (isEditingPhone.value) {
+				OutlinedTextField(
+					value = phoneInput.value,
+					onValueChange = { if (it.length <= 13) phoneInput.value = it },
+					label = { Text("Номер телефону") },
+					placeholder = { Text("+38") },
+					isError = isPhoneInvalid,
+					modifier = Modifier.weight(1f).onFocusChanged {
+						if (it.isFocused && phoneInput.value.isBlank()) phoneInput.value = "+38"
 					},
-				singleLine = true,
-				readOnly = !isEditingPhone.value
-			)
+					singleLine = true
+				)
+			} else {
+				Column(modifier = Modifier.weight(1f).padding(horizontal = 8.dp, vertical = 16.dp)) {
+					Text("Номер телефону", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.primary)
+					Text(phoneInput.value.ifBlank { "Не вказано" }, style = MaterialTheme.typography.bodyLarge)
+				}
+			}
 
 			IconButton(
 				onClick = {
@@ -158,8 +160,7 @@ fun ProfileSettingsTab(
 			) {
 				Icon(
 					imageVector = if (isEditingPhone.value) Icons.Default.Check else Icons.Default.Edit,
-					contentDescription = if (isEditingPhone.value) "Зберегти" else "Редагувати",
-					tint = if (isEditingPhone.value) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+					contentDescription = null
 				)
 			}
 		}
@@ -199,7 +200,7 @@ fun ProfileSettingsTab(
                    onClick = {
                       selectedBusinessType.value = type
                       expandedTypeSelector.value = false
-                      // TODO: onSettingsChange(settings.copy(businessType = type))
+                      // onSettingsChange(settings.copy(businessType = type))
                    },
                    contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding
                 )

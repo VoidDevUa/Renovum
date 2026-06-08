@@ -32,7 +32,6 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -336,7 +335,7 @@ class RoomViewModel(
 	}
 
 	/**
-	 * Перемикає виділення файлу (для мультивибору)
+	 * Перемикає виділення файлу (для множинного вибору)
 	 */
 	fun toggleArchiveFileSelection(file: File) {
 		if (selectedArchiveFiles.contains(file)) {

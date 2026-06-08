@@ -16,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ulrezaj.renovum_1.data.UserSettings
-import com.ulrezaj.renovum_1.ui.components.ThemeSelector
 import com.ulrezaj.renovum_1.utility.L
 
 @Composable

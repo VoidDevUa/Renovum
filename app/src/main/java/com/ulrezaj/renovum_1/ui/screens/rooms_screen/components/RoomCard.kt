@@ -1,4 +1,4 @@
-package com.ulrezaj.renovum_1.ui.components.list_Items
+package com.ulrezaj.renovum_1.ui.screens.rooms_screen.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
