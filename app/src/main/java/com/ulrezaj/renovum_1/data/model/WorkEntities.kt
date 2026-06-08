@@ -1,6 +1,8 @@
 package com.ulrezaj.renovum_1.data.model
 
 import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 enum class WorkUnit(val displayName: String) {
@@ -38,7 +40,18 @@ data class WorkService(
 	val targetSurface: TargetSurface = TargetSurface.NONE
 )
 
-@Entity(tableName = "applied_works")
+@Entity(
+	tableName = "applied_works",
+	foreignKeys = [
+		ForeignKey(
+			entity = RoomEntity::class,
+			parentColumns = ["id"],
+			childColumns = ["roomId"],
+			onDelete = ForeignKey.CASCADE
+		)
+	],
+	indices = [Index(value = ["roomId"])]
+)
 data class AppliedWork(
 	@PrimaryKey(autoGenerate = true) val id: Int = 0,
 	val workId: String,

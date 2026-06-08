@@ -6,8 +6,9 @@
    See https://developer.android.com/about/versions/12/backup-restore
 -->
 <full-backup-content>
-    <!--
-   <include domain="sharedpref" path="."/>
-   <exclude domain="sharedpref" path="device.xml"/>
--->
+    <exclude domain="database" path="renovum_database" />
+    <exclude domain="database" path="renovum_database-journal" />
+    <exclude domain="database" path="renovum_database-wal" />
+
+    <exclude domain="file" path="Archive" />
 </full-backup-content>

@@ -1,5 +1,6 @@
 package com.ulrezaj.renovum_1.ui.screens.archive_screen.components
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -61,7 +62,12 @@ fun FileActionDialog(
 					verticalAlignment = Alignment.CenterVertically
 				) {
 					IconButton(onClick = {
-						RenovumFileProvider.saveToPublicDocuments(context, file)
+						val isSuccess = RenovumFileProvider.saveToPublicDocuments(context, file)
+						if (isSuccess) {
+							Toast.makeText(context, "Збережено в /Documents/Renovum", Toast.LENGTH_SHORT).show()
+						} else {
+							Toast.makeText(context, "Помилка при збереженні файлу", Toast.LENGTH_SHORT).show()
+						}
 						onDismiss()
 					}) {
 						Icon(

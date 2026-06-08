@@ -69,7 +69,11 @@ fun AddOpeningDialog(
 
 				OutlinedTextField(
 					value = width,
-					onValueChange = { if (it.all { c -> c.isDigit() || c == '.' }) width = it },
+					onValueChange = { newValue ->
+						if (newValue.length <= 5 && newValue.all { c -> c.isDigit() || c == '.' }) {
+							width = newValue
+						}
+					},
 					label = { Text("Ширина (м)") },
 					keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
 					singleLine = true,
@@ -78,7 +82,11 @@ fun AddOpeningDialog(
 
 				OutlinedTextField(
 					value = height,
-					onValueChange = { if (it.all { c -> c.isDigit() || c == '.' }) height = it },
+					onValueChange = { newValue ->
+						if (newValue.length <= 5 && newValue.all { c -> c.isDigit() || c == '.' }) {
+							height = newValue
+						}
+					},
 					label = { Text("Висота (м)") },
 					keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
 					singleLine = true,

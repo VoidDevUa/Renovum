@@ -231,9 +231,10 @@ class RoomViewModel(
 		userSettings: UserSettings
 	) {
 		val appContext = context.applicationContext
+		val notificationId = System.currentTimeMillis().hashCode()
 
 		viewModelScope.launch {
-			RenovumNotificationManager.showProgressNotification(appContext)
+			RenovumNotificationManager.showProgressNotification(appContext, notificationId)
 			Toast.makeText(appContext, "Формування файлу кошторису...", Toast.LENGTH_SHORT).show()
 
 			val wordFile = withContext(Dispatchers.IO) {
@@ -267,10 +268,10 @@ class RoomViewModel(
 			if (wordFile != null && wordFile.exists()) {
 				L.d("RoomViewModel: Фоновий файл успішно створено!")
 				Toast.makeText(appContext, "Файл-кошторис створено успішно!", Toast.LENGTH_LONG).show()
-				RenovumNotificationManager.showSuccessNotification(appContext, wordFile)
+				RenovumNotificationManager.showSuccessNotification(appContext, wordFile, notificationId)
 			} else {
 				Toast.makeText(appContext, "Не вдалося згенерувати файл", Toast.LENGTH_SHORT).show()
-				RenovumNotificationManager.cancelExportNotification(appContext)
+				RenovumNotificationManager.cancelExportNotification(appContext, notificationId)
 			}
 		}
 	}

@@ -17,11 +17,11 @@ import com.ulrezaj.renovum_1.data.UserSettings
 import com.ulrezaj.renovum_1.data.model.RoomEntity
 import com.ulrezaj.renovum_1.data.model.RoomShapeType
 import com.ulrezaj.renovum_1.ui.screens.AboutScreen
-import com.ulrezaj.renovum_1.ui.screens.AddRoomScreen
+import com.ulrezaj.renovum_1.ui.screens.secondary_screens.AddRoomScreen
 import com.ulrezaj.renovum_1.ui.screens.calc_screen.CalcScreen
 import com.ulrezaj.renovum_1.ui.screens.CeilingScreen
 import com.ulrezaj.renovum_1.ui.screens.DoneScreen
-import com.ulrezaj.renovum_1.ui.screens.EditRoomScreen
+import com.ulrezaj.renovum_1.ui.screens.secondary_screens.EditRoomScreen
 import com.ulrezaj.renovum_1.ui.screens.MaterialsScreen
 import com.ulrezaj.renovum_1.ui.screens.rooms_screen.RoomsScreen
 import com.ulrezaj.renovum_1.ui.screens.settings_screen.SettingsScreen

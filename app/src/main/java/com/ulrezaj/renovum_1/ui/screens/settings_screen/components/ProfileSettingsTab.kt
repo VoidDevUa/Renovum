@@ -58,6 +58,13 @@ fun ProfileSettingsTab(
 	val expandedCitySelector = remember { mutableStateOf(false) }
 	val selectedCity = remember { mutableStateOf(cities[14]) }
 
+	/*
+    // Вибір форми діяльності майстра
+    val businessTypes = listOf("Приватний майстер", "ФОП", "ТОВ", "Будівельна компанія")
+    val expandedTypeSelector = remember { mutableStateOf(false) }
+    val selectedBusinessType = remember { mutableStateOf(businessTypes[0]) }
+    */
+
 	Column(
 		modifier = Modifier
 			.fillMaxSize()
@@ -82,7 +89,7 @@ fun ProfileSettingsTab(
 		) {
 			OutlinedTextField(
 				value = nameInput.value,
-				onValueChange = { nameInput.value = it },
+				onValueChange = { if (it.length <= 45) nameInput.value = it },
 				label = { Text("ПІБ Майстра / Назва компанії") },
 				placeholder = { Text("напр. ФОП Петренко В.О.") },
 				modifier = Modifier.weight(1f),
@@ -114,7 +121,7 @@ fun ProfileSettingsTab(
 		) {
 			OutlinedTextField(
 				value = phoneInput.value,
-				onValueChange = { phoneInput.value = it },
+				onValueChange = { if (it.length <= 13) phoneInput.value = it },
 				label = { Text("Номер телефону") },
 				placeholder = { Text("+38") },
 				isError = isPhoneInvalid,
@@ -156,6 +163,50 @@ fun ProfileSettingsTab(
 				)
 			}
 		}
+
+		/*
+       // Рендеринг вибору форми діяльності
+       Text(
+          "Тип діяльності",
+          style = MaterialTheme.typography.labelLarge,
+          color = MaterialTheme.colorScheme.primary,
+          modifier = Modifier.padding(top = 8.dp)
+       )
+
+       ExposedDropdownMenuBox(
+          expanded = expandedTypeSelector.value,
+          onExpandedChange = { expandedTypeSelector.value = !expandedTypeSelector.value },
+          modifier = Modifier.fillMaxWidth()
+       ) {
+          OutlinedTextField(
+             modifier = Modifier
+                .fillMaxWidth()
+                .menuAnchor(type = ExposedDropdownMenuAnchorType.PrimaryNotEditable, enabled = true),
+             readOnly = true,
+             value = selectedBusinessType.value,
+             onValueChange = {},
+             label = { Text("Юридичний статус майстра") },
+             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expandedTypeSelector.value) },
+             colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors()
+          )
+          ExposedDropdownMenu(
+             expanded = expandedTypeSelector.value,
+             onDismissRequest = { expandedTypeSelector.value = false }
+          ) {
+             businessTypes.forEach { type ->
+                DropdownMenuItem(
+                   text = { Text(type) },
+                   onClick = {
+                      selectedBusinessType.value = type
+                      expandedTypeSelector.value = false
+                      // TODO: onSettingsChange(settings.copy(businessType = type))
+                   },
+                   contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding
+                )
+             }
+          }
+       }
+       */
 
 		Text(
 			"Регіональні налаштування",

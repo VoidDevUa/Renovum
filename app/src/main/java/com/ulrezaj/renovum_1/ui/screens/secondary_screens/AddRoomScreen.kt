@@ -1,4 +1,4 @@
-package com.ulrezaj.renovum_1.ui.screens
+package com.ulrezaj.renovum_1.ui.screens.secondary_screens
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
@@ -64,8 +64,7 @@ fun AddRoomScreen(
 	val focusedField = remember { mutableStateOf<String?>(null) }
 
 	var openings by remember { mutableStateOf(listOf<OpeningEntity>()) }
-	var paramValues by remember { mutableStateOf(mapOf<String, String>()) }
-
+	var paramValues by remember { mutableStateOf(mapOf("Висота" to "2.5")) }
 	Column(
 		modifier = Modifier
 			.fillMaxSize()
@@ -98,9 +97,10 @@ fun AddRoomScreen(
 
 		OutlinedTextField(
 			value = roomName.value,
-			onValueChange = { roomName.value = it },
+			onValueChange = { if (it.length <= 25) roomName.value = it },
 			label = { Text("Назва кімнати") },
-			modifier = Modifier.fillMaxWidth()
+			modifier = Modifier.fillMaxWidth(),
+			singleLine = true
 		)
 
 		HorizontalDivider()
@@ -127,7 +127,7 @@ fun AddRoomScreen(
 					OutlinedTextField(
 						value = paramValues[field] ?: "",
 						onValueChange = { newValue ->
-							if (newValue.all { it.isDigit() || it == '.' }) {
+							if (newValue.length <= 5 && newValue.all { it.isDigit() || it == '.' }) {
 								paramValues = paramValues + (field to newValue)
 							}
 						},
@@ -199,12 +199,16 @@ fun AddRoomScreen(
 				onClick = {
 					L.click("AddRoom: Save clicked")
 
-					val currentHeight = paramValues["Висота"]?.toDoubleOrNull() ?: 0.0
+					val currentHeight = paramValues["Висота"]?.toDoubleOrNull() ?: 2.5
 					val hasInvalidOpenings = openings.any { (it.height.toDoubleOrNull() ?: 0.0) > currentHeight }
 
 					if (roomName.value.isBlank()) {
 						L.e("AddRoom: Save failed - Room name is blank")
 						Toast.makeText(context, "Введіть назву кімнати", Toast.LENGTH_SHORT).show()
+					}
+					else if (currentHeight < 2.5) {
+						L.e("AddRoom: Save failed - Room height $currentHeight is below DBN limit (2.5m)")
+						Toast.makeText(context, "Мінімальна висота житлового приміщення за ДБН — 2.5 м!", Toast.LENGTH_LONG).show()
 					}
 					else if (hasInvalidOpenings) {
 						L.e("AddRoom: Save failed - Opening height exceeds room height")
@@ -246,7 +250,7 @@ fun AddRoomScreen(
 	}
 
 	if (showOpeningDialog.value) {
-		val currentCeilingHeight = paramValues["Висота"]?.toDoubleOrNull() ?: 3.0
+		val currentCeilingHeight = paramValues["Висота"]?.toDoubleOrNull() ?: 2.5
 		AddOpeningDialog(
 			maxHeight = currentCeilingHeight,
 			onDismiss = { showOpeningDialog.value = false },

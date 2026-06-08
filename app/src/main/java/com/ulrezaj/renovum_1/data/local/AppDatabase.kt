@@ -10,7 +10,7 @@ import com.ulrezaj.renovum_1.data.local.daos.RoomDao
 import com.ulrezaj.renovum_1.data.model.AppliedWork
 import com.ulrezaj.renovum_1.data.model.RoomEntity
 
-@Database(entities = [RoomEntity::class, AppliedWork::class], version = 1, exportSchema = false)
+@Database(entities = [RoomEntity::class, AppliedWork::class], version = 2, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
@@ -28,7 +28,7 @@ abstract class AppDatabase : RoomDatabase() {
 					AppDatabase::class.java,
 					"renovum_database"
 				)
-					.fallbackToDestructiveMigration(false)
+					.fallbackToDestructiveMigration(true)
 					.build()
 				INSTANCE = instance
 				instance

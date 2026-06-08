@@ -43,8 +43,13 @@ fun ExportFormatDialog(
 ){
 	val selectedGroupType = remember { mutableStateOf(initialGroupByRooms) }
 
+	val illegalCharacters = remember { listOf('/', '\\', ':', '*', '?', '"', '<', '>', '|') }
+
 	val address = remember { mutableStateOf(initialAddress) }
-	val customFileName = remember { mutableStateOf("Koshtorys_${initialAddress.replace(" ", "_")}") }
+
+	val initialSanitizedName = "Koshtorys_${initialAddress.replace(" ", "_")}"
+		.filter { it !in illegalCharacters }
+	val customFileName = remember { mutableStateOf(initialSanitizedName) }
 	val isCustomNameVisible = remember { mutableStateOf(false) }
 
 	AlertDialog(
@@ -54,10 +59,18 @@ fun ExportFormatDialog(
 			Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
 				OutlinedTextField(
 					value = address.value,
-					onValueChange = {
-						address.value = it
-						if (!isCustomNameVisible.value) {
-							customFileName.value = "Koshtorys_${it.replace(" ", "_")}"
+					onValueChange = { newValue ->
+						if (newValue.length <= 50) {
+							address.value = newValue
+							if (!isCustomNameVisible.value) {
+								val automaticName = "Koshtorys_${newValue.replace(" ", "_")}"
+									.filter { it !in illegalCharacters }
+								if (automaticName.length <= 40) {
+									customFileName.value = automaticName
+								} else {
+									customFileName.value = automaticName.take(40)
+								}
+							}
 						}
 					},
 					label = { Text("Адреса об'єкта в документі") },
@@ -91,7 +104,11 @@ fun ExportFormatDialog(
 				AnimatedVisibility(visible = isCustomNameVisible.value) {
 					OutlinedTextField(
 						value = customFileName.value,
-						onValueChange = { customFileName.value = it },
+						onValueChange = { newValue ->
+							if (newValue.length <= 40 && newValue.none { it in illegalCharacters }) {
+								customFileName.value = newValue
+							}
+						},
 						label = { Text("Назва файлу (.docx)") },
 						modifier = Modifier.fillMaxWidth(),
 						singleLine = true

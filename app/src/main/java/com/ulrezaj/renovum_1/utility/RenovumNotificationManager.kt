@@ -12,7 +12,6 @@ import java.io.File
 
 object RenovumNotificationManager {
 	private const val EXPORT_CHANNEL_ID = "renovum_export_channel"
-	private const val EXPORT_NOTIFICATION_ID = 101
 
 	/**
 	 * Створює канал сповіщень для експорту (безпечно викликати повторно)
@@ -29,9 +28,9 @@ object RenovumNotificationManager {
 	}
 
 	/**
-	 * Показує сповіщення про те, що йде процес генерації
+	 * Показує сповіщення про хід генерації та повертає його унікальний ID
 	 */
-	fun showProgressNotification(context: Context) {
+	fun showProgressNotification(context: Context, notificationId: Int) {
 		val appContext = context.applicationContext
 		createExportChannel(appContext)
 
@@ -46,13 +45,13 @@ object RenovumNotificationManager {
 			.setAutoCancel(false)
 			.build()
 
-		notificationManager.notify(EXPORT_NOTIFICATION_ID, notification)
+		notificationManager.notify(notificationId, notification)
 	}
 
 	/**
-	 * Оновлює сповіщення на успішне завершення з можливістю кліку для відкриття файлу
+	 * Оновлює сповіщення за ID на успішне завершення з можливістю кліку для відкриття файлу
 	 */
-	fun showSuccessNotification(context: Context, file: File) {
+	fun showSuccessNotification(context: Context, file: File, notificationId: Int) {
 		val appContext = context.applicationContext
 		val notificationManager = appContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -72,7 +71,7 @@ object RenovumNotificationManager {
 
 		val contentIntent = PendingIntent.getActivity(
 			appContext,
-			0,
+			notificationId,
 			openFileIntent,
 			pendingIntentFlags
 		)
@@ -80,23 +79,23 @@ object RenovumNotificationManager {
 		val notification = NotificationCompat.Builder(appContext, EXPORT_CHANNEL_ID)
 			.setSmallIcon(android.R.drawable.stat_sys_download_done)
 			.setContentTitle("Кошторис створено!")
-			.setContentText("Натисніть, щоб відкрити файл")
+			.setContentText("Натисніть, щоб відкрити ${file.name}")
 			.setPriority(NotificationCompat.PRIORITY_DEFAULT)
 			.setOngoing(false)
 			.setAutoCancel(true)
 			.setContentIntent(contentIntent)
 			.build()
 
-		notificationManager.notify(EXPORT_NOTIFICATION_ID, notification)
+		notificationManager.notify(notificationId, notification)
 	}
 
 	/**
-	 * Скасовує сповіщення процесу експорту
+	 * Скасовує сповіщення процесу експорту за ID
 	 */
-	fun cancelExportNotification(context: Context) {
+	fun cancelExportNotification(context: Context, notificationId: Int) {
 		try {
 			val notificationManager = context.applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-			notificationManager.cancel(EXPORT_NOTIFICATION_ID)
+			notificationManager.cancel(notificationId)
 		} catch (e: Exception) {
 			L.e("RenovumNotificationManager: Не вдалося скасувати сповіщення", e)
 		}

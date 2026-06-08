@@ -18,6 +18,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -45,13 +46,17 @@ fun FileCard(
 	val context = LocalContext.current
 	val platformLocale = context.resources.configuration.locales[0]
 
-	val cleanName = file.name
-		.replace("Koshtorys_", "")
-		.replace(".docx", "")
-		.replace("_", " ")
+	val cleanName = remember(file.name) {
+		file.name
+			.replace("Koshtorys_", "")
+			.replace(".docx", "")
+			.replace("_", " ")
+	}
 
-	val sdf = SimpleDateFormat("dd.MM.yyyy HH:mm", platformLocale)
-	val fileDate = sdf.format(Date(file.lastModified()))
+	val fileDate = remember(file.lastModified(), platformLocale) {
+		val sdf = SimpleDateFormat("dd.MM.yyyy", platformLocale)
+		sdf.format(Date(file.lastModified()))
+	}
 
 	Card(
 		modifier = Modifier

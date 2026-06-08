@@ -252,7 +252,11 @@ fun WorkDialog(
 									)
 									OutlinedTextField(
 										value = priceInput,
-										onValueChange = { if (it.all { char -> char.isDigit() || char == '.' }) priceInput = it },
+										onValueChange = { newValue ->
+											if (newValue.length <= 7 && newValue.all { char -> char.isDigit() || char == '.' }) {
+												priceInput = newValue
+											}
+										},
 										placeholder = {
 											Text(
 												text = if (workService.averagePrice > 0.0) "${workService.averagePrice.toInt()}" else "Введіть ціну"
@@ -277,7 +281,11 @@ fun WorkDialog(
 									)
 									OutlinedTextField(
 										value = qtyInput,
-										onValueChange = { if (it.all { char -> char.isDigit() || char == '.' }) qtyInput = it },
+										onValueChange = { newValue ->
+											if (newValue.length <= 6 && newValue.all { char -> char.isDigit() || char == '.' }) {
+												qtyInput = newValue
+											}
+										},
 										placeholder = {
 											Text(text = if (workService.targetSurface != TargetSurface.NONE) displaySuggestedValue else "1.0")
 										},
@@ -296,7 +304,10 @@ fun WorkDialog(
 										) {
 											options.forEach { (label, value) ->
 												Card(
-													onClick = { qtyInput = String.format("%.2f", value).replace(",", ".") },
+													onClick = {
+														val formatted = String.format("%.2f", value).replace(",", ".")
+														qtyInput = if (formatted.length <= 6) formatted else formatted.take(6)
+													},
 													modifier = Modifier
 														.fillMaxWidth()
 														.height(36.dp),

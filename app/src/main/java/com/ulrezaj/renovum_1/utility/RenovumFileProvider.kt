@@ -57,10 +57,11 @@ object RenovumFileProvider {
 	}
 
 	/**
-	 * Дублює файл у публічну теку /Documents/Renovum для доступу через провідник
+	 * Дублює файл у публічну теку /Documents/Renovum для доступу через провідник.
+	 * Повертає true у разі успіху, false — якщо виникла помилка.
 	 */
-	fun saveToPublicDocuments(context: Context, file: File) {
-		try {
+	fun saveToPublicDocuments(context: Context, file: File): Boolean {
+		return try {
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
 				val contentValues = ContentValues().apply {
 					put(MediaStore.MediaColumns.DISPLAY_NAME, file.name)
@@ -85,6 +86,9 @@ object RenovumFileProvider {
 							mediaOut?.let { input.copyTo(it) }
 						}
 					}
+					true
+				} else {
+					false
 				}
 			} else {
 				val documentsDir =
@@ -98,9 +102,11 @@ object RenovumFileProvider {
 						input.copyTo(output)
 					}
 				}
+				true
 			}
 		} catch (e: Exception) {
 			L.e("FileActionDialog: Не вдалося зберегти у публічну теку", e)
+			false
 		}
 	}
 }

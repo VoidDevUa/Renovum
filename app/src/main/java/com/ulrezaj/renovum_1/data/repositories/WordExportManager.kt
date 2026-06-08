@@ -11,7 +11,6 @@ import com.ulrezaj.renovum_1.data.model.AppliedWork
 import com.ulrezaj.renovum_1.data.model.ReportData
 import com.ulrezaj.renovum_1.data.model.WorkService
 import com.ulrezaj.renovum_1.utility.L
-import com.ulrezaj.renovum_1.utility.RenovumFileProvider
 import org.apache.commons.io.output.ByteArrayOutputStream
 import org.apache.poi.common.usermodel.PictureType
 import org.apache.poi.util.Units
@@ -37,7 +36,7 @@ object WordExportManager {
 		val appContext = context.applicationContext
 		try {
 			val projectName = customFileName.ifBlank { data.projectName }
-			val finalFileName = "Koshtorys_${projectName.replace(" ", "_")}.docx"
+			val baseFileName = "Koshtorys_${projectName.replace(" ", "_")}"
 			val document = XWPFDocument()
 
 			// ==========================================
@@ -254,17 +253,24 @@ object WordExportManager {
 				isBold = true; fontSize = 14; fontFamily = "Arial"
 				setText("ДО ОПЛАТИ: ${formatDouble(data.totalDiscountedSum)} грн") }
 
-
+			// ==========================================
+			// 6. ЗБЕРЕЖЕННЯ ФАЙЛУ З ІНДЕКСАЦІЄЮ
+			// ==========================================
 			val archiveDir = File(appContext.filesDir, "Archive")
 				.apply { if (!exists()) mkdirs() }
-			val archiveFile = File(archiveDir, finalFileName)
+			var archiveFile = File(archiveDir, "$baseFileName.docx")
+			var counter = 1
+
+			while (archiveFile.exists()) {
+				archiveFile = File(archiveDir, "${baseFileName}_($counter).docx")
+				counter++
+			}
 
 			FileOutputStream(archiveFile).use { out ->
 				document.write(out)
 			}
 
-			L.d("WordExportManager: Файл збережено: $finalFileName")
-			RenovumFileProvider.saveToPublicDocuments(appContext, archiveFile)
+			L.d("WordExportManager: Файл збережено в архів: ${archiveFile.name}")
 			document.close()
 			return archiveFile
 		} catch (e: Exception) {
@@ -274,7 +280,7 @@ object WordExportManager {
 	}
 
 	/**
-	 * Стабільний метод створення таблиці з рамками без використання низькорівневих CT-класів
+	 * Стабільний метод створення таблиці з рамками
 	 */
 	private fun buildWorksTable(
 		document: XWPFDocument,
@@ -349,7 +355,6 @@ object WordExportManager {
 
 	/**
 	 * Форматує число до максимум 2 знаків після коми.
-	 * Прибирає .00 або кінцеві нулі (наприклад, 10.50 -> 10.5, 10.00 -> 10)
 	 */
 	private fun formatDouble(value: Double): String {
 		return String.format(Locale.US, "%.2f", value)

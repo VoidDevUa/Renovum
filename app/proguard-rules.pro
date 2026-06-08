@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Очищення логів з Kotlin object L
+-assumenosideeffects class com.ulrezaj.renovum_1.utility.L {
+    public void d(java.lang.String);
+    public void nav(java.lang.String);
+    public void click(java.lang.String);
+}

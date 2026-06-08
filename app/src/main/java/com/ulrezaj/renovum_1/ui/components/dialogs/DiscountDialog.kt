@@ -51,7 +51,14 @@ fun DiscountDialog(
 
 				OutlinedTextField(
 					value = discountInput,
-					onValueChange = { if (it.isEmpty() || it.toDoubleOrNull() != null) discountInput = it },
+					onValueChange = { newValue ->
+						if (newValue.length <= 5 && (newValue.isEmpty() || newValue.toDoubleOrNull() != null)) {
+							val numericCheck = newValue.toDoubleOrNull() ?: 0.0
+							if (numericCheck in 0.0..100.0) {
+								discountInput = newValue
+							}
+						}
+					},
 					label = { Text("Знижка (%)") },
 					placeholder = { Text("Поточна: ${initialDiscount.toInt()}%") },
 					suffix = { Text("%") },
