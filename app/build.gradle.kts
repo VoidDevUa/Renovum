@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-	namespace = "com.ulrezaj.renovum_1"
+	namespace = "com.void_dev_ua.renovum"
 	compileSdk {
 		version = release(36) {
 			minorApiLevel = 1
@@ -13,7 +13,7 @@ android {
 	}
 
 	defaultConfig {
-		applicationId = "com.ulrezaj.renovum_1"
+		applicationId = "com.void_dev_ua.renovum"
 		minSdk = 26
 		targetSdk = 36
 		versionCode = 1
