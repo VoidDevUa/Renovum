@@ -45,7 +45,7 @@ fun NavGraph(
 		startDestination = Screen.Rooms.route,
 		modifier = Modifier.padding(paddingValues)
 	) {
-		composable(route = Screen.Rooms.route) {
+		composable(Screen.Rooms.route) {
 			LaunchedEffect(Unit) {
 				L.nav("Screen: Rooms")
 			}
@@ -71,7 +71,7 @@ fun NavGraph(
 				onSettingsChange = onSettingsChange
 			)
 		}
-		composable(route = Screen.Calculations.route) {
+		composable(Screen.Calculations.route) {
 			L.d("NavGraph: Rendering CalcScreen")
 
 			val rooms = roomViewModel.rooms
@@ -102,7 +102,7 @@ fun NavGraph(
 				}
 			}
 		}
-		composable(route = Screen.Works.route) {
+		composable(Screen.Works.route) {
 			L.nav("Screen: Works")
 			val rooms = roomViewModel.rooms
 			val activeRoom by roomViewModel.selectedRoom

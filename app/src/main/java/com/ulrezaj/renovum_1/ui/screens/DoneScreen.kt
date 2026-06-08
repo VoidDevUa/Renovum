@@ -163,7 +163,7 @@ fun DoneScreen(
 				) {
 					Icon(
 						imageVector = Icons.Default.Description,
-						contentDescription = null,
+						contentDescription = "Іконка звіту",
 						modifier = Modifier.size(24.dp)
 					)
 					Spacer(modifier = Modifier.width(8.dp))

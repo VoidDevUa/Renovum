@@ -32,6 +32,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -51,6 +52,7 @@ class RoomViewModel(
 	val selectedArchiveFiles = mutableStateListOf<File>()
 	var isArchiveSelectMode by mutableStateOf(false)
 
+
 	val appliedWorks: StateFlow<List<AppliedWork>> = workRepository.allWorks
 		.stateIn(
 			scope = viewModelScope,
@@ -60,6 +62,14 @@ class RoomViewModel(
 
 	private val _selectedRoom = mutableStateOf<RoomEntity?>(null)
 	val selectedRoom: State<RoomEntity?> = _selectedRoom
+
+	val worksWithStatusState: StateFlow<Map<String, Boolean>> = appliedWorks
+		.map { applied ->
+			val currentRoomId = _selectedRoom.value?.id ?: -1
+			applied.filter { it.roomId == currentRoomId }
+				.associate { it.workId to true }
+		}
+		.stateIn(viewModelScope, SharingStarted.Eagerly, emptyMap())
 
 	var lastSelectedCategory by mutableStateOf<WorkCategory?>(null)
 	var projectDiscountPercent by mutableDoubleStateOf(0.0)

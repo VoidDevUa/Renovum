@@ -55,15 +55,6 @@ fun AppDrawer(
 				onCloseDrawer = onCloseDrawer
 			)
 			DrawerItem(
-				screen = Screen.Ceiling,
-				selected = currentRoute == Screen.Ceiling.route,
-				onNavigate = { route ->
-					L.click("Drawer: Ceiling selected")
-					onNavigate(route)
-				},
-				onCloseDrawer = onCloseDrawer
-			)
-			DrawerItem(
 				screen = Screen.Archive,
 				selected = currentRoute == Screen.Archive.route,
 				onNavigate = { route ->
@@ -72,8 +63,16 @@ fun AppDrawer(
 				},
 				onCloseDrawer = onCloseDrawer
 			)
-			/*
-			DrawerItem(
+			/*DrawerItem(
+				screen = Screen.Ceiling,
+				selected = currentRoute == Screen.Ceiling.route,
+				onNavigate = { route ->
+					L.click("Drawer: Ceiling selected")
+					onNavigate(route)
+				},
+				onCloseDrawer = onCloseDrawer
+			)*/
+			/*DrawerItem(
 				screen = Screen.Materials,
 				selected = currentRoute == Screen.Materials.route,
 				onNavigate = { route ->
@@ -81,8 +80,7 @@ fun AppDrawer(
 					onNavigate(route)
 				},
 				onCloseDrawer = onCloseDrawer
-			)
-			*/
+			)*/
 			DrawerItem(
 				screen = Screen.About,
 				selected = currentRoute == Screen.About.route,

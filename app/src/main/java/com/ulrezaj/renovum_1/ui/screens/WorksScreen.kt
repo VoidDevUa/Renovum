@@ -31,7 +31,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -55,7 +54,7 @@ fun WorksScreen(
 	roomViewModel: RoomViewModel,
 	userSettings: UserSettings
 ) {
-	val appliedWorks by roomViewModel.appliedWorks.collectAsState()
+	val worksStatusMap by roomViewModel.worksWithStatusState.collectAsState()
 	val selectedRoom by roomViewModel.selectedRoom
 	val roomsCount = roomViewModel.rooms.size
 
@@ -212,41 +211,37 @@ fun WorksScreen(
 			color = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
 		)
 
-		key(selectedRoom?.id) {
-			LazyColumn(
-				modifier = Modifier.weight(1f),
-				verticalArrangement = Arrangement.spacedBy(8.dp),
-				contentPadding = PaddingValues(bottom = 16.dp)
-			) {
-				if (currentWorks.isEmpty()) {
-					item {
-						Text(
-							"Робіт для категорії \"${selectedCategory.displayName}\" поки немає",
-							style = MaterialTheme.typography.bodyMedium,
-							color = Color.Gray,
-							modifier = Modifier.padding(16.dp)
-						)
-					}
-				} else {
-					items(
-						items = currentWorks,
-						key = { work -> work.id }
-					) { work ->
-						val isAlreadyDone = selectedRoom?.let { room ->
-							appliedWorks.any { it.workId == work.id && it.roomId == room.id }
-						} ?: false
+		LazyColumn(
+			modifier = Modifier.weight(1f),
+			verticalArrangement = Arrangement.spacedBy(8.dp),
+			contentPadding = PaddingValues(bottom = 16.dp)
+		) {
+			if (currentWorks.isEmpty()) {
+				item {
+					Text(
+						"Робіт для категорії \"${selectedCategory.displayName}\" поки немає",
+						style = MaterialTheme.typography.bodyMedium,
+						color = Color.Gray,
+						modifier = Modifier.padding(16.dp)
+					)
+				}
+			} else {
+				items(
+					items = currentWorks,
+					key = { work -> work.id }
+				) { work ->
+					val isAlreadyDone = worksStatusMap[work.id] ?: false
 
-						WorkCard(
-							work = work,
-							isLeftHanded = userSettings.isLeftHanded,
-							enabled = selectedRoom != null && !isAlreadyDone,
-							isDone = isAlreadyDone,
-							onAddClick = {
-								workToProcess = work
-								showAddDialog.value = true
-							}
-						)
-					}
+					WorkCard(
+						work = work,
+						isLeftHanded = userSettings.isLeftHanded,
+						enabled = selectedRoom != null && !isAlreadyDone,
+						isDone = isAlreadyDone,
+						onAddClick = {
+							workToProcess = work
+							showAddDialog.value = true
+						}
+					)
 				}
 			}
 		}
