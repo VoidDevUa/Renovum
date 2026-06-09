@@ -1,10 +1,11 @@
 plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.kotlin.compose)
+	id("com.google.devtools.ksp")
 }
 
 android {
-	namespace = "com.ulrezaj.renovum_1"
+	namespace = "com.void_dev_ua.renovum"
 	compileSdk {
 		version = release(36) {
 			minorApiLevel = 1
@@ -12,7 +13,7 @@ android {
 	}
 
 	defaultConfig {
-		applicationId = "com.ulrezaj.renovum_1"
+		applicationId = "com.void_dev_ua.renovum"
 		minSdk = 26
 		targetSdk = 36
 		versionCode = 1
@@ -23,7 +24,8 @@ android {
 
 	buildTypes {
 		release {
-			isMinifyEnabled = false
+			isMinifyEnabled = true
+			isShrinkResources = true
 			proguardFiles(
 				getDefaultProguardFile("proguard-android-optimize.txt"),
 				"proguard-rules.pro"
@@ -40,6 +42,12 @@ android {
 }
 
 dependencies {
+	implementation(libs.androidx.room.runtime)
+	implementation(libs.androidx.room.ktx)
+	ksp(libs.androidx.room.compiler)
+
+	implementation(libs.gson)
+
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.lifecycle.runtime.ktx)
 	implementation(libs.androidx.activity.compose)
@@ -51,6 +59,12 @@ dependencies {
 	implementation(libs.androidx.compose.material.icons.extended)
 	implementation(libs.androidx.navigation.compose)
 	implementation(libs.androidx.material3)
+
+	implementation(libs.androidx.datastore.preferences)
+
+	implementation(libs.poi)
+	implementation(libs.poi.ooxml)
+
 	testImplementation(libs.junit)
 	androidTestImplementation(libs.androidx.junit)
 	androidTestImplementation(libs.androidx.espresso.core)

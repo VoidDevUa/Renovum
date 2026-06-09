@@ -5,15 +5,16 @@
 -->
 <data-extraction-rules>
     <cloud-backup>
-        <!-- TODO: Use <include> and <exclude> to control what is backed up.
-        <include .../>
-        <exclude .../>
-        -->
+        <exclude domain="database" path="renovum_database" />
+        <exclude domain="database" path="renovum_database-journal" />
+        <exclude domain="database" path="renovum_database-wal" />
+        <exclude domain="file" path="Archive" />
     </cloud-backup>
-    <!--
+
     <device-transfer>
-        <include .../>
-        <exclude .../>
+        <exclude domain="database" path="renovum_database" />
+        <exclude domain="database" path="renovum_database-journal" />
+        <exclude domain="database" path="renovum_database-wal" />
+        <exclude domain="file" path="Archive" />
     </device-transfer>
-    -->
 </data-extraction-rules>
