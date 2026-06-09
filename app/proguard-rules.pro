@@ -26,3 +26,12 @@
     public void nav(java.lang.String);
     public void click(java.lang.String);
 }
+
+# Ігноруємо відсутні класи Apache POI та залежностей
+-dontwarn java.awt.**
+-dontwarn javax.xml.stream.**
+-dontwarn net.sf.saxon.**
+-dontwarn org.apache.logging.log4j.**
+-dontwarn aQute.bnd.annotation.**
+-dontwarn edu.umd.cs.findbugs.annotations.**
+-dontwarn org.osgi.framework.**
