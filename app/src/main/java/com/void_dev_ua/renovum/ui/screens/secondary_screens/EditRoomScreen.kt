@@ -17,12 +17,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.void_dev_ua.renovum.data.model.RoomParams
-import com.void_dev_ua.renovum.data.model.RoomShapeType
+import com.void_dev_ua.renovum.model.RoomParams
+import com.void_dev_ua.renovum.model.RoomShapeType
 import com.void_dev_ua.renovum.ui.components.RoomSchemaPainter
 import com.void_dev_ua.renovum.ui.components.dialogs.AddOpeningDialog
 import com.void_dev_ua.renovum.ui.components.list_Items.OpeningItem
-import com.void_dev_ua.renovum.ui.viewmodels.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.RoomViewModel
 import com.void_dev_ua.renovum.utility.L
 
 @Composable

@@ -44,12 +44,12 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.void_dev_ua.renovum.data.model.AppliedWork
-import com.void_dev_ua.renovum.data.model.RoomEntity
-import com.void_dev_ua.renovum.data.model.WorkService
-import com.void_dev_ua.renovum.data.model.OpeningType
-import com.void_dev_ua.renovum.data.model.TargetSurface
-import com.void_dev_ua.renovum.ui.viewmodels.RoomViewModel
+import com.void_dev_ua.renovum.model.AppliedWork
+import com.void_dev_ua.renovum.model.RoomEntity
+import com.void_dev_ua.renovum.model.WorkService
+import com.void_dev_ua.renovum.model.OpeningType
+import com.void_dev_ua.renovum.model.TargetSurface
+import com.void_dev_ua.renovum.viewmodel.RoomViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @SuppressLint("DefaultLocale")

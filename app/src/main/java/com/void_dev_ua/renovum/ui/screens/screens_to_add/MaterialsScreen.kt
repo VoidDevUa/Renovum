@@ -1,4 +1,4 @@
-package com.void_dev_ua.renovum.ui.screens
+package com.void_dev_ua.renovum.ui.screens.screens_to_add
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

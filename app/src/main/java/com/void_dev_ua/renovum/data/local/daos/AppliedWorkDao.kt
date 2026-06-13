@@ -6,7 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.void_dev_ua.renovum.data.model.AppliedWork
+import com.void_dev_ua.renovum.model.AppliedWork
 import kotlinx.coroutines.flow.Flow
 
 @Dao

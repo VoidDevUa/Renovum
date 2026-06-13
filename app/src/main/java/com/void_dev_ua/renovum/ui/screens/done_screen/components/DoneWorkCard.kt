@@ -16,8 +16,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.void_dev_ua.renovum.data.model.AppliedWork
-import com.void_dev_ua.renovum.data.model.WorkService
+import com.void_dev_ua.renovum.model.AppliedWork
+import com.void_dev_ua.renovum.model.WorkService
 
 @SuppressLint("DefaultLocale")
 @Composable

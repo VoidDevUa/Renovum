@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import com.void_dev_ua.renovum.data.model.RoomEntity
+import com.void_dev_ua.renovum.model.RoomEntity
 import com.void_dev_ua.renovum.ui.components.topAppBar.elements.RoomSelectorDropdown
 import com.void_dev_ua.renovum.ui.components.topAppBar.elements.EditModeIcon
 import com.void_dev_ua.renovum.ui.components.topAppBar.elements.NavigateToEditRoomIcon

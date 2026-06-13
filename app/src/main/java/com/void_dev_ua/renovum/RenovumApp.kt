@@ -1,4 +1,4 @@
-package com.void_dev_ua.renovum.ui
+package com.void_dev_ua.renovum
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
@@ -25,7 +25,7 @@ import com.void_dev_ua.renovum.ui.components.BottomNav
 import com.void_dev_ua.renovum.ui.components.AppDrawer
 import com.void_dev_ua.renovum.ui.components.topAppBar.RenovumTopAppBar
 import com.void_dev_ua.renovum.ui.theme.Renovum_1Theme
-import com.void_dev_ua.renovum.ui.viewmodels.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.RoomViewModel
 import com.void_dev_ua.renovum.utility.L
 import kotlinx.coroutines.launch
 

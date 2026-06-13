@@ -42,7 +42,7 @@ import com.void_dev_ua.renovum.ui.screens.done_screen.components.ExportFormatDia
 import com.void_dev_ua.renovum.ui.components.dialogs.WorkDialog
 import com.void_dev_ua.renovum.ui.screens.done_screen.components.DoneRoomCard
 import com.void_dev_ua.renovum.ui.screens.done_screen.components.DoneWorkCard
-import com.void_dev_ua.renovum.ui.viewmodels.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.RoomViewModel
 import com.void_dev_ua.renovum.utility.L
 
 @SuppressLint("DefaultLocale")

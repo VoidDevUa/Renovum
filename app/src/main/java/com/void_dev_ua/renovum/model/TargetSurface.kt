@@ -1,4 +1,4 @@
-package com.void_dev_ua.renovum.data.model
+package com.void_dev_ua.renovum.model
 
 enum class TargetSurface {
 	FLOOR_AREA,

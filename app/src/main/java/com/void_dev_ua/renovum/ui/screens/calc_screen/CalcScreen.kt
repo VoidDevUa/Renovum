@@ -20,13 +20,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.void_dev_ua.renovum.data.UserSettings
-import com.void_dev_ua.renovum.data.model.RoomEntity
+import com.void_dev_ua.renovum.model.RoomEntity
 import com.void_dev_ua.renovum.ui.components.RoomSchemaPainter
 import com.void_dev_ua.renovum.ui.components.topAppBar.elements.RoomSelectorDropdown
 import com.void_dev_ua.renovum.ui.screens.calc_screen.components.RoomOpeningsPage
 import com.void_dev_ua.renovum.ui.screens.calc_screen.components.RoomResultsPage
 import com.void_dev_ua.renovum.ui.screens.calc_screen.components.CalcPagerHeader
-import com.void_dev_ua.renovum.ui.viewmodels.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.RoomViewModel
 
 @Composable
 fun CalcScreen(

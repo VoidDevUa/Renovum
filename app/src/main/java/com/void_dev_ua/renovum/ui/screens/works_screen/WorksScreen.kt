@@ -43,11 +43,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.void_dev_ua.renovum.data.UserSettings
-import com.void_dev_ua.renovum.data.model.WorkService
+import com.void_dev_ua.renovum.model.WorkService
 import com.void_dev_ua.renovum.data.repositories.WorkDataRepository
 import com.void_dev_ua.renovum.ui.components.dialogs.WorkDialog
 import com.void_dev_ua.renovum.ui.components.list_Items.WorkCard
-import com.void_dev_ua.renovum.ui.viewmodels.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.RoomViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

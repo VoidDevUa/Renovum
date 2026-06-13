@@ -10,7 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.void_dev_ua.renovum.data.model.RoomShapeType
+import com.void_dev_ua.renovum.model.RoomShapeType
 
 @Composable
 fun RoomCard(

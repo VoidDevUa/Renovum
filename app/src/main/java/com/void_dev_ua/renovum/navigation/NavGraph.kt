@@ -14,20 +14,20 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.void_dev_ua.renovum.data.UserSettings
-import com.void_dev_ua.renovum.data.model.RoomEntity
-import com.void_dev_ua.renovum.data.model.RoomShapeType
+import com.void_dev_ua.renovum.model.RoomEntity
+import com.void_dev_ua.renovum.model.RoomShapeType
 import com.void_dev_ua.renovum.ui.screens.about_screen.AboutScreen
 import com.void_dev_ua.renovum.ui.screens.secondary_screens.AddRoomScreen
 import com.void_dev_ua.renovum.ui.screens.calc_screen.CalcScreen
-import com.void_dev_ua.renovum.ui.screens.CeilingScreen
+import com.void_dev_ua.renovum.ui.screens.screens_to_add.CeilingScreen
 import com.void_dev_ua.renovum.ui.screens.done_screen.DoneScreen
 import com.void_dev_ua.renovum.ui.screens.secondary_screens.EditRoomScreen
-import com.void_dev_ua.renovum.ui.screens.MaterialsScreen
+import com.void_dev_ua.renovum.ui.screens.screens_to_add.MaterialsScreen
 import com.void_dev_ua.renovum.ui.screens.rooms_screen.RoomsScreen
 import com.void_dev_ua.renovum.ui.screens.settings_screen.SettingsScreen
 import com.void_dev_ua.renovum.ui.screens.works_screen.WorksScreen
 import com.void_dev_ua.renovum.ui.screens.archive_screen.ArchiveScreen
-import com.void_dev_ua.renovum.ui.viewmodels.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.RoomViewModel
 import com.void_dev_ua.renovum.utility.L
 
 @Composable

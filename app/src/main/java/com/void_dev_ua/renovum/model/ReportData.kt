@@ -1,4 +1,4 @@
-package com.void_dev_ua.renovum.data.model
+package com.void_dev_ua.renovum.model
 
 data class ReportData(
 	val projectName: String,

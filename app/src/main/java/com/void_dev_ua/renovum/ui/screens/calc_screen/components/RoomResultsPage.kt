@@ -26,8 +26,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.void_dev_ua.renovum.data.model.CalculatedData
-import com.void_dev_ua.renovum.data.model.RoomEntity
+import com.void_dev_ua.renovum.model.CalculatedData
+import com.void_dev_ua.renovum.model.RoomEntity
 
 @SuppressLint("DefaultLocale")
 @Composable

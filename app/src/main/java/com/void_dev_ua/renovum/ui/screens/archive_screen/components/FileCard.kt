@@ -27,7 +27,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.void_dev_ua.renovum.R
 import com.void_dev_ua.renovum.data.UserSettings
-import com.void_dev_ua.renovum.ui.viewmodels.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.RoomViewModel
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date

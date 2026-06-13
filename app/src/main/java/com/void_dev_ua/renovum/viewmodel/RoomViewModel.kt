@@ -1,4 +1,4 @@
-package com.void_dev_ua.renovum.ui.viewmodels
+package com.void_dev_ua.renovum.viewmodel
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,17 +12,17 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.void_dev_ua.renovum.data.UserSettings
-import com.void_dev_ua.renovum.data.model.AppliedWork
-import com.void_dev_ua.renovum.data.model.CalculatedData
-import com.void_dev_ua.renovum.data.model.ReportData
-import com.void_dev_ua.renovum.data.model.RoomEntity
-import com.void_dev_ua.renovum.data.model.TargetSurface
-import com.void_dev_ua.renovum.data.model.WorkCategory
-import com.void_dev_ua.renovum.data.model.WorkSection
-import com.void_dev_ua.renovum.data.model.WorkService
-import com.void_dev_ua.renovum.data.model.WorkUnit
+import com.void_dev_ua.renovum.model.AppliedWork
+import com.void_dev_ua.renovum.model.CalculatedData
+import com.void_dev_ua.renovum.model.ReportData
+import com.void_dev_ua.renovum.model.RoomEntity
+import com.void_dev_ua.renovum.model.TargetSurface
+import com.void_dev_ua.renovum.model.WorkCategory
+import com.void_dev_ua.renovum.model.WorkSection
+import com.void_dev_ua.renovum.model.WorkService
+import com.void_dev_ua.renovum.model.WorkUnit
 import com.void_dev_ua.renovum.data.repositories.RoomRepository
-import com.void_dev_ua.renovum.data.repositories.WordExportManager
+import com.void_dev_ua.renovum.utility.WordExportManager
 import com.void_dev_ua.renovum.data.repositories.WorkDataRepository
 import com.void_dev_ua.renovum.data.repositories.WorkRepository
 import com.void_dev_ua.renovum.utility.L

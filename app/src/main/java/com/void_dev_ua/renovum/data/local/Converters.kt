@@ -4,8 +4,8 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
-import com.void_dev_ua.renovum.data.model.OpeningEntity
-import com.void_dev_ua.renovum.data.model.RoomParams
+import com.void_dev_ua.renovum.model.OpeningEntity
+import com.void_dev_ua.renovum.model.RoomParams
 
 class Converters {
 	private val gson = Gson()

@@ -1,7 +1,7 @@
 package com.void_dev_ua.renovum.data.repositories
 
 import com.void_dev_ua.renovum.data.local.daos.AppliedWorkDao
-import com.void_dev_ua.renovum.data.model.AppliedWork
+import com.void_dev_ua.renovum.model.AppliedWork
 import kotlinx.coroutines.flow.Flow
 
 class WorkRepository (private val appliedWorkDao: AppliedWorkDao) {

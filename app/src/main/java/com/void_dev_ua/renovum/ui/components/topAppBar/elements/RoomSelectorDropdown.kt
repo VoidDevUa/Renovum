@@ -8,7 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.void_dev_ua.renovum.data.model.RoomEntity
+import com.void_dev_ua.renovum.model.RoomEntity
 import com.void_dev_ua.renovum.utility.L
 
 @Composable

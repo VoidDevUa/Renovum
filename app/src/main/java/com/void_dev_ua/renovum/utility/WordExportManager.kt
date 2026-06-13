@@ -1,4 +1,4 @@
-package com.void_dev_ua.renovum.data.repositories
+package com.void_dev_ua.renovum.utility
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -7,10 +7,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.createBitmap
 import androidx.core.graphics.drawable.toBitmap
 import com.void_dev_ua.renovum.data.UserSettings
-import com.void_dev_ua.renovum.data.model.AppliedWork
-import com.void_dev_ua.renovum.data.model.ReportData
-import com.void_dev_ua.renovum.data.model.WorkService
-import com.void_dev_ua.renovum.utility.L
+import com.void_dev_ua.renovum.model.AppliedWork
+import com.void_dev_ua.renovum.model.ReportData
+import com.void_dev_ua.renovum.model.WorkService
 import org.apache.commons.io.output.ByteArrayOutputStream
 import org.apache.poi.common.usermodel.PictureType
 import org.apache.poi.util.Units

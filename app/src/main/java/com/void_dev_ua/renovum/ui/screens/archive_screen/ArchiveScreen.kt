@@ -31,7 +31,7 @@ import com.void_dev_ua.renovum.data.UserSettings
 import com.void_dev_ua.renovum.ui.screens.archive_screen.components.DeleteFilesDialog
 import com.void_dev_ua.renovum.ui.screens.archive_screen.components.FileActionDialog
 import com.void_dev_ua.renovum.ui.screens.archive_screen.components.FileCard
-import com.void_dev_ua.renovum.ui.viewmodels.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.RoomViewModel
 import java.io.File
 
 @OptIn(ExperimentalFoundationApi::class)

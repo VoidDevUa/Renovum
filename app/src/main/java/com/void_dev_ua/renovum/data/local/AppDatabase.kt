@@ -7,8 +7,8 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.void_dev_ua.renovum.data.local.daos.AppliedWorkDao
 import com.void_dev_ua.renovum.data.local.daos.RoomDao
-import com.void_dev_ua.renovum.data.model.AppliedWork
-import com.void_dev_ua.renovum.data.model.RoomEntity
+import com.void_dev_ua.renovum.model.AppliedWork
+import com.void_dev_ua.renovum.model.RoomEntity
 
 @Database(entities = [RoomEntity::class, AppliedWork::class], version = 2, exportSchema = false)
 @TypeConverters(Converters::class)

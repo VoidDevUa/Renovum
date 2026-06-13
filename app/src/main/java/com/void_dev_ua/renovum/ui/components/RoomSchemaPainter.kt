@@ -14,7 +14,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.unit.dp
-import com.void_dev_ua.renovum.data.model.RoomShapeType
+import com.void_dev_ua.renovum.model.RoomShapeType
 import com.void_dev_ua.renovum.utility.L
 
 @SuppressLint("DefaultLocale")

@@ -33,8 +33,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.void_dev_ua.renovum.data.UserSettings
-import com.void_dev_ua.renovum.data.model.OpeningType
-import com.void_dev_ua.renovum.data.model.RoomEntity
+import com.void_dev_ua.renovum.model.OpeningType
+import com.void_dev_ua.renovum.model.RoomEntity
 import com.void_dev_ua.renovum.ui.screens.rooms_screen.components.RoomCard
 import com.void_dev_ua.renovum.ui.screens.rooms_screen.components.NewProjectDialog
 import com.void_dev_ua.renovum.utility.L

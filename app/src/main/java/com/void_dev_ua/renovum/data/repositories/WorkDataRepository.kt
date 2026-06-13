@@ -3,9 +3,9 @@ package com.void_dev_ua.renovum.data.repositories
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.void_dev_ua.renovum.data.model.WorkCategory
-import com.void_dev_ua.renovum.data.model.WorkSection
-import com.void_dev_ua.renovum.data.model.WorkService
+import com.void_dev_ua.renovum.model.WorkCategory
+import com.void_dev_ua.renovum.model.WorkSection
+import com.void_dev_ua.renovum.model.WorkService
 import com.void_dev_ua.renovum.utility.L
 
 object WorkDataRepository {
