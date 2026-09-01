@@ -30,8 +30,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.void_dev_ua.renovum.R
 import com.void_dev_ua.renovum.data.UserSettings
 import com.void_dev_ua.renovum.model.OpeningType
 import com.void_dev_ua.renovum.model.RoomEntity
@@ -55,8 +57,8 @@ fun RoomsScreen(
 	roomToDelete.value?.let { room ->
 		AlertDialog(
 			onDismissRequest = { roomToDelete.value = null },
-			title = { Text("Видалення кімнати") },
-			text = { Text("Ви впевнені, що хочете видалити «${room.name}»? Всі внесені виміри та виконані роботи в цій кімнаті будуть безповоротно втрачені.") },
+			title = { Text(stringResource(R.string.delete_room_title)) },
+			text = { Text(stringResource(R.string.delete_room_confirmation, room.name)) },
 			confirmButton = {
 				TextButton(
 					onClick = {
@@ -64,12 +66,12 @@ fun RoomsScreen(
 						roomToDelete.value = null
 					}
 				) {
-					Text("Видалити", color = MaterialTheme.colorScheme.error)
+					Text(stringResource(R.string.delete), color = MaterialTheme.colorScheme.error)
 				}
 			},
 			dismissButton = {
 				TextButton(onClick = { roomToDelete.value = null }) {
-					Text("Скасувати")
+					Text(stringResource(R.string.cancel))
 				}
 			}
 		)
@@ -100,7 +102,7 @@ fun RoomsScreen(
 				) {
 					Icon(
 						imageVector = Icons.Default.Add,
-						contentDescription = "Додати кімнату",
+						contentDescription = stringResource(R.string.add_room_content_description),
 						modifier = Modifier.size(30.dp)
 					)
 				}
@@ -123,14 +125,14 @@ fun RoomsScreen(
 						horizontalAlignment = Alignment.CenterHorizontally
 					) {
 						Text(
-							text = "Немає активного ремонту",
+							text = stringResource(R.string.no_active_repair),
 							style = MaterialTheme.typography.headlineSmall,
 							color = MaterialTheme.colorScheme.onSurfaceVariant,
 							textAlign = TextAlign.Center
 						)
 						Spacer(modifier = Modifier.height(8.dp))
 						Text(
-							text = "Введіть адресу, щоб розпочати новий кошторис.",
+							text = stringResource(R.string.enter_address_to_start),
 							style = MaterialTheme.typography.bodyMedium,
 							color = MaterialTheme.colorScheme.outline,
 							textAlign = TextAlign.Center
@@ -140,7 +142,7 @@ fun RoomsScreen(
 							onClick = { showNewProjectDialog.value = true },
 							colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E7D32))
 						) {
-							Text("Почати новий ремонт", color = Color.White)
+							Text(stringResource(R.string.start_new_repair), color = Color.White)
 						}
 					}
 				} else if (rooms.isEmpty()) {
@@ -153,14 +155,14 @@ fun RoomsScreen(
 						horizontalAlignment = Alignment.CenterHorizontally
 					) {
 						Text(
-							text = "Об'єкт створено успішно!",
+							text = stringResource(R.string.object_created_success),
 							style = MaterialTheme.typography.headlineSmall,
 							color = MaterialTheme.colorScheme.onSurfaceVariant,
 							textAlign = TextAlign.Center
 						)
 						Spacer(modifier = Modifier.height(8.dp))
 						Text(
-							text = "Тепер натисніть на кнопку '+' знизу, щоб додати першу кімнату.",
+							text = stringResource(R.string.add_first_room_hint),
 							style = MaterialTheme.typography.bodyMedium,
 							color = MaterialTheme.colorScheme.outline,
 							textAlign = TextAlign.Center
@@ -179,7 +181,7 @@ fun RoomsScreen(
 							RoomCard(
 								name = room.name,
 								shapeType = room.shapeType,
-								dimensions = "Вікон: $windowsCount, Дверей: $doorsCount",
+								dimensions = stringResource(R.string.room_dimensions_summary, windowsCount, doorsCount),
 								showDimensions = userSettings.showDimensionsInCard,
 								isEditMode = isEditMode,
 								isLeftHanded = userSettings.isLeftHanded,

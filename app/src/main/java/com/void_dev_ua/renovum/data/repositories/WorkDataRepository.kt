@@ -7,41 +7,52 @@ import com.void_dev_ua.renovum.model.WorkCategory
 import com.void_dev_ua.renovum.model.WorkSection
 import com.void_dev_ua.renovum.model.WorkService
 import com.void_dev_ua.renovum.utility.L
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
-object WorkDataRepository {
+@Singleton
+class WorkDataRepository @Inject constructor(
+    @ApplicationContext private val context: Context
+) {
 
-	val allSections = WorkSection.entries
+    private val _allWorks = MutableStateFlow<List<WorkService>>(emptyList())
+    val allWorksFlow: StateFlow<List<WorkService>> = _allWorks.asStateFlow()
 
-	fun getCategoriesForSection(section: WorkSection): List<WorkCategory> {
-		return WorkCategory.entries.filter { it.section == section }
-	}
+    val allWorks: List<WorkService> get() = _allWorks.value
 
-	var allWorks: List<WorkService> = emptyList()
-		private set
+    val allSections = WorkSection.entries
 
-	fun init(context: Context) {
-		if (allWorks.isNotEmpty()) return
+    suspend fun loadWorks() {
+        if (_allWorks.value.isNotEmpty()) return
 
-		try {
-			val jsonString = context.assets.open("services.json")
-				.bufferedReader()
-				.use { it.readText() }
+        withContext(Dispatchers.IO) {
+            try {
+                val jsonString = context.assets.open("services.json")
+                    .bufferedReader()
+                    .use { it.readText() }
 
-			val listType = object : TypeToken<List<WorkService>>() {}.type
+                val listType = object : TypeToken<List<WorkService>>() {}.type
+                val works: List<WorkService> = Gson().fromJson(jsonString, listType)
 
-			allWorks = Gson().fromJson(jsonString, listType)
+                _allWorks.value = works
+                L.d("WorkDataRepository: Успішно завантажено ${works.size} робіт з JSON!")
+            } catch (e: Exception) {
+                L.e("WorkDataRepository: Помилка завантаження JSON: ${e.message}")
+            }
+        }
+    }
 
-			L.d("WorkDataRepository: Успішно завантажено ${allWorks.size} робіт з JSON!")
-		} catch (e: Exception) {
-			L.e("WorkDataRepository: Помилка завантаження JSON: ${e.message}")
-			allWorks = emptyList()
-		}
-	}
+    fun getCategoriesForSection(section: WorkSection): List<WorkCategory> {
+        return WorkCategory.entries.filter { it.section == section }
+    }
 
-	/**
-	 * Отримати роботи для конкретної категорії
-	*/
-	fun getWorksForCategory(category: WorkCategory): List<WorkService> {
-		return allWorks.filter { it.category == category }
-	}
+    fun getWorksForCategory(category: WorkCategory): List<WorkService> {
+        return allWorks.filter { it.category == category }
+    }
 }

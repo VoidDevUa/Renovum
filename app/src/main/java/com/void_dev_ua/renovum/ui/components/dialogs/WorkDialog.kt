@@ -41,15 +41,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.void_dev_ua.renovum.R
 import com.void_dev_ua.renovum.model.AppliedWork
 import com.void_dev_ua.renovum.model.RoomEntity
 import com.void_dev_ua.renovum.model.WorkService
 import com.void_dev_ua.renovum.model.OpeningType
 import com.void_dev_ua.renovum.model.TargetSurface
 import com.void_dev_ua.renovum.viewmodel.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.WorkViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @SuppressLint("DefaultLocale")
@@ -58,6 +61,7 @@ fun WorkDialog(
 	workService: WorkService,
 	room: RoomEntity,
 	roomViewModel: RoomViewModel,
+	workViewModel: WorkViewModel,
 	appliedWork: AppliedWork? = null,
 	onDismiss: () -> Unit,
 	onSave: (price: Double, volume: Double) -> Unit,
@@ -94,25 +98,25 @@ fun WorkDialog(
 		onDismissRequest = onDismiss,
 		confirmButton = {
 			TextButton(onClick = { onSave(finalPrice, finalVolume) }) {
-				Text("Зберегти", color = MaterialTheme.colorScheme.primary)
+				Text(stringResource(R.string.save), color = MaterialTheme.colorScheme.primary)
 			}
 		},
 		dismissButton = {
 			Row(verticalAlignment = Alignment.CenterVertically) {
 				if (isEditMode && onDelete != null) {
 					IconButton(onClick = onDelete) {
-						Icon(Icons.Default.Delete, contentDescription = "Видалити", tint = MaterialTheme.colorScheme.error)
+						Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.delete), tint = MaterialTheme.colorScheme.error)
 					}
 				}
 				TextButton(onClick = onDismiss) {
-					Text("Скасувати", color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f))
+					Text(stringResource(R.string.cancel), color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f))
 				}
 			}
 		},
 		title = {
 			Column {
 				Text(
-					text = if (isEditMode) "Редагування роботи" else "Додавання роботи",
+					text = if (isEditMode) stringResource(R.string.edit_work) else stringResource(R.string.add_work),
 					style = MaterialTheme.typography.labelMedium,
 					color = if (isEditMode) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
 				)
@@ -138,8 +142,15 @@ fun WorkDialog(
 						.padding(vertical = 6.dp),
 					contentAlignment = Alignment.Center
 				) {
+					val labelText = if (pagerState.currentPage == 1) {
+						stringResource(R.string.back_to_room_data)
+					} else if (isEditMode) {
+						stringResource(R.string.edit_work) + " →"
+					} else {
+						stringResource(R.string.add_work) + " →"
+					}
 					Text(
-						text = if (pagerState.currentPage == 1) "← Дані приміщення" else if (isEditMode) "Редагування роботи →" else "Додавання роботи →",
+						text = labelText,
 						style = MaterialTheme.typography.labelMedium,
 						fontWeight = FontWeight.Bold,
 						color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -162,21 +173,21 @@ fun WorkDialog(
 									.verticalScroll(scrollStateData),
 								verticalArrangement = Arrangement.spacedBy(8.dp)
 							) {
-								Text(text = "Кімната: ${room.name}", style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(bottom = 4.dp))
+								Text(text = stringResource(R.string.room_name_label, room.name), style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(bottom = 4.dp))
 
 								AccordionHeader(
-									title = "Дані кімнати",
+									title = stringResource(R.string.room_data),
 									isExpanded = expandedSection == 0,
 									onClick = { expandedSection = if (expandedSection == 0) -1 else 0 }
 								)
 								if (expandedSection == 0) {
 									Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 4.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
 										val rows = listOf(
-											"Площа підлоги:" to "${String.format("%.2f", calcData.floorArea)} м²",
-											"Периметр підлоги:" to "${String.format("%.2f", calcData.perimeter)} м",
-											"Загальна площа прорізів:" to "${String.format("%.2f", calcData.allOpeningsArea)} м²",
-											"Загальна площа стін:" to "${String.format("%.2f", calcData.wallArea)} м²",
-											"Чиста площа стін:" to "${String.format("%.2f", calcData.cleanWallArea)} м²"
+											stringResource(R.string.floor_area_label) to "${String.format("%.2f", calcData.floorArea)} ${stringResource(R.string.unit_m2)}",
+											stringResource(R.string.perimeter_label) to "${String.format("%.2f", calcData.perimeter)} ${stringResource(R.string.unit_m)}",
+											stringResource(R.string.all_openings_area_label) to "${String.format("%.2f", calcData.allOpeningsArea)} ${stringResource(R.string.unit_m2)}",
+											stringResource(R.string.wall_area_label) to "${String.format("%.2f", calcData.wallArea)} ${stringResource(R.string.unit_m2)}",
+											stringResource(R.string.clean_wall_area_label) to "${String.format("%.2f", calcData.cleanWallArea)} ${stringResource(R.string.unit_m2)}"
 										)
 										rows.forEach { (label, value) ->
 											Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
@@ -194,7 +205,7 @@ fun WorkDialog(
 								}
 
 								AccordionHeader(
-									title = "Прорізи приміщення",
+									title = stringResource(R.string.room_openings),
 									isExpanded = expandedSection == 1,
 									onClick = { expandedSection = if (expandedSection == 1) -1 else 1 }
 								)
@@ -209,20 +220,20 @@ fun WorkDialog(
 											windows.forEachIndexed { idx, op ->
 												val area = (op.width.toDoubleOrNull() ?: 0.0) * (op.height.toDoubleOrNull() ?: 0.0)
 												Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-													Text("Вікно ${idx + 1} (${op.width}м × ${op.height}м):", style = MaterialTheme.typography.bodySmall)
-													Text("${String.format("%.2f", area)} м²", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Medium)
+													Text(stringResource(R.string.window_label, idx + 1, op.width, op.height), style = MaterialTheme.typography.bodySmall)
+													Text("${String.format("%.2f", area)} ${stringResource(R.string.unit_m2)}", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Medium)
 												}
 											}
 
 											doors.forEachIndexed { idx, op ->
 												val area = (op.width.toDoubleOrNull() ?: 0.0) * (op.height.toDoubleOrNull() ?: 0.0)
 												Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-													Text("Двері ${idx + 1} (${op.width}м × ${op.height}м):", style = MaterialTheme.typography.bodySmall)
-													Text("${String.format("%.2f", area)} м²", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Medium)
+													Text(stringResource(R.string.door_label, idx + 1, op.width, op.height), style = MaterialTheme.typography.bodySmall)
+													Text("${String.format("%.2f", area)} ${stringResource(R.string.unit_m2)}", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Medium)
 												}
 											}
 										} else {
-											Text("В цій кімнаті немає доданих прорізів.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.outline)
+											Text(stringResource(R.string.no_openings_in_room), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.outline)
 										}
 									}
 								}
@@ -237,7 +248,7 @@ fun WorkDialog(
 							) {
 								if (workService.minPrice > 0.0 || workService.maxPrice > 0.0) {
 									Text(
-										text = "Діапазон: ${workService.minPrice.toInt()} — ${workService.maxPrice.toInt()} грн / ${workService.unit.displayName}",
+										text = stringResource(R.string.price_range, workService.minPrice.toInt(), workService.maxPrice.toInt(), workService.unit.displayName),
 										style = MaterialTheme.typography.bodySmall,
 										color = MaterialTheme.colorScheme.onSurface
 									)
@@ -245,7 +256,7 @@ fun WorkDialog(
 
 								Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
 									Text(
-										text = "Ціна за одиницю",
+										text = stringResource(R.string.price_per_unit),
 										style = MaterialTheme.typography.labelMedium,
 										color = MaterialTheme.colorScheme.onSurface,
 										fontWeight = FontWeight.Medium
@@ -259,10 +270,10 @@ fun WorkDialog(
 										},
 										placeholder = {
 											Text(
-												text = if (workService.averagePrice > 0.0) "${workService.averagePrice.toInt()}" else "Введіть ціну"
+												text = if (workService.averagePrice > 0.0) "${workService.averagePrice.toInt()}" else stringResource(R.string.enter_price)
 											)
 										},
-										suffix = { Text("грн/${workService.unit.displayName}") },
+										suffix = { Text(stringResource(R.string.currency_per_unit, workService.unit.displayName)) },
 										singleLine = true,
 										keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
 										modifier = Modifier.fillMaxWidth(),
@@ -274,7 +285,7 @@ fun WorkDialog(
 
 								Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
 									Text(
-										text = "Об'єм робіт",
+										text = stringResource(R.string.work_volume),
 										style = MaterialTheme.typography.labelMedium,
 										color = MaterialTheme.colorScheme.onSurface,
 										fontWeight = FontWeight.Medium
@@ -342,7 +353,7 @@ fun WorkDialog(
 										horizontalArrangement = Arrangement.SpaceBetween,
 										verticalAlignment = Alignment.CenterVertically
 									) {
-										Text("Разом:", style = MaterialTheme.typography.bodyMedium)
+										Text(stringResource(R.string.total_label), style = MaterialTheme.typography.bodyMedium)
 										Text(
 											text = "${String.format("%.2f", totalSum)} ₴",
 											style = MaterialTheme.typography.titleMedium,

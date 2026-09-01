@@ -31,31 +31,31 @@ import com.void_dev_ua.renovum.data.UserSettings
 import com.void_dev_ua.renovum.ui.screens.archive_screen.components.DeleteFilesDialog
 import com.void_dev_ua.renovum.ui.screens.archive_screen.components.FileActionDialog
 import com.void_dev_ua.renovum.ui.screens.archive_screen.components.FileCard
-import com.void_dev_ua.renovum.viewmodel.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.ArchiveViewModel
 import java.io.File
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ArchiveScreen(
-	roomViewModel: RoomViewModel,
+	archiveViewModel: ArchiveViewModel,
 	userSettings: UserSettings
 ) {
 	val context = LocalContext.current
-	val files = roomViewModel.archiveFiles
-	val selectedFiles = roomViewModel.selectedArchiveFiles
-	val isSelectMode = roomViewModel.isArchiveSelectMode
+	val files = archiveViewModel.archiveFiles
+	val selectedFiles = archiveViewModel.selectedArchiveFiles
+	val isSelectMode = archiveViewModel.isArchiveSelectMode
 
 	val showDeleteDialog = remember { mutableStateOf(false) }
 	val clickedFileForActions = remember { mutableStateOf<File?>(null) }
 	val singleFileToDelete = remember { mutableStateOf<File?>(null) }
 
 	LaunchedEffect(Unit) {
-		roomViewModel.loadArchiveFiles(context)
+		archiveViewModel.loadArchiveFiles()
 	}
 
 	DisposableEffect(Unit) {
 		onDispose {
-			roomViewModel.clearArchiveSelection()
+			archiveViewModel.clearArchiveSelection()
 		}
 	}
 
@@ -80,7 +80,7 @@ fun ArchiveScreen(
 						isSelected = selectedFiles.contains(file),
 						isSelectMode = isSelectMode,
 						userSettings = userSettings,
-						roomViewModel = roomViewModel,
+						archiveViewModel = archiveViewModel,
 						onFileClick = { clickedFileForActions.value = it }
 					)
 				}
@@ -129,9 +129,9 @@ fun ArchiveScreen(
 			onConfirm = {
 				if (singleFileToDelete.value != null) {
 					if (singleFileToDelete.value!!.exists()) singleFileToDelete.value!!.delete()
-					roomViewModel.loadArchiveFiles(context)
+					archiveViewModel.loadArchiveFiles()
 				} else {
-					roomViewModel.deleteSelectedArchiveFiles(context)
+					archiveViewModel.deleteSelectedArchiveFiles()
 				}
 				showDeleteDialog.value = false
 				singleFileToDelete.value = null

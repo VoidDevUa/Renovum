@@ -28,7 +28,10 @@ import com.void_dev_ua.renovum.ui.screens.settings_screen.SettingsScreen
 import com.void_dev_ua.renovum.ui.screens.works_screen.WorksScreen
 import com.void_dev_ua.renovum.ui.screens.archive_screen.ArchiveScreen
 import com.void_dev_ua.renovum.viewmodel.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.ArchiveViewModel
+import com.void_dev_ua.renovum.viewmodel.WorkViewModel
 import com.void_dev_ua.renovum.utility.L
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
 fun NavGraph(
@@ -38,6 +41,7 @@ fun NavGraph(
 	onSettingsChange: (UserSettings) -> Unit,
 	isEditMode: Boolean,
 	roomViewModel: RoomViewModel,
+	workViewModel: WorkViewModel,
 	onDeleteRoom: (RoomEntity) -> Unit
 ) {
 	NavHost(
@@ -113,6 +117,7 @@ fun NavGraph(
 
 			WorksScreen(
 				roomViewModel = roomViewModel,
+				workViewModel = workViewModel,
 				userSettings = userSettings
 			)
 		}
@@ -120,6 +125,7 @@ fun NavGraph(
 			LaunchedEffect(Unit) { L.nav("Screen: Done") }
 			DoneScreen(
 				roomViewModel = roomViewModel,
+				workViewModel = workViewModel,
 				userSettings = userSettings
 			)
 		}
@@ -140,8 +146,9 @@ fun NavGraph(
 		}
 		composable(Screen.Archive.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Archive") }
+			val archiveViewModel: ArchiveViewModel = hiltViewModel()
 			ArchiveScreen(
-				roomViewModel = roomViewModel,
+				archiveViewModel = archiveViewModel,
 				userSettings = userSettings
 			)
 		}

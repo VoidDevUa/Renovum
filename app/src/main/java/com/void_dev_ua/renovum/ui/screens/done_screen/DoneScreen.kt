@@ -35,7 +35,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.void_dev_ua.renovum.data.UserSettings
 import com.void_dev_ua.renovum.data.UserSettingsManager
-import com.void_dev_ua.renovum.data.repositories.WorkDataRepository
 import com.void_dev_ua.renovum.ui.screens.done_screen.components.ClearProjectDialog
 import com.void_dev_ua.renovum.ui.screens.done_screen.components.DiscountDialog
 import com.void_dev_ua.renovum.ui.screens.done_screen.components.ExportFormatDialog
@@ -43,37 +42,42 @@ import com.void_dev_ua.renovum.ui.components.dialogs.WorkDialog
 import com.void_dev_ua.renovum.ui.screens.done_screen.components.DoneRoomCard
 import com.void_dev_ua.renovum.ui.screens.done_screen.components.DoneWorkCard
 import com.void_dev_ua.renovum.viewmodel.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.WorkViewModel
+import com.void_dev_ua.renovum.viewmodel.ReportViewModel
 import com.void_dev_ua.renovum.utility.L
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @SuppressLint("DefaultLocale")
 @Composable
 fun DoneScreen(
 	roomViewModel: RoomViewModel,
-	userSettings: UserSettings
+	workViewModel: WorkViewModel,
+	userSettings: UserSettings,
+	reportViewModel: ReportViewModel = hiltViewModel()
 ) {
-	val groupedWorks by roomViewModel.groupedWorksState.collectAsState()
+	val groupedWorks by workViewModel.getGroupedWorksState(roomViewModel.rooms).collectAsState()
 	val expandedStates = remember { mutableStateMapOf<String, Boolean>() }
-	val currentWorkToEdit = roomViewModel.workToEdit
+	val currentWorkToEdit = workViewModel.workToEdit
 
 	val showExportDialog = remember { mutableStateOf(false) }
 	val showClearDialog = remember { mutableStateOf(false) }
 
 	val context = LocalContext.current
 
-	if (roomViewModel.showDiscountDialog) {
+	if (workViewModel.showDiscountDialog) {
 		DiscountDialog(
-			initialDiscount = roomViewModel.projectDiscountPercent,
-			totalRawSum = roomViewModel.getTotalRawSum(),
-			onDismiss = { roomViewModel.showDiscountDialog = false },
+			initialDiscount = workViewModel.projectDiscountPercent,
+			totalRawSum = workViewModel.totalRawSumState.collectAsState().value,
+			onDismiss = { workViewModel.showDiscountDialog = false },
 			onConfirm = { newDiscount ->
-				roomViewModel.updateDiscount(newDiscount)
-				roomViewModel.showDiscountDialog = false
+				workViewModel.updateDiscount(newDiscount)
+				workViewModel.showDiscountDialog = false
 			}
 		)
 	}
 
 	currentWorkToEdit?.let { applied ->
-		val service = WorkDataRepository.allWorks.find { it.id == applied.workId }
+		val service = roomViewModel.getWorkServiceById(applied.workId)
 		val roomOfWork = roomViewModel.rooms.find { it.id == applied.roomId }
 
 		if (service != null && roomOfWork != null) {
@@ -81,15 +85,16 @@ fun DoneScreen(
 				workService = service,
 				room = roomOfWork,
 				roomViewModel = roomViewModel,
+				workViewModel = workViewModel,
 				appliedWork = applied,
-				onDismiss = { roomViewModel.workToEdit = null },
+				onDismiss = { workViewModel.workToEdit = null },
 				onSave = { newPrice, newQty ->
-					roomViewModel.updateAppliedWork(applied, newPrice, newQty)
-					roomViewModel.workToEdit = null
+					workViewModel.updateAppliedWork(applied, newPrice, newQty)
+					workViewModel.workToEdit = null
 				},
 				onDelete = {
-					roomViewModel.deleteAppliedWork(applied)
-					roomViewModel.workToEdit = null
+					workViewModel.deleteAppliedWork(applied)
+					workViewModel.workToEdit = null
 				}
 			)
 		}
@@ -124,7 +129,7 @@ fun DoneScreen(
 							service = service,
 							applied = applied,
 							onClick = {
-								roomViewModel.workToEdit = applied
+								workViewModel.workToEdit = applied
 								L.d("Click to edit: ${service.name}")
 							}
 						)
@@ -183,12 +188,16 @@ fun DoneScreen(
 			onDismiss = { showExportDialog.value = false },
 			onConfirm = { isGroupedByRooms, finalAddress, customFileName ->
 				showExportDialog.value = false
-				roomViewModel.generateWordReportInBackground(
+				reportViewModel.generateWordReportInBackground(
 					context = context,
 					isGroupedByRooms = isGroupedByRooms,
 					targetAddress = finalAddress,
 					customFileName = customFileName,
-					userSettings = userSettings
+					userSettings = userSettings,
+					groupedWorks = groupedWorks,
+					totalRawSum = workViewModel.totalRawSumState.value,
+					projectDiscountPercent = workViewModel.projectDiscountPercent,
+					totalDiscountedSum = workViewModel.totalRawSumState.value * (1.0 - workViewModel.projectDiscountPercent / 100.0)
 				)
 				showClearDialog.value = true
 			}

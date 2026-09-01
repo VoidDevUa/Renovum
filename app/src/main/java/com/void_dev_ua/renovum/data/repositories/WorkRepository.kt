@@ -3,8 +3,9 @@ package com.void_dev_ua.renovum.data.repositories
 import com.void_dev_ua.renovum.data.local.daos.AppliedWorkDao
 import com.void_dev_ua.renovum.model.AppliedWork
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class WorkRepository (private val appliedWorkDao: AppliedWorkDao) {
+class WorkRepository @Inject constructor(private val appliedWorkDao: AppliedWorkDao) {
 	val allWorks: Flow<List<AppliedWork>> = appliedWorkDao.getAllWorks()
 
 	suspend fun insert(work: AppliedWork) = appliedWorkDao.insert(work)

@@ -2,19 +2,13 @@ package com.void_dev_ua.renovum.viewmodel
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.widget.Toast
 import androidx.compose.runtime.State
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.void_dev_ua.renovum.data.UserSettings
-import com.void_dev_ua.renovum.model.AppliedWork
 import com.void_dev_ua.renovum.model.CalculatedData
-import com.void_dev_ua.renovum.model.ReportData
 import com.void_dev_ua.renovum.model.RoomEntity
 import com.void_dev_ua.renovum.model.TargetSurface
 import com.void_dev_ua.renovum.model.WorkCategory
@@ -22,102 +16,42 @@ import com.void_dev_ua.renovum.model.WorkSection
 import com.void_dev_ua.renovum.model.WorkService
 import com.void_dev_ua.renovum.model.WorkUnit
 import com.void_dev_ua.renovum.data.repositories.RoomRepository
-import com.void_dev_ua.renovum.utility.WordExportManager
 import com.void_dev_ua.renovum.data.repositories.WorkDataRepository
 import com.void_dev_ua.renovum.data.repositories.WorkRepository
+import com.void_dev_ua.renovum.domain.usecase.CalculationOptionType
+import com.void_dev_ua.renovum.domain.usecase.RoomCalculationsUseCase
 import com.void_dev_ua.renovum.utility.L
-import com.void_dev_ua.renovum.utility.RenovumNotificationManager
+import com.void_dev_ua.renovum.R
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.File
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import javax.inject.Inject
 
+@HiltViewModel
 @SuppressLint("SdCardPath")
-class RoomViewModel(
+class RoomViewModel @Inject constructor(
+	@ApplicationContext private val context: Context,
 	private val roomRepository: RoomRepository,
-	private val workRepository: WorkRepository
+	private val workRepository: WorkRepository,
+	private val roomCalculationsUseCase: RoomCalculationsUseCase,
+	private val workDataRepository: WorkDataRepository
 ) : ViewModel() {
 	private val _rooms = mutableStateListOf<RoomEntity>()
 	val rooms: List<RoomEntity> get() = _rooms
 
-	val archiveFiles = mutableStateListOf<File>()
-	val selectedArchiveFiles = mutableStateListOf<File>()
-	var isArchiveSelectMode by mutableStateOf(false)
-
-
-	val appliedWorks: StateFlow<List<AppliedWork>> = workRepository.allWorks
-		.stateIn(
-			scope = viewModelScope,
-			started = SharingStarted.WhileSubscribed(5000),
-			initialValue = emptyList()
-		)
+	val allWorksFlow = workDataRepository.allWorksFlow
 
 	private val _selectedRoom = mutableStateOf<RoomEntity?>(null)
 	val selectedRoom: State<RoomEntity?> = _selectedRoom
 
-	val worksWithStatusState: StateFlow<Map<String, Boolean>> = appliedWorks
-		.map { applied ->
-			val currentRoomId = _selectedRoom.value?.id ?: -1
-			applied.filter { it.roomId == currentRoomId }
-				.associate { it.workId to true }
-		}
-		.stateIn(viewModelScope, SharingStarted.Eagerly, emptyMap())
-
-	var lastSelectedCategory by mutableStateOf<WorkCategory?>(null)
-	var projectDiscountPercent by mutableDoubleStateOf(0.0)
-		private set
-	var showDiscountDialog by mutableStateOf(false)
-	var workToEdit by mutableStateOf<AppliedWork?>(null)
-
-	val totalRawSumState: StateFlow<Double> = appliedWorks
-		.map { worksList -> worksList.sumOf { it.priceAtTime * it.quantity } }
-		.stateIn(
-			scope = viewModelScope,
-			started = SharingStarted.Eagerly,
-			initialValue = 0.0
-		)
-
-	/**
-	 * Групує виконані роботи по кімнатах.
-	 * Повертає Map, де ключ — Кімната, а значення — список пар (Виконана робота, Опис послуги)
-	 */
-	val groupedWorksState: StateFlow<Map<RoomEntity, List<Pair<AppliedWork, WorkService>>>> =
-		appliedWorks.map { worksList ->
-			worksList.groupBy { work ->
-				_rooms.find { it.id == work.roomId }
-			}
-				.filterKeys { it != null }
-				.mapKeys { it.key!! }
-				.mapValues { entry ->
-					entry.value.map { applied ->
-						val service = WorkDataRepository.allWorks.find { it.id == applied.workId }
-							?: WorkService(
-								id = applied.workId,
-								section = WorkSection.FINISHING,
-								category = WorkCategory.PAINTING,
-								name = "Невідома робота",
-								unit = WorkUnit.M2,
-								minPrice = 0.0,
-								maxPrice = 0.0,
-								averagePrice = 0.0
-							)
-						applied to service
-					}
-				}
-		}.stateIn(
-			viewModelScope,
-			SharingStarted.WhileSubscribed(5000),
-			emptyMap()
-		)
-
 	init {
+		viewModelScope.launch {
+			workDataRepository.loadWorks()
+		}
 		viewModelScope.launch {
 			roomRepository.allRooms.collect { dbRooms ->
 				_rooms.clear()
@@ -134,15 +68,6 @@ class RoomViewModel(
 				}
 			}
 		}
-	}
-
-	fun updateDiscount(newPercent: Double) {
-		projectDiscountPercent = newPercent.coerceIn(0.0, 100.0)
-		L.d("ViewModel: Discount updated to $projectDiscountPercent%")
-	}
-	fun getTotalRawSum(): Double = totalRawSumState.value
-	fun getTotalDiscountedSum(): Double {
-		return totalRawSumState.value * (1.0 - projectDiscountPercent / 100.0)
 	}
 
 	fun selectRoom(room: RoomEntity) {
@@ -164,126 +89,33 @@ class RoomViewModel(
 	}
 
 	fun calculateRoomData(room: RoomEntity): CalculatedData {
-		val p = room.params
-		val floorArea = p.getFloorArea()
-		val perimeter = p.getPerimeter()
-
-		val openingsArea = room.openings.sumOf { it.width.toDouble() * it.height.toDouble() }
-		val wallArea = (perimeter * p.roomHeight)
-		val cleanWallArea = wallArea - openingsArea
-
-		return CalculatedData(floorArea, wallArea, cleanWallArea, openingsArea, perimeter, p.getExtraResults())
+		return roomCalculationsUseCase.calculateRoomData(room)
 	}
 
 	fun getSurfaceValue(target: TargetSurface, calcData: CalculatedData): Double {
-		return when (target) {
-			TargetSurface.FLOOR_AREA -> calcData.floorArea
-			TargetSurface.WALL_CLEAN_AREA -> calcData.cleanWallArea
-			TargetSurface.WALL_GROSS_AREA -> calcData.wallArea
-			TargetSurface.CEILING_AREA -> calcData.floorArea
-			TargetSurface.ROOM_PERIMETER -> calcData.perimeter
-			TargetSurface.ANY_SQUARE_METER, TargetSurface.ANY_RUNNING_METER -> 1.0
-			TargetSurface.NONE -> 0.0
-		}
+		return roomCalculationsUseCase.getSurfaceValue(target, calcData)
 	}
+
 	fun getAvailableOptions(target: TargetSurface, calcData: CalculatedData): List<Pair<String, Double>> {
-		val options = mutableListOf<Pair<String, Double>>()
-
-		when (target) {
-			TargetSurface.ANY_SQUARE_METER -> {
-				options.add("Підлога: ${"%.1f".format(calcData.floorArea)}" to calcData.floorArea)
-				options.add("Стіни (чист.): ${"%.1f".format(calcData.cleanWallArea)}" to calcData.cleanWallArea)
-				options.add("Стіни (заг.): ${"%.1f".format(calcData.wallArea)}" to calcData.wallArea)
+		val rawOptions = roomCalculationsUseCase.getAvailableOptions(target, calcData)
+		return rawOptions.map { (type, value) ->
+			val label = when (type) {
+				CalculationOptionType.FLOOR -> context.getString(R.string.surface_floor)
+				CalculationOptionType.WALLS_CLEAN -> context.getString(R.string.surface_walls_clean)
+				CalculationOptionType.WALLS_GROSS -> context.getString(R.string.surface_walls_gross)
+				CalculationOptionType.PERIMETER -> context.getString(R.string.surface_perimeter)
 			}
-
-			TargetSurface.ANY_RUNNING_METER -> {
-				options.add("Периметр: ${"%.1f".format(calcData.perimeter)}" to calcData.perimeter)
-			}
-
-			else -> {}
-		}
-
-		return options
-	}
-
-	fun saveAppliedWork(room: RoomEntity, work: WorkService, price: Double, quantity: Double) {
-		val newWork = AppliedWork(
-			workId = work.id,
-			roomId = room.id,
-			quantity = quantity,
-			priceAtTime = price
-		)
-		viewModelScope.launch {
-			workRepository.insert(newWork)
-			L.d("ViewModel: Saved ${work.name} to DB for ${room.name}")
-		}
-	}
-	fun deleteAppliedWork(work: AppliedWork) {
-		viewModelScope.launch {
-			workRepository.delete(work)
-			L.d("ViewModel: Removed from DB: ${work.workId}")
-		}
-	}
-	fun updateAppliedWork(originalWork: AppliedWork, newPrice: Double, newQuantity: Double) {
-		viewModelScope.launch {
-			val updatedWork = originalWork.copy(priceAtTime = newPrice, quantity = newQuantity)
-			workRepository.update(updatedWork)
-			L.d("ViewModel: Updated in DB. New total: ${newPrice * newQuantity}")
+			"$label: ${"%.1f".format(value)}" to value
 		}
 	}
 
-	fun generateWordReportInBackground(
-		context: Context,
-		isGroupedByRooms: Boolean,
-		targetAddress: String,
-		customFileName: String,
-		userSettings: UserSettings
-	) {
-		val appContext = context.applicationContext
-		val notificationId = System.currentTimeMillis().hashCode()
-
-		viewModelScope.launch {
-			RenovumNotificationManager.showProgressNotification(appContext, notificationId)
-			Toast.makeText(appContext, "Формування файлу кошторису...", Toast.LENGTH_SHORT).show()
-
-			val wordFile = withContext(Dispatchers.IO) {
-				try {
-					val locale = appContext.resources.configuration.locales[0] ?: Locale.getDefault()
-					val dateFormat = SimpleDateFormat("dd.MM.yyyy", locale)
-					val currentDateString = dateFormat.format(Date())
-
-					val reportData = ReportData(
-						projectName = targetAddress,
-						dateString = currentDateString,
-						roomsWithWorks = groupedWorksState.value,
-						totalRawSum = getTotalRawSum(),
-						discountPercent = projectDiscountPercent,
-						totalDiscountedSum = getTotalDiscountedSum()
-					)
-
-					WordExportManager.createWordDocument(
-						context = appContext,
-						data = reportData,
-						isGroupedByRooms = isGroupedByRooms,
-						customFileName = customFileName,
-						userSettings = userSettings
-					)
-				} catch (e: Exception) {
-					L.e("RoomViewModel: Помилка генерації документа", e)
-					null
-				}
-			}
-
-			if (wordFile != null && wordFile.exists()) {
-				L.d("RoomViewModel: Фоновий файл успішно створено!")
-				Toast.makeText(appContext, "Файл-кошторис створено успішно!", Toast.LENGTH_LONG).show()
-				RenovumNotificationManager.showSuccessNotification(appContext, wordFile, notificationId)
-			} else {
-				Toast.makeText(appContext, "Не вдалося згенерувати файл", Toast.LENGTH_SHORT).show()
-				RenovumNotificationManager.cancelExportNotification(appContext, notificationId)
-			}
-		}
+	fun getWorkServiceById(workId: String): WorkService? {
+		return workDataRepository.allWorks.find { it.id == workId }
 	}
+
+	fun getAllSections() = workDataRepository.allSections
+	fun getCategoriesForSection(section: WorkSection) = workDataRepository.getCategoriesForSection(section)
+	fun getWorksForCategory(category: WorkCategory) = workDataRepository.getWorksForCategory(category)
 
 	/**
 	 * Повністю очищує поточний проєкт: видаляє всі кімнати, роботи та адресу об'єкта
@@ -298,86 +130,9 @@ class RoomViewModel(
 					roomRepository.delete(room)
 				}
 				onClearAddress()
-				withContext(Dispatchers.Main) {
-					updateDiscount(0.0)
-				}
 				L.d("ViewModel: Поточний об'єкт успішно очищено")
 			} catch (e: Exception) {
 				L.e("ViewModel: Помилка повного очищення об'єкта", e)
-			}
-		}
-	}
-
-	/**
-	 * Зчитує всі файли .docx із локального архіву додатка
-	 */
-	fun loadArchiveFiles(context: Context) {
-		val appContext = context.applicationContext
-		viewModelScope.launch(Dispatchers.IO) {
-			try {
-				val archiveDir = File(appContext.filesDir, "Archive")
-				if (archiveDir.exists()) {
-					val files = archiveDir.listFiles { _, name -> name.endsWith(".docx") }
-
-					withContext(Dispatchers.Main) {
-						archiveFiles.clear()
-						if (files != null) {
-							archiveFiles.addAll(files.sortedByDescending { it.lastModified() })
-						}
-					}
-				} else {
-					withContext(Dispatchers.Main) { archiveFiles.clear() }
-				}
-			} catch (e: Exception) {
-				L.e("RoomViewModel: Помилка завантаження файлів архіву", e)
-			}
-		}
-	}
-
-	/**
-	 * Перемикає виділення файлу (для множинного вибору)
-	 */
-	fun toggleArchiveFileSelection(file: File) {
-		if (selectedArchiveFiles.contains(file)) {
-			selectedArchiveFiles.remove(file)
-			if (selectedArchiveFiles.isEmpty()) {
-				isArchiveSelectMode = false
-			}
-		} else {
-			selectedArchiveFiles.add(file)
-			isArchiveSelectMode = true
-		}
-	}
-
-	/**
-	 * Очищає виділення та виходить з режиму вибору
-	 */
-	fun clearArchiveSelection() {
-		selectedArchiveFiles.clear()
-		isArchiveSelectMode = false
-	}
-
-	/**
-	 * Видаляє всі виділені файли з пам'яті пристрою та оновлює список
-	 */
-	fun deleteSelectedArchiveFiles(context: Context) {
-		val appContext = context.applicationContext
-		viewModelScope.launch(Dispatchers.IO) {
-			try {
-				selectedArchiveFiles.forEach { file ->
-					if (file.exists()) {
-						val deleted = file.delete()
-						if (deleted) {
-							L.d("RoomViewModel: Файл ${file.name} видалено")
-						}
-					}
-				}
-				withContext(Dispatchers.Main) {
-					clearArchiveSelection()
-					loadArchiveFiles(appContext)
-				}
-			} catch (e: Exception) {
-				L.e("RoomViewModel: Помилка при видаленні файлів", e)
 			}
 		}
 	}

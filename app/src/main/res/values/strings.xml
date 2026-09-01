@@ -1,3 +1,62 @@
 <resources>
     <string name="app_name" translatable="false">Renovum</string>
+
+    <!-- General -->
+    <string name="unknown_work">Невідома робота</string>
+    <string name="ok">ОК</string>
+    <string name="cancel">Скасувати</string>
+    <string name="save">Зберегти</string>
+    <string name="delete">Видалити</string>
+
+    <!-- Room Calculations -->
+    <string name="surface_floor">Підлога</string>
+    <string name="surface_walls_clean">Стіни (чист.)</string>
+    <string name="surface_walls_gross">Стіни (заг.)</string>
+    <string name="surface_perimeter">Периметр</string>
+
+    <!-- Export & Notifications -->
+    <string name="generating_report">Формування файлу кошторису...</string>
+    <string name="report_created_success">Файл-кошторис створено успішно!</string>
+    <string name="report_created_error">Не вдалося згенерувати файл</string>
+    <string name="report_notification_title">Кошторис створено!</string>
+    <string name="report_notification_text">Натисніть, щоб відкрити %1$s</string>
+
+    <!-- Project Management -->
+    <string name="project_cleared_success">Дані об\'єкта повністю очищено</string>
+    <string name="add_room_first">Спершу додайте кімнату</string>
+
+    <!-- Rooms Screen -->
+    <string name="delete_room_title">Видалення кімнати</string>
+    <string name="delete_room_confirmation">Ви впевнені, що хочете видалити «%1$s»? Всі внесені виміри та виконані роботи в цій кімнаті будуть безповоротно втрачені.</string>
+    <string name="add_room_content_description">Додати кімнату</string>
+    <string name="no_active_repair">Немає активного ремонту</string>
+    <string name="enter_address_to_start">Введіть адресу, щоб розпочати новий кошторис.</string>
+    <string name="start_new_repair">Почати новий ремонт</string>
+    <string name="object_created_success">Об\'єкт створено успішно!</string>
+    <string name="add_first_room_hint">Тепер натисніть на кнопку \'+\' знизу, щоб додати першу кімнату.</string>
+    <string name="room_dimensions_summary">Вікон: %1$d, Дверей: %2$d</string>
+
+    <!-- Work Dialog -->
+    <string name="edit_work">Редагування роботи</string>
+    <string name="add_work">Додавання роботи</string>
+    <string name="back_to_room_data">← Дані приміщення</string>
+    <string name="room_data">Дані кімнати</string>
+    <string name="room_openings">Прорізи приміщення</string>
+    <string name="floor_area_label">Площа підлоги:</string>
+    <string name="perimeter_label">Периметр підлоги:</string>
+    <string name="all_openings_area_label">Загальна площа прорізів:</string>
+    <string name="wall_area_label">Загальна площа стін:</string>
+    <string name="clean_wall_area_label">Чиста площа стін:</string>
+    <string name="unit_m2">м²</string>
+    <string name="unit_m">м</string>
+    <string name="price_range">Діапазон: %1$d — %2$d грн / %3$s</string>
+    <string name="price_per_unit">Ціна за одиницю</string>
+    <string name="enter_price">Введіть ціну</string>
+    <string name="currency_per_unit">грн/%1$s</string>
+    <string name="work_volume">Об\'єм робіт</string>
+    <string name="total_label">Разом:</string>
+    <string name="no_openings_in_room">В цій кімнаті немає доданих прорізів.</string>
+    <string name="window_label">Вікно %1$d (%2$sм × %3$sм):</string>
+    <string name="door_label">Двері %1$d (%2$sм × %3$sм):</string>
+    <string name="room_name_label">Кімната: %1$s</string>
 </resources>

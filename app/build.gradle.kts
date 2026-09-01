@@ -2,20 +2,17 @@ plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.kotlin.compose)
 	id("com.google.devtools.ksp")
+	alias(libs.plugins.hilt)
 }
 
 android {
 	namespace = "com.void_dev_ua.renovum"
-	compileSdk {
-		version = release(36) {
-			minorApiLevel = 1
-		}
-	}
+	compileSdk = 37
 
 	defaultConfig {
 		applicationId = "com.void_dev_ua.renovum"
 		minSdk = 26
-		targetSdk = 36
+		targetSdk = 37
 		versionCode = 1
 		versionName = "1.0"
 
@@ -33,8 +30,8 @@ android {
 		}
 	}
 	compileOptions {
-		sourceCompatibility = JavaVersion.VERSION_11
-		targetCompatibility = JavaVersion.VERSION_11
+		sourceCompatibility = JavaVersion.VERSION_17
+		targetCompatibility = JavaVersion.VERSION_17
 	}
 	buildFeatures {
 		compose = true
@@ -61,6 +58,10 @@ dependencies {
 	implementation(libs.androidx.material3)
 
 	implementation(libs.androidx.datastore.preferences)
+
+	implementation(libs.hilt.android)
+	ksp(libs.hilt.compiler)
+	implementation(libs.hilt.navigation.compose)
 
 	implementation(libs.poi)
 	implementation(libs.poi.ooxml)

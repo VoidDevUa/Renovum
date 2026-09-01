@@ -27,7 +27,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.void_dev_ua.renovum.R
 import com.void_dev_ua.renovum.data.UserSettings
-import com.void_dev_ua.renovum.viewmodel.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.ArchiveViewModel
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -40,7 +40,7 @@ fun FileCard(
 	isSelected: Boolean,
 	isSelectMode: Boolean,
 	userSettings: UserSettings,
-	roomViewModel: RoomViewModel,
+	archiveViewModel: ArchiveViewModel,
 	onFileClick: (File) -> Unit
 ) {
 	val context = LocalContext.current
@@ -64,13 +64,13 @@ fun FileCard(
 			.combinedClickable(
 				onClick = {
 					if (isSelectMode) {
-						roomViewModel.toggleArchiveFileSelection(file)
+						archiveViewModel.toggleArchiveFileSelection(file)
 					} else {
 						onFileClick(file)
 					}
 				},
 				onLongClick = {
-					roomViewModel.toggleArchiveFileSelection(file)
+					archiveViewModel.toggleArchiveFileSelection(file)
 				}
 			),
 		colors = CardDefaults.cardColors(
@@ -87,7 +87,7 @@ fun FileCard(
 
 			if (userSettings.isLeftHanded) {
 				AnimatedCheckbox(visible = isSelectMode, checked = isSelected) {
-					roomViewModel.toggleArchiveFileSelection(file)
+					archiveViewModel.toggleArchiveFileSelection(file)
 				}
 			}
 
@@ -129,7 +129,7 @@ fun FileCard(
 			if (!userSettings.isLeftHanded) {
 				Spacer(modifier = Modifier.width(12.dp))
 				AnimatedCheckbox(visible = isSelectMode, checked = isSelected) {
-					roomViewModel.toggleArchiveFileSelection(file)
+					archiveViewModel.toggleArchiveFileSelection(file)
 				}
 			}
 		}

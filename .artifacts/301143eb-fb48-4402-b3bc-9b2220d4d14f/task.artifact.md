@@ -1,0 +1,23 @@
+# Завдання з рефакторингу Renovum
+
+- `[x]` Етап 0: Впровадження Hilt (Infrastructure)
+    - `[x]` Додати залежності Hilt у `libs.versions.toml`
+    - `[x]` Налаштувати плагіни у `build.gradle.kts` (кореневий та додаток)
+    - `[x]` Створити `RenovumApplication` та оновити `AndroidManifest.xml`
+    - `[x]` Анотувати `MainActivity` за допомогою `@AndroidEntryPoint`
+- `[x]` Етап 1: Domain Layer та Розрахунки
+    - `[x]` Створити `RoomCalculationsUseCase`
+    - `[x]` Впровадити Hilt у `RoomViewModel` та `RoomRepository`
+    - `[x]` Винести логіку розрахунків у UseCase
+- `[x]` Етап 2: Оптимізація Data Layer (Hilt Modules)
+    - `[x]` Створити Hilt модулі для Database та Repositories
+    - `[x]` Оптимізувати `WorkDataRepository` (асинхронне завантаження)
+- `[x]` Етап 3: Ресурси та Локалізація
+    - `[x]` Винести рядки у `strings.xml`
+    - `[x]` Оновити UI компоненти для використання ресурсів
+- `[x]` Етап 4: Розподіл ViewModel (Decomposition)
+    - `[x]` Створити `ArchiveViewModel`, `WorkViewModel`, `ReportViewModel`
+    - `[x]` Оновити екрани для використання нових моделей
+    - `[x]` Очистити `RoomViewModel` від зайвої логіки
+- `[x]` Етап 5: Очищення UI та Навігації
+    - `[x]` Впровадження Hilt у NavGraph

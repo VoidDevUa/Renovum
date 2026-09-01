@@ -43,32 +43,36 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.void_dev_ua.renovum.data.UserSettings
+import com.void_dev_ua.renovum.model.WorkCategory
+import com.void_dev_ua.renovum.model.WorkSection
 import com.void_dev_ua.renovum.model.WorkService
-import com.void_dev_ua.renovum.data.repositories.WorkDataRepository
 import com.void_dev_ua.renovum.ui.components.dialogs.WorkDialog
 import com.void_dev_ua.renovum.ui.components.list_Items.WorkCard
 import com.void_dev_ua.renovum.viewmodel.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.WorkViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WorksScreen(
 	roomViewModel: RoomViewModel,
+	workViewModel: WorkViewModel,
 	userSettings: UserSettings
 ) {
-	val worksStatusMap by roomViewModel.worksWithStatusState.collectAsState()
 	val selectedRoom by roomViewModel.selectedRoom
+	val worksStatusMap by workViewModel.getWorksWithStatusState(selectedRoom?.id ?: "").collectAsState()
 	val roomsCount = roomViewModel.rooms.size
+	val allWorks by roomViewModel.allWorksFlow.collectAsState()
 
-	val sections = remember { WorkDataRepository.allSections }
+	val sections = remember { roomViewModel.getAllSections() }
 	var currentSectionIndex by rememberSaveable { mutableIntStateOf(0) }
 	val currentSection = sections[currentSectionIndex]
 
 	val currentCategories = remember(currentSection) {
-		WorkDataRepository.getCategoriesForSection(currentSection)
+		roomViewModel.getCategoriesForSection(currentSection)
 	}
 
 	var selectedCategory by remember(currentSection) {
-		val saved = roomViewModel.lastSelectedCategory
+		val saved = workViewModel.lastSelectedCategory
 		val categoryToSet = if (saved != null && saved.section == currentSection) {
 			saved
 		} else {
@@ -78,7 +82,7 @@ fun WorksScreen(
 	}
 
 	LaunchedEffect(selectedCategory) {
-		roomViewModel.lastSelectedCategory = selectedCategory
+		workViewModel.lastSelectedCategory = selectedCategory
 	}
 
 	val showAddDialog = remember { mutableStateOf(false) }
@@ -97,10 +101,11 @@ fun WorksScreen(
 				workService = workToProcess!!,
 				room = room,
 				roomViewModel = roomViewModel,
+				workViewModel = workViewModel,
 				appliedWork = null,
 				onDismiss = { showAddDialog.value = false },
 				onSave = { price, vol ->
-					roomViewModel.saveAppliedWork(room, workToProcess!!, price, vol)
+					workViewModel.saveAppliedWork(room, workToProcess!!, price, vol)
 					showAddDialog.value = false
 				}
 			)
@@ -202,8 +207,8 @@ fun WorksScreen(
 
 		Spacer(modifier = Modifier.height(8.dp))
 
-		val currentWorks = remember(selectedCategory) {
-			WorkDataRepository.getWorksForCategory(selectedCategory)
+		val currentWorks = remember(selectedCategory, allWorks) {
+			roomViewModel.getWorksForCategory(selectedCategory)
 		}
 
 		Text(

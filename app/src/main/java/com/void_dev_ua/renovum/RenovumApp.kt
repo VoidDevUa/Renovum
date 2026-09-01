@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -26,6 +27,8 @@ import com.void_dev_ua.renovum.ui.components.AppDrawer
 import com.void_dev_ua.renovum.ui.components.topAppBar.RenovumTopAppBar
 import com.void_dev_ua.renovum.ui.theme.Renovum_1Theme
 import com.void_dev_ua.renovum.viewmodel.RoomViewModel
+import com.void_dev_ua.renovum.viewmodel.WorkViewModel
+import com.void_dev_ua.renovum.viewmodel.ArchiveViewModel
 import com.void_dev_ua.renovum.utility.L
 import kotlinx.coroutines.launch
 
@@ -43,25 +46,16 @@ fun RenovumApp() {
 		return
 	}
 
-	val roomViewModel: RoomViewModel = viewModel(
-		factory = @Suppress("UNCHECKED_CAST") object : ViewModelProvider.Factory {
-			override fun <T : ViewModel> create(modelClass: Class<T>): T {
-				val database = AppDatabase.getDatabase(context)
-
-				val roomRepository = RoomRepository(database.roomDao())
-				val workRepository = WorkRepository(database.appliedWorkDao())
-
-				return RoomViewModel(roomRepository, workRepository) as T
-			}
-		}
-	)
+	val roomViewModel: RoomViewModel = hiltViewModel()
+	val workViewModel: WorkViewModel = hiltViewModel()
+	val archiveViewModel: ArchiveViewModel = hiltViewModel()
 
 	val navController = rememberNavController()
 
 	var isEditMode by remember { mutableStateOf(false) }
 
-	val totalRawSum by roomViewModel.totalRawSumState.collectAsState()
-	val currentDiscountedSum = totalRawSum * (1.0 - roomViewModel.projectDiscountPercent / 100.0)
+	val totalRawSum by workViewModel.totalRawSumState.collectAsState()
+	val currentDiscountedSum = totalRawSum * (1.0 - workViewModel.projectDiscountPercent / 100.0)
 
 	val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 	val scope = rememberCoroutineScope()
@@ -126,7 +120,7 @@ fun RenovumApp() {
 								isEditMode = isEditMode,
 								totalSum = if (currentRoute == Screen.Done.route) currentDiscountedSum else null,
 								onSumClick = if (currentRoute == Screen.Done.route) {
-									{ roomViewModel.showDiscountDialog = true }
+									{ workViewModel.showDiscountDialog = true }
 								} else null,
 								selectedRoom = roomViewModel.selectedRoom.value,
 								rooms = roomViewModel.rooms,
@@ -141,7 +135,7 @@ fun RenovumApp() {
 										{ isEditMode = !isEditMode }
 									}
 									Screen.Archive.route -> {
-										{ roomViewModel.isArchiveSelectMode = !roomViewModel.isArchiveSelectMode }
+										{ archiveViewModel.isArchiveSelectMode = !archiveViewModel.isArchiveSelectMode }
 									}
 									else -> null
 								},
@@ -191,6 +185,7 @@ fun RenovumApp() {
 							},
 							isEditMode = isEditMode,
 							roomViewModel = roomViewModel,
+							workViewModel = workViewModel,
 							onDeleteRoom = { room ->
 								L.click("Delete Room: ${room.name}")
 								roomViewModel.deleteRoom(room)
