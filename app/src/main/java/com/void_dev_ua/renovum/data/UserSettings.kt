@@ -1,6 +1,6 @@
 package com.void_dev_ua.renovum.data
 
-import com.void_dev_ua.renovum.ui.theme.AppTheme
+import com.void_dev_ua.renovum.presentation.ui.theme.AppTheme
 
 data class UserSettings(
 	val isLeftHanded: Boolean = false,

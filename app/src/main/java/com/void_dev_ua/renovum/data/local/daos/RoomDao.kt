@@ -1,7 +1,7 @@
 package com.void_dev_ua.renovum.data.local.daos
 
 import androidx.room.*
-import com.void_dev_ua.renovum.model.RoomEntity
+import com.void_dev_ua.renovum.domain.model.RoomEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

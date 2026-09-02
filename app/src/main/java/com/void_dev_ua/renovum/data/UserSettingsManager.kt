@@ -27,9 +27,9 @@ class UserSettingsManager(private val context: Context) {
 	val userSettingsFlow: Flow<UserSettings> = context.dataStore.data.map { preferences ->
 		val themeString = preferences[APP_THEME_KEY] ?: "SYSTEM"
 		val theme = try {
-			com.void_dev_ua.renovum.ui.theme.AppTheme.valueOf(themeString)
+			com.void_dev_ua.renovum.presentation.ui.theme.AppTheme.valueOf(themeString)
 		} catch (_: Exception) {
-			com.void_dev_ua.renovum.ui.theme.AppTheme.SYSTEM
+			com.void_dev_ua.renovum.presentation.ui.theme.AppTheme.SYSTEM
 		}
 
 		UserSettings(

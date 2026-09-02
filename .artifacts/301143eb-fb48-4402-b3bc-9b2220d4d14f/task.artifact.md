@@ -21,3 +21,16 @@
     - `[x]` Очистити `RoomViewModel` від зайвої логіки
 - `[x]` Етап 5: Очищення UI та Навігації
     - `[x]` Впровадження Hilt у NavGraph
+- `[x]` Етап 6: Реструктуризація пакетів (Clean Architecture Alignment)
+    - `[x]` Створити пакет `presentation`
+    - `[x]` Перемістити `ui`, `viewmodel`, `navigation` у `presentation`
+    - `[x]` Перемістити `model` у `domain`
+    - `[x]` Оновити назви пакетів та імпорти у всіх файлах
+    - `[x]` Перевірити працездатність (Build & Sync)
+- `[x]` Етап 7: Очищення Core та Infrastructure
+    - `[x]` Створити пакет `core`
+    - `[x]` Перемістити `di` у `core/di`
+    - `[x]` Перемістити утиліти (`Logger`, `FileProvider`) у `core/util`
+    - `[x]` Створити `data/remote` та перемістити туди менеджери експорту та сповіщень
+    - `[x]` Оновити імпорти по всьому проєкту
+    - `[x]` Оновити `AndroidManifest.xml` для `FileProvider`

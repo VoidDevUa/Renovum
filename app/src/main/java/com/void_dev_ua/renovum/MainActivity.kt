@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.void_dev_ua.renovum.utility.L
+import com.void_dev_ua.renovum.core.util.L
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

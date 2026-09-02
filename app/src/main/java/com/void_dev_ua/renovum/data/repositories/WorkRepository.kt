@@ -1,7 +1,7 @@
 package com.void_dev_ua.renovum.data.repositories
 
 import com.void_dev_ua.renovum.data.local.daos.AppliedWorkDao
-import com.void_dev_ua.renovum.model.AppliedWork
+import com.void_dev_ua.renovum.domain.model.AppliedWork
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

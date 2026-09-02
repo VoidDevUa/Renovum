@@ -1,8 +1,8 @@
 package com.void_dev_ua.renovum.domain.usecase
 
-import com.void_dev_ua.renovum.model.CalculatedData
-import com.void_dev_ua.renovum.model.RoomEntity
-import com.void_dev_ua.renovum.model.TargetSurface
+import com.void_dev_ua.renovum.domain.model.CalculatedData
+import com.void_dev_ua.renovum.domain.model.RoomEntity
+import com.void_dev_ua.renovum.domain.model.TargetSurface
 import javax.inject.Inject
 
 enum class CalculationOptionType {

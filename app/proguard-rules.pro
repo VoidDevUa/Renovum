@@ -21,7 +21,7 @@
 #-renamesourcefileattribute SourceFile
 
 # Очищення логів з Kotlin object L
--assumenosideeffects class com.void_dev_ua.renovum.utility.L {
+-assumenosideeffects class com.void_dev_ua.renovum.core.util.L {
     public void d(java.lang.String);
     public void nav(java.lang.String);
     public void click(java.lang.String);

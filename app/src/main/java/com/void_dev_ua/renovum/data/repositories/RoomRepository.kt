@@ -1,7 +1,7 @@
 package com.void_dev_ua.renovum.data.repositories
 
 import com.void_dev_ua.renovum.data.local.daos.RoomDao
-import com.void_dev_ua.renovum.model.RoomEntity
+import com.void_dev_ua.renovum.domain.model.RoomEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

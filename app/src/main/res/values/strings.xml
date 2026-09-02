@@ -25,6 +25,28 @@
     <string name="project_cleared_success">Дані об\'єкта повністю очищено</string>
     <string name="add_room_first">Спершу додайте кімнату</string>
 
+    <!-- Export Document -->
+    <string name="report_disclaimer">ДОКУМЕНТ Є ПОПЕРЕДНІМ РОЗРАХУНКОМ ВАРТОСТІ ТА НЕ Є ФІНАНСОВИМ АКТОМ СУВОРОЇ ЗВІТНОСТІ</string>
+    <string name="report_master_label">Майстер: %1$s</string>
+    <string name="report_phone_label">Тел: %1$s</string>
+    <string name="report_address_label">Адреса об\'єкта: %1$s</string>
+    <string name="report_title">КОШТОРИС РЕМОНТУ</string>
+    <string name="report_room_total">Заг. сума: %1$s грн</string>
+    <string name="report_currency">грн</string>
+    <string name="report_discount_label">Знижка: %1$s%%</string>
+    <string name="report_total_to_pay">ДО ОПЛАТИ: %1$s грн</string>
+    <string name="report_col_name">Назва роботи</string>
+    <string name="report_col_volume">Об\'єм</string>
+    <string name="report_col_price">Ціна за 1</string>
+    <string name="report_col_total">Заг. сума</string>
+    <string name="report_master_not_specified">Не вказано</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_name">Експорт кошторисів</string>
+    <string name="notification_channel_desc">Сповіщення про стан створення файлів кошторису</string>
+    <string name="notification_progress_title">Формування кошторису</string>
+    <string name="notification_progress_text">Будь ласка, зачекайте, файл створюється...</string>
+
     <!-- Rooms Screen -->
     <string name="delete_room_title">Видалення кімнати</string>
     <string name="delete_room_confirmation">Ви впевнені, що хочете видалити «%1$s»? Всі внесені виміри та виконані роботи в цій кімнаті будуть безповоротно втрачені.</string>

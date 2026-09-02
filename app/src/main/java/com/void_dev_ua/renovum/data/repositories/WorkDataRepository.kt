@@ -3,10 +3,10 @@ package com.void_dev_ua.renovum.data.repositories
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.void_dev_ua.renovum.model.WorkCategory
-import com.void_dev_ua.renovum.model.WorkSection
-import com.void_dev_ua.renovum.model.WorkService
-import com.void_dev_ua.renovum.utility.L
+import com.void_dev_ua.renovum.domain.model.WorkCategory
+import com.void_dev_ua.renovum.domain.model.WorkSection
+import com.void_dev_ua.renovum.domain.model.WorkService
+import com.void_dev_ua.renovum.core.util.L
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -3,33 +3,27 @@ package com.void_dev_ua.renovum
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.void_dev_ua.renovum.data.UserSettingsManager
-import com.void_dev_ua.renovum.data.local.AppDatabase
-import com.void_dev_ua.renovum.data.repositories.RoomRepository
-import com.void_dev_ua.renovum.data.repositories.WorkRepository
-import com.void_dev_ua.renovum.navigation.NavGraph
-import com.void_dev_ua.renovum.navigation.Screen
-import com.void_dev_ua.renovum.ui.components.BottomNav
-import com.void_dev_ua.renovum.ui.components.AppDrawer
-import com.void_dev_ua.renovum.ui.components.topAppBar.RenovumTopAppBar
-import com.void_dev_ua.renovum.ui.theme.Renovum_1Theme
-import com.void_dev_ua.renovum.viewmodel.RoomViewModel
-import com.void_dev_ua.renovum.viewmodel.WorkViewModel
-import com.void_dev_ua.renovum.viewmodel.ArchiveViewModel
-import com.void_dev_ua.renovum.utility.L
+import com.void_dev_ua.renovum.presentation.navigation.NavGraph
+import com.void_dev_ua.renovum.presentation.navigation.Screen
+import com.void_dev_ua.renovum.presentation.ui.components.BottomNav
+import com.void_dev_ua.renovum.presentation.ui.components.AppDrawer
+import com.void_dev_ua.renovum.presentation.ui.components.topAppBar.RenovumTopAppBar
+import com.void_dev_ua.renovum.presentation.ui.theme.Renovum_1Theme
+import com.void_dev_ua.renovum.presentation.viewmodel.RoomViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.WorkViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.ArchiveViewModel
+import com.void_dev_ua.renovum.core.util.L
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -54,14 +48,15 @@ fun RenovumApp() {
 
 	var isEditMode by remember { mutableStateOf(false) }
 
-	val totalRawSum by workViewModel.totalRawSumState.collectAsState()
-	val currentDiscountedSum = totalRawSum * (1.0 - workViewModel.projectDiscountPercent / 100.0)
+	val currentDiscountedSum by workViewModel.totalDiscountedSumState.collectAsState()
 
 	val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 	val scope = rememberCoroutineScope()
 
 	val navBackStackEntry by navController.currentBackStackEntryAsState()
 	val currentRoute = navBackStackEntry?.destination?.route
+
+	val layoutDirection = if (userSettings.isLeftHanded) LayoutDirection.Ltr else LayoutDirection.Rtl
 
 	val currentScreen = remember(currentRoute) {
 		Screen.allScreens.find { screen ->
@@ -70,15 +65,12 @@ fun RenovumApp() {
 		} ?: Screen.Rooms
 	}
 
-	val layoutDirection = if (userSettings.isLeftHanded) LayoutDirection.Ltr else LayoutDirection.Rtl
-
 	LaunchedEffect(currentRoute) {
 		L.nav("Current route changed to: $currentRoute")
 	}
 
 	Renovum_1Theme(appTheme = userSettings.appTheme) {
 		CompositionLocalProvider(LocalLayoutDirection provides layoutDirection) {
-
 			if (drawerState.isOpen) {
 				BackHandler(enabled = true) {
 					L.d("Back pressed: closing drawer")

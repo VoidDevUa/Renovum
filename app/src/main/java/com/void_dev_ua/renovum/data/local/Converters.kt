@@ -4,8 +4,8 @@ import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
-import com.void_dev_ua.renovum.model.OpeningEntity
-import com.void_dev_ua.renovum.model.RoomParams
+import com.void_dev_ua.renovum.domain.model.OpeningEntity
+import com.void_dev_ua.renovum.domain.model.RoomParams
 
 class Converters {
 	private val gson = Gson()
@@ -41,7 +41,7 @@ class Converters {
 			val clazz = Class.forName(className)
 			return gson.fromJson(value, clazz) as RoomParams
 		} catch (e: Exception) {
-			com.void_dev_ua.renovum.utility.L.e("Converters: Error parsing RoomParams JSON: ${e.message}")
+			com.void_dev_ua.renovum.core.util.L.e("Converters: Error parsing RoomParams JSON: ${e.message}")
 			return RoomParams.RectangleParams()
 		}
 	}

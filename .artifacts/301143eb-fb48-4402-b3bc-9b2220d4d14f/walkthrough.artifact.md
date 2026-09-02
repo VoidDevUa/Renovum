@@ -12,6 +12,12 @@
     - `ArchiveViewModel`: Управління локальними DOCX звітами.
     - `ReportViewModel`: Логіка експорту даних у Word.
 - **Domain Layer**: Створено `RoomCalculationsUseCase`, куди винесено всю математику розрахунків площ та периметрів.
+- **Реструктуризація пакетів**: Всі файли переміщено у відповідні Clean Architecture шари:
+    - `presentation/` (UI, ViewModels, Navigation)
+    - `domain/` (Models, UseCases)
+    - `data/` (Repositories, Local DB, Remote/External Services)
+    - `core/` (DI, Common Utilities like Logger)
+  Це значно покращило ієрархію проєкту та повністю очистило корінь від технічних папок.
 
 ### Оптимізація
 - **Асинхронне завантаження даних**: `WorkDataRepository` тепер завантажує `services.json` у фоновому потоці через Coroutines, що пришвидшує запуск додатка та запобігає фризам UI.
