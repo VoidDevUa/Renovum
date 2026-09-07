@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,7 +15,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.void_dev_ua.renovum.data.UserSettings
-import com.void_dev_ua.renovum.domain.model.RoomEntity
 import com.void_dev_ua.renovum.domain.model.RoomShapeType
 import com.void_dev_ua.renovum.presentation.ui.screens.about_screen.AboutScreen
 import com.void_dev_ua.renovum.presentation.ui.screens.secondary_screens.AddRoomScreen
@@ -27,9 +27,9 @@ import com.void_dev_ua.renovum.presentation.ui.screens.rooms_screen.RoomsScreen
 import com.void_dev_ua.renovum.presentation.ui.screens.settings_screen.SettingsScreen
 import com.void_dev_ua.renovum.presentation.ui.screens.works_screen.WorksScreen
 import com.void_dev_ua.renovum.presentation.ui.screens.archive_screen.ArchiveScreen
-import com.void_dev_ua.renovum.presentation.viewmodel.RoomViewModel
-import com.void_dev_ua.renovum.presentation.viewmodel.ArchiveViewModel
-import com.void_dev_ua.renovum.presentation.viewmodel.WorkViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.RoomsScreenViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.CalcScreenViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.ArchiveScreenViewModel
 import com.void_dev_ua.renovum.core.util.L
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
@@ -39,10 +39,7 @@ fun NavGraph(
 	paddingValues: PaddingValues,
 	userSettings: UserSettings,
 	onSettingsChange: (UserSettings) -> Unit,
-	isEditMode: Boolean,
-	roomViewModel: RoomViewModel,
-	workViewModel: WorkViewModel,
-	onDeleteRoom: (RoomEntity) -> Unit
+	isEditMode: Boolean
 ) {
 	NavHost(
 		navController = navController,
@@ -51,8 +48,11 @@ fun NavGraph(
 	) {
 		composable(Screen.Rooms.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Rooms") }
+			val viewModel: RoomsScreenViewModel = hiltViewModel()
+			val rooms by viewModel.rooms.collectAsState()
+
 			RoomsScreen(
-				rooms = roomViewModel.rooms,
+				rooms = rooms,
 				userSettings = userSettings,
 				isEditMode = isEditMode,
 				onAddRoomClick = {
@@ -61,7 +61,7 @@ fun NavGraph(
 				},
 				onRoomClick = { room ->
 					L.nav("Rooms -> Selecting Room and Navigating to Calc: ${room.id}")
-					roomViewModel.selectRoom(room)
+					viewModel.selectRoom(room)
 
 					navController.navigate(Screen.Calculations.route) {
 						popUpTo(Screen.Rooms.route) { saveState = true }
@@ -69,33 +69,21 @@ fun NavGraph(
 						restoreState = true
 					}
 				},
-				onDeleteRoom = onDeleteRoom,
+				onDeleteRoom = { viewModel.deleteRoom(it) },
 				onSettingsChange = onSettingsChange
 			)
 		}
 		composable(Screen.Calculations.route) {
 			L.nav("Screen: Calc")
+			val viewModel: CalcScreenViewModel = hiltViewModel()
+			val selectedRoom by viewModel.selectedRoom.collectAsState()
 
-			val rooms = roomViewModel.rooms
-			val activeRoom by roomViewModel.selectedRoom
-
-			LaunchedEffect(activeRoom?.id, rooms) {
-				if (activeRoom == null && rooms.isNotEmpty()) {
-					roomViewModel.selectRoom(rooms.first())
-				}
-			}
-
-			val room = activeRoom
+			val room = selectedRoom
 			if (room != null) {
 				CalcScreen(
 					currentRoom = room,
-					roomViewModel = roomViewModel,
-					allRooms = rooms,
-					userSettings = userSettings,
-					onRoomSelected = { selected ->
-						L.nav("Switching Calc room inside ViewModel to: ${selected.id}")
-						roomViewModel.selectRoom(selected)
-					}
+					roomViewModel = viewModel,
+					userSettings = userSettings
 				)
 			} else {
 				L.e("NavGraph: No rooms available to show in CalcScreen")
@@ -106,28 +94,11 @@ fun NavGraph(
 		}
 		composable(Screen.Works.route) {
 			L.nav("Screen: Works")
-			val rooms = roomViewModel.rooms
-			val activeRoom by roomViewModel.selectedRoom
-
-			LaunchedEffect(activeRoom?.id, rooms) {
-				if (activeRoom == null && rooms.isNotEmpty()) {
-					roomViewModel.selectRoom(rooms.first())
-				}
-			}
-
-			WorksScreen(
-				roomViewModel = roomViewModel,
-				workViewModel = workViewModel,
-				userSettings = userSettings
-			)
+			WorksScreen(userSettings = userSettings)
 		}
 		composable(Screen.Done.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Done") }
-			DoneScreen(
-				roomViewModel = roomViewModel,
-				workViewModel = workViewModel,
-				userSettings = userSettings
-			)
+			DoneScreen(userSettings = userSettings)
 		}
 		composable(Screen.Settings.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Settings") }
@@ -146,7 +117,7 @@ fun NavGraph(
 		}
 		composable(Screen.Archive.route) {
 			LaunchedEffect(Unit) { L.nav("Screen: Archive") }
-			val archiveViewModel: ArchiveViewModel = hiltViewModel()
+			val archiveViewModel: ArchiveScreenViewModel = hiltViewModel()
 			ArchiveScreen(
 				archiveViewModel = archiveViewModel,
 				userSettings = userSettings
@@ -162,7 +133,6 @@ fun NavGraph(
 				initialShapeType = RoomShapeType.RECTANGLE,
 				navController = navController,
 				userSettings = userSettings,
-				roomViewModel = roomViewModel,
 				onSave = {
 					L.d("AddRoom: Save success, popping backstack")
 					navController.popBackStack()
@@ -173,7 +143,6 @@ fun NavGraph(
 			LaunchedEffect(Unit) { L.nav("Screen: EditRoom") }
 			EditRoomScreen(
 				navController = navController,
-				roomViewModel = roomViewModel,
 				onSave = {
 					L.d("EditRoom: Save success, popping backstack")
 					navController.popBackStack()

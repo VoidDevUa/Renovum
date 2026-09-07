@@ -27,7 +27,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.void_dev_ua.renovum.R
 import com.void_dev_ua.renovum.data.UserSettings
-import com.void_dev_ua.renovum.presentation.viewmodel.ArchiveViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.ArchiveScreenViewModel
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -40,7 +40,7 @@ fun FileCard(
 	isSelected: Boolean,
 	isSelectMode: Boolean,
 	userSettings: UserSettings,
-	archiveViewModel: ArchiveViewModel,
+	archiveViewModel: ArchiveScreenViewModel,
 	onFileClick: (File) -> Unit
 ) {
 	val context = LocalContext.current

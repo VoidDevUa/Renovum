@@ -51,8 +51,9 @@ import com.void_dev_ua.renovum.domain.model.RoomEntity
 import com.void_dev_ua.renovum.domain.model.WorkService
 import com.void_dev_ua.renovum.domain.model.OpeningType
 import com.void_dev_ua.renovum.domain.model.TargetSurface
-import com.void_dev_ua.renovum.presentation.viewmodel.RoomViewModel
-import com.void_dev_ua.renovum.presentation.viewmodel.WorkViewModel
+import com.void_dev_ua.renovum.domain.usecase.CalculationOptionType
+import com.void_dev_ua.renovum.presentation.viewmodel.WorkDialogViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @SuppressLint("DefaultLocale")
@@ -60,12 +61,11 @@ import com.void_dev_ua.renovum.presentation.viewmodel.WorkViewModel
 fun WorkDialog(
 	workService: WorkService,
 	room: RoomEntity,
-	roomViewModel: RoomViewModel,
-	workViewModel: WorkViewModel,
 	appliedWork: AppliedWork? = null,
 	onDismiss: () -> Unit,
 	onSave: (price: Double, volume: Double) -> Unit,
-	onDelete: (() -> Unit)? = null
+	onDelete: (() -> Unit)? = null,
+	viewModel: WorkDialogViewModel = hiltViewModel()
 ) {
 	val isEditMode = appliedWork != null
 
@@ -76,9 +76,9 @@ fun WorkDialog(
 		mutableStateOf(appliedWork?.quantity?.toString() ?: "")
 	}
 
-	val calcData = roomViewModel.calculateRoomData(room)
+	val calcData = viewModel.calculateRoomData(room)
 	val finalPrice = priceInput.toDoubleOrNull() ?: workService.averagePrice
-	val suggestedValue = roomViewModel.getSurfaceValue(workService.targetSurface, calcData)
+	val suggestedValue = viewModel.getSurfaceValue(workService.targetSurface, calcData)
 	val displaySuggestedValue = String.format("%.2f", suggestedValue)
 	val finalVolume = qtyInput.toDoubleOrNull() ?: suggestedValue
 	val totalSum = finalPrice * finalVolume
@@ -281,7 +281,7 @@ fun WorkDialog(
 									)
 								}
 
-								val options = roomViewModel.getAvailableOptions(workService.targetSurface, calcData)
+								val options = viewModel.getAvailableOptions(workService.targetSurface, calcData)
 
 								Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
 									Text(
@@ -313,7 +313,13 @@ fun WorkDialog(
 												.padding(top = 8.dp),
 											verticalArrangement = Arrangement.spacedBy(4.dp)
 										) {
-											options.forEach { (label, value) ->
+											options.forEach { (type, value) ->
+												val label = when(type) {
+													CalculationOptionType.FLOOR -> stringResource(R.string.surface_floor)
+													CalculationOptionType.WALLS_CLEAN -> stringResource(R.string.surface_walls_clean)
+													CalculationOptionType.WALLS_GROSS -> stringResource(R.string.surface_walls_gross)
+													CalculationOptionType.PERIMETER -> stringResource(R.string.surface_perimeter)
+												}
 												Card(
 													onClick = {
 														val formatted = String.format("%.2f", value).replace(",", ".")
@@ -332,7 +338,7 @@ fun WorkDialog(
 														contentAlignment = Alignment.Center
 													) {
 														Text(
-															text = label,
+															text = "$label: ${"%.1f".format(value)}",
 															style = MaterialTheme.typography.titleMedium,
 															fontWeight = FontWeight.Medium,
 															color = MaterialTheme.colorScheme.onSurfaceVariant

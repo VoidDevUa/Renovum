@@ -20,9 +20,8 @@ import com.void_dev_ua.renovum.presentation.ui.components.BottomNav
 import com.void_dev_ua.renovum.presentation.ui.components.AppDrawer
 import com.void_dev_ua.renovum.presentation.ui.components.topAppBar.RenovumTopAppBar
 import com.void_dev_ua.renovum.presentation.ui.theme.Renovum_1Theme
-import com.void_dev_ua.renovum.presentation.viewmodel.RoomViewModel
-import com.void_dev_ua.renovum.presentation.viewmodel.WorkViewModel
-import com.void_dev_ua.renovum.presentation.viewmodel.ArchiveViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.RenovumAppViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.ArchiveScreenViewModel
 import com.void_dev_ua.renovum.core.util.L
 import kotlinx.coroutines.launch
 
@@ -40,15 +39,16 @@ fun RenovumApp() {
 		return
 	}
 
-	val roomViewModel: RoomViewModel = hiltViewModel()
-	val workViewModel: WorkViewModel = hiltViewModel()
-	val archiveViewModel: ArchiveViewModel = hiltViewModel()
+	val appViewModel: RenovumAppViewModel = hiltViewModel()
+	val archiveViewModel: ArchiveScreenViewModel = hiltViewModel()
 
 	val navController = rememberNavController()
 
 	var isEditMode by remember { mutableStateOf(false) }
 
-	val currentDiscountedSum by workViewModel.totalDiscountedSumState.collectAsState()
+	val currentDiscountedSum by appViewModel.totalDiscountedSum.collectAsState()
+	val selectedRoom by appViewModel.selectedRoom.collectAsState()
+	val rooms by appViewModel.rooms.collectAsState()
 
 	val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 	val scope = rememberCoroutineScope()
@@ -112,14 +112,14 @@ fun RenovumApp() {
 								isEditMode = isEditMode,
 								totalSum = if (currentRoute == Screen.Done.route) currentDiscountedSum else null,
 								onSumClick = if (currentRoute == Screen.Done.route) {
-									{ workViewModel.showDiscountDialog = true }
+									{ appViewModel.showDiscountDialog() }
 								} else null,
-								selectedRoom = roomViewModel.selectedRoom.value,
-								rooms = roomViewModel.rooms,
+								selectedRoom = selectedRoom,
+								rooms = rooms,
 								onRoomSelected = if (currentRoute == Screen.Works.route || currentRoute == Screen.Ceiling.route) {
 									{ room ->
 										L.d("TopAppBar: Switching room inside ViewModel to ${room.name}")
-										roomViewModel.selectRoom(room)
+										appViewModel.selectRoom(room)
 									}
 								} else null,
 								onEditClick = when (currentRoute) {
@@ -133,9 +133,9 @@ fun RenovumApp() {
 								},
 								onNavigateToEdit = if (currentRoute?.startsWith(Screen.Calculations.route) == true) {
 									{
-										val roomId = roomViewModel.selectedRoom.value?.id
-										if (roomId != null) {
-											L.nav("Navigating to EditRoom for id: $roomId")
+										val roomLocal = selectedRoom
+										if (roomLocal != null) {
+											L.nav("Navigating to EditRoom for id: ${roomLocal.id}")
 											navController.navigate(Screen.EditRoom.route)
 										} else {
 											L.e("Navigation Error: selectedRoom is null")
@@ -175,14 +175,7 @@ fun RenovumApp() {
 									settingsManager.saveSettings(newSettings)
 								}
 							},
-							isEditMode = isEditMode,
-							roomViewModel = roomViewModel,
-							workViewModel = workViewModel,
-							onDeleteRoom = { room ->
-								L.click("Delete Room: ${room.name}")
-								roomViewModel.deleteRoom(room)
-								isEditMode = false
-							}
+							isEditMode = isEditMode
 						)
 					}
 				}

@@ -29,6 +29,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -41,60 +42,59 @@ import com.void_dev_ua.renovum.presentation.ui.screens.done_screen.components.Ex
 import com.void_dev_ua.renovum.presentation.ui.components.dialogs.WorkDialog
 import com.void_dev_ua.renovum.presentation.ui.screens.done_screen.components.DoneRoomCard
 import com.void_dev_ua.renovum.presentation.ui.screens.done_screen.components.DoneWorkCard
-import com.void_dev_ua.renovum.presentation.viewmodel.RoomViewModel
-import com.void_dev_ua.renovum.presentation.viewmodel.WorkViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.DoneScreenViewModel
 import com.void_dev_ua.renovum.presentation.viewmodel.ReportViewModel
 import com.void_dev_ua.renovum.core.util.L
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import kotlinx.coroutines.launch
 
 @SuppressLint("DefaultLocale")
 @Composable
 fun DoneScreen(
-	roomViewModel: RoomViewModel,
-	workViewModel: WorkViewModel,
 	userSettings: UserSettings,
+	viewModel: DoneScreenViewModel = hiltViewModel(),
 	reportViewModel: ReportViewModel = hiltViewModel()
 ) {
-	val groupedWorks by workViewModel.getGroupedWorksState(roomViewModel.rooms).collectAsState()
+	val rooms by viewModel.rooms.collectAsState()
+	val groupedWorks by viewModel.groupedWorksState.collectAsState()
 	val expandedStates = remember { mutableStateMapOf<String, Boolean>() }
-	val currentWorkToEdit = workViewModel.workToEdit
+	val currentWorkToEdit = viewModel.workToEdit
+	val scope = rememberCoroutineScope()
 
 	val showExportDialog = remember { mutableStateOf(false) }
 	val showClearDialog = remember { mutableStateOf(false) }
 
 	val context = LocalContext.current
 
-	if (workViewModel.showDiscountDialog) {
+	if (viewModel.showDiscountDialog) {
 		DiscountDialog(
-			initialDiscount = workViewModel.projectDiscountPercent,
-			totalRawSum = workViewModel.totalRawSumState.collectAsState().value,
-			onDismiss = { workViewModel.showDiscountDialog = false },
+			initialDiscount = viewModel.projectDiscountPercent.collectAsState().value,
+			totalRawSum = viewModel.totalRawSumState.collectAsState().value,
+			onDismiss = { viewModel.showDiscountDialog = false },
 			onConfirm = { newDiscount ->
-				workViewModel.updateDiscount(newDiscount)
-				workViewModel.showDiscountDialog = false
+				viewModel.updateDiscount(newDiscount)
+				viewModel.showDiscountDialog = false
 			}
 		)
 	}
 
 	currentWorkToEdit?.let { applied ->
-		val service = workViewModel.getWorkServiceById(applied.workId)
-		val roomOfWork = roomViewModel.rooms.find { it.id == applied.roomId }
+		val service = viewModel.getWorkServiceById(applied.workId)
+		val roomOfWork = rooms.find { it.id == applied.roomId }
 
 		if (service != null && roomOfWork != null) {
 			WorkDialog(
 				workService = service,
 				room = roomOfWork,
-				roomViewModel = roomViewModel,
-				workViewModel = workViewModel,
 				appliedWork = applied,
-				onDismiss = { workViewModel.workToEdit = null },
+				onDismiss = { viewModel.workToEdit = null },
 				onSave = { newPrice, newQty ->
-					workViewModel.updateAppliedWork(applied, newPrice, newQty)
-					workViewModel.workToEdit = null
+					viewModel.updateAppliedWork(applied, newPrice, newQty)
+					viewModel.workToEdit = null
 				},
 				onDelete = {
-					workViewModel.deleteAppliedWork(applied)
-					workViewModel.workToEdit = null
+					viewModel.deleteAppliedWork(applied)
+					viewModel.workToEdit = null
 				}
 			)
 		}
@@ -129,7 +129,7 @@ fun DoneScreen(
 							service = service,
 							applied = applied,
 							onClick = {
-								workViewModel.workToEdit = applied
+								viewModel.workToEdit = applied
 								L.d("Click to edit: ${service.name}")
 							}
 						)
@@ -195,9 +195,9 @@ fun DoneScreen(
 					customFileName = customFileName,
 					userSettings = userSettings,
 					groupedWorks = groupedWorks,
-					totalRawSum = workViewModel.totalRawSumState.value,
-					projectDiscountPercent = workViewModel.projectDiscountPercent,
-					totalDiscountedSum = workViewModel.totalDiscountedSumState.value
+					totalRawSum = viewModel.totalRawSumState.value,
+					projectDiscountPercent = viewModel.projectDiscountPercent.value,
+					totalDiscountedSum = viewModel.totalDiscountedSumState.value
 				)
 				showClearDialog.value = true
 			}
@@ -209,13 +209,16 @@ fun DoneScreen(
 			onDismiss = { showClearDialog.value = false },
 			onConfirm = {
 				showClearDialog.value = false
-				roomViewModel.clearCurrentProject(
-					onClearAddress = {
+				viewModel.clearCurrentProject(
+					onFinished = {
 						val manager = UserSettingsManager(context)
-						manager.saveSettings(userSettings.copy(currentObjectAddress = ""))
+						// Correct way to clear address in settings
+						scope.launch {
+							manager.saveSettings(userSettings.copy(currentObjectAddress = ""))
+						}
+						Toast.makeText(context, "Дані об'єкта повністю очищено", Toast.LENGTH_SHORT).show()
 					}
 				)
-				Toast.makeText(context, "Дані об'єкта повністю очищено", Toast.LENGTH_SHORT).show()
 			}
 		)
 	}

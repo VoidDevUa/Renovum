@@ -26,17 +26,19 @@ import com.void_dev_ua.renovum.presentation.ui.components.topAppBar.elements.Roo
 import com.void_dev_ua.renovum.presentation.ui.screens.calc_screen.components.RoomOpeningsPage
 import com.void_dev_ua.renovum.presentation.ui.screens.calc_screen.components.RoomResultsPage
 import com.void_dev_ua.renovum.presentation.ui.screens.calc_screen.components.CalcPagerHeader
-import com.void_dev_ua.renovum.presentation.viewmodel.RoomViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.CalcScreenViewModel
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 
 @Composable
 fun CalcScreen(
 	currentRoom: RoomEntity,
-	roomViewModel: RoomViewModel,
-	allRooms: List<RoomEntity>,
-	userSettings: UserSettings,
-	onRoomSelected: (RoomEntity) -> Unit
+	roomViewModel: CalcScreenViewModel,
+	userSettings: UserSettings
 ) {
-	val data = roomViewModel.calculateRoomData(currentRoom)
+	val allRooms by roomViewModel.rooms.collectAsState()
+	val calcData by roomViewModel.calculationData.collectAsState()
+	
 	val pagerState = rememberPagerState(pageCount = { 2 })
 	val scope = rememberCoroutineScope()
 
@@ -53,7 +55,7 @@ fun CalcScreen(
 				RoomSelectorDropdown(
 					selectedRoom = currentRoom,
 					rooms = allRooms,
-					onRoomSelected = onRoomSelected,
+					onRoomSelected = { roomViewModel.selectRoom(it) },
 					isOutlined = true
 				)
 			}
@@ -94,7 +96,7 @@ fun CalcScreen(
 				verticalArrangement = Arrangement.spacedBy(12.dp)
 			) {
 				when (page) {
-					0 -> RoomResultsPage(currentRoom = currentRoom, data = data)
+					0 -> calcData?.let { RoomResultsPage(currentRoom = currentRoom, data = it) }
 					1 -> RoomOpeningsPage(currentRoom = currentRoom)
 				}
 			}

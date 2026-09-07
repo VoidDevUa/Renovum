@@ -38,12 +38,16 @@ class WorkDataRepository @Inject constructor(
                     .use { it.readText() }
 
                 val listType = object : TypeToken<List<WorkService>>() {}.type
-                val works: List<WorkService> = Gson().fromJson(jsonString, listType)
+                val works: List<WorkService>? = Gson().fromJson(jsonString, listType)
 
-                _allWorks.value = works
-                L.d("WorkDataRepository: Успішно завантажено ${works.size} робіт з JSON!")
+                if (works != null) {
+                    _allWorks.value = works
+                    L.d("WorkDataRepository: Успішно завантажено ${works.size} робіт з JSON!")
+                } else {
+                    L.e("WorkDataRepository: JSON завантажено, але список робіт порожній або некоректний")
+                }
             } catch (e: Exception) {
-                L.e("WorkDataRepository: Помилка завантаження JSON: ${e.message}")
+                L.e("WorkDataRepository: Помилка завантаження JSON", e)
             }
         }
     }

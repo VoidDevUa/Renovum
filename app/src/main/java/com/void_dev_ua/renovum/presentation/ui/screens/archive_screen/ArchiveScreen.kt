@@ -25,22 +25,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.void_dev_ua.renovum.data.UserSettings
 import com.void_dev_ua.renovum.presentation.ui.screens.archive_screen.components.DeleteFilesDialog
 import com.void_dev_ua.renovum.presentation.ui.screens.archive_screen.components.FileActionDialog
 import com.void_dev_ua.renovum.presentation.ui.screens.archive_screen.components.FileCard
-import com.void_dev_ua.renovum.presentation.viewmodel.ArchiveViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.ArchiveScreenViewModel
 import java.io.File
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ArchiveScreen(
-	archiveViewModel: ArchiveViewModel,
+	archiveViewModel: ArchiveScreenViewModel,
 	userSettings: UserSettings
 ) {
-	val context = LocalContext.current
 	val files = archiveViewModel.archiveFiles
 	val selectedFiles = archiveViewModel.selectedArchiveFiles
 	val isSelectMode = archiveViewModel.isArchiveSelectMode
@@ -127,8 +125,9 @@ fun ArchiveScreen(
 		DeleteFilesDialog(
 			selectedCount = count,
 			onConfirm = {
-				if (singleFileToDelete.value != null) {
-					if (singleFileToDelete.value!!.exists()) singleFileToDelete.value!!.delete()
+				val fileToDelete = singleFileToDelete.value
+				if (fileToDelete != null) {
+					if (fileToDelete.exists()) fileToDelete.delete()
 					archiveViewModel.loadArchiveFiles()
 				} else {
 					archiveViewModel.deleteSelectedArchiveFiles()

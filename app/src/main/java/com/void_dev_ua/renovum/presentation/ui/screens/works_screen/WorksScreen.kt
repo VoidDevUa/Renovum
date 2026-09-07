@@ -43,46 +43,37 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.void_dev_ua.renovum.data.UserSettings
-import com.void_dev_ua.renovum.domain.model.WorkCategory
-import com.void_dev_ua.renovum.domain.model.WorkSection
 import com.void_dev_ua.renovum.domain.model.WorkService
 import com.void_dev_ua.renovum.presentation.ui.components.dialogs.WorkDialog
 import com.void_dev_ua.renovum.presentation.ui.components.list_Items.WorkCard
-import com.void_dev_ua.renovum.presentation.viewmodel.RoomViewModel
-import com.void_dev_ua.renovum.presentation.viewmodel.WorkViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.WorksScreenViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WorksScreen(
-	roomViewModel: RoomViewModel,
-	workViewModel: WorkViewModel,
-	userSettings: UserSettings
+	userSettings: UserSettings,
+	viewModel: WorksScreenViewModel = hiltViewModel()
 ) {
-	val selectedRoom by roomViewModel.selectedRoom
-	val worksStatusMap by workViewModel.getWorksWithStatusState(selectedRoom?.id ?: "").collectAsState()
-	val roomsCount = roomViewModel.rooms.size
-	val allWorks by workViewModel.allWorksFlow.collectAsState()
+	val selectedRoom by viewModel.selectedRoom.collectAsState()
+	val worksStatusMap by viewModel.worksWithStatusState.collectAsState()
+	val roomsCount = viewModel.rooms.collectAsState().value.size
+	val currentWorks by viewModel.filteredWorks.collectAsState()
+	val selectedCategory by viewModel.selectedCategory.collectAsState()
 
-	val sections = remember { workViewModel.getAllSections() }
+	val sections = remember { viewModel.getAllSections() }
 	var currentSectionIndex by rememberSaveable { mutableIntStateOf(0) }
 	val currentSection = sections[currentSectionIndex]
 
 	val currentCategories = remember(currentSection) {
-		workViewModel.getCategoriesForSection(currentSection)
+		viewModel.getCategoriesForSection(currentSection)
 	}
 
-	var selectedCategory by remember(currentSection) {
-		val saved = workViewModel.lastSelectedCategory
-		val categoryToSet = if (saved != null && saved.section == currentSection) {
-			saved
-		} else {
-			currentCategories.firstOrNull() ?: currentCategories[0]
+	// Update selected category when section changes or when first loaded
+	LaunchedEffect(currentSection) {
+		if (selectedCategory == null || selectedCategory?.section != currentSection) {
+			currentCategories.firstOrNull()?.let { viewModel.selectCategory(it) }
 		}
-		mutableStateOf(categoryToSet)
-	}
-
-	LaunchedEffect(selectedCategory) {
-		workViewModel.lastSelectedCategory = selectedCategory
 	}
 
 	val showAddDialog = remember { mutableStateOf(false) }
@@ -100,12 +91,9 @@ fun WorksScreen(
 			WorkDialog(
 				workService = workToProcess!!,
 				room = room,
-				roomViewModel = roomViewModel,
-				workViewModel = workViewModel,
-				appliedWork = null,
 				onDismiss = { showAddDialog.value = false },
 				onSave = { price, vol ->
-					workViewModel.saveAppliedWork(room, workToProcess!!, price, vol)
+					viewModel.saveAppliedWork(room, workToProcess!!, price, vol)
 					showAddDialog.value = false
 				}
 			)
@@ -177,7 +165,7 @@ fun WorksScreen(
 			modifier = Modifier.fillMaxWidth()
 		) {
 			OutlinedTextField(
-				value = selectedCategory.displayName,
+				value = selectedCategory?.displayName ?: "",
 				onValueChange = {},
 				readOnly = true,
 				label = { Text("Підрозділ") },
@@ -197,7 +185,7 @@ fun WorksScreen(
 					DropdownMenuItem(
 						text = { Text(category.displayName) },
 						onClick = {
-							selectedCategory = category
+							viewModel.selectCategory(category)
 							expandedCategoryDrop = false
 						}
 					)
@@ -206,10 +194,6 @@ fun WorksScreen(
 		}
 
 		Spacer(modifier = Modifier.height(8.dp))
-
-		val currentWorks = remember(selectedCategory, allWorks) {
-			workViewModel.getWorksForCategory(selectedCategory)
-		}
 
 		Text(
 			text = "Доступні роботи",
@@ -225,7 +209,7 @@ fun WorksScreen(
 			if (currentWorks.isEmpty()) {
 				item {
 					Text(
-						"Робіт для категорії \"${selectedCategory.displayName}\" поки немає",
+						text = if (selectedCategory != null) "Робіт для категорії \"${selectedCategory!!.displayName}\" поки немає" else "Виберіть категорію",
 						style = MaterialTheme.typography.bodyMedium,
 						color = Color.Gray,
 						modifier = Modifier.padding(16.dp)

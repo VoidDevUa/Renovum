@@ -44,15 +44,16 @@ import com.void_dev_ua.renovum.presentation.ui.components.dialogs.AddOpeningDial
 import com.void_dev_ua.renovum.presentation.ui.components.dialogs.RoomShapeDialog
 import com.void_dev_ua.renovum.presentation.ui.components.list_Items.OpeningItem
 import com.void_dev_ua.renovum.presentation.ui.components.RoomSchemaPainter
-import com.void_dev_ua.renovum.presentation.viewmodel.RoomViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.AddRoomScreenViewModel
 import com.void_dev_ua.renovum.core.util.L
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 
 @Composable
 fun AddRoomScreen(
 	initialShapeType: RoomShapeType,
 	navController: NavHostController,
 	userSettings: UserSettings,
-	roomViewModel: RoomViewModel,
+	viewModel: AddRoomScreenViewModel = hiltViewModel(),
 	onSave: () -> Unit
 ) {
 	val context = LocalContext.current
@@ -225,7 +226,7 @@ fun AddRoomScreen(
 							openings = openings
 						)
 
-						roomViewModel.addRoom(newRoom)
+						viewModel.addRoom(newRoom)
 						onSave()
 					}
 				},

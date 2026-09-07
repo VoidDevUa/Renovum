@@ -22,18 +22,22 @@ import com.void_dev_ua.renovum.domain.model.RoomShapeType
 import com.void_dev_ua.renovum.presentation.ui.components.RoomSchemaPainter
 import com.void_dev_ua.renovum.presentation.ui.components.dialogs.AddOpeningDialog
 import com.void_dev_ua.renovum.presentation.ui.components.list_Items.OpeningItem
-import com.void_dev_ua.renovum.presentation.viewmodel.RoomViewModel
+import com.void_dev_ua.renovum.presentation.viewmodel.EditRoomScreenViewModel
 import com.void_dev_ua.renovum.core.util.L
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 
 @Composable
 fun EditRoomScreen(
 	navController: NavHostController,
-	roomViewModel: RoomViewModel,
+	viewModel: EditRoomScreenViewModel = hiltViewModel(),
 	onSave: () -> Unit
 ) {
 	val context = LocalContext.current
 
-	val room = roomViewModel.selectedRoom.value
+	val selectedRoom by viewModel.selectedRoom.collectAsState()
+	val room = selectedRoom
 
 	if (room == null) {
 		L.e("EditRoom: selectedRoom is null, cannot edit")
@@ -193,8 +197,7 @@ fun EditRoomScreen(
 						)
 
 						L.d("EditRoom: Updating room ID ${room.id}. Old name: ${room.name}, New name: ${updatedRoom.name}")
-						roomViewModel.addRoom(updatedRoom)
-						roomViewModel.selectRoom(updatedRoom)
+						viewModel.updateRoom(updatedRoom)
 
 						L.d("EditRoom: Room updated successfully")
 						onSave()

@@ -1,36 +1,19 @@
-# Завдання з рефакторингу Renovum
+# Завдання з повної декомпозиції ViewModels
 
-- `[x]` Етап 0: Впровадження Hilt (Infrastructure)
-    - `[x]` Додати залежності Hilt у `libs.versions.toml`
-    - `[x]` Налаштувати плагіни у `build.gradle.kts` (кореневий та додаток)
-    - `[x]` Створити `RenovumApplication` та оновити `AndroidManifest.xml`
-    - `[x]` Анотувати `MainActivity` за допомогою `@AndroidEntryPoint`
-- `[x]` Етап 1: Domain Layer та Розрахунки
-    - `[x]` Створити `RoomCalculationsUseCase`
-    - `[x]` Впровадити Hilt у `RoomViewModel` та `RoomRepository`
-    - `[x]` Винести логіку розрахунків у UseCase
-- `[x]` Етап 2: Оптимізація Data Layer (Hilt Modules)
-    - `[x]` Створити Hilt модулі для Database та Repositories
-    - `[x]` Оптимізувати `WorkDataRepository` (асинхронне завантаження)
-- `[x]` Етап 3: Ресурси та Локалізація
-    - `[x]` Винести рядки у `strings.xml`
-    - `[x]` Оновити UI компоненти для використання ресурсів
-- `[x]` Етап 4: Розподіл ViewModel (Decomposition)
-    - `[x]` Створити `ArchiveViewModel`, `WorkViewModel`, `ReportViewModel`
-    - `[x]` Оновити екрани для використання нових моделей
-    - `[x]` Очистити `RoomViewModel` від зайвої логіки
-- `[x]` Етап 5: Очищення UI та Навігації
-    - `[x]` Впровадження Hilt у NavGraph
-- `[x]` Етап 6: Реструктуризація пакетів (Clean Architecture Alignment)
-    - `[x]` Створити пакет `presentation`
-    - `[x]` Перемістити `ui`, `viewmodel`, `navigation` у `presentation`
-    - `[x]` Перемістити `model` у `domain`
-    - `[x]` Оновити назви пакетів та імпорти у всіх файлах
-    - `[x]` Перевірити працездатність (Build & Sync)
-- `[x]` Етап 7: Очищення Core та Infrastructure
-    - `[x]` Створити пакет `core`
-    - `[x]` Перемістити `di` у `core/di`
-    - `[x]` Перемістити утиліти (`Logger`, `FileProvider`) у `core/util`
-    - `[x]` Створити `data/remote` та перемістити туди менеджери експорту та сповіщень
-    - `[x]` Оновити імпорти по всьому проєкту
-    - `[x]` Оновити `AndroidManifest.xml` для `FileProvider`
+- `[/]` Етап 8: Спільна інфраструктура стану
+    - `[ ]` Створити `ProjectStateRepository` у `domain/repository`
+    - `[ ]` Додати `ProjectStateRepository` у `DatabaseModule` (або новий модуль)
+- `[ ]` Етап 9: Перетворення моделей (Presentation)
+    - `[ ]` Створити `RenovumAppViewModel`
+    - `[ ]` Створити `RoomsScreenViewModel`
+    - `[ ]` Створити `AddRoomScreenViewModel` та `EditRoomScreenViewModel`
+    - `[ ]` Створити `CalcScreenViewModel`
+    - `[ ]` Створити `WorksScreenViewModel`
+    - `[ ]` Створити `DoneScreenViewModel`
+    - `[ ]` Створити `WorkDialogViewModel`
+    - `[ ]` Перейменувати `ArchiveViewModel` у `ArchiveScreenViewModel`
+- `[ ]` Етап 10: Рефакторинг UI та Навігації
+    - `[ ]` Очистити `NavGraph.kt` від параметрів ViewModel
+    - `[ ]` Оновити кожен екран на використання власної ViewModel
+    - `[ ]` Видалити застарілі `RoomViewModel` та `WorkViewModel`
+- `[ ]` Етап 11: Перевірка та виправлення помилок

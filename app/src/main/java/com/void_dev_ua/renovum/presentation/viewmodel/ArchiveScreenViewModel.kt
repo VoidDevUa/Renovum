@@ -17,7 +17,7 @@ import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
-class ArchiveViewModel @Inject constructor(
+class ArchiveScreenViewModel @Inject constructor(
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 

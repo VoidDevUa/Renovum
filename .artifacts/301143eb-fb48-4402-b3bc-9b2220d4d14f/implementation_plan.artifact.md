@@ -1,64 +1,51 @@
-# План реструктуризації пакетів Renovum
+# План повної декомпозиції (Atomic ViewModels)
 
-Цей план спрямований на групування існуючих пакетів для досягнення ієрархічної структури Clean Architecture. Це зменшить кількість папок у корені та чітко розмежує шари Presentation, Domain та Data.
+Цей план описує перехід від кількох великих ViewModels до атомарних моделей, де кожен екран та складний діалог має власну ViewModel. Спільний стан буде синхронізуватися через `ProjectStateRepository`.
 
 ## User Review Required
 
 > [!IMPORTANT]
-> **Зміна пакетів (Package Renaming)**: Переміщення папок призведе до зміни `package` у багатьох файлах. Це автоматично оновить імпорти, але я проведу фінальну перевірку через `gradle build`, щоб переконатися, що Hilt та Compose працюють коректно.
+> **Naming Convention**: Всі нові ViewModels будуть називатися відповідно до їхніх елементів: `RoomsScreenViewModel`, `WorkDialogViewModel` тощо.
+>
+> **Single Source of Truth**: Ми впроваджуємо `ProjectStateRepository` як центральне сховище для стану, що має бути спільним (вибрана кімната, відсоток знижки).
 
 ## Proposed Changes
 
-### Presentation Layer
-Групування всього, що стосується інтерфейсу та взаємодії з користувачем.
+### 1. Domain Layer: Спільний стан
+#### [NEW] [ProjectStateRepository.kt](file:///C:/THTY/4_kurs/Bakalavrska/Renovum_1/app/src/main/java/com/void_dev_ua/renovum/domain/repository/ProjectStateRepository.kt)
+- Буде містити `selectedRoomId: StateFlow<String?>`.
+- Буде містити `globalDiscount: StateFlow<Double>`.
 
-#### [MOVE] `ui/` -> `presentation/ui/`
-#### [MOVE] `viewmodel/` -> `presentation/viewmodel/`
-#### [MOVE] `navigation/` -> `presentation/navigation/`
+### 2. Presentation Layer: Нові ViewModels
 
-### Domain Layer
-Концентрація бізнес-логіки та описів сутностей.
+#### Головний екран та Загальне
+- **[NEW] `RenovumAppViewModel`**: Для стану в тулбарі та дрейвері (вибір кімнати в тулбарі впливає на глобальний стан).
+- **[NEW] `RoomsScreenViewModel`**: Тільки список кімнат та видалення.
 
-#### [MOVE] `model/` -> `domain/model/`
+#### Робота з кімнатами
+- **[NEW] `AddRoomScreenViewModel`**: Стан вводу даних при створенні кімнати.
+- **[NEW] `EditRoomScreenViewModel`**: Стан редагування існуючої кімнати.
+- **[NEW] `CalcScreenViewModel`**: Результати розрахунків та список прорізів.
 
----
+#### Роботи та Послуги
+- **[NEW] `WorksScreenViewModel`**: Каталог послуг, категорії, фільтрація.
+- **[NEW] `DoneScreenViewModel`**: Підсумки, групування робіт.
+- **[NEW] `WorkDialogViewModel`**: Складний стан діалогу додавання/редагування роботи (пейджер, ввід).
 
-### Infrastructure & Core
-Очищення кореня від допоміжних та технічних пакетів.
+#### Архів та Звіти
+- **[RENAME] `ArchiveViewModel`** -> `ArchiveScreenViewModel`.
+- **[RENAME] `ReportViewModel`** -> `ReportServiceViewModel` (або аналогічно, оскільки це сервісна логіка).
 
-#### [NEW] Пакет `core/`
-- **[MOVE]** `di/` -> `core/di/`
-- **[MOVE]** `utility/Logger.kt` -> `core/util/Logger.kt`
-- **[MOVE]** `utility/RenovumFileProvider.kt` -> `core/util/RenovumFileProvider.kt`
-
-#### [NEW] Пакет `data/remote/`
-- **[MOVE]** `utility/WordExportManager.kt` -> `data/remote/WordExportManager.kt`
-- **[MOVE]** `utility/RenovumNotificationManager.kt` -> `data/remote/RenovumNotificationManager.kt`
-
----
-
-### Коренева структура після всіх змін:
-- `data/`
-  - `local/`
-  - `remote/` (Word, Notifications)
-  - `repositories/`
-- `domain/`
-  - `model/`
-  - `usecase/`
-- `presentation/`
-  - `ui/`
-  - `viewmodel/`
-  - `navigation/`
-- `core/`
-  - `di/`
-  - `util/`
-- `MainActivity.kt`, `RenovumApp.kt`, `RenovumApplication.kt`
+### 3. UI Layer: Автономність
+- Кожен Composable екран тепер буде викликати `hiltViewModel()` всередині себе.
+- `NavGraph` та `RenovumApp` перестануть бути "посередниками" для передачі об'єктів ViewModel.
 
 ## Verification Plan
 
 ### Automated Tests
-- `app:assembleDebug` — повна перевірка компіляції після зміни пакетів.
+- Перевірка збірки через `gradle build`.
+- Перевірка реактивності: зміна кімнати в `RenovumAppViewModel` (через тулбар) має миттєво оновити дані в `CalcScreenViewModel`.
 
 ### Manual Verification
-- Перевірка запуску додатка (Hilt ініціалізація).
-- Перевірка навігації між екранами.
+- Пройти повний шлях користувача: Створення кімнати -> Розрахунок -> Додавання робіт через діалог -> Перевірка підсумків -> Експорт.
+- Перевірка режиму лівші з новими моделями.
